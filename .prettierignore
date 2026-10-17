@@ -1,0 +1,6 @@
+node_modules
+dist
+.astro
+package-lock.json
+packages/design-tokens/theme.css
+CLAUDE.md

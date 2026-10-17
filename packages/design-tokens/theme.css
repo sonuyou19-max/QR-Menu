@@ -1,0 +1,70 @@
+/* GENERATED from src/tokens.ts by scripts/build.ts — do not edit by hand. */
+@theme {
+  --color-paprika-50: #fdf3ee;
+  --color-paprika-100: #fbe3d6;
+  --color-paprika-200: #f6c3a8;
+  --color-paprika-300: #ee9a72;
+  --color-paprika-400: #e2703f;
+  --color-paprika-500: #cf5223;
+  --color-paprika-600: #b4401a;
+  --color-paprika-700: #923217;
+  --color-paprika-800: #722815;
+  --color-paprika-900: #4f1c10;
+  --color-mustard-50: #fef8e7;
+  --color-mustard-100: #fcedc2;
+  --color-mustard-200: #f8db86;
+  --color-mustard-300: #f2c64f;
+  --color-mustard-400: #e8af2a;
+  --color-mustard-500: #cc921a;
+  --color-mustard-600: #a87314;
+  --color-mustard-700: #835812;
+  --color-mustard-800: #5f4010;
+  --color-mustard-900: #3e2a0b;
+  --color-herb-50: #f1f6ef;
+  --color-herb-100: #ddead8;
+  --color-herb-200: #b9d3b0;
+  --color-herb-300: #8db57f;
+  --color-herb-400: #63955a;
+  --color-herb-500: #467a3f;
+  --color-herb-600: #386332;
+  --color-herb-700: #2c4e28;
+  --color-herb-800: #213b1f;
+  --color-herb-900: #162815;
+  --color-oat-50: #fbf7f1;
+  --color-oat-100: #f4ede2;
+  --color-oat-200: #e8dccb;
+  --color-oat-300: #d6c5ae;
+  --color-oat-400: #b8a48a;
+  --color-oat-500: #96826a;
+  --color-oat-600: #76654f;
+  --color-oat-700: #5a4c3c;
+  --color-oat-800: #3d332a;
+  --color-oat-900: #241e19;
+  --color-oat-950: #17130f;
+
+  --color-canvas: #fbf7f1;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4ede2;
+  --color-ink: #241e19;
+  --color-ink-muted: #76654f;
+  --color-line: #e8dccb;
+  --color-brand: #b4401a;
+  --color-brand-strong: #923217;
+  --color-on-brand: #ffffff;
+  --color-accent: #e8af2a;
+  --color-on-accent: #241e19;
+  --color-success: #386332;
+  --color-on-success: #ffffff;
+  --color-danger: #b42318;
+  --color-on-danger: #ffffff;
+
+  --font-display: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-control: 0.75rem;
+  --radius-card: 1.25rem;
+  --radius-phone: 2.75rem;
+
+  --shadow-card: 0 1px 2px rgb(36 30 25 / 0.06), 0 8px 24px -12px rgb(36 30 25 / 0.18);
+  --shadow-phone: 0 30px 60px -20px rgb(79 28 16 / 0.35), 0 12px 24px -12px rgb(36 30 25 / 0.25);
+}

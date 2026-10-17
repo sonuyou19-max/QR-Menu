@@ -1,0 +1,25 @@
+{
+  "name": "menubuddy",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "site"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev:site": "npm run dev -w @menubuddy/site",
+    "build:site": "npm run build -w @menubuddy/site",
+    "build:tokens": "npm run build -w @menubuddy/design-tokens",
+    "check": "npm run check --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-tailwindcss": "^0.8.1"
+  }
+}

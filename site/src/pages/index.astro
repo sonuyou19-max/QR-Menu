@@ -1,0 +1,14 @@
+---
+// Temporary holding page; replaced by the full home page in Phase 0.2.
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import t from "../i18n/nl.json";
+---
+
+<Base title={t.meta.title} description={t.meta.description} noindex>
+  <main class="mx-auto flex min-h-dvh max-w-2xl flex-col justify-center gap-6 px-4 py-16">
+    <Logo />
+    <h1 class="text-4xl font-semibold sm:text-6xl">{t.comingSoon.headline}</h1>
+    <p class="text-ink-muted text-lg">{t.comingSoon.subline}</p>
+  </main>
+</Base>

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "@menubuddy/design-tokens/fonts.css";
+@import "@menubuddy/design-tokens/theme.css";
+
+@layer base {
+  html {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-balance;
+  }
+  :focus-visible {
+    @apply outline-brand outline-2 outline-offset-2;
+  }
+}

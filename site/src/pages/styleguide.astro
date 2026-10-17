@@ -1,0 +1,104 @@
+---
+// Internal page to eyeball the shared design tokens. Not linked, not indexed.
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import { palette, semantic } from "@menubuddy/design-tokens";
+
+const scales = Object.entries(palette);
+const roles = Object.entries(semantic);
+---
+
+<Base
+  title="Styleguide · MenuBuddy"
+  description="Design tokens"
+  lang="en"
+  noindex
+>
+  <main class="mx-auto max-w-5xl space-y-12 px-4 py-12">
+    <header class="space-y-4">
+      <Logo />
+      <h1 class="text-4xl font-semibold">Design tokens</h1>
+      <p class="text-ink-muted">
+        Generated from <code>packages/design-tokens/src/tokens.ts</code>.
+      </p>
+    </header>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Type</h2>
+      <p class="font-display text-5xl font-semibold">Stoofvlees met frietjes</p>
+      <p class="font-display text-2xl italic">Typical preparation</p>
+      <p class="max-w-prose">
+        DM Sans for body text. Beef slowly stewed in dark Belgian beer with
+        onions and mustard, served with fries.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Palette</h2>
+      {scales.map(([name, steps]) => (
+        <div>
+          <p class="mb-2 text-sm font-medium">{name}</p>
+          <div class="grid grid-cols-5 gap-2 sm:grid-cols-11">
+            {Object.entries(steps).map(([step, hex]) => (
+              <div class="space-y-1">
+                <div
+                  class="rounded-control border-line h-12 border"
+                  style={`background:${hex}`}
+                />
+                <p class="text-ink-muted text-xs">
+                  {step}
+                  <br />
+                  {hex}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Roles</h2>
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {roles.map(([name, hex]) => (
+          <div class="rounded-card bg-surface shadow-card p-3">
+            <div
+              class="rounded-control border-line mb-2 h-10 border"
+              style={`background:${hex}`}
+            />
+            <p class="text-sm font-medium">{name}</p>
+            <p class="text-ink-muted text-xs">{hex}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Components</h2>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href="#"
+          class="rounded-control bg-brand text-on-brand hover:bg-brand-strong px-5 py-3 font-semibold"
+        >
+          Book a demo
+        </a>
+        <a
+          href="#"
+          class="rounded-control border-line bg-surface border px-5 py-3 font-semibold"
+        >
+          See the demo
+        </a>
+        <span class="bg-accent text-on-accent rounded-full px-3 py-1 text-sm font-semibold">
+          Save 25%
+        </span>
+        <span class="bg-success text-on-success rounded-full px-3 py-1 text-sm font-semibold">
+          In stock
+        </span>
+        <span class="bg-danger text-on-danger rounded-full px-3 py-1 text-sm font-semibold">
+          Contains nuts
+        </span>
+      </div>
+      <div class="rounded-phone shadow-phone border-oat-900 bg-surface h-72 w-40 border-8"></div>
+    </section>
+  </main>
+</Base>
