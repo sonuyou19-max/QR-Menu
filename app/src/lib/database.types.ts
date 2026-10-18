@@ -412,7 +412,16 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      import_menu_upload: {
+        Args: { p_mode: string; p_upload_id: string };
+        Returns: undefined;
+      };
       is_slug_available: { Args: { p_slug: string }; Returns: boolean };
+      reorder_categories: { Args: { p_ids: string[] }; Returns: undefined };
+      reorder_items: {
+        Args: { p_category_id: string; p_ids: string[] };
+        Returns: undefined;
+      };
     };
     Enums: {
       [_ in never]: never;

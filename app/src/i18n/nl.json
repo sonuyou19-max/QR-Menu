@@ -23,7 +23,10 @@
   },
   "nav": {
     "logout": "Uitloggen",
-    "account": "Ingelogd als {email}"
+    "account": "Ingelogd als {email}",
+    "overview": "Overzicht",
+    "menu": "Menukaart",
+    "upload": "Uploaden"
   },
   "overview": {
     "title": "Welkom bij MenuBuddy",
@@ -106,7 +109,7 @@
     "status": {
       "processing": "Wordt gelezen…",
       "needs_review": "Klaar om te controleren",
-      "done": "Klaar",
+      "done": "Toegevoegd aan menukaart",
       "failed": "Mislukt"
     },
     "errors": {
@@ -131,8 +134,6 @@
     },
     "retry": "Opnieuw proberen",
     "doneTitle": "We vonden {dishes} gerechten in {categories} categorieën",
-    "doneText": "Vergelijk namen en prijzen met je menukaart. In de volgende stap kun je alles verbeteren, allergenen bevestigen en publiceren.",
-    "nextSoon": "Bewerken en publiceren komt in de volgende update.",
     "notesTitle": "Sommige delen konden niet gelezen worden",
     "missingPrices": "{count} gerechten hebben nog geen prijs",
     "priceMissing": "Prijs ontbreekt",
@@ -165,5 +166,117 @@
     "contains_beef": "Rundvlees",
     "contains_alcohol": "Alcohol",
     "spicy": "Pikant"
+  },
+  "editor": {
+    "title": "Je menukaart",
+    "autosave": "Wijzigingen worden automatisch bewaard.",
+    "tabs": {
+      "menu": "Menukaart",
+      "prices": "Prijzen"
+    },
+    "todo": {
+      "allergens": "{count} gerechten: allergenen bevestigen",
+      "allergensOne": "1 gerecht: allergenen bevestigen",
+      "prices": "{count} prijzen ontbreken",
+      "pricesOne": "1 prijs ontbreekt",
+      "allDone": "Alle gerechten gecontroleerd",
+      "label": "Te doen"
+    },
+    "empty": {
+      "title": "Je menukaart is nog leeg",
+      "text": "Upload een foto van je menukaart en de AI vult hem in. Of begin zelf met een categorie.",
+      "upload": "Upload je menukaart"
+    },
+    "add": "Toevoegen",
+    "cancel": "Annuleren",
+    "addCategory": "Categorie toevoegen",
+    "categoryName": "Naam van de categorie",
+    "addDish": "Gerecht toevoegen",
+    "dishName": "Naam van het gerecht",
+    "category": {
+      "rename": "{name} hernoemen",
+      "drag": "Categorie {name} verplaatsen",
+      "delete": "Categorie verwijderen",
+      "deleteConfirm": "\"{name}\" en de {count} gerechten erin verwijderen?",
+      "options": "Opties voor {name}",
+      "dishCount": "{count} gerechten"
+    },
+    "dish": {
+      "drag": "{name} verplaatsen",
+      "edit": "{name} bewerken",
+      "price": "Prijs van {name}",
+      "noPrice": "Prijs toevoegen",
+      "inStock": "Op voorraad",
+      "outOfStock": "Uitverkocht",
+      "stockLabel": "{name} op voorraad",
+      "hiddenNote": "Verborgen voor gasten",
+      "allergensToConfirm": "Allergenen bevestigen",
+      "photoAdd": "Foto van {name} toevoegen",
+      "photo": "Foto van {name}",
+      "invalidPrice": "Geen geldige prijs, bv. 12,50"
+    },
+    "sheet": {
+      "title": "Gerecht bewerken",
+      "close": "Sluiten",
+      "name": "Naam zoals op je menukaart",
+      "nameHint": "Gasten zien deze naam precies zo; de vertaling staat eronder.",
+      "price": "Prijs",
+      "category": "Categorie",
+      "description": "Beschrijving",
+      "descriptionHint": "Je eigen beschrijving. Die wordt letterlijk vertaald.",
+      "typical": "Typische bereiding (door AI)",
+      "typicalHint": "Gasten zien dit schuin gedrukt als je zelf geen beschrijving hebt.",
+      "typicalUse": "Gebruik als mijn beschrijving",
+      "typicalHide": "Niet tonen",
+      "typicalShow": "Toon aan gasten",
+      "typicalHidden": "Wordt niet getoond aan gasten.",
+      "unknown": "Onbekend gerecht: gasten zien \"Vraag het aan het personeel\" tot je een beschrijving toevoegt.",
+      "dietary": "Dieet",
+      "allergens": "Allergenen (14 EU-allergenen)",
+      "allergensSuggested": "Voorgesteld door de AI. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
+      "allergensConfirmed": "Bevestigd door jou. Gasten zien deze allergenen.",
+      "confirm": "Allergenen bevestigen",
+      "confirmNone": "Bevestigen: bevat geen van deze",
+      "photo": "Foto",
+      "photoEmpty": "Nog geen foto. Tik om er een toe te voegen.",
+      "photoAdd": "Foto toevoegen",
+      "photoChange": "Foto wijzigen",
+      "photoRemove": "Foto verwijderen",
+      "photoUploading": "Foto uploaden…",
+      "photoError": "De foto kon niet geüpload worden. Probeer een andere.",
+      "delete": "Gerecht verwijderen",
+      "visibility": "Zichtbaar voor gasten",
+      "stock": "Vandaag op voorraad"
+    },
+    "toast": {
+      "saved": "Bewaard",
+      "deletedDish": "\"{name}\" verwijderd",
+      "deletedCategory": "\"{name}\" verwijderd",
+      "pricesChanged": "{count} prijzen gewijzigd",
+      "error": "Niet bewaard. Controleer je internetverbinding.",
+      "undo": "Ongedaan maken",
+      "close": "Melding sluiten"
+    },
+    "prices": {
+      "intro": "Typ de nieuwe prijzen en tik op \"Wijzigingen toepassen\". Laat een vak leeg om de prijs te houden.",
+      "current": "Nu",
+      "new": "Nieuwe prijs",
+      "newFor": "Nieuwe prijs voor {name}",
+      "apply": "Wijzigingen toepassen",
+      "nothing": "Nog geen wijzigingen",
+      "summary": "{count} prijzen wijzigen:",
+      "invalid": "Sommige prijzen zijn niet geldig. Gebruik bijvoorbeeld 12,50."
+    }
+  },
+  "resultExtra": {
+    "useMenu": "Gebruik deze menukaart",
+    "importTitle": "Je hebt al een menukaart",
+    "importText": "Je huidige menukaart vervangen door deze, of deze gerechten achteraan toevoegen?",
+    "replace": "Vervang mijn menukaart",
+    "append": "Achteraan toevoegen",
+    "importing": "Bewaren…",
+    "importError": "Dat is niet gelukt. Probeer opnieuw.",
+    "doneText": "Vergelijk namen en prijzen met je menukaart en tik dan op \"Gebruik deze menukaart\". Daarna kun je alles verbeteren, allergenen bevestigen en foto's toevoegen.",
+    "used": "Deze menukaart is toegevoegd. Open je menukaart om hem na te kijken."
   }
 }

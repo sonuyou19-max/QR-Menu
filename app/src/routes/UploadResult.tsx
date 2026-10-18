@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import {
   ArrowLeft,
+  ArrowRight,
   CircleAlert,
+  CircleCheck,
   Info,
   LoaderCircle,
   RotateCcw,
@@ -208,7 +210,7 @@ export function UploadResult() {
           categories: menu.categories.length,
         })}
       </h1>
-      <p className="text-ink-muted mt-2 text-lg">{t.result.doneText}</p>
+      <p className="text-ink-muted mt-2 text-lg">{t.resultExtra.doneText}</p>
       <p className="text-ink-muted mt-2 text-sm">
         <span aria-hidden="true">⚠︎ </span>
         {t.result.suggestedAllergens}
@@ -261,9 +263,112 @@ export function UploadResult() {
         ))}
       </div>
 
-      <p className="rounded-card bg-oat-100 text-ink-muted mt-10 p-4">
-        {t.result.nextSoon}
-      </p>
+      <UseMenu upload={upload} onDone={load} />
+    </div>
+  );
+}
+
+/**
+ * "Use this menu": copies the AI reading into the real menu (dishes, categories) for editing.
+ * When the restaurant already has dishes, the owner chooses to replace them or add at the end.
+ */
+function UseMenu({
+  upload,
+  onDone,
+}: {
+  upload: Upload;
+  onDone: () => Promise<void>;
+}) {
+  const { t } = useI18n();
+  const navigate = useNavigate();
+  const [choosing, setChoosing] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  if (upload.status === "done")
+    return (
+      <div className="rounded-card bg-herb-50 text-herb-800 sticky bottom-4 mt-10 flex flex-wrap items-center gap-3 p-4 shadow-lg">
+        <CircleCheck className="size-6 shrink-0" aria-hidden="true" />
+        <p className="min-w-0 flex-1 font-medium">{t.resultExtra.used}</p>
+        <Link to="/menu" className="btn-primary">
+          {t.nav.menu}
+          <ArrowRight className="size-5" aria-hidden="true" />
+        </Link>
+      </div>
+    );
+
+  const importAs = async (mode: "replace" | "append") => {
+    setBusy(true);
+    setFailed(false);
+    const { error } = await supabase.rpc("import_menu_upload", {
+      p_upload_id: upload.id,
+      p_mode: mode,
+    });
+    setBusy(false);
+    if (error) return setFailed(true);
+    await onDone();
+    navigate("/menu");
+  };
+
+  const start = async () => {
+    setBusy(true);
+    const { count, error } = await supabase
+      .from("menu_items")
+      .select("id", { count: "exact", head: true })
+      .eq("restaurant_id", upload.restaurant_id);
+    setBusy(false);
+    if (error) return setFailed(true);
+    if ((count ?? 0) > 0) setChoosing(true);
+    else await importAs("replace");
+  };
+
+  return (
+    <div className="bg-canvas/95 border-line sticky bottom-0 -mx-4 mt-10 border-t px-4 py-3 backdrop-blur">
+      {failed && (
+        <p role="alert" className="text-danger mb-2 text-sm font-medium">
+          {t.resultExtra.importError}
+        </p>
+      )}
+      {choosing ? (
+        <div role="group" aria-labelledby="import-choice">
+          <p id="import-choice" className="font-semibold">
+            {t.resultExtra.importTitle}
+          </p>
+          <p className="text-ink-muted text-sm">{t.resultExtra.importText}</p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => void importAs("replace")}
+              className="btn-primary"
+            >
+              {t.resultExtra.replace}
+            </button>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => void importAs("append")}
+              className="btn-secondary"
+            >
+              {t.resultExtra.append}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <button
+          type="button"
+          disabled={busy}
+          onClick={() => void start()}
+          className="btn-primary w-full text-lg"
+        >
+          {busy ? (
+            <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />
+          ) : (
+            <ArrowRight className="size-5" aria-hidden="true" />
+          )}
+          {busy ? t.resultExtra.importing : t.resultExtra.useMenu}
+        </button>
+      )}
     </div>
   );
 }

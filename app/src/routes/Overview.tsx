@@ -9,7 +9,7 @@ import { useRestaurant } from "../restaurant/RestaurantProvider";
 
 const icons = [Store, Upload, ListChecks];
 /** Steps that already have a screen. */
-const stepLinks: (string | null)[] = [null, "/upload", null];
+const stepLinks: (string | null)[] = [null, "/upload", "/menu"];
 
 /** Owner start page. Steps become links as Phase 1 lands. */
 export function Overview() {
@@ -19,14 +19,13 @@ export function Overview() {
 
   useEffect(() => {
     void supabase
-      .from("menu_uploads")
+      .from("menu_items")
       .select("id", { count: "exact", head: true })
       .eq("restaurant_id", restaurant.id)
-      .in("status", ["needs_review", "done"])
       .then(({ count }) => setMenuRead((count ?? 0) > 0));
   }, [restaurant.id]);
 
-  // Restaurant set up; the upload step counts once a menu has been read.
+  // Restaurant set up; the upload step counts once the menu has dishes. Publishing is step 6.
   const doneSteps = menuRead ? 2 : 1;
   return (
     <div>

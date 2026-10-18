@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import { Link, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import { useAuth } from "../auth/AuthProvider";
 import { Logo } from "../components/Logo";
 import { LanguagePicker } from "../components/LanguagePicker";
@@ -28,6 +28,33 @@ export function AppLayout() {
             <LogOut className="size-5" aria-hidden="true" />
           </button>
         </div>
+        <nav aria-label="MenuBuddy" className="mx-auto max-w-3xl px-2">
+          <ul className="flex gap-1 overflow-x-auto">
+            {(
+              [
+                ["/", t.nav.overview],
+                ["/menu", t.nav.menu],
+                ["/upload", t.nav.upload],
+              ] as const
+            ).map(([to, label]) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={to === "/"}
+                  className={({ isActive }) =>
+                    `inline-flex min-h-11 items-center border-b-2 px-3 font-semibold whitespace-nowrap ${
+                      isActive
+                        ? "border-brand text-ink"
+                        : "text-ink-muted border-transparent"
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
       <main className="mx-auto max-w-3xl px-4 py-8">
         <Outlet />

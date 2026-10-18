@@ -8,6 +8,7 @@ import { AuthProvider } from "./auth/AuthProvider";
 import { I18nProvider } from "./i18n";
 import { AppLayout } from "./routes/AppLayout";
 import { Login } from "./routes/Login";
+import { MenuEditor } from "./routes/MenuEditor";
 import { Overview } from "./routes/Overview";
 import { RequireAuth } from "./routes/RequireAuth";
 import { Setup } from "./routes/Setup";
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
             element: <AppLayout />,
             children: [
               { index: true, element: <Overview /> },
+              { path: "/menu", element: <MenuEditor /> },
               { path: "/upload", element: <Upload /> },
               { path: "/upload/:id", element: <UploadResult /> },
             ],

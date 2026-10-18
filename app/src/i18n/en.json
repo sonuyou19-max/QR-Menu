@@ -23,7 +23,10 @@
   },
   "nav": {
     "logout": "Log out",
-    "account": "Logged in as {email}"
+    "account": "Logged in as {email}",
+    "overview": "Overview",
+    "menu": "Menu",
+    "upload": "Upload"
   },
   "overview": {
     "title": "Welcome to MenuBuddy",
@@ -106,7 +109,7 @@
     "status": {
       "processing": "Reading…",
       "needs_review": "Ready to check",
-      "done": "Done",
+      "done": "Added to menu",
       "failed": "Didn't work"
     },
     "errors": {
@@ -131,8 +134,6 @@
     },
     "retry": "Try again",
     "doneTitle": "We found {dishes} dishes in {categories} categories",
-    "doneText": "Check names and prices against your menu. In the next step you can correct everything, confirm allergens and publish.",
-    "nextSoon": "Editing and publishing is coming in the next update.",
     "notesTitle": "Some parts couldn't be read",
     "missingPrices": "{count} dishes have no price yet",
     "priceMissing": "Price missing",
@@ -165,5 +166,117 @@
     "contains_beef": "Beef",
     "contains_alcohol": "Alcohol",
     "spicy": "Spicy"
+  },
+  "editor": {
+    "title": "Your menu",
+    "autosave": "Changes are saved automatically.",
+    "tabs": {
+      "menu": "Menu",
+      "prices": "Prices"
+    },
+    "todo": {
+      "allergens": "{count} dishes need allergen confirmation",
+      "allergensOne": "1 dish needs allergen confirmation",
+      "prices": "{count} prices missing",
+      "pricesOne": "1 price missing",
+      "allDone": "All dishes checked",
+      "label": "To do"
+    },
+    "empty": {
+      "title": "Your menu is still empty",
+      "text": "Upload a photo of your menu and the AI fills it in. Or start with a category yourself.",
+      "upload": "Upload your menu"
+    },
+    "add": "Add",
+    "cancel": "Cancel",
+    "addCategory": "Add category",
+    "categoryName": "Name of the category",
+    "addDish": "Add dish",
+    "dishName": "Name of the dish",
+    "category": {
+      "rename": "Rename {name}",
+      "drag": "Move category {name}",
+      "delete": "Delete category",
+      "deleteConfirm": "Delete \"{name}\" and its {count} dishes?",
+      "options": "Options for {name}",
+      "dishCount": "{count} dishes"
+    },
+    "dish": {
+      "drag": "Move {name}",
+      "edit": "Edit {name}",
+      "price": "Price of {name}",
+      "noPrice": "Add price",
+      "inStock": "In stock",
+      "outOfStock": "Out of stock",
+      "stockLabel": "{name} in stock",
+      "hiddenNote": "Hidden from guests",
+      "allergensToConfirm": "Confirm allergens",
+      "photoAdd": "Add a photo of {name}",
+      "photo": "Photo of {name}",
+      "invalidPrice": "Not a valid price, e.g. 12,50"
+    },
+    "sheet": {
+      "title": "Edit dish",
+      "close": "Close",
+      "name": "Name as on your menu",
+      "nameHint": "Guests see this name exactly as written; the translation goes underneath.",
+      "price": "Price",
+      "category": "Category",
+      "description": "Description",
+      "descriptionHint": "Your own description. It is translated as written.",
+      "typical": "Typical preparation (by AI)",
+      "typicalHint": "Shown in italics to guests when you have no description of your own.",
+      "typicalUse": "Use as my description",
+      "typicalHide": "Don't show",
+      "typicalShow": "Show to guests",
+      "typicalHidden": "Not shown to guests.",
+      "unknown": "Unknown dish: guests see \"Ask staff\" until you add a description.",
+      "dietary": "Dietary",
+      "allergens": "Allergens (14 EU allergens)",
+      "allergensSuggested": "Suggested by the AI. Check them, then confirm. Guests only see confirmed allergens.",
+      "allergensConfirmed": "Confirmed by you. Guests see these allergens.",
+      "confirm": "Confirm allergens",
+      "confirmNone": "Confirm: contains none of these",
+      "photo": "Photo",
+      "photoEmpty": "No photo yet. Tap to add one.",
+      "photoAdd": "Add photo",
+      "photoChange": "Change photo",
+      "photoRemove": "Remove photo",
+      "photoUploading": "Uploading photo…",
+      "photoError": "The photo couldn't be uploaded. Try another one.",
+      "delete": "Delete dish",
+      "visibility": "Visible to guests",
+      "stock": "In stock today"
+    },
+    "toast": {
+      "saved": "Saved",
+      "deletedDish": "\"{name}\" deleted",
+      "deletedCategory": "\"{name}\" deleted",
+      "pricesChanged": "{count} prices changed",
+      "error": "Couldn't save. Check your internet connection.",
+      "undo": "Undo",
+      "close": "Close message"
+    },
+    "prices": {
+      "intro": "Type the new prices, then tap \"Apply changes\". Leave a box empty to keep the price.",
+      "current": "Now",
+      "new": "New price",
+      "newFor": "New price for {name}",
+      "apply": "Apply changes",
+      "nothing": "No changes yet",
+      "summary": "{count} prices will change:",
+      "invalid": "Some prices aren't valid. Use for example 12,50."
+    }
+  },
+  "resultExtra": {
+    "useMenu": "Use this menu",
+    "importTitle": "You already have a menu",
+    "importText": "Replace your current menu with this one, or add these dishes at the end?",
+    "replace": "Replace my menu",
+    "append": "Add at the end",
+    "importing": "Saving…",
+    "importError": "That didn't work. Try again.",
+    "doneText": "Compare names and prices with your menu, then tap \"Use this menu\". Afterwards you can correct everything, confirm allergens and add photos.",
+    "used": "This menu has been added. Open your menu to check it."
   }
 }

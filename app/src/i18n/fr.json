@@ -23,7 +23,10 @@
   },
   "nav": {
     "logout": "Se déconnecter",
-    "account": "Connecté en tant que {email}"
+    "account": "Connecté en tant que {email}",
+    "overview": "Aperçu",
+    "menu": "Carte",
+    "upload": "Envoyer"
   },
   "overview": {
     "title": "Bienvenue sur MenuBuddy",
@@ -106,7 +109,7 @@
     "status": {
       "processing": "Lecture…",
       "needs_review": "Prêt à vérifier",
-      "done": "Terminé",
+      "done": "Ajoutée à la carte",
       "failed": "Échec"
     },
     "errors": {
@@ -131,8 +134,6 @@
     },
     "retry": "Réessayer",
     "doneTitle": "Nous avons trouvé {dishes} plats dans {categories} catégories",
-    "doneText": "Comparez les noms et les prix avec votre carte. À l'étape suivante, vous pourrez tout corriger, confirmer les allergènes et publier.",
-    "nextSoon": "La modification et la publication arrivent dans la prochaine mise à jour.",
     "notesTitle": "Certaines parties n'ont pas pu être lues",
     "missingPrices": "{count} plats n'ont pas encore de prix",
     "priceMissing": "Prix manquant",
@@ -165,5 +166,117 @@
     "contains_beef": "Bœuf",
     "contains_alcohol": "Alcool",
     "spicy": "Épicé"
+  },
+  "editor": {
+    "title": "Votre carte",
+    "autosave": "Les modifications sont enregistrées automatiquement.",
+    "tabs": {
+      "menu": "Carte",
+      "prices": "Prix"
+    },
+    "todo": {
+      "allergens": "{count} plats : allergènes à confirmer",
+      "allergensOne": "1 plat : allergènes à confirmer",
+      "prices": "{count} prix manquants",
+      "pricesOne": "1 prix manquant",
+      "allDone": "Tous les plats sont vérifiés",
+      "label": "À faire"
+    },
+    "empty": {
+      "title": "Votre carte est encore vide",
+      "text": "Envoyez une photo de votre carte et l'IA la remplit. Ou commencez vous-même par une catégorie.",
+      "upload": "Envoyer votre carte"
+    },
+    "add": "Ajouter",
+    "cancel": "Annuler",
+    "addCategory": "Ajouter une catégorie",
+    "categoryName": "Nom de la catégorie",
+    "addDish": "Ajouter un plat",
+    "dishName": "Nom du plat",
+    "category": {
+      "rename": "Renommer {name}",
+      "drag": "Déplacer la catégorie {name}",
+      "delete": "Supprimer la catégorie",
+      "deleteConfirm": "Supprimer « {name} » et ses {count} plats ?",
+      "options": "Options pour {name}",
+      "dishCount": "{count} plats"
+    },
+    "dish": {
+      "drag": "Déplacer {name}",
+      "edit": "Modifier {name}",
+      "price": "Prix de {name}",
+      "noPrice": "Ajouter le prix",
+      "inStock": "Disponible",
+      "outOfStock": "Épuisé",
+      "stockLabel": "{name} disponible",
+      "hiddenNote": "Masqué pour les clients",
+      "allergensToConfirm": "Confirmer les allergènes",
+      "photoAdd": "Ajouter une photo de {name}",
+      "photo": "Photo de {name}",
+      "invalidPrice": "Prix non valide, ex. 12,50"
+    },
+    "sheet": {
+      "title": "Modifier le plat",
+      "close": "Fermer",
+      "name": "Nom comme sur votre carte",
+      "nameHint": "Vos clients voient ce nom tel quel ; la traduction s'affiche en dessous.",
+      "price": "Prix",
+      "category": "Catégorie",
+      "description": "Description",
+      "descriptionHint": "Votre propre description. Elle est traduite telle quelle.",
+      "typical": "Préparation typique (par l'IA)",
+      "typicalHint": "Affichée en italique aux clients si vous n'avez pas de description.",
+      "typicalUse": "Utiliser comme ma description",
+      "typicalHide": "Ne pas afficher",
+      "typicalShow": "Afficher aux clients",
+      "typicalHidden": "N'est pas affichée aux clients.",
+      "unknown": "Plat inconnu : les clients voient « Demandez au personnel » tant que vous n'ajoutez pas de description.",
+      "dietary": "Régime",
+      "allergens": "Allergènes (14 allergènes UE)",
+      "allergensSuggested": "Suggérés par l'IA. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
+      "allergensConfirmed": "Confirmés par vous. Les clients voient ces allergènes.",
+      "confirm": "Confirmer les allergènes",
+      "confirmNone": "Confirmer : n'en contient aucun",
+      "photo": "Photo",
+      "photoEmpty": "Pas encore de photo. Touchez pour en ajouter une.",
+      "photoAdd": "Ajouter une photo",
+      "photoChange": "Changer la photo",
+      "photoRemove": "Supprimer la photo",
+      "photoUploading": "Envoi de la photo…",
+      "photoError": "La photo n'a pas pu être envoyée. Essayez-en une autre.",
+      "delete": "Supprimer le plat",
+      "visibility": "Visible pour les clients",
+      "stock": "Disponible aujourd'hui"
+    },
+    "toast": {
+      "saved": "Enregistré",
+      "deletedDish": "« {name} » supprimé",
+      "deletedCategory": "« {name} » supprimée",
+      "pricesChanged": "{count} prix modifiés",
+      "error": "Non enregistré. Vérifiez votre connexion internet.",
+      "undo": "Annuler",
+      "close": "Fermer le message"
+    },
+    "prices": {
+      "intro": "Tapez les nouveaux prix puis touchez « Appliquer les modifications ». Laissez une case vide pour garder le prix.",
+      "current": "Actuel",
+      "new": "Nouveau prix",
+      "newFor": "Nouveau prix pour {name}",
+      "apply": "Appliquer les modifications",
+      "nothing": "Aucune modification",
+      "summary": "{count} prix vont changer :",
+      "invalid": "Certains prix ne sont pas valides. Utilisez par exemple 12,50."
+    }
+  },
+  "resultExtra": {
+    "useMenu": "Utiliser cette carte",
+    "importTitle": "Vous avez déjà une carte",
+    "importText": "Remplacer votre carte actuelle par celle-ci, ou ajouter ces plats à la fin ?",
+    "replace": "Remplacer ma carte",
+    "append": "Ajouter à la fin",
+    "importing": "Enregistrement…",
+    "importError": "Cela n'a pas fonctionné. Réessayez.",
+    "doneText": "Comparez les noms et les prix avec votre carte, puis touchez « Utiliser cette carte ». Ensuite, vous pourrez tout corriger, confirmer les allergènes et ajouter des photos.",
+    "used": "Cette carte a été ajoutée. Ouvrez votre carte pour la vérifier."
   }
 }
