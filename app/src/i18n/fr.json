@@ -76,6 +76,94 @@
   "overviewExtra": {
     "menuAt": "Votre carte sera sur",
     "done": "Fait",
-    "languages": "Langues pour les clients"
+    "languages": "Langues pour les clients",
+    "open": "Ouvrir",
+    "inProgress": "En cours"
+  },
+  "upload": {
+    "title": "Envoyez votre carte",
+    "intro": "Prenez une photo de chaque page de votre carte, dans l'ordre. L'IA lit les plats, les prix et les descriptions. Vous vérifiez tout avant que vos clients ne le voient.",
+    "tipsTitle": "Pour un meilleur résultat",
+    "tips": [
+      "Une page de carte par photo, la page entière visible",
+      "Bonne lumière, sans reflets, téléphone bien droit",
+      "Jusqu'à {max} photos"
+    ],
+    "takePhoto": "Prendre une photo",
+    "choosePhotos": "Choisir des photos",
+    "addMore": "Ajouter des photos",
+    "photoAlt": "Page de carte {n}",
+    "page": "Page {n}",
+    "remove": "Supprimer la page {n}",
+    "moveEarlier": "Avancer la page {n}",
+    "count": "{count} sur {max} photos",
+    "submit": "Lire ma carte",
+    "preparing": "Préparation des photos…",
+    "uploading": "Envoi de la photo {n} sur {total}…",
+    "starting": "Démarrage…",
+    "earlier": "Envois précédents",
+    "uploadedOn": "{date} · {count} photos",
+    "status": {
+      "processing": "Lecture…",
+      "needs_review": "Prêt à vérifier",
+      "done": "Terminé",
+      "failed": "Échec"
+    },
+    "errors": {
+      "tooMany": "Vous pouvez envoyer jusqu'à {max} photos à la fois.",
+      "unsupported": "Une photo n'a pas pu être ouverte. Reprenez-la avec l'appareil photo, ou choisissez un JPEG ou PNG.",
+      "upload": "L'envoi n'a pas fonctionné. Vérifiez votre connexion internet et réessayez.",
+      "rateLimited": "Vous avez déjà fait lire beaucoup de cartes aujourd'hui. Réessayez demain, ou contactez-nous.",
+      "generic": "Cela n'a pas fonctionné. Réessayez."
+    }
+  },
+  "result": {
+    "back": "Envoyer d'autres photos",
+    "readingTitle": "Lecture de votre carte…",
+    "readingText": "Cela prend généralement 30 à 90 secondes. Vous pouvez quitter cette page : le résultat vous attendra ici.",
+    "elapsed": "{seconds} s",
+    "failedTitle": "Nous n'avons pas pu lire cette carte",
+    "errors": {
+      "not_a_menu": "Ces photos ne semblent pas montrer une carte. Photographiez les pages de la carte et réessayez.",
+      "unreadable": "Le texte était trop difficile à lire. Prenez des photos plus nettes avec une bonne lumière, une page par photo.",
+      "server": "Un problème est survenu de notre côté. Réessayez dans un instant.",
+      "stale": "Cela a pris trop de temps et a été arrêté. Réessayez."
+    },
+    "retry": "Réessayer",
+    "doneTitle": "Nous avons trouvé {dishes} plats dans {categories} catégories",
+    "doneText": "Comparez les noms et les prix avec votre carte. À l'étape suivante, vous pourrez tout corriger, confirmer les allergènes et publier.",
+    "nextSoon": "La modification et la publication arrivent dans la prochaine mise à jour.",
+    "notesTitle": "Certaines parties n'ont pas pu être lues",
+    "missingPrices": "{count} plats n'ont pas encore de prix",
+    "priceMissing": "Prix manquant",
+    "typical": "Préparation typique",
+    "unknownDish": "Plat inconnu : ajoutez une description plus tard",
+    "suggestedAllergens": "Allergènes suggérés (pas encore confirmés)",
+    "notFound": "Cet envoi n'existe pas (plus).",
+    "missingPriceOne": "1 plat n'a pas encore de prix"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Crustacés",
+    "eggs": "Œufs",
+    "fish": "Poisson",
+    "peanuts": "Arachides",
+    "soybeans": "Soja",
+    "milk": "Lait",
+    "nuts": "Fruits à coque",
+    "celery": "Céleri",
+    "mustard": "Moutarde",
+    "sesame": "Sésame",
+    "sulphites": "Sulfites",
+    "lupin": "Lupin",
+    "molluscs": "Mollusques"
+  },
+  "dietary": {
+    "vegetarian": "Végétarien",
+    "vegan": "Végan",
+    "contains_pork": "Porc",
+    "contains_beef": "Bœuf",
+    "contains_alcohol": "Alcool",
+    "spicy": "Épicé"
   }
 }

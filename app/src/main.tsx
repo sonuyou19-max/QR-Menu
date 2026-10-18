@@ -11,6 +11,8 @@ import { Login } from "./routes/Login";
 import { Overview } from "./routes/Overview";
 import { RequireAuth } from "./routes/RequireAuth";
 import { Setup } from "./routes/Setup";
+import { Upload } from "./routes/Upload";
+import { UploadResult } from "./routes/UploadResult";
 import { RestaurantGate } from "./restaurant/RestaurantProvider";
 
 const router = createBrowserRouter([
@@ -24,7 +26,11 @@ const router = createBrowserRouter([
           { path: "/setup", element: <Setup /> },
           {
             element: <AppLayout />,
-            children: [{ index: true, element: <Overview /> }],
+            children: [
+              { index: true, element: <Overview /> },
+              { path: "/upload", element: <Upload /> },
+              { path: "/upload/:id", element: <UploadResult /> },
+            ],
           },
         ],
       },

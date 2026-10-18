@@ -177,6 +177,7 @@ export type Database = {
           error: string | null;
           file_paths: string[] | null;
           id: string;
+          processing_started_at: string | null;
           raw_result: Json | null;
           restaurant_id: string;
           source_type: string;
@@ -188,6 +189,7 @@ export type Database = {
           error?: string | null;
           file_paths?: string[] | null;
           id?: string;
+          processing_started_at?: string | null;
           raw_result?: Json | null;
           restaurant_id: string;
           source_type: string;
@@ -199,6 +201,7 @@ export type Database = {
           error?: string | null;
           file_paths?: string[] | null;
           id?: string;
+          processing_started_at?: string | null;
           raw_result?: Json | null;
           restaurant_id?: string;
           source_type?: string;
@@ -329,6 +332,44 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "translations_restaurant_id_fkey";
+            columns: ["restaurant_id"];
+            isOneToOne: false;
+            referencedRelation: "restaurants";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      usage_events: {
+        Row: {
+          created_at: string;
+          id: number;
+          input_tokens: number | null;
+          kind: string;
+          model: string | null;
+          output_tokens: number | null;
+          restaurant_id: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          input_tokens?: number | null;
+          kind: string;
+          model?: string | null;
+          output_tokens?: number | null;
+          restaurant_id?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          input_tokens?: number | null;
+          kind?: string;
+          model?: string | null;
+          output_tokens?: number | null;
+          restaurant_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "usage_events_restaurant_id_fkey";
             columns: ["restaurant_id"];
             isOneToOne: false;
             referencedRelation: "restaurants";

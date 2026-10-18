@@ -76,6 +76,94 @@
   "overviewExtra": {
     "menuAt": "Your menu will be at",
     "done": "Done",
-    "languages": "Guest languages"
+    "languages": "Guest languages",
+    "open": "Open",
+    "inProgress": "In progress"
+  },
+  "upload": {
+    "title": "Upload your menu",
+    "intro": "Take a photo of each page of your menu, in order. The AI reads the dishes, prices and descriptions. You check everything before guests see it.",
+    "tipsTitle": "For the best result",
+    "tips": [
+      "One menu page per photo, the whole page in view",
+      "Good light, no glare, hold the phone straight",
+      "Up to {max} photos"
+    ],
+    "takePhoto": "Take a photo",
+    "choosePhotos": "Choose photos",
+    "addMore": "Add photos",
+    "photoAlt": "Menu page {n}",
+    "page": "Page {n}",
+    "remove": "Remove page {n}",
+    "moveEarlier": "Move page {n} earlier",
+    "count": "{count} of {max} photos",
+    "submit": "Read my menu",
+    "preparing": "Preparing photos…",
+    "uploading": "Uploading photo {n} of {total}…",
+    "starting": "Starting…",
+    "earlier": "Earlier uploads",
+    "uploadedOn": "{date} · {count} photos",
+    "status": {
+      "processing": "Reading…",
+      "needs_review": "Ready to check",
+      "done": "Done",
+      "failed": "Didn't work"
+    },
+    "errors": {
+      "tooMany": "You can upload up to {max} photos at a time.",
+      "unsupported": "One photo couldn't be opened. Try taking it again with the camera, or choose a JPEG or PNG.",
+      "upload": "Uploading didn't work. Check your internet connection and try again.",
+      "rateLimited": "You've read a lot of menus today. Try again tomorrow, or contact us.",
+      "generic": "That didn't work. Try again."
+    }
+  },
+  "result": {
+    "back": "Upload other photos",
+    "readingTitle": "Reading your menu…",
+    "readingText": "This usually takes 30 to 90 seconds. You can leave this page: the result will be waiting here.",
+    "elapsed": "{seconds} s",
+    "failedTitle": "We couldn't read this menu",
+    "errors": {
+      "not_a_menu": "These photos don't seem to show a menu. Take a photo of the menu pages and try again.",
+      "unreadable": "The text was too hard to read. Take sharper photos with good light, one page per photo.",
+      "server": "Something went wrong on our side. Try again in a moment.",
+      "stale": "This took too long and was stopped. Try again."
+    },
+    "retry": "Try again",
+    "doneTitle": "We found {dishes} dishes in {categories} categories",
+    "doneText": "Check names and prices against your menu. In the next step you can correct everything, confirm allergens and publish.",
+    "nextSoon": "Editing and publishing is coming in the next update.",
+    "notesTitle": "Some parts couldn't be read",
+    "missingPrices": "{count} dishes have no price yet",
+    "priceMissing": "Price missing",
+    "typical": "Typical preparation",
+    "unknownDish": "Unknown dish: add a description later",
+    "suggestedAllergens": "Suggested allergens (not confirmed yet)",
+    "notFound": "This upload doesn't exist (anymore).",
+    "missingPriceOne": "1 dish has no price yet"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Crustaceans",
+    "eggs": "Eggs",
+    "fish": "Fish",
+    "peanuts": "Peanuts",
+    "soybeans": "Soy",
+    "milk": "Milk",
+    "nuts": "Nuts",
+    "celery": "Celery",
+    "mustard": "Mustard",
+    "sesame": "Sesame",
+    "sulphites": "Sulphites",
+    "lupin": "Lupin",
+    "molluscs": "Molluscs"
+  },
+  "dietary": {
+    "vegetarian": "Vegetarian",
+    "vegan": "Vegan",
+    "contains_pork": "Pork",
+    "contains_beef": "Beef",
+    "contains_alcohol": "Alcohol",
+    "spicy": "Spicy"
   }
 }

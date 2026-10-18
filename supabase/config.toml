@@ -4,3 +4,7 @@ project_id = "eoeqtwskfqawxfpuyhac"
 [functions.book-demo]
 # Called anonymously by the marketing site; Turnstile + honeypot + rate limits guard it.
 verify_jwt = false
+
+[functions.process-menu]
+# The owner's login token is checked inside the function (auth.getUser), then ownership of the upload.
+verify_jwt = false

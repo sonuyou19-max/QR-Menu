@@ -76,6 +76,94 @@
   "overviewExtra": {
     "menuAt": "Je menu komt op",
     "done": "Klaar",
-    "languages": "Talen voor gasten"
+    "languages": "Talen voor gasten",
+    "open": "Openen",
+    "inProgress": "Bezig"
+  },
+  "upload": {
+    "title": "Upload je menukaart",
+    "intro": "Neem een foto van elke pagina van je menukaart, in volgorde. De AI leest de gerechten, prijzen en beschrijvingen. Jij controleert alles voordat gasten het zien.",
+    "tipsTitle": "Voor het beste resultaat",
+    "tips": [
+      "Eén menupagina per foto, de hele pagina in beeld",
+      "Goed licht, geen weerspiegeling, houd je telefoon recht",
+      "Maximaal {max} foto's"
+    ],
+    "takePhoto": "Foto nemen",
+    "choosePhotos": "Foto's kiezen",
+    "addMore": "Foto's toevoegen",
+    "photoAlt": "Menupagina {n}",
+    "page": "Pagina {n}",
+    "remove": "Pagina {n} verwijderen",
+    "moveEarlier": "Pagina {n} naar voren",
+    "count": "{count} van {max} foto's",
+    "submit": "Lees mijn menukaart",
+    "preparing": "Foto's klaarmaken…",
+    "uploading": "Foto {n} van {total} uploaden…",
+    "starting": "Bezig met starten…",
+    "earlier": "Eerdere uploads",
+    "uploadedOn": "{date} · {count} foto's",
+    "status": {
+      "processing": "Wordt gelezen…",
+      "needs_review": "Klaar om te controleren",
+      "done": "Klaar",
+      "failed": "Mislukt"
+    },
+    "errors": {
+      "tooMany": "Je kunt maximaal {max} foto's tegelijk uploaden.",
+      "unsupported": "Eén foto kon niet geopend worden. Neem hem opnieuw met de camera, of kies een JPEG of PNG.",
+      "upload": "Uploaden is niet gelukt. Controleer je internetverbinding en probeer opnieuw.",
+      "rateLimited": "Je hebt vandaag al veel menukaarten laten lezen. Probeer het morgen opnieuw, of neem contact met ons op.",
+      "generic": "Dat is niet gelukt. Probeer opnieuw."
+    }
+  },
+  "result": {
+    "back": "Andere foto's uploaden",
+    "readingTitle": "Je menukaart wordt gelezen…",
+    "readingText": "Dit duurt meestal 30 tot 90 seconden. Je mag deze pagina verlaten: het resultaat staat hier straks klaar.",
+    "elapsed": "{seconds} s",
+    "failedTitle": "We konden deze menukaart niet lezen",
+    "errors": {
+      "not_a_menu": "Op deze foto's lijkt geen menukaart te staan. Fotografeer de menupagina's en probeer opnieuw.",
+      "unreadable": "De tekst was te moeilijk leesbaar. Neem scherpere foto's met goed licht, één pagina per foto.",
+      "server": "Er ging bij ons iets mis. Probeer het zo meteen opnieuw.",
+      "stale": "Dit duurde te lang en is gestopt. Probeer opnieuw."
+    },
+    "retry": "Opnieuw proberen",
+    "doneTitle": "We vonden {dishes} gerechten in {categories} categorieën",
+    "doneText": "Vergelijk namen en prijzen met je menukaart. In de volgende stap kun je alles verbeteren, allergenen bevestigen en publiceren.",
+    "nextSoon": "Bewerken en publiceren komt in de volgende update.",
+    "notesTitle": "Sommige delen konden niet gelezen worden",
+    "missingPrices": "{count} gerechten hebben nog geen prijs",
+    "priceMissing": "Prijs ontbreekt",
+    "typical": "Typische bereiding",
+    "unknownDish": "Onbekend gerecht: voeg later een beschrijving toe",
+    "suggestedAllergens": "Voorgestelde allergenen (nog niet bevestigd)",
+    "notFound": "Deze upload bestaat niet (meer).",
+    "missingPriceOne": "1 gerecht heeft nog geen prijs"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Schaaldieren",
+    "eggs": "Eieren",
+    "fish": "Vis",
+    "peanuts": "Pinda's",
+    "soybeans": "Soja",
+    "milk": "Melk",
+    "nuts": "Noten",
+    "celery": "Selderij",
+    "mustard": "Mosterd",
+    "sesame": "Sesam",
+    "sulphites": "Sulfiet",
+    "lupin": "Lupine",
+    "molluscs": "Weekdieren"
+  },
+  "dietary": {
+    "vegetarian": "Vegetarisch",
+    "vegan": "Veganistisch",
+    "contains_pork": "Varkensvlees",
+    "contains_beef": "Rundvlees",
+    "contains_alcohol": "Alcohol",
+    "spicy": "Pikant"
   }
 }
