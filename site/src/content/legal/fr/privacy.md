@@ -27,9 +27,8 @@ Nous ne vendons pas vos données et ne vous envoyons pas de newsletter sans votr
 Nous travaillons avec ces prestataires, qui traitent vos données uniquement pour notre compte :
 
 - **Supabase** — base de données où les demandes sont conservées (serveurs à Francfort, UE).
-- **Cloudflare** — protection anti-spam (Turnstile).
+- **Cloudflare** — hébergement du site et protection anti-spam (Turnstile).
 - **Resend** — nous envoie un e-mail lors d'une nouvelle demande.
-- **Netlify** — hébergement du site.
 
 Certains de ces prestataires sont établis aux États-Unis. Le transfert repose alors sur le cadre de protection des données UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne.
 

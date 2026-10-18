@@ -279,5 +279,10 @@
   "legal": {
     "updated": "Last updated: {date}",
     "draft": "Draft — this text still needs a legal review."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist (anymore).",
+    "home": "Go to the home page"
   }
 }

@@ -279,5 +279,10 @@
   "legal": {
     "updated": "Dernière mise à jour : {date}",
     "draft": "Projet — ce texte doit encore être vérifié par un juriste."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "text": "Cette page n'existe pas (ou plus).",
+    "home": "Retour à l'accueil"
   }
 }

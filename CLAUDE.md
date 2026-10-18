@@ -24,11 +24,11 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
   - `/app` — **product** on `app.menubuddy.be`: React + Vite + TypeScript, one app containing:
     - `/m/:slug` — public guest menu (mobile-first, fast, no login). Per-table QR: `/m/:slug?t=5`.
     - admin (login required): `/login`, `/` (overview), `/service`, `/menu`, `/upload`, `/qr`, `/settings`.
-  - Printed QR codes point to `https://app.menubuddy.be/m/:slug` — never a `netlify.app` URL. Buy the domain before printing any QR code, and never change this URL pattern once codes are printed.
+  - Printed QR codes point to `https://app.menubuddy.be/m/:slug` — never a `workers.dev` URL. Buy the domain before printing any QR code, and never change this URL pattern once codes are printed.
   - Supabase Auth redirect URLs must include `https://app.menubuddy.be/*`.
   - Site and app link to each other via env vars (`PUBLIC_APP_URL` in the site, `VITE_SITE_URL` in the app).
 - **Styling:** Tailwind CSS in both, with **shared design tokens** (`/packages/design-tokens`: brand colours, fonts, radius in `src/tokens.ts` → generated Tailwind v4 `theme.css`, imported by both) so site and app look like one brand.
-- **Hosting:** Netlify, **two sites from the same repo** (base directories `/site` and `/app`). App has SPA fallback `/* /index.html 200`. Supabase project in an **EU region (Frankfurt)**: `menubuddy`, ref `eoeqtwskfqawxfpuyhac` (CLI config in `supabase/config.toml`). Edge-function secrets: `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `NOTIFY_EMAIL` (optional `RESEND_FROM`, `ALLOWED_ORIGINS`).
+- **Hosting:** Cloudflare Workers (static assets, free plan), **two Workers from the same repo**, each deployed by Workers Builds from the repo root with its own config (`site/wrangler.jsonc`, later `app/wrangler.jsonc`). App uses `not_found_handling: "single-page-application"`. (Switched from Netlify: its free plan charges credits per deploy.) Supabase project in an **EU region (Frankfurt)**: `menubuddy`, ref `eoeqtwskfqawxfpuyhac` (CLI config in `supabase/config.toml`). Edge-function secrets: `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `NOTIFY_EMAIL` (optional `RESEND_FROM`, `ALLOWED_ORIGINS`).
 - **Backend:** Supabase — Postgres, Auth, Storage, Edge Functions (Deno/TypeScript)
 - **AI:** Anthropic Claude API, called **only from Supabase Edge Functions** (never expose the key to the browser)
   - Menu extraction + translation (vision): strong model, e.g. `claude-sonnet-5-5`
@@ -184,7 +184,7 @@ Goal: a non-technical restaurant owner understands it without training and can m
 
 **Goal:** a busy restaurant owner understands the value in under a minute, tries it, and **books a demo**.
 
-**Tech:** Astro in `/site`, Tailwind with the shared design tokens, React islands only where interaction is needed. Static output, Lighthouse 95+, fully usable on phones (owners will mostly visit on mobile). Separate Netlify site.
+**Tech:** Astro in `/site`, Tailwind with the shared design tokens, React islands only where interaction is needed. Static output, Lighthouse 95+, fully usable on phones (owners will mostly visit on mobile). Separate Cloudflare Worker.
 
 **Languages:** Dutch at `/` (default), French at `/fr/`, English at `/en/`. Language switcher in the header; `hreflang` tags and per-language titles, descriptions and Open Graph images. All copy in `/site/src/i18n/{nl,fr,en}.json` — never hard-coded in components.
 
@@ -226,7 +226,7 @@ Footer: contact, privacy, terms, company details (KBO/BCE + VAT number once regi
 
 **Design:** warm and food-focused, not a generic SaaS template — real phone mockups, appetising imagery, confident typography. Use the `frontend-design` approach. Accessible (WCAG AA), no layout shift, images optimised by Astro.
 
-**Analytics:** privacy-friendly and cookie-less (e.g. Plausible or Netlify Analytics) so no cookie banner is needed. Track: CTA clicks, demo opens, try-your-menu runs, form submissions.
+**Analytics:** privacy-friendly and cookie-less (e.g. Plausible or Cloudflare Web Analytics) so no cookie banner is needed. Track: CTA clicks, demo opens, try-your-menu runs, form submissions.
 
 ---
 
@@ -454,13 +454,13 @@ create table usage_events (                     -- AI cost tracking per restaura
 ## 9. Project structure (target)
 
 ```
-/site                    Astro marketing website → menubuddy.be (Netlify site 1)
+/site                    Astro marketing website → menubuddy.be (Cloudflare Worker `menubuddy-site`)
   /src/pages             index (nl), /fr/, /en/, /demo, /privacy, /terms
   /src/components        page sections (Astro) + React islands:
                          DemoPhone, TryYourMenu, BookDemoForm (pricing toggle is a tiny inline script, no React)
   /src/i18n              nl.json, fr.json, en.json (all copy)
   /src/content           blog, case studies, city pages (later)
-/app                     React + Vite product → app.menubuddy.be (Netlify site 2)
+/app                     React + Vite product → app.menubuddy.be (Cloudflare Worker `menubuddy-app`)
   /src/routes
     /m/[slug]            guest menu + chat (public, no login)
     /login
@@ -488,7 +488,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 0.2 Astro home page in NL, then FR + EN: hero, problem, how it works, features, trust, pricing (monthly/annual toggle), FAQ, final CTA
 0.3 Demo A as a self-contained React island with hard-coded sample brasserie menu (language switch, cart, show to staff, sample chat) + QR code to open it on a phone
 0.4 Book a demo: form + Turnstile + honeypot → Supabase `leads` table via `book-demo` function → email notification; `/privacy`, `/terms`
-0.5 Buy the domain, deploy `/site` to Netlify on `menubuddy.be`, add cookie-less analytics
+0.5 Buy the domain, put `/site` on `menubuddy.be` (Cloudflare), real Turnstile keys, add cookie-less analytics
 
 **Phase 1 — Product (`/app` on `app.menubuddy.be`)**
 1. Vite + React + Tailwind + Supabase setup, owner auth (magic link)
@@ -519,5 +519,5 @@ create table usage_events (                     -- AI cost tracking per restaura
 - Secrets only in Supabase secrets / `.env` (never committed): `ANTHROPIC_API_KEY`, `MENU_MODEL`, `CHAT_MODEL`.
 - Guest page: no cookies/tracking beyond anonymous session id (GDPR-friendly); add a short privacy note.
 - Small, focused commits; explain migrations in commit messages.
-- **Every deliverable comes with a link that opens on a phone.** Marketing site: `npm run build -w @menubuddy/site` then `node site/scripts/phone-preview.mjs <file>.html` and publish that file as a private claude.ai Artifact (reuse the same Artifact URL across phases: https://claude.ai/artifact/C2WzDTiJdAoaV1fDJ3Qpq1), plus the Netlify test site https://menubuddy-site.netlify.app (Netlify project `menubuddy-site`, config in the root `netlify.toml`; env `SITE_URL` + `PUBLIC_SITE_NOINDEX=true` there). Same idea for the app later.
+- **Every deliverable comes with a link that opens on a phone.** Marketing site: `npm run build -w @menubuddy/site` then `node site/scripts/phone-preview.mjs <file>.html` and publish that file as a private claude.ai Artifact (reuse the same Artifact URL across phases: https://claude.ai/artifact/C2WzDTiJdAoaV1fDJ3Qpq1), plus the Cloudflare test site (Worker `menubuddy-site`, auto-deployed on every push; build command `npm run build:site:test`, which sets `PUBLIC_SITE_NOINDEX=true`). Same idea for the app later.
 - When unsure about a product decision, ask rather than guess.

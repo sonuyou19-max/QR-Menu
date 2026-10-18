@@ -27,9 +27,8 @@ We don't sell your data and won't send you a newsletter without your consent.
 We work with these service providers, who process your data only on our behalf:
 
 - **Supabase** — database where requests are stored (servers in Frankfurt, EU).
-- **Cloudflare** — spam protection (Turnstile).
+- **Cloudflare** — website hosting and spam protection (Turnstile).
 - **Resend** — sends us an email when a new request comes in.
-- **Netlify** — website hosting.
 
 Some of these providers are based in the United States. Transfers then rely on the EU-US Data Privacy Framework or the European Commission's standard contractual clauses.
 

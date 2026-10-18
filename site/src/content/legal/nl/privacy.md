@@ -27,9 +27,8 @@ We verkopen je gegevens niet en sturen je geen nieuwsbrief zonder je toestemming
 We werken met deze dienstverleners, die je gegevens alleen in onze opdracht verwerken:
 
 - **Supabase** — database waarin aanvragen worden bewaard (servers in Frankfurt, EU).
-- **Cloudflare** — spambescherming (Turnstile).
+- **Cloudflare** — hosting van de website en spambescherming (Turnstile).
 - **Resend** — verstuurt ons een e-mail bij een nieuwe aanvraag.
-- **Netlify** — hosting van de website.
 
 Sommige van deze partijen zijn gevestigd in de Verenigde Staten. Doorgifte gebeurt dan op basis van het EU-VS-gegevensprivacykader of de standaardcontractbepalingen van de Europese Commissie.
 

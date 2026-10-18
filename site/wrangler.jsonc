@@ -1,0 +1,14 @@
+// Cloudflare Worker serving the marketing site (static files only, no Worker code).
+// Deployed by Workers Builds from the repo root: build `npm run build:site:test`,
+// deploy `npx wrangler deploy --config site/wrangler.jsonc`.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "menubuddy-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Astro writes pages as /fr/index.html etc.; serve them at /fr/ and show our 404 page otherwise.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+}

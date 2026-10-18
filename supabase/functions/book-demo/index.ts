@@ -29,13 +29,18 @@ const Lead = z.object({
   turnstileToken: z.string().max(4096),
 });
 
+/** Our Cloudflare test deployments: menubuddy-site.<account>.workers.dev and its preview URLs. */
+function isTestDeployment(hostname: string): boolean {
+  return hostname.endsWith(".workers.dev") && /(^|-)menubuddy-/.test(hostname);
+}
+
 function corsHeaders(origin: string | null): Record<string, string> {
   let allowed = false;
   try {
     allowed =
       origin !== null &&
       (allowedOrigins.includes(origin) ||
-        new URL(origin).hostname.endsWith(".netlify.app"));
+        isTestDeployment(new URL(origin).hostname));
   } catch {
     allowed = false;
   }

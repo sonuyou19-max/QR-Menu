@@ -279,5 +279,10 @@
   "legal": {
     "updated": "Laatst bijgewerkt: {date}",
     "draft": "Concept — deze tekst wordt nog juridisch nagekeken."
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "text": "Deze pagina bestaat niet (meer).",
+    "home": "Naar de startpagina"
   }
 }

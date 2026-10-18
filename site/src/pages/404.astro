@@ -1,0 +1,32 @@
+---
+// Served by Cloudflare for unknown addresses. The language is unknown here, so show all three.
+import Base from "../layouts/Base.astro";
+import { getDictionary, languages, localePath, locales } from "../i18n";
+const nl = getDictionary("nl");
+---
+
+<Base
+  lang="nl"
+  path="/404"
+  title={`${nl.notFound.title} — MenuBuddy`}
+  description={nl.notFound.text}
+  noindex
+>
+  <div class="mx-auto max-w-2xl space-y-10 px-4 py-20">
+    {languages.map((lang) => {
+      const t = getDictionary(lang);
+      return (
+        <section lang={locales[lang]}>
+          <h1 class="text-3xl font-semibold sm:text-4xl">{t.notFound.title}</h1>
+          <p class="mt-2 text-lg text-ink-muted">{t.notFound.text}</p>
+          <a
+            href={localePath(lang, "/")}
+            class="mt-4 inline-block font-semibold text-brand underline underline-offset-2"
+          >
+            {t.notFound.home}
+          </a>
+        </section>
+      );
+    })}
+  </div>
+</Base>

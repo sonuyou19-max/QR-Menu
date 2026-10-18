@@ -1,9 +1,0 @@
-# Netlify site 1: marketing website (/site). Builds from the repo root so the npm workspace
-# (packages/design-tokens) is available. The product app (/app) will be a second Netlify
-# site with base directory "app" and its own app/netlify.toml.
-[build]
-  command = "npm run build -w @menubuddy/site"
-  publish = "site/dist"
-
-[build.environment]
-  NODE_VERSION = "22"
