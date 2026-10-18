@@ -15,7 +15,8 @@ import { config } from "../lib/config";
 import { loginLinkFailed } from "../lib/link-error";
 import { supabase } from "../lib/supabase";
 
-type ErrorKey = "email" | "rateLimit" | "linkExpired" | "generic";
+type ErrorKey =
+  "email" | "rateLimit" | "emailLimit" | "linkExpired" | "generic";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_AFTER_SECONDS = 60;
 
@@ -58,7 +59,14 @@ export function Login() {
     });
     if (authError) {
       setStatus(status === "sent" ? "sent" : "idle");
-      setError(authError.status === 429 ? "rateLimit" : "generic");
+      // over_email_send_rate_limit: the project's hourly email quota is used up (not just this address).
+      setError(
+        authError.code === "over_email_send_rate_limit"
+          ? "emailLimit"
+          : authError.status === 429
+            ? "rateLimit"
+            : "generic",
+      );
       requestAnimationFrame(() => errorRef.current?.focus());
       return;
     }

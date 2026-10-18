@@ -17,7 +17,8 @@
       "email": "Veuillez saisir une adresse e-mail valide.",
       "rateLimit": "Vous venez de demander un lien. Patientez un instant et réessayez.",
       "linkExpired": "Ce lien de connexion a expiré ou a déjà été utilisé. Demandez-en un nouveau ci-dessous.",
-      "generic": "Cela n'a pas fonctionné. Vérifiez votre connexion internet et réessayez."
+      "generic": "Cela n'a pas fonctionné. Vérifiez votre connexion internet et réessayez.",
+      "emailLimit": "Trop d'e-mails de connexion ont été envoyés au cours de la dernière heure. Réessayez dans une heure. Si vous êtes déjà connecté sur un autre appareil, vous pouvez continuer là-bas."
     }
   },
   "nav": {

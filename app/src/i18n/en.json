@@ -17,7 +17,8 @@
       "email": "Please enter a valid email address.",
       "rateLimit": "You've just requested a link. Wait a moment and try again.",
       "linkExpired": "This login link has expired or was already used. Request a new one below.",
-      "generic": "That didn't work. Check your internet connection and try again."
+      "generic": "That didn't work. Check your internet connection and try again.",
+      "emailLimit": "Too many login emails were sent in the last hour. Try again in an hour. If you're already logged in on another device, you can carry on there."
     }
   },
   "nav": {
