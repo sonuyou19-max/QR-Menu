@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "@menubuddy/design-tokens/fonts.css";
+@import "@menubuddy/design-tokens/theme.css";
+
+@layer base {
+  html {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-balance;
+  }
+  :focus-visible {
+    @apply outline-brand outline-2 outline-offset-2;
+  }
+}
+
+@utility btn {
+  @apply rounded-control inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-base font-semibold transition-colors disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-on-brand hover:bg-brand-strong;
+}
+@utility btn-secondary {
+  @apply btn border-line bg-surface text-ink hover:bg-oat-100 border;
+}
+@utility input {
+  @apply rounded-control border-line bg-surface text-ink placeholder:text-oat-500 aria-invalid:border-danger w-full border px-3.5 py-3 text-base;
+}

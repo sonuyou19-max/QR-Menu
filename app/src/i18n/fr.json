@@ -1,0 +1,47 @@
+{
+  "language": "Langue",
+  "login": {
+    "title": "Se connecter",
+    "intro": "Indiquez votre adresse e-mail. Nous vous envoyons un lien pour vous connecter — pas besoin de mot de passe.",
+    "email": "Adresse e-mail",
+    "submit": "Envoyez-moi un lien de connexion",
+    "sending": "Envoi…",
+    "sentTitle": "Consultez vos e-mails",
+    "sentText": "Nous avons envoyé un lien de connexion à {email}. Touchez le lien dans cet e-mail pour vous connecter.",
+    "sentHint": "Rien reçu ? Vérifiez aussi vos spams. Vous pourrez demander un nouveau lien dans une minute.",
+    "resend": "Renvoyer",
+    "resendIn": "Nouvel envoi possible dans {seconds} s",
+    "otherEmail": "Autre adresse e-mail",
+    "backToSite": "Vers le site",
+    "errors": {
+      "email": "Veuillez saisir une adresse e-mail valide.",
+      "rateLimit": "Vous venez de demander un lien. Patientez un instant et réessayez.",
+      "linkExpired": "Ce lien de connexion a expiré ou a déjà été utilisé. Demandez-en un nouveau ci-dessous.",
+      "generic": "Cela n'a pas fonctionné. Vérifiez votre connexion internet et réessayez."
+    }
+  },
+  "nav": {
+    "logout": "Se déconnecter",
+    "account": "Connecté en tant que {email}"
+  },
+  "overview": {
+    "title": "Bienvenue sur MenuBuddy",
+    "intro": "Vous êtes connecté. Voici comment mettre votre carte en ligne :",
+    "soon": "Bientôt",
+    "steps": [
+      {
+        "title": "Configurez votre restaurant",
+        "text": "Nom, adresse, logo et les langues pour vos clients."
+      },
+      {
+        "title": "Envoyez votre carte",
+        "text": "Une photo ou un PDF de votre carte. L'IA la transforme en plats."
+      },
+      {
+        "title": "Vérifiez et publiez",
+        "text": "Vérifiez les prix et les allergènes, puis imprimez votre QR code."
+      }
+    ]
+  },
+  "loading": "Chargement…"
+}

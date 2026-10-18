@@ -1,0 +1,47 @@
+{
+  "language": "Taal",
+  "login": {
+    "title": "Inloggen",
+    "intro": "Vul je e-mailadres in. We sturen je een link om in te loggen — geen wachtwoord nodig.",
+    "email": "E-mailadres",
+    "submit": "Stuur me een inloglink",
+    "sending": "Versturen…",
+    "sentTitle": "Check je e-mail",
+    "sentText": "We hebben een inloglink gestuurd naar {email}. Tik op de link in die e-mail om in te loggen.",
+    "sentHint": "Niets ontvangen? Kijk ook in je spam. Je kunt na een minuut een nieuwe link vragen.",
+    "resend": "Stuur opnieuw",
+    "resendIn": "Opnieuw sturen kan over {seconds} s",
+    "otherEmail": "Ander e-mailadres",
+    "backToSite": "Naar de website",
+    "errors": {
+      "email": "Vul een geldig e-mailadres in.",
+      "rateLimit": "Je hebt net een link gevraagd. Wacht even en probeer opnieuw.",
+      "linkExpired": "Deze inloglink is verlopen of al gebruikt. Vraag hieronder een nieuwe aan.",
+      "generic": "Dat lukte niet. Controleer je internetverbinding en probeer opnieuw."
+    }
+  },
+  "nav": {
+    "logout": "Uitloggen",
+    "account": "Ingelogd als {email}"
+  },
+  "overview": {
+    "title": "Welkom bij MenuBuddy",
+    "intro": "Je bent ingelogd. Zo zet je je menu online:",
+    "soon": "Binnenkort",
+    "steps": [
+      {
+        "title": "Stel je restaurant in",
+        "text": "Naam, adres, logo en de talen voor je gasten."
+      },
+      {
+        "title": "Upload je menu",
+        "text": "Een foto of PDF van je kaart. AI zet hem om in gerechten."
+      },
+      {
+        "title": "Controleer en publiceer",
+        "text": "Kijk prijzen en allergenen na en print je QR-code."
+      }
+    ]
+  },
+  "loading": "Even laden…"
+}

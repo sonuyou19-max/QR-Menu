@@ -1,0 +1,13 @@
+// Cloudflare Worker serving the owner/guest app (static files only, no Worker code).
+// Deployed by Workers Builds from the repo root: build `npm run build:app:test`,
+// deploy `npx wrangler deploy --config app/wrangler.jsonc`.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "menubuddy-app",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Client-side routes (/login, /service, /m/:slug …) all load index.html.
+    "not_found_handling": "single-page-application",
+  },
+}

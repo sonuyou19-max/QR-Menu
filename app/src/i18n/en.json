@@ -1,0 +1,47 @@
+{
+  "language": "Language",
+  "login": {
+    "title": "Log in",
+    "intro": "Enter your email address. We'll send you a link to log in — no password needed.",
+    "email": "Email address",
+    "submit": "Send me a login link",
+    "sending": "Sending…",
+    "sentTitle": "Check your email",
+    "sentText": "We've sent a login link to {email}. Tap the link in that email to log in.",
+    "sentHint": "Nothing yet? Check your spam folder too. You can request a new link after a minute.",
+    "resend": "Send again",
+    "resendIn": "You can send again in {seconds} s",
+    "otherEmail": "Use a different email",
+    "backToSite": "Go to the website",
+    "errors": {
+      "email": "Please enter a valid email address.",
+      "rateLimit": "You've just requested a link. Wait a moment and try again.",
+      "linkExpired": "This login link has expired or was already used. Request a new one below.",
+      "generic": "That didn't work. Check your internet connection and try again."
+    }
+  },
+  "nav": {
+    "logout": "Log out",
+    "account": "Logged in as {email}"
+  },
+  "overview": {
+    "title": "Welcome to MenuBuddy",
+    "intro": "You're logged in. Here's how to get your menu online:",
+    "soon": "Coming soon",
+    "steps": [
+      {
+        "title": "Set up your restaurant",
+        "text": "Name, address, logo and the languages for your guests."
+      },
+      {
+        "title": "Upload your menu",
+        "text": "A photo or PDF of your menu. AI turns it into dishes."
+      },
+      {
+        "title": "Check and publish",
+        "text": "Check prices and allergens, then print your QR code."
+      }
+    ]
+  },
+  "loading": "Loading…"
+}
