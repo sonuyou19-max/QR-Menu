@@ -519,5 +519,5 @@ create table usage_events (                     -- AI cost tracking per restaura
 - Secrets only in Supabase secrets / `.env` (never committed): `ANTHROPIC_API_KEY`, `MENU_MODEL`, `CHAT_MODEL`.
 - Guest page: no cookies/tracking beyond anonymous session id (GDPR-friendly); add a short privacy note.
 - Small, focused commits; explain migrations in commit messages.
-- **Every deliverable comes with a link that opens on a phone.** Marketing site: `npm run build -w @menubuddy/site` then `node site/scripts/phone-preview.mjs <file>.html` and publish that file as a private claude.ai Artifact (reuse the same Artifact URL across phases: https://claude.ai/artifact/C2WzDTiJdAoaV1fDJ3Qpq1), plus the Netlify branch-deploy URL once Netlify is connected. Same idea for the app later.
+- **Every deliverable comes with a link that opens on a phone.** Marketing site: `npm run build -w @menubuddy/site` then `node site/scripts/phone-preview.mjs <file>.html` and publish that file as a private claude.ai Artifact (reuse the same Artifact URL across phases: https://claude.ai/artifact/C2WzDTiJdAoaV1fDJ3Qpq1), plus the Netlify test site https://menubuddy-site.netlify.app (Netlify project `menubuddy-site`, config in the root `netlify.toml`; env `SITE_URL` + `PUBLIC_SITE_NOINDEX=true` there). Same idea for the app later.
 - When unsure about a product decision, ask rather than guess.

@@ -29,9 +29,11 @@ const {
   description,
   lang,
   path,
-  noindex = false,
+  noindex: pageNoindex = false,
   bare = false,
 } = Astro.props;
+// Test deployments (e.g. *.netlify.app) set PUBLIC_SITE_NOINDEX=true so they stay out of search.
+const noindex = pageNoindex || import.meta.env.PUBLIC_SITE_NOINDEX === "true";
 
 const site = Astro.site!;
 const canonical = new URL(localePath(lang, path), site).href;
