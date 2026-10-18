@@ -19,9 +19,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   useEffect(() => {
     // Fires once with the current session (INITIAL_SESSION), then on every sign-in/out.
-    const { data } = supabase.auth.onAuthStateChange((_event, next) =>
-      setSession(next),
-    );
+    const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+      // After a login link, supabase-js removes the tokens but leaves a bare "#" in the address bar.
+      if (next && window.location.href.endsWith("#")) {
+        history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.search,
+        );
+      }
+      setSession(next);
+    });
     return () => data.subscription.unsubscribe();
   }, []);
   return (
