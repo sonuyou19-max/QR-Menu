@@ -16,7 +16,7 @@
     "check": "npm run check --workspaces --if-present",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build:site:test": "PUBLIC_SITE_NOINDEX=true npm run build -w @menubuddy/site"
+    "build:site:test": "SITE_URL=https://menubuddy-site.sonuyou19.workers.dev PUBLIC_SITE_NOINDEX=true npm run build -w @menubuddy/site"
   },
   "devDependencies": {
     "prettier": "^3.9.10",
