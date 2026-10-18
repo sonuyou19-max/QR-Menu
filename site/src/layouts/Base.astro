@@ -1,28 +1,99 @@
 ---
 import "../styles/global.css";
 import { themeColor } from "@menubuddy/design-tokens";
+import frauncesLatin from "@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url";
+import dmSansLatin from "@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {
+  defaultLang,
+  languages,
+  localePath,
+  locales,
+  ogLocales,
+  type Lang,
+} from "../i18n";
 
 interface Props {
   title: string;
   description: string;
-  lang?: "nl" | "fr" | "en";
+  lang: Lang;
+  /** Page path without language prefix, e.g. "/" or "/demo". */
+  path: string;
   noindex?: boolean;
 }
-const { title, description, lang = "nl", noindex = false } = Astro.props;
+const { title, description, lang, path, noindex = false } = Astro.props;
+
+const site = Astro.site!;
+const canonical = new URL(localePath(lang, path), site).href;
+const ogImage = new URL(`/og/${lang}.png`, site).href;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={locales[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content={themeColor} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <>
+        {languages.map((l) => (
+          <link
+            rel="alternate"
+            hreflang={locales[l]}
+            href={new URL(localePath(l, path), site).href}
+          />
+        ))}
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={new URL(localePath(defaultLang, path), site).href}
+        />
+      </>
+    )}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MenuBuddy" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocales[lang]} />
+    {languages
+      .filter((l) => l !== lang)
+      .map((l) => (
+        <meta property="og:locale:alternate" content={ogLocales[l]} />
+      ))}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href={frauncesLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={dmSansLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body class="min-h-dvh">
-    <slot />
+    <Header lang={lang} path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} path={path} />
   </body>
 </html>

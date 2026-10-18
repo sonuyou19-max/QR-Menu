@@ -1,0 +1,108 @@
+---
+// Static guest-menu screen for mockups, styled like the real guest page (CLAUDE.md 3, 4).
+import Plus from "@lucide/astro/icons/plus";
+import Leaf from "@lucide/astro/icons/leaf";
+import ChevronDown from "@lucide/astro/icons/chevron-down";
+import MessageCircle from "@lucide/astro/icons/message-circle";
+import {
+  guestUi,
+  sampleMenu,
+  sampleRestaurant,
+  type GuestLang,
+} from "../../data/sample-menu";
+import { guestPrice } from "./format";
+
+interface Props {
+  lang?: GuestLang;
+  /** Category indexes to show (the phone is short). */
+  categories?: number[];
+}
+const { lang = "en", categories = [1] } = Astro.props;
+const ui = guestUi[lang];
+const shown = categories
+  .map((i) => sampleMenu[i])
+  .filter((c) => c !== undefined);
+---
+
+<div class="flex h-full flex-col text-[13px] leading-snug">
+  <header class="bg-herb-800 px-4 pt-8 pb-4 text-herb-50">
+    <div class="flex items-center justify-between">
+      <p class="font-display text-lg font-semibold">{sampleRestaurant.name}</p>
+      <span class="flex items-center gap-0.5 rounded-full bg-herb-50/15 px-2 py-0.5 text-[11px] font-semibold uppercase">
+        {lang}
+        <ChevronDown class="size-3" aria-hidden="true" />
+      </span>
+    </div>
+    <p class="text-[11px] text-herb-100">{sampleRestaurant.city}</p>
+  </header>
+
+  <div class="flex-1 space-y-4 overflow-hidden bg-oat-50 px-3 py-3">
+    {shown.map((category) => (
+      <div>
+        <p class="font-display text-[15px] font-semibold text-ink">
+          {category.tr[lang]}
+        </p>
+        <p class="mb-2 text-[11px] text-ink-muted">{category.name}</p>
+        <ul class="space-y-2">
+          {category.items.map((item) => {
+            const out = item.inStock === false;
+            return (
+              <li
+                class:list={[
+                  "flex items-start gap-2 rounded-xl p-2.5",
+                  out ? "bg-oat-100" : "bg-surface shadow-sm",
+                ]}
+              >
+                <div class="min-w-0 flex-1">
+                  <p
+                    class:list={[
+                      "font-display text-[14px] font-semibold",
+                      out ? "text-ink-muted" : "text-ink",
+                    ]}
+                  >
+                    {item.name}
+                  </p>
+                  <p class="text-[11px] text-ink-muted">{item.tr[lang].name}</p>
+                  {out ? (
+                    <span class="mt-1.5 inline-block rounded-full bg-oat-200 px-2 py-0.5 text-[10px] font-semibold text-oat-800">
+                      {ui.outOfStock}
+                    </span>
+                  ) : (
+                    item.tags?.includes("vegetarian") && (
+                      <span class="mt-1.5 inline-flex items-center gap-1 rounded-full bg-herb-100 px-2 py-0.5 text-[10px] font-semibold text-herb-800">
+                        <Leaf class="size-3" aria-hidden="true" />
+                        {ui.vegetarian}
+                      </span>
+                    )
+                  )}
+                </div>
+                <div class="flex flex-col items-end gap-1.5">
+                  <p
+                    class:list={[
+                      "font-semibold",
+                      out ? "text-ink-muted line-through" : "text-ink",
+                    ]}
+                  >
+                    {guestPrice(lang, item.price)}
+                  </p>
+                  {!out && (
+                    <span class="grid size-6 place-items-center rounded-full bg-herb-700 text-white">
+                      <Plus class="size-3.5" aria-hidden="true" />
+                    </span>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="border-t border-line bg-surface px-3 py-2.5">
+    <div class="flex items-center gap-2 rounded-full bg-oat-100 px-3 py-2 text-[12px] text-ink-muted">
+      <MessageCircle class="size-4 text-herb-700" aria-hidden="true" />
+      {ui.ask}
+    </div>
+  </div>
+</div>

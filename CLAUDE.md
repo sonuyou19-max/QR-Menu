@@ -27,7 +27,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
   - Printed QR codes point to `https://app.menubuddy.be/m/:slug` — never a `netlify.app` URL. Buy the domain before printing any QR code, and never change this URL pattern once codes are printed.
   - Supabase Auth redirect URLs must include `https://app.menubuddy.be/*`.
   - Site and app link to each other via env vars (`PUBLIC_APP_URL` in the site, `VITE_SITE_URL` in the app).
-- **Styling:** Tailwind CSS in both, with a **shared design-token preset** (`/packages/design-tokens`: brand colours, fonts, radius) so site and app look like one brand.
+- **Styling:** Tailwind CSS in both, with **shared design tokens** (`/packages/design-tokens`: brand colours, fonts, radius in `src/tokens.ts` → generated Tailwind v4 `theme.css`, imported by both) so site and app look like one brand.
 - **Hosting:** Netlify, **two sites from the same repo** (base directories `/site` and `/app`). App has SPA fallback `/* /index.html 200`. Supabase project in an **EU region (Frankfurt)**.
 - **Backend:** Supabase — Postgres, Auth, Storage, Edge Functions (Deno/TypeScript)
 - **AI:** Anthropic Claude API, called **only from Supabase Edge Functions** (never expose the key to the browser)
@@ -184,7 +184,7 @@ Goal: a non-technical restaurant owner understands it without training and can m
 
 **Goal:** a busy restaurant owner understands the value in under a minute, tries it, and **books a demo**.
 
-**Tech:** Astro in `/site`, Tailwind with the shared design-token preset, React islands only where interaction is needed. Static output, Lighthouse 95+, fully usable on phones (owners will mostly visit on mobile). Separate Netlify site.
+**Tech:** Astro in `/site`, Tailwind with the shared design tokens, React islands only where interaction is needed. Static output, Lighthouse 95+, fully usable on phones (owners will mostly visit on mobile). Separate Netlify site.
 
 **Languages:** Dutch at `/` (default), French at `/fr/`, English at `/en/`. Language switcher in the header; `hreflang` tags and per-language titles, descriptions and Open Graph images. All copy in `/site/src/i18n/{nl,fr,en}.json` — never hard-coded in components.
 
@@ -457,7 +457,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 /site                    Astro marketing website → menubuddy.be (Netlify site 1)
   /src/pages             index (nl), /fr/, /en/, /demo, /privacy, /terms
   /src/components        page sections (Astro) + React islands:
-                         DemoPhone, TryYourMenu, BookDemoForm, PricingToggle
+                         DemoPhone, TryYourMenu, BookDemoForm (pricing toggle is a tiny inline script, no React)
   /src/i18n              nl.json, fr.json, en.json (all copy)
   /src/content           blog, case studies, city pages (later)
 /app                     React + Vite product → app.menubuddy.be (Netlify site 2)
@@ -472,7 +472,7 @@ create table usage_events (                     -- AI cost tracking per restaura
     /settings
   /src/components
   /src/lib               supabase client, api, shared types (from Zod)
-/packages/design-tokens  shared Tailwind preset (brand colours, fonts, radius)
+/packages/design-tokens  shared tokens → Tailwind v4 theme.css (brand colours, fonts, radius)
 /supabase
   /functions/...         see section 7
   /functions/_shared

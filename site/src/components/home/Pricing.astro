@@ -1,0 +1,132 @@
+---
+import Check from "@lucide/astro/icons/check";
+import Section from "../Section.astro";
+import { pricing } from "../../data/pricing";
+import {
+  fill,
+  formatPrice,
+  getDictionary,
+  localePath,
+  type Lang,
+} from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const price = (n: number) => formatPrice(lang, n);
+---
+
+<Section
+  id="pricing"
+  eyebrow={t.pricing.eyebrow}
+  title={t.pricing.title}
+  center
+  class="bg-surface"
+>
+  <div data-pricing data-billing="monthly" class="group mx-auto mt-10 max-w-md">
+    <!-- Hidden until JS runs; without JS the card shows monthly with the annual price as a line below. -->
+    <div data-billing-toggle hidden class="mb-6 flex justify-center">
+      <div
+        role="group"
+        aria-label={t.pricing.billingLabel}
+        class="inline-flex rounded-full bg-oat-100 p-1"
+      >
+        <button
+          type="button"
+          data-value="monthly"
+          aria-pressed="true"
+          class="min-h-11 rounded-full px-5 font-semibold text-ink-muted aria-pressed:bg-surface aria-pressed:text-ink aria-pressed:shadow-sm"
+        >
+          {t.pricing.monthly}
+        </button>
+        <button
+          type="button"
+          data-value="annual"
+          aria-pressed="false"
+          class="flex min-h-11 items-center gap-2 rounded-full px-5 font-semibold text-ink-muted aria-pressed:bg-surface aria-pressed:text-ink aria-pressed:shadow-sm"
+        >
+          {t.pricing.annual}
+          <span class="rounded-full bg-accent px-2 py-0.5 text-xs text-on-accent">
+            {t.pricing.save}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="rounded-card border-2 border-ink bg-canvas p-8 text-left shadow-card">
+      <p class="font-display text-2xl font-semibold">{t.pricing.planName}</p>
+      <div aria-live="polite" class="mt-4">
+        <div class="group-data-[billing=annual]:hidden">
+          <p class="flex items-baseline gap-2">
+            <span class="font-display text-6xl font-semibold">
+              {price(pricing.monthly)}
+            </span>
+            <span class="text-ink-muted">{t.pricing.perMonth}</span>
+          </p>
+          <p class="mt-2 font-semibold text-brand">{t.pricing.perDay}</p>
+          <p class="mt-1 text-sm text-ink-muted">
+            {fill(t.pricing.monthlyAlternative, {
+              price: price(pricing.annual),
+            })}
+          </p>
+        </div>
+        <div class="hidden group-data-[billing=annual]:block">
+          <p class="flex items-baseline gap-2">
+            <span class="font-display text-6xl font-semibold">
+              {price(pricing.annual)}
+            </span>
+            <span class="text-ink-muted">{t.pricing.perYear}</span>
+          </p>
+          <p class="mt-2 font-semibold text-brand">
+            {fill(t.pricing.annualEquivalent, {
+              price: price(pricing.annualPerMonth),
+            })}
+          </p>
+        </div>
+      </div>
+      <p class="mt-1 text-sm text-ink-muted">{t.pricing.vat}</p>
+
+      <ul class="mt-6 space-y-2.5 border-t border-line pt-6">
+        {t.pricing.includes.map((item) => (
+          <li class="flex gap-3">
+            <Check
+              class="mt-0.5 size-5 shrink-0 text-success"
+              aria-hidden="true"
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={localePath(lang, "/demo")}
+        data-cta="pricing"
+        class="btn-primary mt-8 w-full text-lg"
+      >
+        {t.pricing.cta}
+      </a>
+      <p class="mt-4 text-center text-[15px] font-medium text-herb-700">
+        {t.pricing.pilot}
+      </p>
+    </div>
+  </div>
+</Section>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>("[data-pricing]")) {
+    const toggle = root.querySelector<HTMLElement>("[data-billing-toggle]");
+    if (!toggle) continue;
+    toggle.hidden = false;
+    const buttons =
+      toggle.querySelectorAll<HTMLButtonElement>("button[data-value]");
+    for (const button of buttons) {
+      button.addEventListener("click", () => {
+        root.dataset.billing = button.dataset.value;
+        for (const b of buttons)
+          b.setAttribute("aria-pressed", String(b === button));
+      });
+    }
+  }
+</script>

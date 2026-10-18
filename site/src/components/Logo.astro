@@ -3,13 +3,20 @@ import mark from "@menubuddy/design-tokens/assets/logo-mark.svg?raw";
 
 interface Props {
   class?: string;
+  /** Hide the wordmark below 380px (mark only). */
+  compact?: boolean;
 }
-const { class: className } = Astro.props;
+const { class: className, compact = false } = Astro.props;
 ---
 
 <span class:list={["inline-flex items-center gap-2.5", className]}>
   <span class="size-9 [&>svg]:size-full" set:html={mark} aria-hidden="true" />
-  <span class="font-display text-xl font-semibold tracking-tight">
+  <span
+    class:list={[
+      "font-display text-xl font-semibold tracking-tight",
+      compact && "max-[379px]:sr-only",
+    ]}
+  >
     MenuBuddy
   </span>
 </span>

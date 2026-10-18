@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "MenuBuddy — votre carte dans la langue de chaque client",
+    "description": "Vos clients scannent un QR code sur la table et lisent votre carte dans leur langue, avec une explication pour chaque plat. Vous envoyez votre carte une fois, l'IA traduit, vous vérifiez. 30 € par mois."
+  },
+  "nav": {
+    "skipToContent": "Aller au contenu",
+    "main": "Menu principal",
+    "home": "MenuBuddy — page d'accueil",
+    "howItWorks": "Comment ça marche",
+    "demo": "Démo",
+    "pricing": "Tarif",
+    "faq": "Questions",
+    "bookDemo": "Demander une démo",
+    "bookDemoShort": "Démo",
+    "language": "Langue"
+  },
+  "hero": {
+    "eyebrow": "Pour les restaurants en Belgique",
+    "title": "Votre carte, dans la langue de chaque client.",
+    "subtitle": "Vos clients scannent le QR code sur la table et lisent votre carte dans leur langue — avec une explication pour chaque plat. Sans application. Vous envoyez votre carte une seule fois, nous faisons le reste.",
+    "ctaPrimary": "Demander une démo",
+    "ctaSecondary": "Voir la démo",
+    "note": "Pilote gratuit pour les premiers restaurants à Louvain.",
+    "phoneLabel": "Exemple : une carte en néerlandais telle qu'un client anglophone la voit"
+  },
+  "problem": {
+    "eyebrow": "Le problème",
+    "title": "Votre carte est parfaite. Mais la moitié de vos clients ne peut pas la lire.",
+    "items": [
+      {
+        "title": "Les touristes devinent",
+        "text": "C'est quoi, le stoofvlees ? Et le waterzooi ? Les clients commandent ce qu'ils connaissent — et passent à côté de vos meilleurs plats."
+      },
+      {
+        "title": "Votre équipe traduit",
+        "text": "Chaque table pose les mêmes questions. Du temps que votre équipe n'a pas en plein service."
+      },
+      {
+        "title": "Les allergies, un vrai risque",
+        "text": "Un malentendu sur les noix ou le gluten arrive vite quand le client et le serveur ne parlent pas la même langue."
+      },
+      {
+        "title": "Des cartes en quatre langues",
+        "text": "Chaque changement de prix veut dire retraduire et réimprimer. Et la carte en espagnol n'est jamais à jour."
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "Comment ça marche",
+    "title": "En ligne en trois étapes. Souvent en moins d'une heure.",
+    "steps": [
+      {
+        "title": "Envoyez votre carte",
+        "text": "Une photo de votre carte, un PDF ou le lien de votre site web. C'est tout."
+      },
+      {
+        "title": "L'IA traduit, vous vérifiez",
+        "text": "Nous structurons et traduisons votre carte. Vous vérifiez les prix, les plats et les allergènes avant la mise en ligne."
+      },
+      {
+        "title": "Posez le QR code sur la table",
+        "text": "Imprimez le QR code, c'est prêt. Un prix change ou un plat est épuisé ? Vos clients le voient tout de suite."
+      }
+    ]
+  },
+  "demo": {
+    "eyebrow": "Démo",
+    "title": "Voici ce que voit votre client.",
+    "text": "Une carte en néerlandais, lue par un touriste. Le nom de chaque plat reste celui de votre carte — la traduction apparaît en petit en dessous. Votre équipe sait toujours de quoi on parle.",
+    "points": [
+      "Choisir la langue en un geste — ou automatiquement",
+      "Ajouter des plats à un panier et le montrer au serveur",
+      "Poser des questions : « C'est épicé ? », « Qu'est-ce qui est végétarien ? »"
+    ],
+    "sampleNote": "Restaurant d'exemple avec une carte fictive.",
+    "staffScreenLabel": "L'écran qu'un client montre au serveur"
+  },
+  "features": {
+    "eyebrow": "Ce que vous obtenez",
+    "title": "Pensé pour vos clients. Et pour vous, en plein service.",
+    "guests": {
+      "title": "Pour vos clients",
+      "items": [
+        {
+          "title": "La carte dans leur langue",
+          "text": "Automatiquement dans la langue de leur téléphone. Anglais, néerlandais, allemand, espagnol, italien, chinois et bien d'autres."
+        },
+        {
+          "title": "Une explication pour chaque plat",
+          "text": "Qu'y a-t-il dedans, comment est-ce préparé ? Même pour les grands classiques belges."
+        },
+        {
+          "title": "Des photos de vos plats",
+          "text": "Montrez ce qui arrive dans l'assiette. Les photos sont facultatives — votre carte reste belle sans."
+        },
+        {
+          "title": "Un panier à montrer au serveur",
+          "text": "Les clients rassemblent leur choix et montrent un écran clair avec les noms d'origine."
+        },
+        {
+          "title": "Des questions sur la carte",
+          "text": "« Qu'est-ce qui est végétarien ? » — des réponses basées uniquement sur votre carte, jamais inventées."
+        }
+      ]
+    },
+    "owners": {
+      "title": "Pour vous",
+      "items": [
+        {
+          "title": "Plat épuisé ? Un geste.",
+          "text": "En mode service, vous marquez un plat comme épuisé. Vos clients le voient immédiatement."
+        },
+        {
+          "title": "Modifier sans prise de tête",
+          "text": "Changer un prix, ajouter un plat, réorganiser par glisser-déposer. Tout est enregistré et traduit automatiquement."
+        },
+        {
+          "title": "Des photos avec votre smartphone",
+          "text": "Photographiez l'assiette et ajoutez-la directement au plat."
+        },
+        {
+          "title": "Voyez ce que veulent vos clients",
+          "text": "Quelles langues, quels plats sont consultés, quelles questions sont posées."
+        },
+        {
+          "title": "Au style de votre maison",
+          "text": "Vos couleurs, votre typographie, votre logo. Votre carte ressemble à votre restaurant, pas à un modèle."
+        }
+      ]
+    }
+  },
+  "trust": {
+    "eyebrow": "Pourquoi les restaurants nous font confiance",
+    "title": "Votre carte reste la vôtre.",
+    "items": [
+      {
+        "title": "Les noms des plats comme sur votre carte",
+        "text": "« Stoofvlees met frietjes » reste « Stoofvlees met frietjes ». La traduction s'affiche en dessous, jamais à la place."
+      },
+      {
+        "title": "Allergènes seulement après votre accord",
+        "text": "L'IA propose les allergènes, vous les confirmez. Pas encore confirmés ? Nous invitons le client à demander au personnel."
+      },
+      {
+        "title": "Hébergement européen, RGPD",
+        "text": "Vos données restent dans l’UE. Pas de cookies ni de données personnelles de vos clients."
+      },
+      {
+        "title": "Aucune application pour les clients",
+        "text": "Un scan avec l'appareil photo, la carte s'ouvre dans le navigateur. Fonctionne sur tous les smartphones."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Tarif",
+    "title": "Une seule formule. Tout compris.",
+    "billingLabel": "Facturation",
+    "monthly": "Mensuel",
+    "annual": "Annuel",
+    "save": "-25 %",
+    "planName": "MenuBuddy",
+    "perMonth": "par mois",
+    "perYear": "par an",
+    "perDay": "Soit 1 € par jour.",
+    "annualEquivalent": "= {price} par mois, 25 % de réduction",
+    "monthlyAlternative": "Ou {price} par an — 25 % de réduction.",
+    "vat": "Prix hors TVA.",
+    "includes": [
+      "Toutes les fonctionnalités",
+      "Toutes les langues pour vos clients",
+      "Plats et QR codes illimités",
+      "Modifications en ligne immédiatement",
+      "Formule mensuelle : résiliable chaque mois"
+    ],
+    "pilot": "Pilote gratuit pour les premiers restaurants à Louvain.",
+    "cta": "Demander une démo"
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Bon à savoir",
+    "items": [
+      {
+        "q": "Combien de temps faut-il pour démarrer ?",
+        "a": "En général moins d'une heure. Vous envoyez votre carte, nous la structurons et la traduisons, et vous vérifiez tout. Pendant la démo, nous mettons ensemble votre première carte en ligne."
+      },
+      {
+        "q": "Dans quelles langues les clients peuvent-ils lire la carte ?",
+        "a": "Par défaut en anglais, français, néerlandais et allemand. Vous pouvez ajouter d'autres langues, comme l'espagnol, l'italien, le chinois ou le japonais. Si un client choisit une langue pas encore traduite, nous la traduisons immédiatement."
+      },
+      {
+        "q": "Et si ma carte change ?",
+        "a": "Vous modifiez un prix ou un plat dans votre tableau de bord, et c'est en ligne immédiatement, dans toutes les langues. Rien à réimprimer : le QR code reste le même."
+      },
+      {
+        "q": "Et les allergènes, côté légal ?",
+        "a": "La réglementation européenne vous oblige à informer sur les 14 allergènes. Notre IA propose les allergènes de chaque plat, mais vos clients ne les voient comme une information fiable qu'après votre confirmation. En bas de la carte, il est toujours indiqué : « En cas d'allergie, prévenez le personnel avant de commander. »"
+      },
+      {
+        "q": "Puis-je résilier à tout moment ?",
+        "a": "Oui. L'abonnement mensuel est résiliable chaque mois, sans préavis. L'abonnement annuel court jusqu'à la fin de l'année."
+      },
+      {
+        "q": "Mes clients doivent-ils installer une application ?",
+        "a": "Non. Ils scannent le QR code avec leur appareil photo et la carte s'ouvre dans le navigateur. Sans compte, sans application."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Prêt pour des clients du monde entier ?",
+    "text": "En 20 minutes de démo, nous vous montrons comment ça marche avec votre propre carte. Sans engagement.",
+    "cta": "Demander une démo"
+  },
+  "footer": {
+    "tagline": "Votre carte, dans la langue de chaque client.",
+    "madeIn": "Conçu à Louvain.",
+    "explore": "Découvrir",
+    "language": "Langue"
+  },
+  "demoPage": {
+    "metaTitle": "Demander une démo — MenuBuddy",
+    "metaDescription": "Demandez une démo sans engagement de MenuBuddy. Nous vous montrons votre carte dans toutes les langues.",
+    "title": "Demander une démo",
+    "text": "Le formulaire de demande arrive très bientôt ici. Merci de votre patience !",
+    "back": "Retour à l'accueil"
+  }
+}

@@ -1,0 +1,36 @@
+---
+import Languages from "@lucide/astro/icons/languages";
+import MessagesSquare from "@lucide/astro/icons/messages-square";
+import TriangleAlert from "@lucide/astro/icons/triangle-alert";
+import Printer from "@lucide/astro/icons/printer";
+import Section from "../Section.astro";
+import { getDictionary, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const t = getDictionary(Astro.props.lang);
+const icons = [Languages, MessagesSquare, TriangleAlert, Printer];
+---
+
+<Section
+  id="problem"
+  eyebrow={t.problem.eyebrow}
+  title={t.problem.title}
+  class="bg-surface"
+>
+  <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {t.problem.items.map((item, i) => {
+      const Icon = icons[i]!;
+      return (
+        <li class="rounded-card border border-line bg-canvas p-6">
+          <span class="mb-5 grid size-11 place-items-center rounded-full bg-paprika-100 text-paprika-700">
+            <Icon class="size-5" aria-hidden="true" />
+          </span>
+          <h3 class="text-xl font-semibold">{item.title}</h3>
+          <p class="mt-2 text-ink-muted">{item.text}</p>
+        </li>
+      );
+    })}
+  </ul>
+</Section>

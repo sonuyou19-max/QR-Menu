@@ -5,6 +5,14 @@
 @layer base {
   html {
     @apply bg-canvas text-ink font-sans antialiased;
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the sticky header. */
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   h1,
   h2,
@@ -14,4 +22,17 @@
   :focus-visible {
     @apply outline-brand outline-2 outline-offset-2;
   }
+}
+
+@utility btn {
+  @apply rounded-control inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-base font-semibold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-on-brand hover:bg-brand-strong;
+}
+@utility btn-secondary {
+  @apply btn border-line bg-surface text-ink hover:border-oat-300 hover:bg-oat-100 border;
+}
+@utility eyebrow {
+  @apply text-brand text-sm font-semibold tracking-wide uppercase;
 }

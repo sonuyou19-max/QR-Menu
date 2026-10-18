@@ -1,10 +1,227 @@
 {
   "meta": {
-    "title": "MenuBuddy — je menukaart in elke taal",
-    "description": "Gasten scannen een QR-code en lezen je menukaart in hun eigen taal. Binnenkort beschikbaar."
+    "title": "MenuBuddy — je menukaart in de taal van elke gast",
+    "description": "Gasten scannen een QR-code op tafel en lezen je menu in hun eigen taal, met uitleg bij elk gerecht. Eén keer je menu uploaden, AI vertaalt, jij controleert. €30 per maand."
   },
-  "comingSoon": {
-    "headline": "Je menukaart, in de taal van elke gast.",
-    "subline": "We bouwen hier iets lekkers. Binnenkort meer."
+  "nav": {
+    "skipToContent": "Naar de inhoud",
+    "main": "Hoofdmenu",
+    "home": "MenuBuddy — startpagina",
+    "howItWorks": "Hoe het werkt",
+    "demo": "Demo",
+    "pricing": "Prijs",
+    "faq": "Vragen",
+    "bookDemo": "Demo aanvragen",
+    "bookDemoShort": "Demo",
+    "language": "Taal"
+  },
+  "hero": {
+    "eyebrow": "Voor restaurants in België",
+    "title": "Je menukaart, in de taal van elke gast.",
+    "subtitle": "Gasten scannen de QR-code op tafel en lezen je menu meteen in hun eigen taal — met uitleg bij elk gerecht. Geen app nodig. Jij uploadt je menu één keer, wij doen de rest.",
+    "ctaPrimary": "Demo aanvragen",
+    "ctaSecondary": "Bekijk de demo",
+    "note": "Gratis pilot voor de eerste restaurants in Leuven.",
+    "phoneLabel": "Voorbeeld: een Nederlandstalig menu zoals een Engelstalige gast het ziet"
+  },
+  "problem": {
+    "eyebrow": "Het probleem",
+    "title": "Je menu is perfect. Alleen kan de helft van je gasten het niet lezen.",
+    "items": [
+      {
+        "title": "Toeristen gokken",
+        "text": "Wat is stoofvlees? En waterzooi? Gasten bestellen wat ze herkennen — of laten de beste gerechten links liggen."
+      },
+      {
+        "title": "Je personeel vertaalt",
+        "text": "Elke tafel stelt dezelfde vragen. Tijd die je team in de drukte niet heeft."
+      },
+      {
+        "title": "Allergieën zijn een risico",
+        "text": "Een misverstand over noten of gluten is snel gebeurd als gast en ober elkaars taal niet spreken."
+      },
+      {
+        "title": "Drukwerk in vier talen",
+        "text": "Elke prijswijziging betekent opnieuw vertalen en drukken. En de Spaanse kaart is altijd verouderd."
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "Hoe het werkt",
+    "title": "In drie stappen online. Meestal binnen het uur.",
+    "steps": [
+      {
+        "title": "Upload je menu",
+        "text": "Een foto van je kaart, een PDF of de link naar je website. Meer is niet nodig."
+      },
+      {
+        "title": "AI vertaalt, jij controleert",
+        "text": "Wij zetten je menu om en vertalen het. Jij kijkt prijzen, gerechten en allergenen na voor het online gaat."
+      },
+      {
+        "title": "Zet de QR-code op tafel",
+        "text": "Print de QR-code en klaar. Wijzig je een prijs of is een gerecht op? Dat zien je gasten meteen."
+      }
+    ]
+  },
+  "demo": {
+    "eyebrow": "Demo",
+    "title": "Zo ziet je gast het.",
+    "text": "Een Nederlandstalig menu, gelezen door een toerist. De naam van elk gerecht blijft zoals op jouw kaart — de vertaling staat er klein onder. Zo weet je personeel altijd waarover het gaat.",
+    "points": [
+      "Taal kiezen met één tik — of automatisch",
+      "Gerechten bewaren in een mandje en tonen aan de ober",
+      "Vragen stellen: “Is dit pikant?”, “Wat is vegetarisch?”"
+    ],
+    "sampleNote": "Voorbeeldrestaurant met een fictief menu.",
+    "staffScreenLabel": "Het scherm dat een gast aan de ober toont"
+  },
+  "features": {
+    "eyebrow": "Wat je krijgt",
+    "title": "Gemaakt voor je gasten. En voor jou tijdens de service.",
+    "guests": {
+      "title": "Voor je gasten",
+      "items": [
+        {
+          "title": "Het menu in hun eigen taal",
+          "text": "Automatisch in de taal van hun telefoon. Engels, Frans, Duits, Spaans, Italiaans, Chinees en meer."
+        },
+        {
+          "title": "Uitleg bij elk gerecht",
+          "text": "Wat zit erin, hoe wordt het gemaakt? Ook voor typisch Belgische klassiekers."
+        },
+        {
+          "title": "Foto's van je gerechten",
+          "text": "Laat zien wat er op het bord komt. Foto's zijn optioneel — je menu ziet er ook zonder mooi uit."
+        },
+        {
+          "title": "Een mandje om aan de ober te tonen",
+          "text": "Gasten verzamelen wat ze willen en tonen een duidelijk scherm met de originele namen."
+        },
+        {
+          "title": "Vragen stellen over het menu",
+          "text": "“Wat is vegetarisch?” — antwoorden alleen op basis van jouw menu, nooit verzonnen."
+        }
+      ]
+    },
+    "owners": {
+      "title": "Voor jou",
+      "items": [
+        {
+          "title": "Gerecht op? Eén tik.",
+          "text": "In de servicemodus zet je een gerecht op ‘uitverkocht’. Gasten zien het meteen."
+        },
+        {
+          "title": "Wijzigen zonder gedoe",
+          "text": "Prijs aanpassen, gerecht toevoegen, volgorde slepen. Alles wordt automatisch bewaard en vertaald."
+        },
+        {
+          "title": "Foto's met je gsm",
+          "text": "Neem een foto van het bord en zet hem meteen bij het gerecht."
+        },
+        {
+          "title": "Zie wat je gasten willen",
+          "text": "Welke talen, welke gerechten worden bekeken, welke vragen worden gesteld."
+        },
+        {
+          "title": "In de stijl van je zaak",
+          "text": "Jouw kleuren, lettertype en logo. Je menu voelt als je restaurant, niet als een sjabloon."
+        }
+      ]
+    }
+  },
+  "trust": {
+    "eyebrow": "Waarom restaurants ons vertrouwen",
+    "title": "Jouw menu blijft van jou.",
+    "items": [
+      {
+        "title": "Gerechtnamen zoals op je kaart",
+        "text": "“Stoofvlees met frietjes” blijft “Stoofvlees met frietjes”. De vertaling staat eronder, nooit in de plaats."
+      },
+      {
+        "title": "Allergenen pas na jouw akkoord",
+        "text": "AI stelt allergenen voor, jij bevestigt ze. Niet bevestigd? Dan vragen we de gast om het personeel te vragen."
+      },
+      {
+        "title": "Europese hosting, GDPR",
+        "text": "Je gegevens staan in de EU. Geen cookies en geen persoonsgegevens van je gasten."
+      },
+      {
+        "title": "Geen app voor gasten",
+        "text": "Scannen met de camera en lezen in de browser. Werkt op elke smartphone."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Prijs",
+    "title": "Eén formule. Alles inbegrepen.",
+    "billingLabel": "Facturatie",
+    "monthly": "Maandelijks",
+    "annual": "Jaarlijks",
+    "save": "Bespaar 25%",
+    "planName": "MenuBuddy",
+    "perMonth": "per maand",
+    "perYear": "per jaar",
+    "perDay": "Dat is €1 per dag.",
+    "annualEquivalent": "= {price} per maand, 25% korting",
+    "monthlyAlternative": "Of {price} per jaar — 25% korting.",
+    "vat": "Prijzen excl. btw.",
+    "includes": [
+      "Alle functies",
+      "Alle talen voor je gasten",
+      "Onbeperkt gerechten en QR-codes",
+      "Wijzigingen meteen online",
+      "Maandabonnement: maandelijks opzegbaar"
+    ],
+    "pilot": "Gratis pilot voor de eerste restaurants in Leuven.",
+    "cta": "Demo aanvragen"
+  },
+  "faq": {
+    "eyebrow": "Veelgestelde vragen",
+    "title": "Goed om te weten",
+    "items": [
+      {
+        "q": "Hoe lang duurt het om te starten?",
+        "a": "Meestal minder dan een uur. Je uploadt je menu, wij zetten het om en vertalen het, en jij kijkt alles na. Tijdens de demo zetten we je eerste menu samen online."
+      },
+      {
+        "q": "In welke talen kunnen gasten het menu lezen?",
+        "a": "Standaard in het Engels, Frans, Nederlands en Duits. Je kiest zelf extra talen, zoals Spaans, Italiaans, Chinees of Japans. Kiest een gast een taal die nog niet vertaald is, dan vertalen we die meteen."
+      },
+      {
+        "q": "Wat als mijn menu verandert?",
+        "a": "Je past een prijs of gerecht aan in je dashboard en het staat meteen online, in alle talen. Je hoeft niets opnieuw te drukken; de QR-code blijft dezelfde."
+      },
+      {
+        "q": "Hoe zit het met allergenen en de wet?",
+        "a": "Volgens de EU-regels moet je info geven over de 14 allergenen. Onze AI stelt per gerecht allergenen voor, maar gasten zien ze pas als feit nadat jij ze bevestigd hebt. Onderaan het menu staat altijd: ‘Heb je een allergie? Meld het aan het personeel.’"
+      },
+      {
+        "q": "Kan ik op elk moment opzeggen?",
+        "a": "Ja. Het maandabonnement is maandelijks opzegbaar, zonder opzegtermijn. Het jaarabonnement loopt tot het einde van het jaar."
+      },
+      {
+        "q": "Moeten mijn gasten een app installeren?",
+        "a": "Nee. Ze scannen de QR-code met hun camera en het menu opent in de browser. Zonder account, zonder app."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Klaar voor gasten uit de hele wereld?",
+    "text": "In een demo van 20 minuten tonen we hoe het werkt met jouw menu. Vrijblijvend.",
+    "cta": "Demo aanvragen"
+  },
+  "footer": {
+    "tagline": "Je menukaart, in de taal van elke gast.",
+    "madeIn": "Gemaakt in Leuven.",
+    "explore": "Ontdek",
+    "language": "Taal"
+  },
+  "demoPage": {
+    "metaTitle": "Demo aanvragen — MenuBuddy",
+    "metaDescription": "Vraag een vrijblijvende demo van MenuBuddy aan. We tonen hoe je menu in elke taal werkt.",
+    "title": "Demo aanvragen",
+    "text": "Het aanvraagformulier komt hier binnenkort. Even geduld!",
+    "back": "Terug naar de startpagina"
   }
 }

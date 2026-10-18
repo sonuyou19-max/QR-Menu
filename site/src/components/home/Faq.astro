@@ -1,0 +1,27 @@
+---
+import ChevronDown from "@lucide/astro/icons/chevron-down";
+import Section from "../Section.astro";
+import { getDictionary, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const t = getDictionary(Astro.props.lang);
+---
+
+<Section id="faq" eyebrow={t.faq.eyebrow} title={t.faq.title}>
+  <div class="mt-10 max-w-3xl divide-y divide-line border-y border-line">
+    {t.faq.items.map((item) => (
+      <details class="group py-2">
+        <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+          {item.q}
+          <ChevronDown
+            class="size-5 shrink-0 text-ink-muted transition-transform group-open:rotate-180"
+            aria-hidden="true"
+          />
+        </summary>
+        <p class="pb-4 text-ink-muted">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</Section>

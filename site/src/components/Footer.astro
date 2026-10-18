@@ -1,0 +1,93 @@
+---
+import Logo from "./Logo.astro";
+import {
+  getDictionary,
+  languages,
+  localePath,
+  locales,
+  type Lang,
+} from "../i18n";
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+const { lang, path } = Astro.props;
+const t = getDictionary(lang);
+const home = localePath(lang, "/");
+const languageNames: Record<Lang, string> = {
+  nl: "Nederlands",
+  fr: "Français",
+  en: "English",
+};
+---
+
+<footer class="border-t border-line bg-surface-muted px-4 py-12 text-[15px]">
+  <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-[2fr_1fr_1fr]">
+    <div class="space-y-3">
+      <Logo />
+      <p class="max-w-xs text-ink-muted">{t.footer.tagline}</p>
+      <p class="text-ink-muted">{t.footer.madeIn}</p>
+    </div>
+    <nav aria-labelledby="footer-explore">
+      <h2
+        id="footer-explore"
+        class="mb-3 font-sans text-sm font-semibold text-ink"
+      >
+        {t.footer.explore}
+      </h2>
+      <ul class="space-y-2 text-ink-muted">
+        <li>
+          <a class="hover:text-ink" href={`${home}#how`}>
+            {t.nav.howItWorks}
+          </a>
+        </li>
+        <li>
+          <a class="hover:text-ink" href={`${home}#pricing`}>
+            {t.nav.pricing}
+          </a>
+        </li>
+        <li>
+          <a class="hover:text-ink" href={`${home}#faq`}>
+            {t.nav.faq}
+          </a>
+        </li>
+        <li>
+          <a
+            class="hover:text-ink"
+            href={localePath(lang, "/demo")}
+            data-cta="footer"
+          >
+            {t.nav.bookDemo}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="footer-language">
+      <h2
+        id="footer-language"
+        class="mb-3 font-sans text-sm font-semibold text-ink"
+      >
+        {t.footer.language}
+      </h2>
+      <ul class="space-y-2 text-ink-muted">
+        {languages.map((l) => (
+          <li>
+            <a
+              class="hover:text-ink"
+              href={localePath(l, path)}
+              hreflang={locales[l]}
+              lang={locales[l]}
+              aria-current={l === lang ? "page" : undefined}
+            >
+              {languageNames[l]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  <p class="mx-auto mt-10 max-w-6xl text-sm text-ink-muted">
+    © {new Date().getFullYear()} MenuBuddy
+  </p>
+</footer>

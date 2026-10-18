@@ -1,0 +1,74 @@
+---
+import Languages from "@lucide/astro/icons/languages";
+import BookOpen from "@lucide/astro/icons/book-open";
+import Image from "@lucide/astro/icons/image";
+import ShoppingBasket from "@lucide/astro/icons/shopping-basket";
+import MessageCircleQuestion from "@lucide/astro/icons/message-circle-question-mark";
+import ToggleRight from "@lucide/astro/icons/toggle-right";
+import Pencil from "@lucide/astro/icons/pencil";
+import Camera from "@lucide/astro/icons/camera";
+import ChartColumn from "@lucide/astro/icons/chart-column";
+import Palette from "@lucide/astro/icons/palette";
+import Section from "../Section.astro";
+import { getDictionary, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const t = getDictionary(Astro.props.lang);
+const columns = [
+  {
+    ...t.features.guests,
+    icons: [Languages, BookOpen, Image, ShoppingBasket, MessageCircleQuestion],
+    tone: "herb",
+  },
+  {
+    ...t.features.owners,
+    icons: [ToggleRight, Pencil, Camera, ChartColumn, Palette],
+    tone: "paprika",
+  },
+] as const;
+---
+
+<Section
+  id="features"
+  eyebrow={t.features.eyebrow}
+  title={t.features.title}
+  class="bg-surface"
+>
+  <div class="mt-12 grid gap-6 lg:grid-cols-2">
+    {columns.map((col) => (
+      <div
+        class:list={[
+          "rounded-card p-6 sm:p-8",
+          col.tone === "herb" ? "bg-herb-50" : "bg-paprika-50",
+        ]}
+      >
+        <h3 class="mb-6 text-2xl font-semibold">{col.title}</h3>
+        <ul class="space-y-5">
+          {col.items.map((item, i) => {
+            const Icon = col.icons[i]!;
+            return (
+              <li class="flex gap-4">
+                <span
+                  class:list={[
+                    "grid size-10 shrink-0 place-items-center rounded-full",
+                    col.tone === "herb"
+                      ? "bg-herb-100 text-herb-800"
+                      : "bg-paprika-100 text-paprika-800",
+                  ]}
+                >
+                  <Icon class="size-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <p class="font-semibold">{item.title}</p>
+                  <p class="mt-0.5 text-ink-muted">{item.text}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "MenuBuddy — your menu in every guest's language",
+    "description": "Guests scan a QR code on the table and read your menu in their own language, with an explanation of every dish. Upload your menu once, AI translates, you check. €30 a month."
+  },
+  "nav": {
+    "skipToContent": "Skip to content",
+    "main": "Main menu",
+    "home": "MenuBuddy — home",
+    "howItWorks": "How it works",
+    "demo": "Demo",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "bookDemo": "Book a demo",
+    "bookDemoShort": "Demo",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "For restaurants in Belgium",
+    "title": "Your menu, in every guest's language.",
+    "subtitle": "Guests scan the QR code on the table and read your menu in their own language — with an explanation of every dish. No app needed. You upload your menu once, we do the rest.",
+    "ctaPrimary": "Book a demo",
+    "ctaSecondary": "See the demo",
+    "note": "Free pilot for the first restaurants in Leuven.",
+    "phoneLabel": "Example: a Dutch menu as an English-speaking guest sees it"
+  },
+  "problem": {
+    "eyebrow": "The problem",
+    "title": "Your menu is perfect. Half your guests just can't read it.",
+    "items": [
+      {
+        "title": "Tourists guess",
+        "text": "What's stoofvlees? Or waterzooi? Guests order what they recognise — and skip your best dishes."
+      },
+      {
+        "title": "Your staff translate",
+        "text": "Every table asks the same questions. Time your team doesn't have during a busy service."
+      },
+      {
+        "title": "Allergies are a risk",
+        "text": "A misunderstanding about nuts or gluten happens fast when guest and waiter don't share a language."
+      },
+      {
+        "title": "Menus in four languages",
+        "text": "Every price change means translating and printing again. And the Spanish menu is always out of date."
+      }
+    ]
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "Live in three steps. Usually within the hour.",
+    "steps": [
+      {
+        "title": "Upload your menu",
+        "text": "A photo of your menu, a PDF or a link to your website. That's all we need."
+      },
+      {
+        "title": "AI translates, you check",
+        "text": "We structure and translate your menu. You check prices, dishes and allergens before it goes live."
+      },
+      {
+        "title": "Put the QR code on the table",
+        "text": "Print the QR code and you're done. Change a price or run out of a dish? Guests see it instantly."
+      }
+    ]
+  },
+  "demo": {
+    "eyebrow": "Demo",
+    "title": "This is what your guest sees.",
+    "text": "A Dutch menu, read by a tourist. Every dish keeps the name on your menu — the translation sits small underneath. So your staff always know what the guest means.",
+    "points": [
+      "Pick a language with one tap — or automatically",
+      "Add dishes to a cart and show it to the waiter",
+      "Ask questions: “Is this spicy?”, “What's vegetarian?”"
+    ],
+    "sampleNote": "Sample restaurant with a fictional menu.",
+    "staffScreenLabel": "The screen a guest shows to the waiter"
+  },
+  "features": {
+    "eyebrow": "What you get",
+    "title": "Built for your guests. And for you, mid-service.",
+    "guests": {
+      "title": "For your guests",
+      "items": [
+        {
+          "title": "The menu in their language",
+          "text": "Automatically in their phone's language. English, French, German, Spanish, Italian, Chinese and more."
+        },
+        {
+          "title": "An explanation of every dish",
+          "text": "What's in it, how is it made? Including typical Belgian classics."
+        },
+        {
+          "title": "Photos of your dishes",
+          "text": "Show what arrives on the plate. Photos are optional — your menu looks complete without them."
+        },
+        {
+          "title": "A cart to show the waiter",
+          "text": "Guests collect what they want and show a clear screen with the original dish names."
+        },
+        {
+          "title": "Questions about the menu",
+          "text": "“What's vegetarian?” — answers based only on your menu, never made up."
+        }
+      ]
+    },
+    "owners": {
+      "title": "For you",
+      "items": [
+        {
+          "title": "Sold out? One tap.",
+          "text": "In Service mode you mark a dish as out of stock. Guests see it immediately."
+        },
+        {
+          "title": "Edit without the hassle",
+          "text": "Change a price, add a dish, drag to reorder. Everything is saved and translated automatically."
+        },
+        {
+          "title": "Photos with your phone",
+          "text": "Snap the plate and add it straight to the dish."
+        },
+        {
+          "title": "See what guests want",
+          "text": "Which languages, which dishes get viewed, which questions get asked."
+        },
+        {
+          "title": "In your restaurant's style",
+          "text": "Your colours, fonts and logo. Your menu feels like your restaurant, not a template."
+        }
+      ]
+    }
+  },
+  "trust": {
+    "eyebrow": "Why restaurants trust us",
+    "title": "Your menu stays yours.",
+    "items": [
+      {
+        "title": "Dish names as on your menu",
+        "text": "“Stoofvlees met frietjes” stays “Stoofvlees met frietjes”. The translation sits underneath, never in its place."
+      },
+      {
+        "title": "Allergens only after you confirm",
+        "text": "AI suggests allergens, you confirm them. Not confirmed yet? We ask the guest to check with staff."
+      },
+      {
+        "title": "EU hosting, GDPR",
+        "text": "Your data stays in the EU. No cookies and no personal data from your guests."
+      },
+      {
+        "title": "No app for guests",
+        "text": "Scan with the camera, read in the browser. Works on any smartphone."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "One plan. Everything included.",
+    "billingLabel": "Billing",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "save": "Save 25%",
+    "planName": "MenuBuddy",
+    "perMonth": "per month",
+    "perYear": "per year",
+    "perDay": "That's €1 per day.",
+    "annualEquivalent": "= {price} per month, 25% off",
+    "monthlyAlternative": "Or {price} per year — 25% off.",
+    "vat": "Prices excl. VAT.",
+    "includes": [
+      "All features",
+      "All guest languages",
+      "Unlimited dishes and QR codes",
+      "Changes go live instantly",
+      "Monthly plan: cancel any month"
+    ],
+    "pilot": "Free pilot for the first restaurants in Leuven.",
+    "cta": "Book a demo"
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Good to know",
+    "items": [
+      {
+        "q": "How long does it take to get started?",
+        "a": "Usually less than an hour. You upload your menu, we structure and translate it, and you check everything. During the demo we put your first menu online together."
+      },
+      {
+        "q": "Which languages can guests read the menu in?",
+        "a": "English, French, Dutch and German by default. You can add more, such as Spanish, Italian, Chinese or Japanese. If a guest picks a language that isn't translated yet, we translate it on the spot."
+      },
+      {
+        "q": "What if my menu changes?",
+        "a": "Change a price or dish in your dashboard and it's live immediately, in every language. Nothing to reprint — the QR code stays the same."
+      },
+      {
+        "q": "What about allergens and the law?",
+        "a": "EU rules require you to provide information on the 14 allergens. Our AI suggests allergens for each dish, but guests only see them as fact once you've confirmed them. The bottom of the menu always says: “For allergies, please inform staff before ordering.”"
+      },
+      {
+        "q": "Can I cancel anytime?",
+        "a": "Yes. The monthly plan can be cancelled any month, with no notice period. The annual plan runs until the end of the year."
+      },
+      {
+        "q": "Do guests need to install an app?",
+        "a": "No. They scan the QR code with their camera and the menu opens in the browser. No account, no app."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Ready for guests from all over the world?",
+    "text": "In a 20-minute demo we show you how it works with your own menu. No strings attached.",
+    "cta": "Book a demo"
+  },
+  "footer": {
+    "tagline": "Your menu, in every guest's language.",
+    "madeIn": "Made in Leuven.",
+    "explore": "Explore",
+    "language": "Language"
+  },
+  "demoPage": {
+    "metaTitle": "Book a demo — MenuBuddy",
+    "metaDescription": "Book a free, no-obligation MenuBuddy demo. We'll show you your menu in every language.",
+    "title": "Book a demo",
+    "text": "The booking form is coming here very soon. Thanks for your patience!",
+    "back": "Back to the home page"
+  }
+}

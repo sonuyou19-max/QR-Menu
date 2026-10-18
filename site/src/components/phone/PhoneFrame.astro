@@ -1,0 +1,33 @@
+---
+// Decorative phone frame. Its content is real HTML (crisp, no image weight) but is
+// exposed to screen readers as a single image with `label`.
+interface Props {
+  label: string;
+  class?: string;
+  /** "onDark" lightens the bezel so it stays visible on dark sections. */
+  tone?: "onLight" | "onDark";
+}
+const { label, class: className, tone = "onLight" } = Astro.props;
+const bezel =
+  tone === "onDark" ? "border-oat-600 bg-oat-600" : "border-oat-900 bg-oat-900";
+---
+
+<div
+  role="img"
+  aria-label={label}
+  class:list={[
+    "rounded-phone shadow-phone relative aspect-[9/19] w-full overflow-hidden border-[10px]",
+    bezel,
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      "absolute top-1.5 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full",
+      bezel,
+    ]}
+  ></div>
+  <div class="h-full w-full overflow-hidden rounded-[2rem] bg-surface">
+    <slot />
+  </div>
+</div>

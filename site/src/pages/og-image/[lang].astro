@@ -1,0 +1,40 @@
+---
+// 1200×630 Open Graph card, rendered only by the dev server: `npm run og` screenshots it into public/og/{lang}.png.
+import "../../styles/global.css";
+import Logo from "../../components/Logo.astro";
+import PhoneFrame from "../../components/phone/PhoneFrame.astro";
+import MenuScreen from "../../components/phone/MenuScreen.astro";
+import { getDictionary, languages, locales, type Lang } from "../../i18n";
+
+export function getStaticPaths() {
+  if (import.meta.env.PROD) return [];
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = getDictionary(lang);
+---
+
+<html lang={locales[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body class="m-0">
+    <div class="relative flex h-[630px] w-[1200px] overflow-hidden bg-canvas">
+      <div class="absolute -top-56 -right-40 size-[44rem] rounded-full bg-[radial-gradient(circle,var(--color-paprika-100),transparent_65%)]"></div>
+      <div class="relative flex w-[760px] flex-col justify-center gap-8 pl-20">
+        <Logo class="scale-125 origin-left" />
+        <p class="font-display text-[68px] leading-[1.05] font-semibold tracking-tight text-balance">
+          {t.hero.title}
+        </p>
+        <p class="text-[26px] text-ink-muted">{t.hero.note}</p>
+      </div>
+      <div class="relative mt-16 w-[300px] rotate-3">
+        <PhoneFrame label="">
+          <MenuScreen lang="en" categories={[1]} />
+        </PhoneFrame>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import Problem from "./Problem.astro";
+import HowItWorks from "./HowItWorks.astro";
+import DemoShowcase from "./DemoShowcase.astro";
+import Features from "./Features.astro";
+import Trust from "./Trust.astro";
+import Pricing from "./Pricing.astro";
+import Faq from "./Faq.astro";
+import FinalCta from "./FinalCta.astro";
+import { getDictionary, type Lang } from "../../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+---
+
+<Base
+  lang={lang}
+  path="/"
+  title={t.meta.title}
+  description={t.meta.description}
+>
+  <Hero lang={lang} />
+  <Problem lang={lang} />
+  <HowItWorks lang={lang} />
+  <DemoShowcase lang={lang} />
+  <Features lang={lang} />
+  <Trust lang={lang} />
+  <Pricing lang={lang} />
+  <Faq lang={lang} />
+  <FinalCta lang={lang} />
+</Base>

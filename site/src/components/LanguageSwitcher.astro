@@ -1,0 +1,32 @@
+---
+import { languages, localePath, locales, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  /** Current page path without language prefix, e.g. "/" or "/demo". */
+  path: string;
+  label: string;
+}
+const { lang, path, label } = Astro.props;
+---
+
+<nav aria-label={label}>
+  <ul class="flex rounded-full border border-line bg-surface p-0.5 text-sm font-semibold">
+    {languages.map((l) => (
+      <li>
+        <a
+          href={localePath(l, path)}
+          hreflang={locales[l]}
+          lang={locales[l]}
+          aria-current={l === lang ? "page" : undefined}
+          class:list={[
+            "grid min-h-9 min-w-9 place-items-center rounded-full px-2 uppercase",
+            l === lang ? "bg-ink text-canvas" : "text-ink-muted hover:text-ink",
+          ]}
+        >
+          {l}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
