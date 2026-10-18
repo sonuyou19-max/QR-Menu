@@ -3,13 +3,24 @@
  * Names and descriptions are the restaurant's own (Dutch); `tr` holds the guest-language helpers.
  * Shapes mirror the real product (CLAUDE.md 4–6) so the demo behaves like the guest menu will.
  */
-export type TranslatedLang = "en" | "fr" | "de";
+export type TranslatedLang = "en" | "fr" | "de" | "es" | "it" | "zh";
 export type GuestLang = "nl" | TranslatedLang;
-export const guestLanguages: GuestLang[] = ["en", "fr", "de", "nl"];
+export const guestLanguages: GuestLang[] = [
+  "en",
+  "fr",
+  "de",
+  "es",
+  "it",
+  "zh",
+  "nl",
+];
 export const guestLanguageNames: Record<GuestLang, string> = {
   en: "English",
   fr: "Français",
   de: "Deutsch",
+  es: "Español",
+  it: "Italiano",
+  zh: "中文",
   nl: "Nederlands",
 };
 
@@ -51,7 +62,14 @@ export const sampleRestaurant = {
 export const sampleMenu: SampleCategory[] = [
   {
     name: "Voorgerechten",
-    tr: { en: "Starters", fr: "Entrées", de: "Vorspeisen" },
+    tr: {
+      en: "Starters",
+      fr: "Entrées",
+      de: "Vorspeisen",
+      es: "Entrantes",
+      it: "Antipasti",
+      zh: "前菜",
+    },
     items: [
       {
         id: "kaaskroketten",
@@ -76,6 +94,21 @@ export const sampleMenu: SampleCategory[] = [
             name: "Käsekroketten",
             description:
               "Zwei knusprige Kroketten mit geschmolzenem belgischem Käse, frittierter Petersilie und Zitrone.",
+          },
+          es: {
+            name: "Croquetas de queso",
+            description:
+              "Dos croquetas crujientes rellenas de queso belga fundido, con perejil frito y limón.",
+          },
+          it: {
+            name: "Crocchette di formaggio",
+            description:
+              "Due crocchette croccanti ripiene di formaggio belga fuso, con prezzemolo fritto e limone.",
+          },
+          zh: {
+            name: "奶酪可乐饼",
+            description:
+              "两个酥脆可乐饼，内馅为融化的比利时奶酪，配炸欧芹和柠檬。",
           },
         },
       },
@@ -102,13 +135,34 @@ export const sampleMenu: SampleCategory[] = [
             description:
               "Nordseekrabben in cremiger Füllung, paniert und frittiert. Mit Zitrone serviert.",
           },
+          es: {
+            name: "Croquetas de camarón gris",
+            description:
+              "Camarón gris del mar del Norte en un relleno cremoso, empanado y frito. Con limón.",
+          },
+          it: {
+            name: "Crocchette di gamberetti grigi",
+            description:
+              "Gamberetti grigi del Mare del Nord in un ripieno cremoso, impanati e fritti. Serviti con limone.",
+          },
+          zh: {
+            name: "灰虾可乐饼",
+            description: "北海灰虾配奶油馅，裹粉油炸，配柠檬。",
+          },
         },
       },
     ],
   },
   {
     name: "Hoofdgerechten",
-    tr: { en: "Main courses", fr: "Plats principaux", de: "Hauptgerichte" },
+    tr: {
+      en: "Main courses",
+      fr: "Plats principaux",
+      de: "Hauptgerichte",
+      es: "Platos principales",
+      it: "Secondi piatti",
+      zh: "主菜",
+    },
     items: [
       {
         id: "stoofvlees",
@@ -132,6 +186,20 @@ export const sampleMenu: SampleCategory[] = [
             name: "Flämischer Rindereintopf mit Pommes",
             description:
               "Rindfleisch, langsam in dunklem belgischem Bier mit Zwiebeln und Senf geschmort.",
+          },
+          es: {
+            name: "Estofado flamenco de ternera con patatas fritas",
+            description:
+              "Ternera guisada lentamente en cerveza belga oscura con cebolla y mostaza.",
+          },
+          it: {
+            name: "Stufato fiammingo di manzo con patatine fritte",
+            description:
+              "Manzo stufato lentamente nella birra scura belga con cipolle e senape.",
+          },
+          zh: {
+            name: "佛兰德啤酒炖牛肉配薯条",
+            description: "牛肉用比利时黑啤酒、洋葱和芥末慢炖而成。",
           },
         },
       },
@@ -158,6 +226,20 @@ export const sampleMenu: SampleCategory[] = [
             description:
               "Blätterteig mit Huhn, Fleischbällchen und Champignons in Rahmsauce.",
           },
+          es: {
+            name: "Vol-au-vent de pollo con patatas fritas",
+            description:
+              "Hojaldre con pollo, albóndigas y champiñones en salsa cremosa.",
+          },
+          it: {
+            name: "Vol-au-vent di pollo con patatine fritte",
+            description:
+              "Sfoglia con pollo, polpettine e funghi in salsa cremosa.",
+          },
+          zh: {
+            name: "鸡肉酥盒配薯条",
+            description: "酥皮盒内盛鸡肉、肉丸和蘑菇，配奶油酱汁。",
+          },
         },
       },
       {
@@ -178,6 +260,18 @@ export const sampleMenu: SampleCategory[] = [
           de: {
             name: "Genter Hühnereintopf",
             description: "Huhn und Gemüse in einer leichten, cremigen Brühe.",
+          },
+          es: {
+            name: "Guiso de pollo al estilo de Gante",
+            description: "Pollo y verduras en un caldo ligero y cremoso.",
+          },
+          it: {
+            name: "Stufato di pollo alla gandese",
+            description: "Pollo e verdure in un brodo leggero e cremoso.",
+          },
+          zh: {
+            name: "根特式奶油炖鸡",
+            description: "鸡肉和蔬菜配清淡的奶油高汤。",
           },
         },
       },
@@ -204,13 +298,34 @@ export const sampleMenu: SampleCategory[] = [
             description:
               "Ein Topf Muscheln, gedämpft mit Sellerie und Zwiebeln. Mit Pommes.",
           },
+          es: {
+            name: "Mejillones al natural",
+            description:
+              "Una olla de mejillones al vapor con apio y cebolla. Con patatas fritas.",
+          },
+          it: {
+            name: "Cozze al naturale",
+            description:
+              "Una pentola di cozze al vapore con sedano e cipolla. Servite con patatine fritte.",
+          },
+          zh: {
+            name: "清蒸青口",
+            description: "一锅用芹菜和洋葱蒸制的青口，配薯条。",
+          },
         },
       },
     ],
   },
   {
     name: "Desserts",
-    tr: { en: "Desserts", fr: "Desserts", de: "Desserts" },
+    tr: {
+      en: "Desserts",
+      fr: "Desserts",
+      de: "Desserts",
+      es: "Postres",
+      it: "Dolci",
+      zh: "甜点",
+    },
     items: [
       {
         id: "dame-blanche",
@@ -235,6 +350,20 @@ export const sampleMenu: SampleCategory[] = [
             description:
               "Vanilleeis, Schlagsahne und warme belgische Schokoladensauce.",
           },
+          es: {
+            name: "Helado de vainilla con salsa de chocolate caliente",
+            description:
+              "Helado de vainilla, nata montada y salsa caliente de chocolate belga.",
+          },
+          it: {
+            name: "Gelato alla vaniglia con salsa di cioccolato calda",
+            description:
+              "Gelato alla vaniglia, panna montata e salsa calda di cioccolato belga.",
+          },
+          zh: {
+            name: "香草冰淇淋配热巧克力酱",
+            description: "香草冰淇淋、鲜奶油和温热的比利时巧克力酱。",
+          },
         },
       },
       {
@@ -257,6 +386,18 @@ export const sampleMenu: SampleCategory[] = [
             name: "Schokoladenmousse",
             description:
               "Hausgemachte Mousse aus dunkler belgischer Schokolade.",
+          },
+          es: {
+            name: "Mousse de chocolate",
+            description: "Mousse casera de chocolate negro belga.",
+          },
+          it: {
+            name: "Mousse al cioccolato",
+            description: "Mousse fatta in casa di cioccolato fondente belga.",
+          },
+          zh: {
+            name: "巧克力慕斯",
+            description: "自制比利时黑巧克力慕斯。",
           },
         },
       },
@@ -296,6 +437,36 @@ export const allergenNames: Record<GuestLang, Record<Allergen, string>> = {
     mustard: "Senf",
     molluscs: "Weichtiere",
     sulphites: "Sulfite",
+  },
+  es: {
+    gluten: "Gluten",
+    crustaceans: "Crustáceos",
+    eggs: "Huevos",
+    milk: "Leche",
+    celery: "Apio",
+    mustard: "Mostaza",
+    molluscs: "Moluscos",
+    sulphites: "Sulfitos",
+  },
+  it: {
+    gluten: "Glutine",
+    crustaceans: "Crostacei",
+    eggs: "Uova",
+    milk: "Latte",
+    celery: "Sedano",
+    mustard: "Senape",
+    molluscs: "Molluschi",
+    sulphites: "Solfiti",
+  },
+  zh: {
+    gluten: "麸质",
+    crustaceans: "甲壳类",
+    eggs: "鸡蛋",
+    milk: "牛奶",
+    celery: "芹菜",
+    mustard: "芥末",
+    molluscs: "软体动物",
+    sulphites: "亚硫酸盐",
   },
   nl: {
     gluten: "Gluten",
@@ -449,6 +620,108 @@ export const guestUi: Record<GuestLang, GuestUi> = {
     answer:
       "Nein — ein milder, leicht süßlicher Rindereintopf mit dunklem Bier.",
   },
+  es: {
+    language: "Idioma",
+    vegetarian: "Vegetariano",
+    all: "Todos los platos",
+    outOfStock: "Agotado",
+    allergens: "Alérgenos",
+    allergenUnconfirmed: "Alérgenos sin confirmar — pregunte al personal.",
+    allergyNote: "Si tiene alergias, avise al personal antes de pedir.",
+    add: "Añadir {dish}",
+    remove: "Quitar",
+    increase: "Un {dish} más",
+    decrease: "Un {dish} menos",
+    viewOrder: "Ver pedido",
+    yourOrder: "Su pedido",
+    emptyOrder: "Aún no hay nada. Toque + junto a un plato.",
+    notePlaceholder: "Nota, p. ej. sin cebolla",
+    showToStaff: "Mostrar al personal",
+    table: "Mesa",
+    total: "Total",
+    close: "Cerrar",
+    ask: "Pregunte sobre la carta",
+    askTitle: "Preguntas sobre la carta",
+    askIntro: "Las respuestas salen solo de la carta de este restaurante.",
+    askPlaceholder: "Escriba una pregunta…",
+    send: "Enviar",
+    demoReply:
+      "Esta es una demo con respuestas de ejemplo. Toque una de las preguntas de arriba. En la carta real, los clientes pueden preguntar cualquier cosa sobre los platos.",
+    fromMenu: "Según la carta",
+    general: "Conocimiento general",
+    staffHint: "Muestre esta pantalla al camarero.",
+    question: "¿El stoofvlees es picante?",
+    answer:
+      "No — es un estofado de ternera suave y algo dulce, hecho con cerveza oscura.",
+  },
+  it: {
+    language: "Lingua",
+    vegetarian: "Vegetariano",
+    all: "Tutti i piatti",
+    outOfStock: "Esaurito",
+    allergens: "Allergeni",
+    allergenUnconfirmed: "Allergeni non confermati — chiedere al personale.",
+    allergyNote:
+      "In caso di allergie, informate il personale prima di ordinare.",
+    add: "Aggiungi {dish}",
+    remove: "Rimuovi",
+    increase: "Un {dish} in più",
+    decrease: "Un {dish} in meno",
+    viewOrder: "Vedi ordine",
+    yourOrder: "Il tuo ordine",
+    emptyOrder: "Ancora niente. Tocca + accanto a un piatto.",
+    notePlaceholder: "Nota, es. senza cipolla",
+    showToStaff: "Mostra al personale",
+    table: "Tavolo",
+    total: "Totale",
+    close: "Chiudi",
+    ask: "Chiedi del menu",
+    askTitle: "Domande sul menu",
+    askIntro: "Le risposte vengono solo dal menu di questo ristorante.",
+    askPlaceholder: "Scrivi una domanda…",
+    send: "Invia",
+    demoReply:
+      "Questa è una demo con risposte di esempio. Tocca una delle domande qui sopra. Nel menu reale, gli ospiti possono chiedere qualsiasi cosa sui piatti.",
+    fromMenu: "Dal menu",
+    general: "Conoscenza generale",
+    staffHint: "Mostra questo schermo al cameriere.",
+    question: "Lo stoofvlees è piccante?",
+    answer:
+      "No — è uno stufato di manzo delicato e leggermente dolce, fatto con birra scura.",
+  },
+  zh: {
+    language: "语言",
+    vegetarian: "素食",
+    all: "全部菜品",
+    outOfStock: "已售罄",
+    allergens: "过敏原",
+    allergenUnconfirmed: "过敏原信息未经确认 — 请询问服务员。",
+    allergyNote: "如有过敏，请在点餐前告知服务员。",
+    add: "添加 {dish}",
+    remove: "移除",
+    increase: "再加一份 {dish}",
+    decrease: "减少一份 {dish}",
+    viewOrder: "查看订单",
+    yourOrder: "您的订单",
+    emptyOrder: "尚未添加任何菜品。点击菜品旁的 +。",
+    notePlaceholder: "备注，例如：不要洋葱",
+    showToStaff: "出示给服务员",
+    table: "桌号",
+    total: "合计",
+    close: "关闭",
+    ask: "询问菜单",
+    askTitle: "关于菜单的问题",
+    askIntro: "回答仅基于本餐厅的菜单。",
+    askPlaceholder: "输入问题…",
+    send: "发送",
+    demoReply:
+      "这是一个带示例回答的演示。请点击上方的问题之一。在真实菜单中，顾客可以询问关于菜品的任何问题。",
+    fromMenu: "根据菜单",
+    general: "常识",
+    staffHint: "请将此屏幕出示给服务员。",
+    question: "Stoofvlees 辣吗？",
+    answer: "不辣 — 这是一道用黑啤酒炖的温和、微甜的牛肉。",
+  },
   nl: {
     language: "Taal",
     vegetarian: "Vegetarisch",
@@ -504,12 +777,18 @@ export const sampleAnswers: SampleAnswer[] = [
       en: "Is the stoofvlees spicy?",
       fr: "Le stoofvlees est-il épicé ?",
       de: "Ist das Stoofvlees scharf?",
+      es: "¿El stoofvlees es picante?",
+      it: "Lo stoofvlees è piccante?",
+      zh: "Stoofvlees 辣吗？",
       nl: "Is het stoofvlees pikant?",
     },
     answer: {
       en: "No. The menu describes it as beef slowly stewed in dark Belgian beer with onions and mustard — mild and slightly sweet.",
       fr: "Non. La carte le décrit comme du bœuf mijoté dans une bière belge brune avec oignons et moutarde — doux et légèrement sucré.",
       de: "Nein. Laut Speisekarte ist es Rindfleisch, langsam in dunklem belgischem Bier mit Zwiebeln und Senf geschmort — mild und leicht süßlich.",
+      es: "No. Según la carta, es ternera guisada lentamente en cerveza belga oscura con cebolla y mostaza — suave y algo dulce.",
+      it: "No. Secondo il menu è manzo stufato lentamente nella birra scura belga con cipolle e senape — delicato e leggermente dolce.",
+      zh: "不辣。根据菜单，这是用比利时黑啤酒、洋葱和芥末慢炖的牛肉 — 口味温和、微甜。",
       nl: "Nee. Volgens het menu is het rundvlees, langzaam gestoofd in donker bier met ui en mosterd — mild en licht zoet.",
     },
     type: "menu_fact",
@@ -521,12 +800,18 @@ export const sampleAnswers: SampleAnswer[] = [
       en: "What's vegetarian?",
       fr: "Qu'est-ce qui est végétarien ?",
       de: "Was ist vegetarisch?",
+      es: "¿Qué es vegetariano?",
+      it: "Cosa è vegetariano?",
+      zh: "哪些是素食？",
       nl: "Wat is vegetarisch?",
     },
     answer: {
       en: "These dishes are marked vegetarian on the menu:",
       fr: "Ces plats sont indiqués comme végétariens sur la carte :",
       de: "Diese Gerichte sind auf der Speisekarte als vegetarisch markiert:",
+      es: "Estos platos están marcados como vegetarianos en la carta:",
+      it: "Questi piatti sono indicati come vegetariani nel menu:",
+      zh: "以下菜品在菜单上标注为素食：",
       nl: "Deze gerechten staan als vegetarisch op het menu:",
     },
     type: "menu_fact",
@@ -538,12 +823,18 @@ export const sampleAnswers: SampleAnswer[] = [
       en: "What's typically Belgian?",
       fr: "Qu'est-ce qui est typiquement belge ?",
       de: "Was ist typisch belgisch?",
+      es: "¿Qué es típicamente belga?",
+      it: "Cosa è tipicamente belga?",
+      zh: "哪些是典型的比利时菜？",
       nl: "Wat is typisch Belgisch?",
     },
     answer: {
       en: "The menu doesn't say, but typically these are Belgian classics: stoofvlees (beer stew), vol-au-vent and waterzooi from Ghent. The mussels are sold out today.",
       fr: "La carte ne le précise pas, mais ce sont typiquement des classiques belges : le stoofvlees (carbonnade), le vol-au-vent et le waterzooi gantois. Les moules sont épuisées aujourd'hui.",
       de: "Die Speisekarte sagt es nicht, aber typisch belgische Klassiker sind: Stoofvlees (Biereintopf), Vol-au-vent und Waterzooi aus Gent. Die Muscheln sind heute ausverkauft.",
+      es: "La carta no lo dice, pero estos son clásicos belgas típicos: stoofvlees (estofado a la cerveza), vol-au-vent y waterzooi de Gante. Los mejillones están agotados hoy.",
+      it: "Il menu non lo dice, ma questi sono tipici classici belgi: stoofvlees (stufato alla birra), vol-au-vent e waterzooi di Gand. Le cozze oggi sono esaurite.",
+      zh: "菜单上没有说明，但这些是典型的比利时经典菜：stoofvlees（啤酒炖牛肉）、vol-au-vent 和根特的 waterzooi。青口今天已售罄。",
       nl: "Het menu zegt het niet, maar dit zijn typisch Belgische klassiekers: stoofvlees, vol-au-vent en Gentse waterzooi. De mosselen zijn vandaag uitverkocht.",
     },
     type: "general_knowledge",
@@ -555,12 +846,18 @@ export const sampleAnswers: SampleAnswer[] = [
       en: "Is the waterzooi gluten-free?",
       fr: "Le waterzooi est-il sans gluten ?",
       de: "Ist das Waterzooi glutenfrei?",
+      es: "¿El waterzooi es sin gluten?",
+      it: "Il waterzooi è senza glutine?",
+      zh: "Waterzooi 不含麸质吗？",
       nl: "Is de waterzooi glutenvrij?",
     },
     answer: {
       en: "The restaurant hasn't confirmed the allergens for this dish, so I can't say it's gluten-free.",
       fr: "Le restaurant n'a pas confirmé les allergènes de ce plat, je ne peux donc pas dire qu'il est sans gluten.",
       de: "Das Restaurant hat die Allergene für dieses Gericht nicht bestätigt, daher kann ich nicht sagen, dass es glutenfrei ist.",
+      es: "El restaurante no ha confirmado los alérgenos de este plato, así que no puedo decir que sea sin gluten.",
+      it: "Il ristorante non ha confermato gli allergeni di questo piatto, quindi non posso dire che sia senza glutine.",
+      zh: "餐厅尚未确认这道菜的过敏原，因此我无法说它不含麸质。",
       nl: "Het restaurant heeft de allergenen van dit gerecht niet bevestigd, dus ik kan niet zeggen dat het glutenvrij is.",
     },
     type: "menu_fact",
@@ -574,5 +871,8 @@ export const unconfirmedAllergenLine: Record<GuestLang, string> = {
   en: "Allergen info for this dish isn't confirmed by the restaurant — please ask staff.",
   fr: "Les allergènes de ce plat ne sont pas confirmés par le restaurant — merci de demander au personnel.",
   de: "Die Allergenangaben für dieses Gericht sind vom Restaurant nicht bestätigt — bitte fragen Sie das Personal.",
+  es: "La información de alérgenos de este plato no está confirmada por el restaurante — pregunte al personal.",
+  it: "Gli allergeni di questo piatto non sono confermati dal ristorante — chiedere al personale.",
+  zh: "餐厅尚未确认这道菜的过敏原信息 — 请询问服务员。",
   nl: "De allergenen van dit gerecht zijn niet bevestigd door het restaurant — vraag het aan het personeel.",
 };

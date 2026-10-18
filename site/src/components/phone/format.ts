@@ -4,6 +4,9 @@ const guestLocales: Record<GuestLang, string> = {
   en: "en-IE",
   fr: "fr-BE",
   de: "de-BE",
+  es: "es-ES",
+  it: "it-IT",
+  zh: "zh-CN",
   nl: "nl-BE",
 };
 
