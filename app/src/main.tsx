@@ -10,6 +10,8 @@ import { AppLayout } from "./routes/AppLayout";
 import { Login } from "./routes/Login";
 import { Overview } from "./routes/Overview";
 import { RequireAuth } from "./routes/RequireAuth";
+import { Setup } from "./routes/Setup";
+import { RestaurantGate } from "./restaurant/RestaurantProvider";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -17,8 +19,14 @@ const router = createBrowserRouter([
     element: <RequireAuth />,
     children: [
       {
-        element: <AppLayout />,
-        children: [{ index: true, element: <Overview /> }],
+        element: <RestaurantGate />,
+        children: [
+          { path: "/setup", element: <Setup /> },
+          {
+            element: <AppLayout />,
+            children: [{ index: true, element: <Overview /> }],
+          },
+        ],
       },
     ],
   },

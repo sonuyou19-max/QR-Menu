@@ -43,5 +43,38 @@
       }
     ]
   },
-  "loading": "Loading…"
+  "loading": "Loading…",
+  "loadError": "Your details couldn't be loaded. Check your internet connection.",
+  "retry": "Try again",
+  "setup": {
+    "title": "Set up your restaurant",
+    "intro": "This takes a minute. You can change everything later.",
+    "name": "Restaurant name",
+    "address": "Address",
+    "optional": "optional",
+    "sourceLanguage": "Language of your menu",
+    "sourceLanguageHint": "The language your menu is printed in now.",
+    "guestLanguages": "Languages for your guests",
+    "guestLanguagesHint": "Your menu gets translated into these languages. You can add more later.",
+    "menuLanguageTag": "your menu's language",
+    "webAddress": "Web address of your menu",
+    "webAddressHint": "This address goes into your QR code. Choose it carefully: it can't change once printed.",
+    "slugChecking": "Checking if this address is free…",
+    "slugFree": "This address is free.",
+    "slugTaken": "This address is already taken. Choose another one.",
+    "slugInvalid": "Use 3 to 60 lowercase letters, numbers and dashes (e.g. brasserie-lindehof).",
+    "submit": "Create restaurant",
+    "saving": "Creating…",
+    "errors": {
+      "name": "Enter your restaurant's name.",
+      "languages": "Choose at least one language for your guests.",
+      "slug": "Choose a web address that's free.",
+      "generic": "That didn't work. Check your internet connection and try again."
+    }
+  },
+  "overviewExtra": {
+    "menuAt": "Your menu will be at",
+    "done": "Done",
+    "languages": "Guest languages"
+  }
 }

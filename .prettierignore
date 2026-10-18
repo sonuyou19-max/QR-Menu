@@ -4,3 +4,4 @@ dist
 package-lock.json
 packages/design-tokens/theme.css
 CLAUDE.md
+app/src/lib/database.types.ts

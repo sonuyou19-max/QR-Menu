@@ -43,5 +43,38 @@
       }
     ]
   },
-  "loading": "Even laden…"
+  "loading": "Even laden…",
+  "loadError": "Je gegevens konden niet geladen worden. Controleer je internetverbinding.",
+  "retry": "Opnieuw proberen",
+  "setup": {
+    "title": "Stel je restaurant in",
+    "intro": "Dit duurt een minuutje. Je kunt alles later nog aanpassen.",
+    "name": "Naam van je restaurant",
+    "address": "Adres",
+    "optional": "optioneel",
+    "sourceLanguage": "Taal van je menukaart",
+    "sourceLanguageHint": "De taal waarin je kaart nu gedrukt is.",
+    "guestLanguages": "Talen voor je gasten",
+    "guestLanguagesHint": "Je menu wordt in deze talen vertaald. Je kunt er later meer toevoegen.",
+    "menuLanguageTag": "taal van je kaart",
+    "webAddress": "Webadres van je menu",
+    "webAddressHint": "Dit adres komt in je QR-code. Kies het goed: na het printen verandert het niet meer.",
+    "slugChecking": "Even kijken of dit adres vrij is…",
+    "slugFree": "Dit adres is vrij.",
+    "slugTaken": "Dit adres is al in gebruik. Kies een ander.",
+    "slugInvalid": "Gebruik 3 tot 60 kleine letters, cijfers en streepjes (bv. brasserie-lindehof).",
+    "submit": "Restaurant aanmaken",
+    "saving": "Aanmaken…",
+    "errors": {
+      "name": "Vul de naam van je restaurant in.",
+      "languages": "Kies minstens één taal voor je gasten.",
+      "slug": "Kies een webadres dat vrij is.",
+      "generic": "Aanmaken lukte niet. Controleer je internetverbinding en probeer opnieuw."
+    }
+  },
+  "overviewExtra": {
+    "menuAt": "Je menu komt op",
+    "done": "Klaar",
+    "languages": "Talen voor gasten"
+  }
 }

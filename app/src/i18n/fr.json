@@ -43,5 +43,38 @@
       }
     ]
   },
-  "loading": "Chargement…"
+  "loading": "Chargement…",
+  "loadError": "Impossible de charger vos données. Vérifiez votre connexion internet.",
+  "retry": "Réessayer",
+  "setup": {
+    "title": "Configurez votre restaurant",
+    "intro": "Cela prend une minute. Vous pourrez tout modifier plus tard.",
+    "name": "Nom de votre restaurant",
+    "address": "Adresse",
+    "optional": "facultatif",
+    "sourceLanguage": "Langue de votre carte",
+    "sourceLanguageHint": "La langue dans laquelle votre carte est imprimée.",
+    "guestLanguages": "Langues pour vos clients",
+    "guestLanguagesHint": "Votre carte sera traduite dans ces langues. Vous pourrez en ajouter plus tard.",
+    "menuLanguageTag": "langue de votre carte",
+    "webAddress": "Adresse web de votre carte",
+    "webAddressHint": "Cette adresse figure dans votre QR code. Choisissez-la bien : elle ne change plus après l'impression.",
+    "slugChecking": "Vérification de la disponibilité…",
+    "slugFree": "Cette adresse est libre.",
+    "slugTaken": "Cette adresse est déjà utilisée. Choisissez-en une autre.",
+    "slugInvalid": "Utilisez 3 à 60 lettres minuscules, chiffres et tirets (p. ex. brasserie-lindehof).",
+    "submit": "Créer le restaurant",
+    "saving": "Création…",
+    "errors": {
+      "name": "Indiquez le nom de votre restaurant.",
+      "languages": "Choisissez au moins une langue pour vos clients.",
+      "slug": "Choisissez une adresse web libre.",
+      "generic": "La création n'a pas fonctionné. Vérifiez votre connexion internet et réessayez."
+    }
+  },
+  "overviewExtra": {
+    "menuAt": "Votre carte sera sur",
+    "done": "Fait",
+    "languages": "Langues pour les clients"
+  }
 }
