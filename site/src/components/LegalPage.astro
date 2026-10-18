@@ -1,0 +1,57 @@
+---
+// Privacy policy / terms page, rendered from src/content/legal/{lang}/{page}.md.
+import { getEntry, render } from "astro:content";
+import TriangleAlert from "@lucide/astro/icons/triangle-alert";
+import Mail from "@lucide/astro/icons/mail";
+import Base from "../layouts/Base.astro";
+import { siteConfig } from "../data/site";
+import { fill, getDictionary, locales, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  page: "privacy" | "terms";
+}
+const { lang, page } = Astro.props;
+const t = getDictionary(lang);
+const entry = await getEntry("legal", `${lang}/${page}`);
+if (!entry) throw new Error(`Missing legal page ${lang}/${page}`);
+const { Content } = await render(entry);
+const updated = new Intl.DateTimeFormat(locales[lang], {
+  dateStyle: "long",
+}).format(entry.data.updated);
+---
+
+<Base
+  lang={lang}
+  path={`/${page}`}
+  title={`${entry.data.title} — MenuBuddy`}
+  description={entry.data.description}
+>
+  <article class="mx-auto max-w-3xl px-4 py-14 sm:py-20">
+    {entry.data.draft && (
+      <p class="mb-8 flex gap-2 rounded-control bg-mustard-100 p-3 font-medium text-mustard-900">
+        <TriangleAlert class="mt-0.5 size-5 shrink-0" aria-hidden="true" />
+        {t.legal.draft}
+      </p>
+    )}
+    <h1 class="text-4xl font-semibold sm:text-5xl">{entry.data.title}</h1>
+    <p class="mt-3 text-ink-muted">
+      {fill(t.legal.updated, { date: updated })}
+    </p>
+    <div class="mt-8 text-lg leading-relaxed [&_h2]:mt-12 [&_h2]:text-2xl [&_h2]:font-semibold [&_li]:mt-2 [&_p]:mt-4 [&_strong]:font-semibold [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6">
+      <Content />
+    </div>
+    <div class="mt-14 flex items-center gap-4 rounded-card bg-surface-muted p-5">
+      <Mail class="size-6 shrink-0 text-brand" aria-hidden="true" />
+      <div>
+        <p class="font-semibold">{t.footer.contact}</p>
+        <a
+          href={`mailto:${siteConfig.contactEmail}`}
+          class="break-all text-brand underline underline-offset-2"
+        >
+          {siteConfig.contactEmail}
+        </a>
+      </div>
+    </div>
+  </article>
+</Base>

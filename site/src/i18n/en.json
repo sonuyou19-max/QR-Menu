@@ -218,19 +218,66 @@
     "tagline": "Your menu, in every guest's language.",
     "madeIn": "Made in Leuven.",
     "explore": "Explore",
-    "language": "Language"
+    "language": "Language",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "contact": "Contact"
   },
   "demoPage": {
     "metaTitle": "Book a demo — MenuBuddy",
-    "metaDescription": "Book a free, no-obligation MenuBuddy demo. We'll show you your menu in every language.",
+    "metaDescription": "Book a free, no-obligation MenuBuddy demo. We'll show you your own menu in every language.",
     "title": "Book a demo",
-    "text": "The booking form is coming here very soon. Thanks for your patience!",
-    "back": "Back to the home page"
+    "intro": "Leave your details and we'll get in touch within 1 working day to find a time.",
+    "expectTitle": "What to expect",
+    "expect": [
+      "About 20 minutes, at your restaurant or online",
+      "We show it with your own menu",
+      "No obligation — free pilot for the first restaurants in Leuven"
+    ]
   },
   "menuDemoPage": {
     "metaTitle": "Sample menu — MenuBuddy",
     "metaDescription": "Try a sample menu the way your guests see it on their phone.",
     "badge": "Sample",
     "cta": "Book a demo"
+  },
+  "form": {
+    "name": "Your name",
+    "restaurantName": "Restaurant name",
+    "city": "Town or city",
+    "email": "Email address",
+    "phone": "Phone",
+    "optional": "optional",
+    "language": "Preferred language for the demo",
+    "languageOptions": {
+      "nl": "Dutch",
+      "fr": "French",
+      "en": "English"
+    },
+    "preferredTime": "When suits you best?",
+    "preferredTimePlaceholder": "e.g. Tuesday morning",
+    "message": "Message",
+    "messagePlaceholder": "Questions, or something about your restaurant",
+    "honeypot": "Leave this field empty",
+    "submit": "Book a demo",
+    "sending": "Sending…",
+    "privacy": "We only use your details to contact you about the demo.",
+    "privacyLink": "Privacy policy",
+    "successTitle": "Thank you!",
+    "successText": "We've received your request and will contact you within 1 working day.",
+    "previewNote": "This is the preview version: the form wasn't actually sent.",
+    "errors": {
+      "required": "Please fill in this field.",
+      "email": "Please enter a valid email address.",
+      "captchaPending": "The spam check is still running. Try again in a moment.",
+      "captcha": "The spam check failed. Please try again.",
+      "rate_limited": "You've already sent a request today. We'll be in touch soon.",
+      "server": "Sending didn't work. Try again or email us at {email}."
+    }
+  },
+  "legal": {
+    "updated": "Last updated: {date}",
+    "draft": "Draft — this text still needs a legal review."
   }
 }

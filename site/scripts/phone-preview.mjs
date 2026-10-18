@@ -17,6 +17,8 @@ const pages = {
   home: "index.html",
   demo: "demo/index.html",
   "menu-demo": "menu-demo/index.html",
+  privacy: "privacy/index.html",
+  terms: "terms/index.html",
 };
 const dir = (lang) => (lang === "nl" ? "" : `${lang}/`);
 
@@ -70,7 +72,7 @@ function show(name, anchor) {
 function resolve(href, current) {
   const [path, anchor] = href.split("#");
   if (path === "") return [current, anchor];
-  const m = path.match(/^\\/(?:(fr|en)\\/?)?(demo|menu-demo)?\\/?$/);
+  const m = path.match(/^\\/(?:(fr|en)\\/?)?(demo|menu-demo|privacy|terms)?\\/?$/);
   if (!m) return null;
   return [(m[1] ?? "nl") + "-" + (m[2] ?? "home"), anchor];
 }

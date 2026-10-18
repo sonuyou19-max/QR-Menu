@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 // Pages that must not appear in the sitemap (they are also `noindex`).
-const unlisted = ["/styleguide/", "/demo/", "/menu-demo/"];
+const unlisted = ["/styleguide/", "/menu-demo/"];
 
 export default defineConfig({
   site: process.env.SITE_URL ?? "https://menubuddy.be",

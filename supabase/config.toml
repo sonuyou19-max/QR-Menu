@@ -1,0 +1,6 @@
+# Supabase project "menubuddy" (eu-central-1, Frankfurt). Used by the Supabase CLI.
+project_id = "eoeqtwskfqawxfpuyhac"
+
+[functions.book-demo]
+# Called anonymously by the marketing site; Turnstile + honeypot + rate limits guard it.
+verify_jwt = false

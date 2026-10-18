@@ -218,19 +218,66 @@
     "tagline": "Votre carte, dans la langue de chaque client.",
     "madeIn": "Conçu à Louvain.",
     "explore": "Découvrir",
-    "language": "Langue"
+    "language": "Langue",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact"
   },
   "demoPage": {
     "metaTitle": "Demander une démo — MenuBuddy",
-    "metaDescription": "Demandez une démo sans engagement de MenuBuddy. Nous vous montrons votre carte dans toutes les langues.",
+    "metaDescription": "Demandez une démo sans engagement de MenuBuddy. Nous vous montrons votre propre carte dans toutes les langues.",
     "title": "Demander une démo",
-    "text": "Le formulaire de demande arrive très bientôt ici. Merci de votre patience !",
-    "back": "Retour à l'accueil"
+    "intro": "Laissez vos coordonnées et nous vous contactons dans un délai d'un jour ouvrable pour fixer un moment.",
+    "expectTitle": "À quoi vous attendre ?",
+    "expect": [
+      "Environ 20 minutes, dans votre établissement ou en ligne",
+      "Nous le montrons avec votre propre carte",
+      "Sans engagement — pilote gratuit pour les premiers restaurants à Louvain"
+    ]
   },
   "menuDemoPage": {
     "metaTitle": "Carte d'exemple — MenuBuddy",
     "metaDescription": "Essayez une carte d'exemple telle que vos clients la voient sur leur smartphone.",
     "badge": "Exemple",
     "cta": "Demander une démo"
+  },
+  "form": {
+    "name": "Votre nom",
+    "restaurantName": "Nom de votre restaurant",
+    "city": "Commune",
+    "email": "Adresse e-mail",
+    "phone": "Téléphone",
+    "optional": "facultatif",
+    "language": "Langue souhaitée pour la démo",
+    "languageOptions": {
+      "nl": "Néerlandais",
+      "fr": "Français",
+      "en": "Anglais"
+    },
+    "preferredTime": "Quel moment vous convient ?",
+    "preferredTimePlaceholder": "p. ex. mardi matin",
+    "message": "Message",
+    "messagePlaceholder": "Des questions, ou un mot sur votre établissement",
+    "honeypot": "Laissez ce champ vide",
+    "submit": "Demander une démo",
+    "sending": "Envoi…",
+    "privacy": "Nous utilisons vos données uniquement pour vous contacter au sujet de la démo.",
+    "privacyLink": "Politique de confidentialité",
+    "successTitle": "Merci !",
+    "successText": "Nous avons bien reçu votre demande et nous vous contactons dans un délai d'un jour ouvrable.",
+    "previewNote": "Ceci est la version d'aperçu : le formulaire n'a pas vraiment été envoyé.",
+    "errors": {
+      "required": "Veuillez remplir ce champ.",
+      "email": "Veuillez saisir une adresse e-mail valide.",
+      "captchaPending": "La vérification anti-spam est en cours. Réessayez dans un instant.",
+      "captcha": "La vérification anti-spam a échoué. Veuillez réessayer.",
+      "rate_limited": "Vous avez déjà envoyé une demande aujourd'hui. Nous vous contactons très vite.",
+      "server": "L'envoi a échoué. Réessayez ou écrivez-nous à {email}."
+    }
+  },
+  "legal": {
+    "updated": "Dernière mise à jour : {date}",
+    "draft": "Projet — ce texte doit encore être vérifié par un juriste."
   }
 }

@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import { siteConfig } from "../data/site";
 import {
   getDictionary,
   languages,
@@ -23,7 +24,7 @@ const languageNames: Record<Lang, string> = {
 ---
 
 <footer class="border-t border-line bg-surface-muted px-4 py-12 text-[15px]">
-  <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-[2fr_1fr_1fr]">
+  <div class="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
     <div class="space-y-3">
       <Logo />
       <p class="max-w-xs text-ink-muted">{t.footer.tagline}</p>
@@ -59,6 +60,34 @@ const languageNames: Record<Lang, string> = {
             data-cta="footer"
           >
             {t.nav.bookDemo}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="footer-legal">
+      <h2
+        id="footer-legal"
+        class="mb-3 font-sans text-sm font-semibold text-ink"
+      >
+        {t.footer.legal}
+      </h2>
+      <ul class="space-y-2 text-ink-muted">
+        <li>
+          <a class="hover:text-ink" href={localePath(lang, "/privacy")}>
+            {t.footer.privacy}
+          </a>
+        </li>
+        <li>
+          <a class="hover:text-ink" href={localePath(lang, "/terms")}>
+            {t.footer.terms}
+          </a>
+        </li>
+        <li>
+          <a
+            class="break-all hover:text-ink"
+            href={`mailto:${siteConfig.contactEmail}`}
+          >
+            {siteConfig.contactEmail}
           </a>
         </li>
       </ul>

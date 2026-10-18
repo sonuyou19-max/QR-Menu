@@ -218,19 +218,66 @@
     "tagline": "Je menukaart, in de taal van elke gast.",
     "madeIn": "Gemaakt in Leuven.",
     "explore": "Ontdek",
-    "language": "Taal"
+    "language": "Taal",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "contact": "Contact"
   },
   "demoPage": {
     "metaTitle": "Demo aanvragen — MenuBuddy",
-    "metaDescription": "Vraag een vrijblijvende demo van MenuBuddy aan. We tonen hoe je menu in elke taal werkt.",
+    "metaDescription": "Vraag een vrijblijvende demo van MenuBuddy aan. We tonen hoe je menu in elke taal werkt, met je eigen kaart.",
     "title": "Demo aanvragen",
-    "text": "Het aanvraagformulier komt hier binnenkort. Even geduld!",
-    "back": "Terug naar de startpagina"
+    "intro": "Laat je gegevens achter en we nemen binnen 1 werkdag contact op om een moment af te spreken.",
+    "expectTitle": "Wat mag je verwachten?",
+    "expect": [
+      "Ongeveer 20 minuten, bij je zaak of online",
+      "We tonen het met je eigen menukaart",
+      "Vrijblijvend — gratis pilot voor de eerste restaurants in Leuven"
+    ]
   },
   "menuDemoPage": {
     "metaTitle": "Voorbeeldmenu — MenuBuddy",
     "metaDescription": "Probeer een voorbeeldmenu zoals je gasten het zien op hun gsm.",
     "badge": "Voorbeeld",
     "cta": "Demo aanvragen"
+  },
+  "form": {
+    "name": "Je naam",
+    "restaurantName": "Naam van je restaurant",
+    "city": "Gemeente",
+    "email": "E-mailadres",
+    "phone": "Telefoon",
+    "optional": "optioneel",
+    "language": "Voorkeurstaal voor de demo",
+    "languageOptions": {
+      "nl": "Nederlands",
+      "fr": "Frans",
+      "en": "Engels"
+    },
+    "preferredTime": "Wanneer past het best?",
+    "preferredTimePlaceholder": "bv. dinsdagvoormiddag",
+    "message": "Bericht",
+    "messagePlaceholder": "Vragen, of iets over je zaak",
+    "honeypot": "Laat dit veld leeg",
+    "submit": "Demo aanvragen",
+    "sending": "Versturen…",
+    "privacy": "We gebruiken je gegevens alleen om je te contacteren over de demo.",
+    "privacyLink": "Privacybeleid",
+    "successTitle": "Bedankt!",
+    "successText": "We hebben je aanvraag ontvangen en nemen binnen 1 werkdag contact met je op.",
+    "previewNote": "Dit is de voorbeeldversie: het formulier is niet echt verstuurd.",
+    "errors": {
+      "required": "Vul dit veld in.",
+      "email": "Vul een geldig e-mailadres in.",
+      "captchaPending": "De spamcontrole is nog bezig. Probeer het zo meteen opnieuw.",
+      "captcha": "De spamcontrole is mislukt. Probeer het opnieuw.",
+      "rate_limited": "Je hebt vandaag al een aanvraag gestuurd. We nemen snel contact met je op.",
+      "server": "Versturen lukte niet. Probeer het opnieuw of mail ons op {email}."
+    }
+  },
+  "legal": {
+    "updated": "Laatst bijgewerkt: {date}",
+    "draft": "Concept — deze tekst wordt nog juridisch nagekeken."
   }
 }

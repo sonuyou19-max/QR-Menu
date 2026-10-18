@@ -28,7 +28,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
   - Supabase Auth redirect URLs must include `https://app.menubuddy.be/*`.
   - Site and app link to each other via env vars (`PUBLIC_APP_URL` in the site, `VITE_SITE_URL` in the app).
 - **Styling:** Tailwind CSS in both, with **shared design tokens** (`/packages/design-tokens`: brand colours, fonts, radius in `src/tokens.ts` → generated Tailwind v4 `theme.css`, imported by both) so site and app look like one brand.
-- **Hosting:** Netlify, **two sites from the same repo** (base directories `/site` and `/app`). App has SPA fallback `/* /index.html 200`. Supabase project in an **EU region (Frankfurt)**.
+- **Hosting:** Netlify, **two sites from the same repo** (base directories `/site` and `/app`). App has SPA fallback `/* /index.html 200`. Supabase project in an **EU region (Frankfurt)**: `menubuddy`, ref `eoeqtwskfqawxfpuyhac` (CLI config in `supabase/config.toml`). Edge-function secrets: `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `NOTIFY_EMAIL` (optional `RESEND_FROM`, `ALLOWED_ORIGINS`).
 - **Backend:** Supabase — Postgres, Auth, Storage, Edge Functions (Deno/TypeScript)
 - **AI:** Anthropic Claude API, called **only from Supabase Edge Functions** (never expose the key to the browser)
   - Menu extraction + translation (vision): strong model, e.g. `claude-sonnet-5-5`
