@@ -8,12 +8,12 @@ import {
   guestUi,
   sampleMenu,
   sampleRestaurant,
-  type GuestLang,
+  type TranslatedLang,
 } from "../../data/sample-menu";
 import { guestPrice } from "./format";
 
 interface Props {
-  lang?: GuestLang;
+  lang?: TranslatedLang;
   /** Category indexes to show (the phone is short). */
   categories?: number[];
 }
@@ -68,7 +68,7 @@ const shown = categories
                       {ui.outOfStock}
                     </span>
                   ) : (
-                    item.tags?.includes("vegetarian") && (
+                    item.vegetarian && (
                       <span class="mt-1.5 inline-flex items-center gap-1 rounded-full bg-herb-100 px-2 py-0.5 text-[10px] font-semibold text-herb-800">
                         <Leaf class="size-3" aria-hidden="true" />
                         {ui.vegetarian}

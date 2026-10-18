@@ -66,15 +66,18 @@
   },
   "demo": {
     "eyebrow": "Demo",
-    "title": "This is what your guest sees.",
-    "text": "A Dutch menu, read by a tourist. Every dish keeps the name on your menu — the translation sits small underneath. So your staff always know what the guest means.",
+    "title": "Try it yourself.",
+    "text": "This is a sample menu as your guests see it. Pick a language, add dishes to the cart and ask a question. Every dish keeps the name on the menu — the translation sits small underneath.",
     "points": [
-      "Pick a language with one tap — or automatically",
-      "Add dishes to a cart and show it to the waiter",
-      "Ask questions: “Is this spicy?”, “What's vegetarian?”"
+      "Switch languages: English, French, German or Dutch",
+      "Tap + and open “Show to staff”",
+      "Ask a question: “Is the stoofvlees spicy?”"
     ],
     "sampleNote": "Sample restaurant with a fictional menu.",
-    "staffScreenLabel": "The screen a guest shows to the waiter"
+    "phoneLabel": "Interactive demo of a guest menu",
+    "qrTitle": "Open it on your phone",
+    "qrText": "Scan the code with your phone camera and try the menu the way your guests see it.",
+    "openFullscreen": "Open the demo full screen"
   },
   "features": {
     "eyebrow": "What you get",
@@ -223,5 +226,11 @@
     "title": "Book a demo",
     "text": "The booking form is coming here very soon. Thanks for your patience!",
     "back": "Back to the home page"
+  },
+  "menuDemoPage": {
+    "metaTitle": "Sample menu — MenuBuddy",
+    "metaDescription": "Try a sample menu the way your guests see it on their phone.",
+    "badge": "Sample",
+    "cta": "Book a demo"
   }
 }

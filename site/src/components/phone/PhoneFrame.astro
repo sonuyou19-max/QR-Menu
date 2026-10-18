@@ -1,8 +1,8 @@
 ---
-// Decorative phone frame. Its content is real HTML (crisp, no image weight) but is
-// exposed to screen readers as a single image with `label`.
+// Phone frame. Static mockups pass `label` and are exposed to screen readers as one image;
+// interactive content (the demo island) omits it and stays fully accessible.
 interface Props {
-  label: string;
+  label?: string;
   class?: string;
   /** "onDark" lightens the bezel so it stays visible on dark sections. */
   tone?: "onLight" | "onDark";
@@ -13,7 +13,7 @@ const bezel =
 ---
 
 <div
-  role="img"
+  role={label ? "img" : undefined}
   aria-label={label}
   class:list={[
     "rounded-phone shadow-phone relative aspect-[9/19] w-full overflow-hidden border-[10px]",

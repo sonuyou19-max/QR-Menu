@@ -1,9 +1,11 @@
 // Packs the built site (dist/) into ONE self-contained HTML file that can be published as a
 // private claude.ai Artifact and opened on a phone: CSS and fonts inlined, every page kept as a
-// hidden "view", and a tiny router that swaps views when internal links are tapped.
+// hidden "view", a tiny router that swaps views when internal links are tapped, and the React
+// islands bundled into one inline script (Astro's chunked island loader needs separate files).
 // Usage: npm run build && node scripts/phone-preview.mjs <output.html>
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { build } from "vite";
 
 const dist = fileURLToPath(new URL("../dist/", import.meta.url));
 const out = process.argv[2];
@@ -11,7 +13,11 @@ if (!out)
   throw new Error("Usage: node scripts/phone-preview.mjs <output.html>");
 
 const languages = ["nl", "fr", "en"];
-const pages = { home: "index.html", demo: "demo/index.html" };
+const pages = {
+  home: "index.html",
+  demo: "demo/index.html",
+  "menu-demo": "menu-demo/index.html",
+};
 const dir = (lang) => (lang === "nl" ? "" : `${lang}/`);
 
 // CSS with font files inlined as data: URIs.
@@ -36,6 +42,8 @@ for (const lang of languages) {
         return "";
       },
     );
+    // Astro's island loader is replaced by the bundled islands script below.
+    body = body.replace(/<script>[\s\S]*?<\/script>/g, "");
     // Ids repeat across views, so namespace them per view.
     const prefix = `${lang}-${page}-`;
     body = body
@@ -62,9 +70,9 @@ function show(name, anchor) {
 function resolve(href, current) {
   const [path, anchor] = href.split("#");
   if (path === "") return [current, anchor];
-  const m = path.match(/^\\/(?:(fr|en)\\/?)?(demo)?\\/?$/);
+  const m = path.match(/^\\/(?:(fr|en)\\/?)?(demo|menu-demo)?\\/?$/);
   if (!m) return null;
-  return [(m[1] ?? "nl") + "-" + (m[2] ? "demo" : "home"), anchor];
+  return [(m[1] ?? "nl") + "-" + (m[2] ?? "home"), anchor];
 }
 let current = show((location.hash.slice(1) || "nl") + "-home");
 document.addEventListener("click", (e) => {
@@ -77,15 +85,37 @@ document.addEventListener("click", (e) => {
 });
 `;
 
+const bundle = await build({
+  root: fileURLToPath(new URL("..", import.meta.url)),
+  configFile: false,
+  // Only lucide-react's harmless "use client" directive notices would show at "warn".
+  logLevel: "error",
+  define: { "process.env.NODE_ENV": '"production"' },
+  build: {
+    write: false,
+    minify: true,
+    lib: {
+      entry: "scripts/preview-islands.tsx",
+      formats: ["iife"],
+      name: "previewIslands",
+    },
+  },
+});
+const islands = (
+  Array.isArray(bundle) ? bundle[0] : bundle
+).output[0].code.replaceAll("</script", "<\\/script");
+
 const doc = `<title>MenuBuddy Site Preview</title>
 <style>${css}
 body { background: var(--color-canvas); font-size: 1rem; }
+astro-island { display: contents; }
 header.sticky { top: env(safe-area-inset-top, 0px); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 50; background: var(--color-canvas); }
 </style>
 ${views.join("\n")}
 <script>${router}</script>
 <script type="module">${script}</script>
+<script>${islands}</script>
 `;
 writeFileSync(out, doc);
 console.log(

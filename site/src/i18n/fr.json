@@ -66,15 +66,18 @@
   },
   "demo": {
     "eyebrow": "Démo",
-    "title": "Voici ce que voit votre client.",
-    "text": "Une carte en néerlandais, lue par un touriste. Le nom de chaque plat reste celui de votre carte — la traduction apparaît en petit en dessous. Votre équipe sait toujours de quoi on parle.",
+    "title": "Essayez vous-même.",
+    "text": "Voici une carte d'exemple telle que vos clients la voient. Choisissez une langue, ajoutez des plats au panier et posez une question. Le nom de chaque plat reste celui de la carte — la traduction apparaît en petit en dessous.",
     "points": [
-      "Choisir la langue en un geste — ou automatiquement",
-      "Ajouter des plats à un panier et le montrer au serveur",
-      "Poser des questions : « C'est épicé ? », « Qu'est-ce qui est végétarien ? »"
+      "Changez de langue : anglais, français, allemand ou néerlandais",
+      "Touchez + puis « Montrer au personnel »",
+      "Posez une question : « Le stoofvlees est-il épicé ? »"
     ],
     "sampleNote": "Restaurant d'exemple avec une carte fictive.",
-    "staffScreenLabel": "L'écran qu'un client montre au serveur"
+    "phoneLabel": "Démo interactive d'une carte client",
+    "qrTitle": "Ouvrez-la sur votre smartphone",
+    "qrText": "Scannez le code avec l'appareil photo de votre smartphone et essayez la carte comme vos clients.",
+    "openFullscreen": "Ouvrir la démo en plein écran"
   },
   "features": {
     "eyebrow": "Ce que vous obtenez",
@@ -223,5 +226,11 @@
     "title": "Demander une démo",
     "text": "Le formulaire de demande arrive très bientôt ici. Merci de votre patience !",
     "back": "Retour à l'accueil"
+  },
+  "menuDemoPage": {
+    "metaTitle": "Carte d'exemple — MenuBuddy",
+    "metaDescription": "Essayez une carte d'exemple telle que vos clients la voient sur leur smartphone.",
+    "badge": "Exemple",
+    "cta": "Demander une démo"
   }
 }

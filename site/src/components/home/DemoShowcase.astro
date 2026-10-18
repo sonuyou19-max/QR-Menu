@@ -1,15 +1,25 @@
 ---
-// Static preview of the guest experience. Phase 0.3 replaces the phones with the interactive DemoPhone island.
+// Live demo (CLAUDE.md 4.6, Demo A): interactive sample menu + QR code / full-screen link.
+// Once the guest menu exists, the island is replaced by an iframe of app.menubuddy.be/m/demo.
 import Check from "@lucide/astro/icons/check";
+import Maximize from "@lucide/astro/icons/maximize-2";
+import QRCode from "qrcode";
 import PhoneFrame from "../phone/PhoneFrame.astro";
-import MenuScreen from "../phone/MenuScreen.astro";
-import StaffScreen from "../phone/StaffScreen.astro";
-import { getDictionary, type Lang } from "../../i18n";
+import DemoPhone from "../demo/DemoPhone";
+import { getDictionary, localePath, type Lang } from "../../i18n";
 
 interface Props {
   lang: Lang;
 }
-const t = getDictionary(Astro.props.lang);
+const { lang } = Astro.props;
+const t = getDictionary(lang);
+const fullscreenHref = localePath(lang, "/menu-demo");
+const qrSvg = await QRCode.toString(new URL(fullscreenHref, Astro.site).href, {
+  type: "svg",
+  margin: 0,
+  errorCorrectionLevel: "M",
+  color: { dark: "#241e19", light: "#ffffff" },
+});
 ---
 
 <section
@@ -17,7 +27,7 @@ const t = getDictionary(Astro.props.lang);
   aria-labelledby="demo-title"
   class="overflow-hidden bg-oat-900 px-4 py-20 text-oat-50 sm:py-28"
 >
-  <div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
     <div>
       <p class="mb-3 text-sm font-semibold tracking-wide text-mustard-300 uppercase">
         {t.demo.eyebrow}
@@ -37,19 +47,34 @@ const t = getDictionary(Astro.props.lang);
           </li>
         ))}
       </ul>
-      <p class="mt-8 text-sm text-oat-300">{t.demo.sampleNote}</p>
+
+      <a
+        href={fullscreenHref}
+        data-cta="demo-fullscreen"
+        class="btn mt-8 bg-mustard-400 text-oat-950 hover:bg-mustard-300 lg:hidden"
+      >
+        <Maximize class="size-5" aria-hidden="true" />
+        {t.demo.openFullscreen}
+      </a>
+
+      <div class="mt-10 hidden items-center gap-5 rounded-card bg-oat-800 p-5 lg:flex">
+        <div
+          class="size-28 shrink-0 rounded-xl bg-white p-2.5 [&>svg]:size-full"
+          set:html={qrSvg}
+          aria-hidden="true"
+        />
+        <div>
+          <p class="font-display text-xl font-semibold">{t.demo.qrTitle}</p>
+          <p class="mt-1 text-oat-200">{t.demo.qrText}</p>
+        </div>
+      </div>
+      <p class="mt-6 text-sm text-oat-300">{t.demo.sampleNote}</p>
     </div>
-    <div class="flex justify-center gap-4 sm:gap-6">
-      <div class="w-full max-w-[17rem] -rotate-2 sm:w-1/2">
-        <PhoneFrame label={t.hero.phoneLabel} tone="onDark">
-          <MenuScreen lang="en" categories={[0, 2]} />
-        </PhoneFrame>
-      </div>
-      <div class="mt-12 hidden w-1/2 max-w-[17rem] rotate-2 sm:block">
-        <PhoneFrame label={t.demo.staffScreenLabel} tone="onDark">
-          <StaffScreen lang="en" />
-        </PhoneFrame>
-      </div>
+
+    <div class="mx-auto w-full max-w-[22rem]">
+      <PhoneFrame tone="onDark">
+        <DemoPhone client:visible label={t.demo.phoneLabel} />
+      </PhoneFrame>
     </div>
   </div>
 </section>

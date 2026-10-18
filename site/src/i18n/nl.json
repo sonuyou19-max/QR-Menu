@@ -66,15 +66,18 @@
   },
   "demo": {
     "eyebrow": "Demo",
-    "title": "Zo ziet je gast het.",
-    "text": "Een Nederlandstalig menu, gelezen door een toerist. De naam van elk gerecht blijft zoals op jouw kaart — de vertaling staat er klein onder. Zo weet je personeel altijd waarover het gaat.",
+    "title": "Probeer het zelf.",
+    "text": "Dit is een voorbeeldmenu zoals je gasten het zien. Kies een taal, voeg gerechten toe aan het mandje en stel een vraag. De naam van elk gerecht blijft zoals op de kaart — de vertaling staat er klein onder.",
     "points": [
-      "Taal kiezen met één tik — of automatisch",
-      "Gerechten bewaren in een mandje en tonen aan de ober",
-      "Vragen stellen: “Is dit pikant?”, “Wat is vegetarisch?”"
+      "Wissel van taal: Engels, Frans, Duits of Nederlands",
+      "Tik op + en open ‘Toon aan personeel’",
+      "Stel een vraag: “Is het stoofvlees pikant?”"
     ],
     "sampleNote": "Voorbeeldrestaurant met een fictief menu.",
-    "staffScreenLabel": "Het scherm dat een gast aan de ober toont"
+    "phoneLabel": "Interactieve demo van een gastmenu",
+    "qrTitle": "Open het op je gsm",
+    "qrText": "Scan de code met de camera van je gsm en probeer het menu zoals je gasten het zien.",
+    "openFullscreen": "Open de demo op volledig scherm"
   },
   "features": {
     "eyebrow": "Wat je krijgt",
@@ -223,5 +226,11 @@
     "title": "Demo aanvragen",
     "text": "Het aanvraagformulier komt hier binnenkort. Even geduld!",
     "back": "Terug naar de startpagina"
+  },
+  "menuDemoPage": {
+    "metaTitle": "Voorbeeldmenu — MenuBuddy",
+    "metaDescription": "Probeer een voorbeeldmenu zoals je gasten het zien op hun gsm.",
+    "badge": "Voorbeeld",
+    "cta": "Demo aanvragen"
   }
 }

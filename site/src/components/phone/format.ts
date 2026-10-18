@@ -4,6 +4,7 @@ const guestLocales: Record<GuestLang, string> = {
   en: "en-IE",
   fr: "fr-BE",
   de: "de-BE",
+  nl: "nl-BE",
 };
 
 export function guestPrice(lang: GuestLang, amount: number): string {

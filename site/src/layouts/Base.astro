@@ -21,8 +21,17 @@ interface Props {
   /** Page path without language prefix, e.g. "/" or "/demo". */
   path: string;
   noindex?: boolean;
+  /** No site header/footer (full-screen pages such as the menu demo). */
+  bare?: boolean;
 }
-const { title, description, lang, path, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  lang,
+  path,
+  noindex = false,
+  bare = false,
+} = Astro.props;
 
 const site = Astro.site!;
 const canonical = new URL(localePath(lang, path), site).href;
@@ -90,10 +99,16 @@ const ogImage = new URL(`/og/${lang}.png`, site).href;
     />
   </head>
   <body class="min-h-dvh">
-    <Header lang={lang} path={path} />
-    <main id="main">
+    {bare ? (
       <slot />
-    </main>
-    <Footer lang={lang} path={path} />
+    ) : (
+      <>
+        <Header lang={lang} path={path} />
+        <main id="main">
+          <slot />
+        </main>
+        <Footer lang={lang} path={path} />
+      </>
+    )}
   </body>
 </html>
