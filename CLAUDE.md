@@ -35,7 +35,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
   - Guest chat: cheaper/faster model, e.g. `claude-haiku-4-5-20251001`
   - Model names from env vars (`MENU_MODEL`, `CHAT_MODEL`), never hard-coded
 - **Payments (later phase):** Mollie (popular in Belgium) or Stripe
-- **Dev environment:** Windows + PowerShell, Claude Code CLI. Give PowerShell-compatible commands.
+- **Dev environment:** Claude Code runs in the cloud. The owner tests **only on a phone** (no laptop): never hand over localhost steps or terminal commands as the way to test.
 
 ---
 
@@ -519,4 +519,5 @@ create table usage_events (                     -- AI cost tracking per restaura
 - Secrets only in Supabase secrets / `.env` (never committed): `ANTHROPIC_API_KEY`, `MENU_MODEL`, `CHAT_MODEL`.
 - Guest page: no cookies/tracking beyond anonymous session id (GDPR-friendly); add a short privacy note.
 - Small, focused commits; explain migrations in commit messages.
+- **Every deliverable comes with a link that opens on a phone.** Marketing site: `npm run build -w @menubuddy/site` then `node site/scripts/phone-preview.mjs <file>.html` and publish that file as a private claude.ai Artifact (reuse the same Artifact URL across phases: https://claude.ai/artifact/C2WzDTiJdAoaV1fDJ3Qpq1), plus the Netlify branch-deploy URL once Netlify is connected. Same idea for the app later.
 - When unsure about a product decision, ask rather than guess.

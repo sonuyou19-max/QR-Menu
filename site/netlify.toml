@@ -1,0 +1,8 @@
+# Netlify site 1 (menubuddy.be). In the Netlify UI: Base directory = (empty, repo root),
+# Package directory = site. Paths below are relative to the repo root.
+[build]
+  command = "npm run build -w @menubuddy/site"
+  publish = "site/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
