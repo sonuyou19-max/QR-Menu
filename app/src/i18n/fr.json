@@ -260,7 +260,13 @@
       "translations": "Traductions",
       "notTranslated": "Pas encore traduit",
       "noHelper": "Le nom reste tel quel",
-      "translationsHint": "Faites par l'IA à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour les mettre à jour."
+      "translationsHint": "Faites par l'IA à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour les mettre à jour.",
+      "suggest": "Suggestion de l'IA",
+      "suggestAgain": "Nouvelle suggestion",
+      "suggesting": "Réflexion…",
+      "suggestFailed": "Cela n'a pas fonctionné. Réessayez dans un instant.",
+      "suggestUnknown": "L'IA ne connaît pas ce plat. Écrivez vous-même une courte description pour que les clients sachent ce que c'est.",
+      "allergenHint": "L'IA pense que ce plat peut contenir : {allergens}. Vous avez confirmé autre chose ; vérifiez et modifiez si nécessaire."
     },
     "toast": {
       "saved": "Enregistré",

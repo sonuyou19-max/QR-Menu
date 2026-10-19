@@ -430,6 +430,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 | `get-menu` | Guest page | Returns published menu in requested language (fast path, cacheable) |
 | `menu-chat` | Guest page | Loads menu in guest language + last few messages → Claude chat model (JSON) → server-side validation (see 4.1) → answer + item cards from DB; logs Q&A |
 | `suggest-theme` | Owner | Vision call on logo / menu photos / website → theme tokens + template suggestion |
+| `suggest-dish` | Owner | "Suggest with AI" for a dish added by hand: typical preparation (menu language), confidence, dietary flags, allergen suggestions. Returns the suggestion only; the app applies it via autosave, never over the owner's description, set dietary flags or confirmed allergens (shows a warning instead) |
 | `process-dish-image` | Owner | (Optional) make thumbnail + web-size versions of uploaded dish photos |
 | `track-event` | Guest page | Inserts analytics events |
 | `book-demo` | Marketing site | Checks Turnstile + honeypot → inserts into `leads` → sends email notification |

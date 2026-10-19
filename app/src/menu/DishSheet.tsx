@@ -6,6 +6,7 @@ import {
   LoaderCircle,
   ShieldAlert,
   ShieldCheck,
+  Sparkles,
   Trash2,
   X,
 } from "lucide-react";
@@ -17,7 +18,9 @@ import {
   removeDishPhotoFiles,
   uploadDishPhoto,
 } from "./dishPhoto";
-import type { Category, Item, MenuEditor } from "./useMenuEditor";
+import { supabase } from "../lib/supabase";
+import type { Allergen } from "../lib/extraction";
+import type { Category, Item, ItemPatch, MenuEditor } from "./useMenuEditor";
 import type { Translation } from "./useTranslations";
 import { languageName } from "../lib/languages";
 
@@ -144,6 +147,46 @@ export function DishSheet({
     void editor.updateItem(item.id, { allergens: next });
   };
   const confirmed = item.allergen_status === "confirmed";
+
+  // "Suggest with AI": typical preparation + dietary + allergen suggestions for dishes the owner
+  // typed in. Never touches the owner's own description, set dietary flags or confirmed allergens.
+  const [suggesting, setSuggesting] = useState(false);
+  const [suggestNote, setSuggestNote] = useState<"failed" | "unknown" | null>(
+    null,
+  );
+  const [allergenHint, setAllergenHint] = useState<Allergen[]>([]);
+  const suggest = async () => {
+    setSuggesting(true);
+    setSuggestNote(null);
+    setAllergenHint([]);
+    const { data, error } = await supabase.functions.invoke<{
+      ok: boolean;
+      suggestion: {
+        typical_description: string | null;
+        confidence: "known_dish" | "likely" | "unknown";
+        dietary: Dietary;
+        suggested_allergens: Allergen[];
+      };
+    }>("suggest-dish", { body: { itemId: item.id } });
+    setSuggesting(false);
+    if (error || !data?.ok) return setSuggestNote("failed");
+    const suggestion = data.suggestion;
+    const patch: ItemPatch = { confidence: suggestion.confidence };
+    if (suggestion.typical_description) {
+      patch.typical_description = suggestion.typical_description;
+      patch.show_typical_description = true;
+    } else setSuggestNote("unknown");
+    if (!Object.values(dietary).some(Boolean))
+      patch.dietary = suggestion.dietary;
+    if (!confirmed) patch.allergens = suggestion.suggested_allergens;
+    else
+      setAllergenHint(
+        suggestion.suggested_allergens.filter(
+          (a) => !item.allergens.includes(a),
+        ),
+      );
+    await editor.updateItem(item.id, patch);
+  };
 
   return (
     <dialog
@@ -321,9 +364,33 @@ export function DishSheet({
         </div>
 
         <div>
-          <label htmlFor={ids.description} className="block font-semibold">
-            {t.editor.sheet.description}
-          </label>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor={ids.description} className="block font-semibold">
+              {t.editor.sheet.description}
+            </label>
+            {!item.menu_description && !description.trim() && (
+              <button
+                type="button"
+                disabled={suggesting}
+                onClick={() => void suggest()}
+                className="border-line bg-surface text-brand-strong inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-full border px-3 text-sm font-semibold"
+              >
+                {suggesting ? (
+                  <LoaderCircle
+                    className="size-4 animate-spin"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Sparkles className="size-4" aria-hidden="true" />
+                )}
+                {suggesting
+                  ? t.editor.sheet.suggesting
+                  : item.typical_description
+                    ? t.editor.sheet.suggestAgain
+                    : t.editor.sheet.suggest}
+              </button>
+            )}
+          </div>
           <p className="text-ink-muted text-sm">
             {t.editor.sheet.descriptionHint}
           </p>
@@ -337,11 +404,23 @@ export function DishSheet({
             maxLength={1000}
             className="input mt-1.5"
           />
-          {item.confidence === "unknown" && !item.menu_description && (
-            <p className="text-mustard-800 mt-1.5 text-sm font-medium">
-              {t.editor.sheet.unknown}
+          {suggestNote && (
+            <p
+              role="status"
+              className={`mt-1.5 text-sm font-medium ${suggestNote === "failed" ? "text-danger" : "text-mustard-800"}`}
+            >
+              {suggestNote === "failed"
+                ? t.editor.sheet.suggestFailed
+                : t.editor.sheet.suggestUnknown}
             </p>
           )}
+          {item.confidence === "unknown" &&
+            !item.menu_description &&
+            suggestNote !== "unknown" && (
+              <p className="text-mustard-800 mt-1.5 text-sm font-medium">
+                {t.editor.sheet.unknown}
+              </p>
+            )}
         </div>
 
         {item.typical_description && !item.menu_description && (
@@ -488,6 +567,20 @@ export function DishSheet({
                 ? t.editor.sheet.allergensConfirmed
                 : t.editor.sheet.allergensSuggested}
             </p>
+            {allergenHint.length > 0 && (
+              <p
+                role="status"
+                className="bg-mustard-100 text-mustard-900 rounded-control mt-2 flex gap-1.5 p-2.5 text-sm font-medium"
+              >
+                <ShieldAlert
+                  className="mt-0.5 size-4 shrink-0"
+                  aria-hidden="true"
+                />
+                {fill(t.editor.sheet.allergenHint, {
+                  allergens: allergenHint.map((a) => t.allergens[a]).join(", "),
+                })}
+              </p>
+            )}
             <div className="mt-3 flex flex-wrap gap-2">
               {allergenCodes.map((code) => (
                 <Chip

@@ -109,3 +109,12 @@ export const TranslationBatch = z.object({
   ),
 });
 export type TranslationBatch = z.infer<typeof TranslationBatch>;
+
+/** What the model returns for one dish the owner added by hand (suggest-dish). */
+export const DishSuggestion = Item.pick({
+  typical_description: true,
+  confidence: true,
+  dietary: true,
+  suggested_allergens: true,
+});
+export type DishSuggestion = z.infer<typeof DishSuggestion>;

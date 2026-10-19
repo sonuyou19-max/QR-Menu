@@ -260,7 +260,13 @@
       "translations": "Vertalingen",
       "notTranslated": "Nog niet vertaald",
       "noHelper": "Naam blijft zoals hij is",
-      "translationsHint": "Gemaakt door de AI op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken."
+      "translationsHint": "Gemaakt door de AI op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken.",
+      "suggest": "Voorstel door AI",
+      "suggestAgain": "Nieuw voorstel",
+      "suggesting": "Even denken…",
+      "suggestFailed": "Dat is niet gelukt. Probeer het zo meteen opnieuw.",
+      "suggestUnknown": "De AI kent dit gerecht niet. Schrijf zelf een korte beschrijving, zodat gasten weten wat het is.",
+      "allergenHint": "De AI denkt dat dit gerecht dit kan bevatten: {allergens}. Jij bevestigde iets anders; controleer en pas aan indien nodig."
     },
     "toast": {
       "saved": "Bewaard",

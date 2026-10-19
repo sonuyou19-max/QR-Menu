@@ -260,7 +260,13 @@
       "translations": "Translations",
       "notTranslated": "Not translated yet",
       "noHelper": "Name stays as is",
-      "translationsHint": "Made by the AI from your text. Change your text and tap \"Translate now\" to update."
+      "translationsHint": "Made by the AI from your text. Change your text and tap \"Translate now\" to update.",
+      "suggest": "Suggest with AI",
+      "suggestAgain": "Suggest again",
+      "suggesting": "Thinking…",
+      "suggestFailed": "That didn't work. Try again in a moment.",
+      "suggestUnknown": "The AI doesn't know this dish. Write a short description yourself so guests know what it is.",
+      "allergenHint": "The AI thinks this dish may contain: {allergens}. You confirmed otherwise; check and change if needed."
     },
     "toast": {
       "saved": "Saved",

@@ -12,3 +12,7 @@ verify_jwt = false
 [functions.publish-menu]
 # The owner's login token is checked inside the function (requestUser), then ownership.
 verify_jwt = false
+
+[functions.suggest-dish]
+# The owner's login token is checked inside the function (requestUser), then ownership.
+verify_jwt = false
