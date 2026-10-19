@@ -84,11 +84,13 @@
     }
   },
   "overviewExtra": {
-    "menuAt": "Je menu komt op",
+    "menuAt": "Je menukaart",
     "done": "Klaar",
     "languages": "Talen voor gasten",
     "open": "Openen",
-    "inProgress": "Bezig"
+    "inProgress": "Bezig",
+    "notPublished": "(nog niet online — publiceer hem bij Menukaart)",
+    "futureNote": "Testadres. Zodra het domein gekocht is, verhuizen je menukaart en QR-code naar {address}."
   },
   "upload": {
     "title": "Upload je menukaart",

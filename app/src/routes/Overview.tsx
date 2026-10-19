@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Check, ChevronRight, ListChecks, Store, Upload } from "lucide-react";
-import { useI18n } from "../i18n";
-import { config } from "../lib/config";
+import { fill, useI18n } from "../i18n";
+import { config, isLiveDomain, menuUrl } from "../lib/config";
 import { languageName } from "../lib/languages";
 import { supabase } from "../lib/supabase";
 import { useRestaurant } from "../restaurant/RestaurantProvider";
@@ -33,23 +33,29 @@ export function Overview() {
       <dl className="text-ink-muted mt-3 space-y-1">
         <div>
           <dt className="inline">{t.overviewExtra.menuAt}: </dt>
-          <dd className="text-ink inline font-medium break-all">
-            {config.menuBase}
-            {restaurant.slug}
-            {restaurant.is_published && (
-              <>
-                {" · "}
-                <a
-                  href={`/m/${restaurant.slug}`}
-                  target="_blank"
-                  rel="noopener"
-                  className="text-brand-strong underline underline-offset-2"
-                >
-                  {t.editor.previewAsGuest}
-                </a>
-              </>
+          <dd className="inline font-medium break-all">
+            <a
+              href={menuUrl(restaurant.slug)}
+              target="_blank"
+              rel="noopener"
+              className="text-brand-strong underline underline-offset-2"
+            >
+              {menuUrl(restaurant.slug).replace(/^https?:\/\//, "")}
+            </a>
+            {!restaurant.is_published && (
+              <span className="text-ink-muted font-normal">
+                {" "}
+                {t.overviewExtra.notPublished}
+              </span>
             )}
           </dd>
+          {!isLiveDomain && (
+            <p className="text-sm">
+              {fill(t.overviewExtra.futureNote, {
+                address: `${config.menuBase}${restaurant.slug}`,
+              })}
+            </p>
+          )}
         </div>
         <div>
           <dt className="inline">{t.overviewExtra.languages}: </dt>

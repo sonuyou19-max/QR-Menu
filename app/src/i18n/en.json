@@ -84,11 +84,13 @@
     }
   },
   "overviewExtra": {
-    "menuAt": "Your menu will be at",
+    "menuAt": "Your menu",
     "done": "Done",
     "languages": "Guest languages",
     "open": "Open",
-    "inProgress": "In progress"
+    "inProgress": "In progress",
+    "notPublished": "(not online yet — publish it under Menu)",
+    "futureNote": "Test address. Once the domain is bought, your menu and QR code move to {address}."
   },
   "upload": {
     "title": "Upload your menu",

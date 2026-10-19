@@ -84,11 +84,13 @@
     }
   },
   "overviewExtra": {
-    "menuAt": "Votre carte sera sur",
+    "menuAt": "Votre carte",
     "done": "Fait",
     "languages": "Langues pour les clients",
     "open": "Ouvrir",
-    "inProgress": "En cours"
+    "inProgress": "En cours",
+    "notPublished": "(pas encore en ligne — publiez-la dans Carte)",
+    "futureNote": "Adresse de test. Une fois le domaine acheté, votre carte et votre QR code passeront à {address}."
   },
   "upload": {
     "title": "Envoyez votre carte",

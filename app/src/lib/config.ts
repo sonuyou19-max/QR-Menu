@@ -7,9 +7,17 @@ export const config = {
   supabaseKey:
     import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
     "sb_publishable_vkrdzgiRxWrNC1Tl-xYMGA_uFxgulgI",
-  /** Public guest-menu address shown to owners (what gets printed on QR codes). */
+  /** Final guest-menu address (what printed QR codes will point to, once the domain is live). */
   menuBase: "app.menubuddy.be/m/",
   siteUrl:
     import.meta.env.VITE_SITE_URL ||
     "https://menubuddy-site.sonuyou19.workers.dev",
 };
+
+/** True on the real domain; on the workers.dev test address menus and QR codes are for testing. */
+export const isLiveDomain = location.host === "app.menubuddy.be";
+
+/** Guest menu address that works right now (the test address until the domain is live). */
+export function menuUrl(slug: string): string {
+  return `${location.origin}/m/${slug}`;
+}
