@@ -49,10 +49,14 @@ export function AddButton({
       className={`relative z-10 grid size-11 shrink-0 place-items-center rounded-full text-base font-bold shadow-sm transition-colors ${
         qty
           ? "bg-brand text-on-brand"
-          : "border-brand text-brand-strong bg-surface border-2"
+          : "border-line text-brand-strong bg-surface border"
       }`}
     >
-      {qty ? qty : <Plus className="size-5" aria-hidden="true" />}
+      {qty ? (
+        qty
+      ) : (
+        <Plus className="size-6" strokeWidth={1.75} aria-hidden="true" />
+      )}
     </button>
   );
 }

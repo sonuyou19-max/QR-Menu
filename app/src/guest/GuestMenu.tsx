@@ -594,29 +594,32 @@ function DishCard({
   const add = dish.in_stock && (
     <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
   );
+  // Like delivery apps: name, price on its own line, then the description; photo and + on the right.
   const text = (
     <>
-      <span className="flex items-start gap-3">
-        <span
-          className="min-w-0 flex-1 text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
-          dir="auto"
-        >
-          {dish.name}
-        </span>
-        {dish.price !== null && (
-          <span className="text-brand-strong shrink-0 text-lg font-semibold tabular-nums">
-            {money.format(dish.price)}
-          </span>
-        )}
+      <span
+        className="block text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
+        dir="auto"
+      >
+        {dish.name}
       </span>
       {helper && (
         <span className="text-ink-muted block text-sm font-medium" dir="auto">
           {helper}
         </span>
       )}
-      {!dish.in_stock && (
-        <span className="bg-ink-muted text-canvas mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold">
-          {s.soldOut}
+      {(dish.price !== null || !dish.in_stock) && (
+        <span className="mt-1 flex flex-wrap items-center gap-2">
+          {dish.price !== null && (
+            <span className="text-ink text-base font-semibold tabular-nums">
+              {money.format(dish.price)}
+            </span>
+          )}
+          {!dish.in_stock && (
+            <span className="bg-ink-muted text-canvas inline-block rounded-full px-2.5 py-0.5 text-xs font-bold">
+              {s.soldOut}
+            </span>
+          )}
         </span>
       )}
       <Description dish={dish} s={s} clamp />
@@ -660,18 +663,18 @@ function DishCard({
       >
         {text}
       </button>
-      {(thumb || add) && (
-        <div className="flex shrink-0 flex-col items-end gap-2">
-          {thumb && (
-            <img
-              src={thumb}
-              alt=""
-              loading="lazy"
-              className="rounded-control size-20 object-cover sm:size-24"
-            />
-          )}
-          {add}
+      {thumb ? (
+        <div className="relative shrink-0 self-start">
+          <img
+            src={thumb}
+            alt=""
+            loading="lazy"
+            className="rounded-control border-line size-28 border object-cover"
+          />
+          {add && <div className="absolute -end-2 -top-2">{add}</div>}
         </div>
+      ) : (
+        add && <div className="shrink-0 self-start">{add}</div>
       )}
     </div>
   );
