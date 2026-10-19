@@ -1,12 +1,17 @@
 import { chromium } from "playwright";
 import { execSync } from "node:child_process";
-const chrome = execSync("ls -d /opt/pw-browsers/chromium-*/chrome-linux*/chrome | head -1").toString().trim();
+const chrome = execSync(
+  "ls -d /opt/pw-browsers/chromium-*/chrome-linux*/chrome | head -1",
+)
+  .toString()
+  .trim();
 const css = `body{margin:0;background:#5a4632;display:grid;place-items:center;height:100vh}
 .paper{width:820px;padding:56px 64px;background:#fbf6ea;transform:rotate(-1.6deg);box-shadow:0 20px 60px #0008;font-family:Georgia,serif;color:#2b2118}
 h1{text-align:center;font-size:44px;margin:0 0 4px;letter-spacing:2px}.sub{text-align:center;font-style:italic;margin-bottom:28px}
 h2{font-size:30px;border-bottom:2px solid #2b2118;margin:28px 0 12px;font-variant:small-caps}
 .d{display:flex;justify-content:space-between;font-size:23px;margin-top:14px;font-weight:bold}.x{font-size:18px;font-style:italic;margin-top:2px}`;
-const dish = (n, p, x = "") => `<div class="d"><span>${n}</span><span>${p}</span></div>${x ? `<div class="x">${x}</div>` : ""}`;
+const dish = (n, p, x = "") =>
+  `<div class="d"><span>${n}</span><span>${p}</span></div>${x ? `<div class="x">${x}</div>` : ""}`;
 const pages = {
   "nl-1": `<h1>BRASSERIE DE LINDE</h1><div class="sub">Oude Markt · Leuven</div>
 <h2>Voorgerechten</h2>${dish("Tomaat-garnaal", "€ 16,50", "Grijze Noordzeegarnalen, mayonaise, sla")}${dish("Kaaskroketten (2 st.)", "€ 13,00")}${dish("Soep van de dag", "€ 7,50")}
@@ -22,7 +27,13 @@ const pages = {
 const browser = await chromium.launch({ executablePath: chrome });
 const page = await browser.newPage({ viewport: { width: 1000, height: 1300 } });
 for (const [name, body] of Object.entries(pages)) {
-  await page.setContent(`<style>${css}</style><div class="paper">${body}</div>`);
-  await page.screenshot({ path: `fixtures/${name}.jpg`, type: "jpeg", quality: 82 });
+  await page.setContent(
+    `<style>${css}</style><div class="paper">${body}</div>`,
+  );
+  await page.screenshot({
+    path: `fixtures/${name}.jpg`,
+    type: "jpeg",
+    quality: 82,
+  });
 }
 await browser.close();
