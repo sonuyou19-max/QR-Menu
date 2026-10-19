@@ -29,6 +29,7 @@ import {
   type Item,
   type ToastKind,
 } from "../menu/useMenuEditor";
+import { readTheme } from "../lib/theme";
 import { useRestaurant } from "../restaurant/RestaurantProvider";
 
 /** Edit menu mode (CLAUDE.md 4.5): live editor + bulk prices tab. Everything autosaves. */
@@ -90,7 +91,16 @@ export function MenuEditor() {
       (c) =>
         translations.missingLanguages(c.id, c.content_hash, guestLanguages)
           .length > 0,
-    ).length;
+    ).length +
+    // The look's tagline is translated with the menu.
+    (readTheme(restaurant.theme).tagline &&
+    translations.missingLanguages(
+      restaurant.id,
+      restaurant.tagline_hash,
+      guestLanguages,
+    ).length > 0
+      ? 1
+      : 0);
   // Kept per dish even while allergens are off, so switching on only asks for these.
   const unconfirmed = ordered.filter(
     (i) => i.allergen_status !== "confirmed" && !i.is_hidden,

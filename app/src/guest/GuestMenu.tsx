@@ -28,7 +28,7 @@ import {
 } from "./menu-data";
 import { useCart, type Cart } from "./cart";
 import { CategoryHeading, Hero, Ornament, useGuestLook } from "./Look";
-import type { Theme } from "../lib/theme";
+import { readTheme, type Theme } from "../lib/theme";
 import {
   AddButton,
   DetailOrderControl,
@@ -311,6 +311,12 @@ export function GuestMenu({ slug }: { slug: string }) {
         logo={logo}
         name={restaurant.name}
         tableText={table && s.table.replace("{table}", table)}
+        // Only for the published tagline: a draft from the Look screen's preview has none yet.
+        taglineTranslated={
+          theme.tagline === readTheme(restaurant.theme).tagline
+            ? (restaurant.tagline_translated ?? null)
+            : null
+        }
       />
 
       <header className="bg-canvas/95 border-line sticky top-0 z-20 border-b pt-[env(safe-area-inset-top)] backdrop-blur">

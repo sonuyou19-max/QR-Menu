@@ -1,6 +1,6 @@
-// Publishes a restaurant's menu: translates every visible dish and category that has no
-// up-to-date translation into each guest language, then marks the restaurant published
-// (CLAUDE.md 3, 7, 8).
+// Publishes a restaurant's menu: translates every visible dish and category, and the look's
+// tagline, that has no up-to-date translation into each guest language, then marks the
+// restaurant published (CLAUDE.md 3, 7, 8).
 //
 // "Up to date" = translations.source_hash equals the dish's content_hash (kept by a trigger on
 // name + descriptions), so only new or changed texts are sent to the AI. Prices, stock and photos
@@ -45,7 +45,7 @@ const BUDGET_MS = 140 * 1000;
 const Body = z.object({ restaurantId: z.uuid() });
 
 interface Source {
-  entityType: "item" | "category";
+  entityType: "item" | "category" | "tagline";
   id: string;
   hash: string;
   name: string;
@@ -67,7 +67,7 @@ async function translateBatch(
   // Short ids ("e0", "e1", …) instead of uuids: fewer tokens, fewer copying mistakes.
   const input = batch.map((s, i) => ({
     id: `e${i}`,
-    kind: s.entityType === "item" ? "dish" : "category",
+    kind: s.entityType === "item" ? "dish" : s.entityType,
     ...(s.categoryName ? { category: s.categoryName } : {}),
     name: s.name,
     menu_description: s.menuDescription,
@@ -117,6 +117,8 @@ async function translateBatch(
         if (source.menuDescription && !entry.menu_description?.trim()) continue;
         if (source.typicalDescription && !entry.typical_description?.trim())
           continue;
+        // A tagline is only its text: without one there is nothing to show.
+        if (source.entityType === "tagline" && !entry.name?.trim()) continue;
         rows.push({
           restaurant_id: restaurantId,
           entity_type: source.entityType,
@@ -175,7 +177,7 @@ async function publish(db: SupabaseClient, restaurantId: string) {
     const [{ data: restaurant }, cats, items, existing] = await Promise.all([
       db
         .from("restaurants")
-        .select("source_language, guest_languages, published_at")
+        .select("source_language, guest_languages, published_at, theme, tagline_hash")
         .eq("id", restaurantId)
         .single(),
       db
@@ -197,7 +199,21 @@ async function publish(db: SupabaseClient, restaurantId: string) {
     if (!restaurant || cats.error || items.error || existing.error)
       throw new Error("load failed");
 
+    const tagline = (restaurant.theme as { tagline?: unknown } | null)?.tagline;
     const sources: Source[] = [
+      ...(typeof tagline === "string" && tagline.trim()
+        ? [
+            {
+              entityType: "tagline" as const,
+              id: restaurantId,
+              hash: restaurant.tagline_hash as string,
+              name: tagline.trim(),
+              categoryName: null,
+              menuDescription: null,
+              typicalDescription: null,
+            },
+          ]
+        : []),
       ...cats.data.map((c) => ({
         entityType: "category" as const,
         id: c.id,

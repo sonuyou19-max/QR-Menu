@@ -43,6 +43,8 @@ export interface GuestMenuData {
     /** Raw look settings; read with readTheme(). */
     theme: unknown;
     logo_path: string | null;
+    /** The look's tagline in the guest's language; null: show it as written. */
+    tagline_translated?: string | null;
   };
   categories: {
     id: string;

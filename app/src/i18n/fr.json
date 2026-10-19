@@ -436,7 +436,7 @@
     "uploading": "Envoi…",
     "uploadError": "La photo n'a pas pu être envoyée. Essayez-en une autre.",
     "tagline": "Votre phrase",
-    "taglineHint": "Une courte phrase avec vos mots, sous votre nom. Vos clients la voient telle que vous l'écrivez.",
+    "taglineHint": "Une courte phrase avec vos mots, sous votre nom. Les clients qui lisent une autre langue la voient traduite : après une modification, touchez « Traduire maintenant » sous Menu.",
     "taglinePlaceholder": "p. ex. Cuisine belge depuis 1987",
     "colours": "Couleurs",
     "accent": "Couleur principale",

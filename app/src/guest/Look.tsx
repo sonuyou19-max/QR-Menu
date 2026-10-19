@@ -122,16 +122,19 @@ export function Hero({
   logo,
   name,
   tableText,
+  taglineTranslated = null,
 }: {
   theme: Theme;
   logo: string | null;
   name: string;
   tableText: string | null;
+  /** The published tagline in the guest's language (CLAUDE.md 4.4), if translated. */
+  taglineTranslated?: string | null;
 }) {
   const logoUrl = brandingImage(logo);
   const cover = brandingImage(theme.cover_path);
   const header = theme.header === "cover" && !cover ? "band" : theme.header;
-  const tagline = theme.tagline || null;
+  const tagline = taglineTranslated || theme.tagline || null;
 
   if (header === "cover")
     return (

@@ -265,6 +265,7 @@ export type Database = {
           show_allergens: boolean;
           qr_tables: string[];
           slug: string;
+          tagline_hash: string | null;
           source_language: string;
           theme: Json;
           translation_error: string | null;
