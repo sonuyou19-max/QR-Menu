@@ -1,10 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Check,
   ChevronDown,
   Globe,
   Info,
   LoaderCircle,
+  MessageCircle,
   MessageCircleQuestion,
   ShieldAlert,
   X,
@@ -29,6 +38,9 @@ import {
   orderLines,
 } from "./Order";
 import { rtlLanguages, stringsFor, type GuestStrings } from "./strings";
+
+// The chat (and its code) loads only when a guest opens it.
+const Chat = lazy(() => import("./Chat"));
 
 type Filter = "vegetarian" | "vegan" | "noPork" | "noBeef" | "glutenFree";
 const LANG_KEY = "mb.guestLang";
@@ -102,6 +114,7 @@ export function GuestMenu({ slug }: { slug: string }) {
   const cart = useCart(slug);
   const [orderOpen, setOrderOpen] = useState(false);
   const [staffOpen, setStaffOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const requested = useRef(language);
   // The first answer tells which languages exist; pick the best one once, then follow the guest.
   const autoPicked = useRef(false);
@@ -332,7 +345,7 @@ export function GuestMenu({ slug }: { slug: string }) {
       </header>
 
       <main
-        className={`mx-auto max-w-2xl px-4 ${lines.length ? "pb-32" : "pb-16"}`}
+        className={`mx-auto max-w-2xl px-4 ${lines.length ? "pb-44" : "pb-28"}`}
       >
         <div
           role="group"
@@ -440,6 +453,39 @@ export function GuestMenu({ slug }: { slug: string }) {
           cart={cart}
           onClose={() => setOpenDish(null)}
         />
+      )}
+
+      {/* Questions about the menu: published menus only (the chat reads the published menu). */}
+      {restaurant.is_published && !orderOpen && !staffOpen && !chatOpen && (
+        <button
+          type="button"
+          onClick={() => setChatOpen(true)}
+          className={`bg-surface text-ink border-line fixed end-4 z-30 inline-flex min-h-12 items-center gap-2 rounded-full border ps-4 pe-5 font-semibold shadow-lg ${
+            lines.length
+              ? "bottom-[calc(5.75rem+env(safe-area-inset-bottom))]"
+              : "bottom-[max(1rem,env(safe-area-inset-bottom))]"
+          }`}
+        >
+          <MessageCircle
+            className="text-brand-strong size-5"
+            aria-hidden="true"
+          />
+          {s.chat.open}
+        </button>
+      )}
+      {chatOpen && (
+        <Suspense fallback={null}>
+          <Chat
+            slug={slug}
+            language={shownLanguage}
+            s={s}
+            dishes={dishes}
+            cart={cart}
+            money={money}
+            onOpenDish={setOpenDish}
+            onClose={() => setChatOpen(false)}
+          />
+        </Suspense>
       )}
 
       {!orderOpen && !staffOpen && (

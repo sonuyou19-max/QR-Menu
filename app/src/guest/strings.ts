@@ -53,6 +53,24 @@ export interface GuestStrings {
     clearConfirm: string;
     notSent: string;
   };
+  chat: {
+    open: string;
+    title: string;
+    intro: string;
+    placeholder: string;
+    send: string;
+    s1: string;
+    s2: string;
+    s3: string;
+    thinking: string;
+    fallback: string;
+    error: string;
+    limit: string;
+    busy: string;
+    unconfirmed: string;
+    disclaimer: string;
+    clear: string;
+  };
   allergenNames: Record<Allergen, string>;
 }
 
@@ -108,6 +126,24 @@ const en: GuestStrings = {
     clearConfirm: "Remove all dishes from your order?",
     notSent:
       "This isn't sent to the kitchen. Show it to the staff when you order.",
+  },
+  chat: {
+    open: "Ask about the menu",
+    title: "Questions about the menu",
+    intro: "Ask anything about the dishes. Answers come from this restaurant's menu.",
+    placeholder: "Type your question…",
+    send: "Send",
+    s1: "What's vegetarian here?",
+    s2: "Which dishes are spicy?",
+    s3: "Which dishes are without gluten?",
+    thinking: "Looking at the menu…",
+    fallback: "Sorry, I couldn't answer that — please ask the staff.",
+    error: "Something went wrong. Check your connection and try again.",
+    limit: "You've asked a lot of questions. Please ask the staff for more.",
+    busy: "The assistant is busy right now. Please ask the staff.",
+    unconfirmed: "Allergen info for this dish isn't confirmed by the restaurant — please ask staff.",
+    disclaimer: "Answers are written by AI from the menu. When in doubt, ask the staff.",
+    clear: "Start over",
   },
   allergenNames: {
     gluten: "Gluten",
@@ -186,6 +222,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       notSent:
         "Dit gaat niet naar de keuken. Toon het aan het personeel wanneer je bestelt.",
     },
+    chat: {
+      open: "Vraag iets over de kaart",
+      title: "Vragen over de menukaart",
+      intro: "Vraag gerust iets over de gerechten. De antwoorden komen uit de menukaart van dit restaurant.",
+      placeholder: "Typ je vraag…",
+      send: "Verstuur",
+      s1: "Wat is hier vegetarisch?",
+      s2: "Welke gerechten zijn pikant?",
+      s3: "Welke gerechten zijn zonder gluten?",
+      thinking: "De kaart wordt bekeken…",
+      fallback: "Sorry, daar heb ik geen antwoord op — vraag het aan het personeel.",
+      error: "Er ging iets mis. Controleer je verbinding en probeer opnieuw.",
+      limit: "Je stelde al veel vragen. Vraag het verder aan het personeel.",
+      busy: "De assistent is nu even druk. Vraag het aan het personeel.",
+      unconfirmed: "De allergeneninformatie van dit gerecht is niet bevestigd door het restaurant — vraag het aan het personeel.",
+      disclaimer: "Antwoorden worden door AI geschreven op basis van de menukaart. Twijfel je, vraag het aan het personeel.",
+      clear: "Opnieuw beginnen",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Schaaldieren",
@@ -258,6 +312,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clearConfirm: "Retirer tous les plats de votre commande ?",
       notSent:
         "Rien n'est envoyé en cuisine. Montrez-le au personnel au moment de commander.",
+    },
+    chat: {
+      open: "Une question sur la carte ?",
+      title: "Questions sur la carte",
+      intro: "Posez vos questions sur les plats. Les réponses viennent de la carte de ce restaurant.",
+      placeholder: "Écrivez votre question…",
+      send: "Envoyer",
+      s1: "Qu'y a-t-il de végétarien ?",
+      s2: "Quels plats sont épicés ?",
+      s3: "Quels plats sont sans gluten ?",
+      thinking: "Je consulte la carte…",
+      fallback: "Désolé, je n'ai pas de réponse — demandez au personnel.",
+      error: "Un problème est survenu. Vérifiez votre connexion et réessayez.",
+      limit: "Vous avez posé beaucoup de questions. Pour la suite, demandez au personnel.",
+      busy: "L'assistant est occupé pour le moment. Demandez au personnel.",
+      unconfirmed: "Les informations sur les allergènes de ce plat ne sont pas confirmées par le restaurant — demandez au personnel.",
+      disclaimer: "Les réponses sont rédigées par une IA à partir de la carte. En cas de doute, demandez au personnel.",
+      clear: "Recommencer",
     },
     allergenNames: {
       gluten: "Gluten",
@@ -333,6 +405,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       notSent:
         "Dies wird nicht an die Küche gesendet. Zeigen Sie es beim Bestellen dem Personal.",
     },
+    chat: {
+      open: "Frage zur Speisekarte",
+      title: "Fragen zur Speisekarte",
+      intro: "Fragen Sie alles zu den Gerichten. Die Antworten stammen aus der Speisekarte dieses Restaurants.",
+      placeholder: "Ihre Frage…",
+      send: "Senden",
+      s1: "Was ist hier vegetarisch?",
+      s2: "Welche Gerichte sind scharf?",
+      s3: "Welche Gerichte sind glutenfrei?",
+      thinking: "Ich sehe in der Speisekarte nach…",
+      fallback: "Leider kann ich das nicht beantworten — bitte fragen Sie das Personal.",
+      error: "Etwas ist schiefgelaufen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      limit: "Sie haben schon viele Fragen gestellt. Bitte fragen Sie das Personal.",
+      busy: "Der Assistent ist gerade ausgelastet. Bitte fragen Sie das Personal.",
+      unconfirmed: "Die Allergenangaben für dieses Gericht sind vom Restaurant nicht bestätigt — bitte fragen Sie das Personal.",
+      disclaimer: "Antworten werden von einer KI anhand der Speisekarte verfasst. Im Zweifel fragen Sie das Personal.",
+      clear: "Neu beginnen",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Krebstiere",
@@ -402,6 +492,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clearConfirm: "¿Quitar todos los platos de tu pedido?",
       notSent:
         "Esto no se envía a la cocina. Muéstralo al personal cuando pidas.",
+    },
+    chat: {
+      open: "Pregunta sobre la carta",
+      title: "Preguntas sobre la carta",
+      intro: "Pregunta lo que quieras sobre los platos. Las respuestas salen de la carta de este restaurante.",
+      placeholder: "Escribe tu pregunta…",
+      send: "Enviar",
+      s1: "¿Qué hay vegetariano?",
+      s2: "¿Qué platos son picantes?",
+      s3: "¿Qué platos son sin gluten?",
+      thinking: "Consultando la carta…",
+      fallback: "Lo siento, no puedo responder a eso; pregunta al personal.",
+      error: "Algo ha fallado. Comprueba tu conexión e inténtalo de nuevo.",
+      limit: "Has hecho muchas preguntas. Para más, pregunta al personal.",
+      busy: "El asistente está ocupado ahora mismo. Pregunta al personal.",
+      unconfirmed: "La información sobre alérgenos de este plato no está confirmada por el restaurante; pregunta al personal.",
+      disclaimer: "Las respuestas las escribe una IA a partir de la carta. Si tienes dudas, pregunta al personal.",
+      clear: "Empezar de nuevo",
     },
     allergenNames: {
       gluten: "Gluten",
@@ -475,6 +583,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       notSent:
         "Non viene inviato in cucina. Mostralo al personale quando ordini.",
     },
+    chat: {
+      open: "Domanda sul menù",
+      title: "Domande sul menù",
+      intro: "Chiedi pure dei piatti. Le risposte vengono dal menù di questo ristorante.",
+      placeholder: "Scrivi la tua domanda…",
+      send: "Invia",
+      s1: "Cosa c'è di vegetariano?",
+      s2: "Quali piatti sono piccanti?",
+      s3: "Quali piatti sono senza glutine?",
+      thinking: "Sto guardando il menù…",
+      fallback: "Mi dispiace, non so rispondere: chiedi al personale.",
+      error: "Qualcosa è andato storto. Controlla la connessione e riprova.",
+      limit: "Hai fatto molte domande. Per altre, chiedi al personale.",
+      busy: "L'assistente è occupato in questo momento. Chiedi al personale.",
+      unconfirmed: "Le informazioni sugli allergeni di questo piatto non sono confermate dal ristorante: chiedi al personale.",
+      disclaimer: "Le risposte sono scritte da un'IA in base al menù. Nel dubbio, chiedi al personale.",
+      clear: "Ricomincia",
+    },
     allergenNames: {
       gluten: "Glutine",
       crustaceans: "Crostacei",
@@ -546,6 +672,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       notSent:
         "Isto não é enviado para a cozinha. Mostre-o ao pessoal quando fizer o pedido.",
     },
+    chat: {
+      open: "Pergunte sobre o menu",
+      title: "Perguntas sobre o menu",
+      intro: "Pergunte o que quiser sobre os pratos. As respostas vêm do menu deste restaurante.",
+      placeholder: "Escreva a sua pergunta…",
+      send: "Enviar",
+      s1: "O que há de vegetariano?",
+      s2: "Que pratos são picantes?",
+      s3: "Que pratos não têm glúten?",
+      thinking: "A consultar o menu…",
+      fallback: "Desculpe, não consigo responder — pergunte ao pessoal.",
+      error: "Algo correu mal. Verifique a ligação e tente de novo.",
+      limit: "Já fez muitas perguntas. Para mais, pergunte ao pessoal.",
+      busy: "O assistente está ocupado neste momento. Pergunte ao pessoal.",
+      unconfirmed: "A informação sobre alergénios deste prato não está confirmada pelo restaurante — pergunte ao pessoal.",
+      disclaimer: "As respostas são escritas por IA com base no menu. Em caso de dúvida, pergunte ao pessoal.",
+      clear: "Recomeçar",
+    },
     allergenNames: {
       gluten: "Glúten",
       crustaceans: "Crustáceos",
@@ -616,6 +760,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       notSent:
         "To nie jest wysyłane do kuchni. Pokaż to obsłudze przy zamawianiu.",
     },
+    chat: {
+      open: "Zapytaj o menu",
+      title: "Pytania o menu",
+      intro: "Zapytaj o dowolne danie. Odpowiedzi pochodzą z menu tej restauracji.",
+      placeholder: "Wpisz pytanie…",
+      send: "Wyślij",
+      s1: "Co jest tu wegetariańskie?",
+      s2: "Które dania są ostre?",
+      s3: "Które dania są bezglutenowe?",
+      thinking: "Sprawdzam menu…",
+      fallback: "Niestety nie znam odpowiedzi — zapytaj obsługę.",
+      error: "Coś poszło nie tak. Sprawdź połączenie i spróbuj ponownie.",
+      limit: "Zadano już wiele pytań. O resztę zapytaj obsługę.",
+      busy: "Asystent jest teraz zajęty. Zapytaj obsługę.",
+      unconfirmed: "Informacje o alergenach tego dania nie są potwierdzone przez restaurację — zapytaj obsługę.",
+      disclaimer: "Odpowiedzi pisze AI na podstawie menu. W razie wątpliwości zapytaj obsługę.",
+      clear: "Zacznij od nowa",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Skorupiaki",
@@ -683,6 +845,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clear: "清空点单",
       clearConfirm: "确定要清空点单中的所有菜品吗？",
       notSent: "此点单不会发送到厨房。点餐时请出示给服务员。",
+    },
+    chat: {
+      open: "询问菜单",
+      title: "菜单问答",
+      intro: "关于菜品的任何问题都可以问。回答来自本餐厅的菜单。",
+      placeholder: "输入你的问题…",
+      send: "发送",
+      s1: "有哪些素食？",
+      s2: "哪些菜是辣的？",
+      s3: "哪些菜不含麸质？",
+      thinking: "正在查看菜单…",
+      fallback: "抱歉，我无法回答这个问题，请询问服务员。",
+      error: "出了点问题。请检查网络后重试。",
+      limit: "你已经问了很多问题。更多问题请询问服务员。",
+      busy: "助手现在很忙，请询问服务员。",
+      unconfirmed: "餐厅尚未确认此菜品的过敏原信息，请询问服务员。",
+      disclaimer: "回答由 AI 根据菜单生成。如有疑问，请询问服务员。",
+      clear: "重新开始",
     },
     allergenNames: {
       gluten: "麸质",
@@ -757,6 +937,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clearConfirm: "注文からすべての料理を削除しますか？",
       notSent: "厨房には送信されません。注文の際にスタッフにお見せください。",
     },
+    chat: {
+      open: "メニューについて質問",
+      title: "メニューについての質問",
+      intro: "料理について何でも聞いてください。回答はこのお店のメニューに基づいています。",
+      placeholder: "質問を入力…",
+      send: "送信",
+      s1: "ベジタリアン料理はどれ？",
+      s2: "辛い料理はどれ？",
+      s3: "グルテンを含まない料理は？",
+      thinking: "メニューを確認しています…",
+      fallback: "申し訳ありません、お答えできません。スタッフにお尋ねください。",
+      error: "問題が発生しました。接続を確認して、もう一度お試しください。",
+      limit: "たくさん質問されました。続きはスタッフにお尋ねください。",
+      busy: "アシスタントは現在混み合っています。スタッフにお尋ねください。",
+      unconfirmed: "この料理のアレルゲン情報はお店で確認されていません。スタッフにお尋ねください。",
+      disclaimer: "回答はメニューをもとに AI が作成しています。不明な点はスタッフにお尋ねください。",
+      clear: "最初から",
+    },
     allergenNames: {
       gluten: "グルテン",
       crustaceans: "甲殻類",
@@ -828,6 +1026,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clearConfirm: "주문에서 모든 메뉴를 삭제할까요?",
       notSent: "주방으로 전송되지 않습니다. 주문할 때 직원에게 보여주세요.",
     },
+    chat: {
+      open: "메뉴에 대해 질문하기",
+      title: "메뉴 질문",
+      intro: "요리에 대해 무엇이든 물어보세요. 답변은 이 식당의 메뉴를 바탕으로 합니다.",
+      placeholder: "질문을 입력하세요…",
+      send: "보내기",
+      s1: "채식 메뉴는 무엇인가요?",
+      s2: "매운 요리는 무엇인가요?",
+      s3: "글루텐이 없는 요리는 무엇인가요?",
+      thinking: "메뉴를 확인하는 중…",
+      fallback: "죄송합니다. 답변할 수 없어요. 직원에게 문의해 주세요.",
+      error: "문제가 발생했어요. 연결을 확인하고 다시 시도해 주세요.",
+      limit: "질문을 많이 하셨어요. 더 궁금한 점은 직원에게 문의해 주세요.",
+      busy: "지금은 도우미가 바빠요. 직원에게 문의해 주세요.",
+      unconfirmed: "이 요리의 알레르기 정보는 식당에서 확인되지 않았어요. 직원에게 문의해 주세요.",
+      disclaimer: "답변은 메뉴를 바탕으로 AI가 작성합니다. 궁금하면 직원에게 문의해 주세요.",
+      clear: "처음부터",
+    },
     allergenNames: {
       gluten: "글루텐",
       crustaceans: "갑각류",
@@ -896,6 +1112,24 @@ export const guestStrings: Record<string, GuestStrings> = {
       clear: "إفراغ الطلب",
       clearConfirm: "هل تريد إزالة كل الأطباق من طلبك؟",
       notSent: "لا يُرسل هذا إلى المطبخ. اعرضه على الموظفين عند الطلب.",
+    },
+    chat: {
+      open: "اسأل عن قائمة الطعام",
+      title: "أسئلة عن قائمة الطعام",
+      intro: "اسأل عن أي طبق. الإجابات مأخوذة من قائمة هذا المطعم.",
+      placeholder: "اكتب سؤالك…",
+      send: "إرسال",
+      s1: "ما الأطباق النباتية هنا؟",
+      s2: "ما الأطباق الحارة؟",
+      s3: "ما الأطباق الخالية من الغلوتين؟",
+      thinking: "جارٍ الاطلاع على القائمة…",
+      fallback: "عذرًا، لا أستطيع الإجابة عن ذلك — يرجى سؤال الموظفين.",
+      error: "حدث خطأ ما. تحقّق من الاتصال وحاول مرة أخرى.",
+      limit: "لقد طرحت أسئلة كثيرة. يرجى سؤال الموظفين عن المزيد.",
+      busy: "المساعد مشغول الآن. يرجى سؤال الموظفين.",
+      unconfirmed: "معلومات مسببات الحساسية لهذا الطبق غير مؤكدة من المطعم — يرجى سؤال الموظفين.",
+      disclaimer: "الإجابات يكتبها الذكاء الاصطناعي من القائمة. عند الشك، اسأل الموظفين.",
+      clear: "البدء من جديد",
     },
     allergenNames: {
       gluten: "الغلوتين",

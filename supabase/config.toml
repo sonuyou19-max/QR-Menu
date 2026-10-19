@@ -20,3 +20,7 @@ verify_jwt = false
 [functions.suggest-theme]
 # The owner's login token is checked inside the function (requestUser), then ownership.
 verify_jwt = false
+
+[functions.menu-chat]
+# Called anonymously by the guest page; published menus only, rate-limited per session, IP and restaurant.
+verify_jwt = false
