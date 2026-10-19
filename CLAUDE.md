@@ -508,7 +508,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 6. `publish-menu` + translations
 7. Guest menu page `app.menubuddy.be/m/:slug`: language auto-detect, menu-order categories, photos, filters, tags, out-of-stock (realtime)
 7b. QR code (moved up at the owner's request, to check the guest menu by scanning): QR screen in the app, one code per restaurant + optional per-table codes, printable PDF. Until `menubuddy.be` is live it shows a **test code** (workers.dev address) marked "not for printing"; the print/download option appears only once the real domain is set. Built: `/qr` (`routes/QrCodes.tsx`, lazy-loaded; codes drawn as SVG from the `qrcode` package), table names in `restaurants.qr_tables` (1–20 letters/digits/spaces/dashes, same rule as the guest page's `?t=`), large view per code to scan from another phone, PNG via the share sheet and an A4 print sheet of cut-out cards (live domain only).
-8. Cart + "Show to staff" screen
+8. Cart + "Show to staff" screen. Built: `guest/cart.ts` (localStorage `mb.cart.<slug>`, ids + qty + note only, max 20 per dish, notes ≤ 80 chars, cleared after 6 h; dishes that leave the menu are dropped, sold-out ones are flagged and left out of the total and the staff screen) and `guest/Order.tsx` (+ button, bottom bar, order sheet, dark full-screen staff screen with Wake Lock; dish names as on the menu, staff labels — table, note, total — in the restaurant's own language). The `add_to_cart` / `show_to_staff` events come with `track-event` in step 15.
 9. Theme system: tokens + 2–3 templates first, then `suggest-theme` + live preview editor
 10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`
 11. (moved up to 7b)

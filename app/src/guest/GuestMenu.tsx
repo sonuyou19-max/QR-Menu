@@ -7,57 +7,24 @@ import {
   ShieldAlert,
   X,
 } from "lucide-react";
-import { config } from "../lib/config";
-import type { Allergen } from "../lib/extraction";
 import { supabase } from "../lib/supabase";
+import {
+  dishImage,
+  helperName,
+  plain,
+  type GuestDish,
+  type GuestMenuData,
+} from "./menu-data";
+import { useCart, type Cart } from "./cart";
+import {
+  AddButton,
+  DetailOrderControl,
+  OrderBar,
+  OrderSheet,
+  StaffScreen,
+  orderLines,
+} from "./Order";
 import { rtlLanguages, stringsFor, type GuestStrings } from "./strings";
-
-export interface GuestDish {
-  id: string;
-  name: string;
-  translated_name: string | null;
-  price: number | null;
-  description: string | null;
-  description_is_typical: boolean;
-  confidence: "known_dish" | "likely" | "unknown" | null;
-  dietary: Partial<
-    Record<
-      | "vegetarian"
-      | "vegan"
-      | "contains_pork"
-      | "contains_beef"
-      | "contains_alcohol"
-      | "spicy",
-      boolean
-    >
-  >;
-  /** Only when the restaurant shows allergens and the owner confirmed them. */
-  allergens: Allergen[] | null;
-  /** null when the restaurant doesn't show allergens at all. */
-  allergens_confirmed: boolean | null;
-  image_path: string | null;
-  thumb_path: string | null;
-  in_stock: boolean;
-}
-
-export interface GuestMenuData {
-  restaurant: {
-    name: string;
-    slug: string;
-    currency: string;
-    source_language: string;
-    languages: string[];
-    language: string;
-    show_allergens: boolean;
-    is_published: boolean;
-  };
-  categories: {
-    id: string;
-    name: string;
-    translated_name: string | null;
-    items: GuestDish[];
-  }[];
-}
 
 type Filter = "vegetarian" | "vegan" | "noPork" | "noBeef" | "glutenFree";
 const LANG_KEY = "mb.guestLang";
@@ -82,20 +49,6 @@ function pickLanguage(available: string[], source: string): string {
     (available.includes("en") ? "en" : source)
   );
 }
-
-/** Hide helper lines that only differ in spacing or punctuation ("Saag/ Kadai" vs "Saag/Kadai"). */
-const plain = (s: string) => s.toLowerCase().replace(/[\s\p{P}]/gu, "");
-function helperName(dish: { name: string; translated_name: string | null }) {
-  return dish.translated_name &&
-    plain(dish.translated_name) !== plain(dish.name)
-    ? dish.translated_name
-    : null;
-}
-
-export const dishImage = (path: string | null) =>
-  path
-    ? `${config.supabaseUrl}/storage/v1/object/public/dish-images/${path}`
-    : null;
 
 function matches(dish: GuestDish, filters: Set<Filter>): boolean {
   for (const f of filters) {
@@ -137,6 +90,9 @@ export function GuestMenu({ slug }: { slug: string }) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [openDish, setOpenDish] = useState<GuestDish | null>(null);
   const table = useMemo(() => tableLabel(slug), [slug]);
+  const cart = useCart(slug);
+  const [orderOpen, setOrderOpen] = useState(false);
+  const [staffOpen, setStaffOpen] = useState(false);
   const requested = useRef(language);
   // The first answer tells which languages exist; pick the best one once, then follow the guest.
   const autoPicked = useRef(false);
@@ -212,6 +168,19 @@ export function GuestMenu({ slug }: { slug: string }) {
     };
   }, [slug, load]);
 
+  // Every dish on today's menu (filters aside), to show the order with live names and prices.
+  const dishes = useMemo(
+    () =>
+      new Map(
+        (menu?.categories ?? []).flatMap((c) => c.items.map((d) => [d.id, d])),
+      ),
+    [menu],
+  );
+  const { keepOnly } = cart;
+  useEffect(() => {
+    if (menu) keepOnly(new Set(dishes.keys()));
+  }, [menu, dishes, keepOnly]);
+
   const shownLanguage = menu?.restaurant.language ?? language;
   const s = stringsFor(shownLanguage);
   useEffect(() => {
@@ -269,6 +238,8 @@ export function GuestMenu({ slug }: { slug: string }) {
     }
     setLanguage(lang);
   };
+
+  const lines = orderLines(cart, dishes);
 
   const toggleFilter = (f: Filter) =>
     setFilters((current) => {
@@ -341,7 +312,9 @@ export function GuestMenu({ slug }: { slug: string }) {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-2xl px-4 pb-16">
+      <main
+        className={`mx-auto max-w-2xl px-4 ${lines.length ? "pb-32" : "pb-16"}`}
+      >
         <div
           role="group"
           aria-label={s.filters}
@@ -410,6 +383,8 @@ export function GuestMenu({ slug }: { slug: string }) {
                       dish={dish}
                       money={money}
                       s={s}
+                      qty={cart.qtyOf(dish.id)}
+                      onAdd={() => cart.add(dish.id)}
                       onOpen={() => setOpenDish(dish)}
                     />
                   </li>
@@ -434,7 +409,39 @@ export function GuestMenu({ slug }: { slug: string }) {
           dish={openDish}
           money={money}
           s={s}
+          cart={cart}
           onClose={() => setOpenDish(null)}
+        />
+      )}
+
+      {!orderOpen && !staffOpen && (
+        <OrderBar
+          lines={lines}
+          money={money}
+          s={s}
+          onOpen={() => setOrderOpen(true)}
+        />
+      )}
+      {orderOpen && (
+        <OrderSheet
+          lines={lines}
+          cart={cart}
+          money={money}
+          s={s}
+          table={table}
+          onShowStaff={() => setStaffOpen(true)}
+          onClose={() => setOrderOpen(false)}
+        />
+      )}
+      {staffOpen && (
+        <StaffScreen
+          lines={lines}
+          money={money}
+          s={s}
+          staff={stringsFor(restaurant.source_language)}
+          restaurantName={restaurant.name}
+          table={table}
+          onClose={() => setStaffOpen(false)}
         />
       )}
     </div>
@@ -553,58 +560,72 @@ function DishCard({
   dish,
   money,
   s,
+  qty,
+  onAdd,
   onOpen,
 }: {
   dish: GuestDish;
   money: Intl.NumberFormat;
   s: GuestStrings;
+  qty: number;
+  onAdd: () => void;
   onOpen: () => void;
 }) {
   const thumb = dishImage(dish.thumb_path ?? dish.image_path);
   const helper = helperName(dish);
+  // The whole card opens the dish (stretched button); the + sits above it.
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className={`flex w-full gap-3 py-4 text-start ${dish.in_stock ? "" : "opacity-60"}`}
+    <div
+      className={`relative flex gap-3 py-4 ${dish.in_stock ? "" : "opacity-60"}`}
     >
-      <div className="min-w-0 flex-1">
-        <div className="flex items-start gap-3">
-          <p
+      <button
+        type="button"
+        onClick={onOpen}
+        className="min-w-0 flex-1 text-start after:absolute after:inset-0 after:content-['']"
+      >
+        <span className="flex items-start gap-3">
+          <span
             className="min-w-0 flex-1 text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
             dir="auto"
           >
             {dish.name}
-          </p>
+          </span>
           {dish.price !== null && (
-            <p className="shrink-0 text-lg font-semibold tabular-nums">
+            <span className="shrink-0 text-lg font-semibold tabular-nums">
               {money.format(dish.price)}
-            </p>
+            </span>
           )}
-        </div>
+        </span>
         {helper && (
-          <p className="text-ink-muted text-sm font-medium" dir="auto">
+          <span className="text-ink-muted block text-sm font-medium" dir="auto">
             {helper}
-          </p>
+          </span>
         )}
         {!dish.in_stock && (
-          <p className="bg-oat-600 mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold text-white">
+          <span className="bg-oat-600 mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold text-white">
             {s.soldOut}
-          </p>
+          </span>
         )}
         <Description dish={dish} s={s} clamp />
         <Tags dish={dish} s={s} />
         <AllergenLine dish={dish} s={s} />
-      </div>
-      {thumb && (
-        <img
-          src={thumb}
-          alt=""
-          loading="lazy"
-          className="rounded-control size-20 shrink-0 object-cover sm:size-24"
-        />
+      </button>
+      {(thumb || dish.in_stock) && (
+        <div className="flex shrink-0 flex-col items-end gap-2">
+          {thumb && (
+            <img
+              src={thumb}
+              alt=""
+              loading="lazy"
+              className="rounded-control size-20 object-cover sm:size-24"
+            />
+          )}
+          {dish.in_stock && (
+            <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
+          )}
+        </div>
       )}
-    </button>
+    </div>
   );
 }
 
@@ -612,11 +633,13 @@ function DishDetail({
   dish,
   money,
   s,
+  cart,
   onClose,
 }: {
   dish: GuestDish;
   money: Intl.NumberFormat;
   s: GuestStrings;
+  cart: Cart;
   onClose: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -685,6 +708,7 @@ function DishDetail({
         <Description dish={dish} s={s} />
         <Tags dish={dish} s={s} />
         <AllergenLine dish={dish} s={s} />
+        <DetailOrderControl dish={dish} cart={cart} money={money} s={s} />
       </div>
     </dialog>
   );

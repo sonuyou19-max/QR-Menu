@@ -31,6 +31,28 @@ export interface GuestStrings {
   loadError: string;
   retry: string;
   preview: string;
+  order: {
+    add: string;
+    addToOrder: string;
+    inOrder: string;
+    viewOrder: string;
+    yourOrder: string;
+    increase: string;
+    decrease: string;
+    remove: string;
+    addNote: string;
+    note: string;
+    notePlaceholder: string;
+    total: string;
+    unpriced: string;
+    showToStaff: string;
+    staffHint: string;
+    leftOut: string;
+    back: string;
+    clear: string;
+    clearConfirm: string;
+    notSent: string;
+  };
   allergenNames: Record<Allergen, string>;
 }
 
@@ -64,6 +86,29 @@ const en: GuestStrings = {
   loadError: "The menu couldn't be loaded. Check your internet connection.",
   retry: "Try again",
   preview: "Preview: this menu isn't online yet. Only you can see it.",
+  order: {
+    add: "Add",
+    addToOrder: "Add to order",
+    inOrder: "{count} in your order",
+    viewOrder: "View order",
+    yourOrder: "Your order",
+    increase: "One more",
+    decrease: "One less",
+    remove: "Remove",
+    addNote: "Add a note",
+    note: "Note",
+    notePlaceholder: "e.g. no onions",
+    total: "Total",
+    unpriced: "Dishes without a price aren't in the total.",
+    showToStaff: "Show to staff",
+    staffHint: "Show this screen to the staff",
+    leftOut: "Sold-out dishes are left out.",
+    back: "Back",
+    clear: "Clear order",
+    clearConfirm: "Remove all dishes from your order?",
+    notSent:
+      "This isn't sent to the kitchen. Show it to the staff when you order.",
+  },
   allergenNames: {
     gluten: "Gluten",
     crustaceans: "Crustaceans",
@@ -118,6 +163,29 @@ export const guestStrings: Record<string, GuestStrings> = {
     retry: "Opnieuw proberen",
     preview:
       "Voorbeeld: deze menukaart staat nog niet online. Alleen jij ziet hem.",
+    order: {
+      add: "Toevoegen",
+      addToOrder: "Toevoegen aan bestelling",
+      inOrder: "{count} in je bestelling",
+      viewOrder: "Bestelling bekijken",
+      yourOrder: "Je bestelling",
+      increase: "Eén meer",
+      decrease: "Eén minder",
+      remove: "Verwijderen",
+      addNote: "Opmerking toevoegen",
+      note: "Opmerking",
+      notePlaceholder: "bv. zonder ui",
+      total: "Totaal",
+      unpriced: "Gerechten zonder prijs zitten niet in het totaal.",
+      showToStaff: "Toon aan personeel",
+      staffHint: "Toon dit scherm aan het personeel",
+      leftOut: "Uitverkochte gerechten zijn weggelaten.",
+      back: "Terug",
+      clear: "Bestelling wissen",
+      clearConfirm: "Alle gerechten uit je bestelling verwijderen?",
+      notSent:
+        "Dit gaat niet naar de keuken. Toon het aan het personeel wanneer je bestelt.",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Schaaldieren",
@@ -168,6 +236,29 @@ export const guestStrings: Record<string, GuestStrings> = {
     retry: "Réessayer",
     preview:
       "Aperçu : cette carte n'est pas encore en ligne. Vous seul la voyez.",
+    order: {
+      add: "Ajouter",
+      addToOrder: "Ajouter à la commande",
+      inOrder: "{count} dans votre commande",
+      viewOrder: "Voir la commande",
+      yourOrder: "Votre commande",
+      increase: "Un de plus",
+      decrease: "Un de moins",
+      remove: "Retirer",
+      addNote: "Ajouter une remarque",
+      note: "Remarque",
+      notePlaceholder: "p. ex. sans oignons",
+      total: "Total",
+      unpriced: "Les plats sans prix ne sont pas compris dans le total.",
+      showToStaff: "Montrer au personnel",
+      staffHint: "Montrez cet écran au personnel",
+      leftOut: "Les plats épuisés ne sont pas repris.",
+      back: "Retour",
+      clear: "Vider la commande",
+      clearConfirm: "Retirer tous les plats de votre commande ?",
+      notSent:
+        "Rien n'est envoyé en cuisine. Montrez-le au personnel au moment de commander.",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Crustacés",
@@ -219,6 +310,29 @@ export const guestStrings: Record<string, GuestStrings> = {
     retry: "Erneut versuchen",
     preview:
       "Vorschau: Diese Speisekarte ist noch nicht online. Nur Sie sehen sie.",
+    order: {
+      add: "Hinzufügen",
+      addToOrder: "Zur Bestellung hinzufügen",
+      inOrder: "{count} in Ihrer Bestellung",
+      viewOrder: "Bestellung ansehen",
+      yourOrder: "Ihre Bestellung",
+      increase: "Eins mehr",
+      decrease: "Eins weniger",
+      remove: "Entfernen",
+      addNote: "Notiz hinzufügen",
+      note: "Notiz",
+      notePlaceholder: "z. B. ohne Zwiebeln",
+      total: "Gesamt",
+      unpriced: "Gerichte ohne Preis sind nicht in der Summe enthalten.",
+      showToStaff: "Dem Personal zeigen",
+      staffHint: "Zeigen Sie diesen Bildschirm dem Personal",
+      leftOut: "Ausverkaufte Gerichte sind weggelassen.",
+      back: "Zurück",
+      clear: "Bestellung leeren",
+      clearConfirm: "Alle Gerichte aus Ihrer Bestellung entfernen?",
+      notSent:
+        "Dies wird nicht an die Küche gesendet. Zeigen Sie es beim Bestellen dem Personal.",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Krebstiere",
@@ -266,6 +380,29 @@ export const guestStrings: Record<string, GuestStrings> = {
     loadError: "No se pudo cargar la carta. Compruebe su conexión a internet.",
     retry: "Reintentar",
     preview: "Vista previa: esta carta aún no está en línea. Solo usted la ve.",
+    order: {
+      add: "Añadir",
+      addToOrder: "Añadir al pedido",
+      inOrder: "{count} en tu pedido",
+      viewOrder: "Ver pedido",
+      yourOrder: "Tu pedido",
+      increase: "Uno más",
+      decrease: "Uno menos",
+      remove: "Quitar",
+      addNote: "Añadir una nota",
+      note: "Nota",
+      notePlaceholder: "p. ej. sin cebolla",
+      total: "Total",
+      unpriced: "Los platos sin precio no están incluidos en el total.",
+      showToStaff: "Mostrar al personal",
+      staffHint: "Muestra esta pantalla al personal",
+      leftOut: "Los platos agotados no se incluyen.",
+      back: "Volver",
+      clear: "Vaciar pedido",
+      clearConfirm: "¿Quitar todos los platos de tu pedido?",
+      notSent:
+        "Esto no se envía a la cocina. Muéstralo al personal cuando pidas.",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Crustáceos",
@@ -315,6 +452,29 @@ export const guestStrings: Record<string, GuestStrings> = {
       "Impossibile caricare il menu. Controlli la connessione internet.",
     retry: "Riprova",
     preview: "Anteprima: questo menu non è ancora online. Solo lei lo vede.",
+    order: {
+      add: "Aggiungi",
+      addToOrder: "Aggiungi all'ordine",
+      inOrder: "{count} nel tuo ordine",
+      viewOrder: "Vedi ordine",
+      yourOrder: "Il tuo ordine",
+      increase: "Uno in più",
+      decrease: "Uno in meno",
+      remove: "Rimuovi",
+      addNote: "Aggiungi una nota",
+      note: "Nota",
+      notePlaceholder: "es. senza cipolla",
+      total: "Totale",
+      unpriced: "I piatti senza prezzo non sono inclusi nel totale.",
+      showToStaff: "Mostra al personale",
+      staffHint: "Mostra questo schermo al personale",
+      leftOut: "I piatti esauriti sono esclusi.",
+      back: "Indietro",
+      clear: "Svuota ordine",
+      clearConfirm: "Rimuovere tutti i piatti dal tuo ordine?",
+      notSent:
+        "Non viene inviato in cucina. Mostralo al personale quando ordini.",
+    },
     allergenNames: {
       gluten: "Glutine",
       crustaceans: "Crostacei",
@@ -363,6 +523,29 @@ export const guestStrings: Record<string, GuestStrings> = {
       "Não foi possível carregar o menu. Verifique a sua ligação à internet.",
     retry: "Tentar novamente",
     preview: "Pré-visualização: este menu ainda não está online. Só você o vê.",
+    order: {
+      add: "Adicionar",
+      addToOrder: "Adicionar ao pedido",
+      inOrder: "{count} no seu pedido",
+      viewOrder: "Ver pedido",
+      yourOrder: "O seu pedido",
+      increase: "Mais um",
+      decrease: "Menos um",
+      remove: "Remover",
+      addNote: "Adicionar uma nota",
+      note: "Nota",
+      notePlaceholder: "p. ex. sem cebola",
+      total: "Total",
+      unpriced: "Os pratos sem preço não estão incluídos no total.",
+      showToStaff: "Mostrar ao pessoal",
+      staffHint: "Mostre este ecrã ao pessoal",
+      leftOut: "Os pratos esgotados ficam de fora.",
+      back: "Voltar",
+      clear: "Limpar pedido",
+      clearConfirm: "Remover todos os pratos do seu pedido?",
+      notSent:
+        "Isto não é enviado para a cozinha. Mostre-o ao pessoal quando fizer o pedido.",
+    },
     allergenNames: {
       gluten: "Glúten",
       crustaceans: "Crustáceos",
@@ -410,6 +593,29 @@ export const guestStrings: Record<string, GuestStrings> = {
     loadError: "Nie udało się wczytać menu. Sprawdź połączenie z internetem.",
     retry: "Spróbuj ponownie",
     preview: "Podgląd: to menu nie jest jeszcze online. Widzisz je tylko ty.",
+    order: {
+      add: "Dodaj",
+      addToOrder: "Dodaj do zamówienia",
+      inOrder: "W zamówieniu: {count}",
+      viewOrder: "Zobacz zamówienie",
+      yourOrder: "Twoje zamówienie",
+      increase: "Jeszcze jedno",
+      decrease: "Jedno mniej",
+      remove: "Usuń",
+      addNote: "Dodaj uwagę",
+      note: "Uwaga",
+      notePlaceholder: "np. bez cebuli",
+      total: "Razem",
+      unpriced: "Dania bez ceny nie są wliczone do sumy.",
+      showToStaff: "Pokaż obsłudze",
+      staffHint: "Pokaż ten ekran obsłudze",
+      leftOut: "Wyprzedane dania zostały pominięte.",
+      back: "Wróć",
+      clear: "Wyczyść zamówienie",
+      clearConfirm: "Usunąć wszystkie dania z zamówienia?",
+      notSent:
+        "To nie jest wysyłane do kuchni. Pokaż to obsłudze przy zamawianiu.",
+    },
     allergenNames: {
       gluten: "Gluten",
       crustaceans: "Skorupiaki",
@@ -456,6 +662,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     loadError: "无法加载菜单。请检查您的网络连接。",
     retry: "重试",
     preview: "预览：此菜单尚未上线，只有您能看到。",
+    order: {
+      add: "添加",
+      addToOrder: "加入点单",
+      inOrder: "已点 {count} 份",
+      viewOrder: "查看点单",
+      yourOrder: "我的点单",
+      increase: "加一份",
+      decrease: "减一份",
+      remove: "删除",
+      addNote: "添加备注",
+      note: "备注",
+      notePlaceholder: "例如：不要洋葱",
+      total: "合计",
+      unpriced: "没有价格的菜品未计入合计。",
+      showToStaff: "出示给服务员",
+      staffHint: "请将此屏幕出示给服务员",
+      leftOut: "已售罄的菜品未列出。",
+      back: "返回",
+      clear: "清空点单",
+      clearConfirm: "确定要清空点单中的所有菜品吗？",
+      notSent: "此点单不会发送到厨房。点餐时请出示给服务员。",
+    },
     allergenNames: {
       gluten: "麸质",
       crustaceans: "甲壳类",
@@ -507,6 +735,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     retry: "再試行",
     preview:
       "プレビュー：このメニューはまだ公開されていません。表示されるのはあなただけです。",
+    order: {
+      add: "追加",
+      addToOrder: "注文に追加",
+      inOrder: "注文に{count}点",
+      viewOrder: "注文を見る",
+      yourOrder: "ご注文",
+      increase: "1つ増やす",
+      decrease: "1つ減らす",
+      remove: "削除",
+      addNote: "メモを追加",
+      note: "メモ",
+      notePlaceholder: "例：玉ねぎ抜き",
+      total: "合計",
+      unpriced: "価格のない料理は合計に含まれていません。",
+      showToStaff: "スタッフに見せる",
+      staffHint: "この画面をスタッフにお見せください",
+      leftOut: "売り切れの料理は除いています。",
+      back: "戻る",
+      clear: "注文をクリア",
+      clearConfirm: "注文からすべての料理を削除しますか？",
+      notSent: "厨房には送信されません。注文の際にスタッフにお見せください。",
+    },
     allergenNames: {
       gluten: "グルテン",
       crustaceans: "甲殻類",
@@ -556,6 +806,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     retry: "다시 시도",
     preview:
       "미리보기: 이 메뉴는 아직 공개되지 않았습니다. 나만 볼 수 있습니다.",
+    order: {
+      add: "추가",
+      addToOrder: "주문에 추가",
+      inOrder: "주문에 {count}개",
+      viewOrder: "주문 보기",
+      yourOrder: "내 주문",
+      increase: "하나 더",
+      decrease: "하나 빼기",
+      remove: "삭제",
+      addNote: "메모 추가",
+      note: "메모",
+      notePlaceholder: "예: 양파 빼고",
+      total: "합계",
+      unpriced: "가격이 없는 메뉴는 합계에 포함되지 않습니다.",
+      showToStaff: "직원에게 보여주기",
+      staffHint: "이 화면을 직원에게 보여주세요",
+      leftOut: "품절된 메뉴는 제외되었습니다.",
+      back: "뒤로",
+      clear: "주문 비우기",
+      clearConfirm: "주문에서 모든 메뉴를 삭제할까요?",
+      notSent: "주방으로 전송되지 않습니다. 주문할 때 직원에게 보여주세요.",
+    },
     allergenNames: {
       gluten: "글루텐",
       crustaceans: "갑각류",
@@ -603,6 +875,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     loadError: "تعذر تحميل القائمة. تحقق من اتصالك بالإنترنت.",
     retry: "حاول مجددًا",
     preview: "معاينة: هذه القائمة لم تُنشر بعد. أنت وحدك من يراها.",
+    order: {
+      add: "إضافة",
+      addToOrder: "أضف إلى الطلب",
+      inOrder: "{count} في طلبك",
+      viewOrder: "عرض الطلب",
+      yourOrder: "طلبك",
+      increase: "واحد إضافي",
+      decrease: "واحد أقل",
+      remove: "إزالة",
+      addNote: "إضافة ملاحظة",
+      note: "ملاحظة",
+      notePlaceholder: "مثلًا: بدون بصل",
+      total: "المجموع",
+      unpriced: "الأطباق التي ليس لها سعر غير محسوبة في المجموع.",
+      showToStaff: "اعرض على الموظفين",
+      staffHint: "اعرض هذه الشاشة على الموظفين",
+      leftOut: "الأطباق النافدة غير مدرجة.",
+      back: "رجوع",
+      clear: "إفراغ الطلب",
+      clearConfirm: "هل تريد إزالة كل الأطباق من طلبك؟",
+      notSent: "لا يُرسل هذا إلى المطبخ. اعرضه على الموظفين عند الطلب.",
+    },
     allergenNames: {
       gluten: "الغلوتين",
       crustaceans: "القشريات",
