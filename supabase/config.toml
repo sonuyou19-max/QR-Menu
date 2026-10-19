@@ -24,3 +24,7 @@ verify_jwt = false
 [functions.menu-chat]
 # Called anonymously by the guest page; published menus only, rate-limited per session, IP and restaurant.
 verify_jwt = false
+
+[functions.demo-translate]
+# "Try with your own menu" on the marketing site: anonymous; honeypot + Turnstile + limits guard it.
+verify_jwt = false
