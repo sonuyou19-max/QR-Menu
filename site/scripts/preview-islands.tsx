@@ -3,6 +3,7 @@
 import type { ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import BookDemoForm from "../src/components/forms/BookDemoForm";
+import TryYourMenu from "../src/components/forms/TryYourMenu";
 
 // The preview page can't reach the network, so the form only validates and shows its success state.
 const components: Record<
@@ -10,6 +11,7 @@ const components: Record<
   { Component: ComponentType<any>; extra?: object }
 > = {
   BookDemoForm: { Component: BookDemoForm, extra: { previewMode: true } },
+  TryYourMenu: { Component: TryYourMenu, extra: { previewMode: true } },
 };
 
 /** Astro serialises props as [type, value]: 0 = plain value or object, 1 = array. */

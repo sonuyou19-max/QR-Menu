@@ -2,6 +2,7 @@
 import { useEffect, useId, useRef, useState, type SubmitEvent } from "react";
 import { CircleCheck, LoaderCircle, TriangleAlert } from "lucide-react";
 import type { Dictionary, Lang } from "../../i18n";
+import { loadTurnstile } from "./turnstile";
 
 type FormCopy = Dictionary["form"];
 type Field =
@@ -25,32 +26,7 @@ export interface BookDemoFormProps {
   previewMode?: boolean;
 }
 
-interface TurnstileApi {
-  render: (el: HTMLElement, opts: Record<string, unknown>) => string;
-  reset: (id: string) => void;
-}
-declare global {
-  interface Window {
-    turnstile?: TurnstileApi;
-  }
-}
-
-const TURNSTILE_SRC =
-  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function loadTurnstile(): Promise<TurnstileApi> {
-  if (window.turnstile) return Promise.resolve(window.turnstile);
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = TURNSTILE_SRC;
-    script.async = true;
-    script.onload = () =>
-      window.turnstile ? resolve(window.turnstile) : reject();
-    script.onerror = () => reject();
-    document.head.append(script);
-  });
-}
 
 export default function BookDemoForm({
   lang,
@@ -84,6 +60,18 @@ export default function BookDemoForm({
   const successRef = useRef<HTMLDivElement>(null);
   const uid = useId();
   const id = (name: string) => `${uid}${name}`;
+
+  // "Try with your own menu" links here with the restaurant name Buddy read from the photos.
+  useEffect(() => {
+    const restaurant = new URLSearchParams(window.location.search)
+      .get("restaurant")
+      ?.trim()
+      .slice(0, 120);
+    if (restaurant)
+      setValues((v) =>
+        v.restaurantName ? v : { ...v, restaurantName: restaurant },
+      );
+  }, []);
 
   useEffect(() => {
     if (previewMode) return;

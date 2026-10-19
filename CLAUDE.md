@@ -395,11 +395,14 @@ create table leads (                            -- "Book a demo" requests from t
   created_at timestamptz default now()
 );
 
-create table demo_runs (                        -- "Try your own menu" previews; deleted after 24h
+create table demo_runs (                        -- "Try your own menu" previews; deleted after 24h (pg_cron)
   id uuid primary key default gen_random_uuid(),
+  token_hash text not null,                     -- the visitor reads the result with the token
   ip_hash text,                                 -- hashed IP, only for rate limiting
-  file_paths text[],
+  photo_count int,                              -- photos are never stored
   target_language text,
+  status text,                                  -- processing | done | failed
+  error text,
   result jsonb,
   input_tokens int,
   output_tokens int,
@@ -519,7 +522,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`. Built: migration `20261020190000_demo_restaurant` (generated from `site/src/data/sample-menu.ts`: Brasserie Lindehof, 8 dishes, 6 guest languages, one sold-out dish, one dish with unconfirmed allergens; no members, so it is changed only by migration). The site embeds `${PUBLIC_APP_URL}/m/demo?t=5&lang=<site language>` (`siteConfig.appUrl`, default the workers.dev test app) in the home-page phone frame and on `/menu-demo`; the guest page accepts `?lang=` as first language wish. The old `DemoPhone` island (with sample chat answers) is gone; the chat comes back with step 12. In the phone-preview Artifact the frame becomes a "Live demo ↗" link (the Artifact can't load other sites).
 11. (moved up to 7b)
 12. `menu-chat` with full guardrail layer + item cards with + in chat; build the eval file alongside. Built (see section 7); 14/14 evals pass. The marketing site's demo iframe gets the real chat too.
-13. `demo-translate` + "Try with your own menu" (Demo B) on the marketing site, with all its guardrails
+13. `demo-translate` + "Try with your own menu" (Demo B) on the marketing site, with all its guardrails. Built: photos only (owner's decision: no website/PDF option in this demo). Home-page section `home/TryYourMenu.astro` after the live demo, island `forms/TryYourMenu.tsx` (1–3 photos compressed to JPEG ≤1600 px in the browser, target language of the 12 guest languages, honeypot + Turnstile, progress, result in a phone frame styled like the guest menu with "Preview — not yet checked by the restaurant", "Book a demo" passes `?restaurant=<name read>` which `BookDemoForm` prefills). `demo-translate` reads and translates each photo in one call (`demo-translate/preview.ts`, MENU_MODEL, names verbatim + helper translation, no allergens), in the background; the visitor polls with a secret token. Limits: 3 previews per visitor (hashed IP) per 24 h, 40 in total per 24 h (`DEMO_MAX_RUNS_PER_DAY`), max 3 photos of 2.5 MB, JPEG only. Photos are never stored; `demo_runs` (no file paths, token hash, tokens used) is emptied after 24 h by a pg_cron job. Turnstile still uses Cloudflare's test keys until 0.5. The "email me this preview" option is not built.
 14. PDF upload path (the website/URL import is built, see section 7)
 15. Analytics dashboard incl. guest questions + flagging; plus an **AI cost view for the founder only** (not restaurant owners): AI cost per restaurant per month from `usage_events`, split by job (extract / translate / chat / theme / dish), compared with the €30 plan, plus the marketing-site demo runs (`demo_runs`) as their own line
 16. Pilot with 3–5 restaurants for free

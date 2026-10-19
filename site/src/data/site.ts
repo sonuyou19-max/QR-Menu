@@ -12,6 +12,10 @@ export const siteConfig = {
    */
   turnstileSiteKey:
     import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA",
+  /** Supabase edge function `demo-translate` ("Try with your own menu"). */
+  demoTranslateUrl:
+    import.meta.env.PUBLIC_DEMO_TRANSLATE_URL ||
+    "https://eoeqtwskfqawxfpuyhac.supabase.co/functions/v1/demo-translate",
   /** The product (guest menus + dashboard). Test address until app.menubuddy.be is live. */
   appUrl:
     import.meta.env.PUBLIC_APP_URL || "https://menubuddy-app.sonuyou19.workers.dev",
