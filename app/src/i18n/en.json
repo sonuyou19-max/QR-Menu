@@ -27,7 +27,8 @@
     "overview": "Overview",
     "menu": "Menu",
     "upload": "Upload",
-    "service": "Service"
+    "service": "Service",
+    "qr": "QR"
   },
   "overview": {
     "title": "Welcome to MenuBuddy",
@@ -44,7 +45,11 @@
       },
       {
         "title": "Check and publish",
-        "text": "Check prices and allergens, then print your QR code."
+        "text": "Check prices and allergens, then publish."
+      },
+      {
+        "title": "Your QR code",
+        "text": "Put it on your tables. Guests scan it and read the menu in their language."
       }
     ]
   },
@@ -345,5 +350,42 @@
     "emptyStaff": "No dishes yet. Ask the owner to add the menu.",
     "emptyLink": "Upload your menu",
     "hiddenNote": "Dishes hidden from guests are not listed here."
+  },
+  "qr": {
+    "title": "QR code",
+    "intro": "Guests scan this code and read your menu in their own language. No app needed.",
+    "notPublished": "Your menu isn't online yet, so guests who scan can't see it. Logged in, you see a preview.",
+    "toMenu": "Publish under Menu",
+    "testTitle": "Test code — not for printing",
+    "testText": "This code opens your menu on our test address, so you can try it now: scan it with another phone, or tap Open menu. Once menubuddy.be is live, your final code appears here, pointing to {address}. Only print that one.",
+    "testBadge": "Test — don't print",
+    "mainTitle": "Code for the whole restaurant",
+    "mainHint": "One code that works at every table. Good for the window, the entrance and your printed menus.",
+    "codeLabel": "QR code for {target}",
+    "open": "Open menu",
+    "share": "Send link",
+    "copied": "Link copied",
+    "download": "Save image",
+    "print": "Print code",
+    "printAll": "Print all codes",
+    "printHint": "One card per code, ready to cut out. On a phone, choose \"Save as PDF\" in the print screen.",
+    "printLater": "Saving and printing become available here once the final address is live.",
+    "tablesTitle": "Codes per table (optional)",
+    "tablesHint": "Each table gets its own code. Guests then see the table at the top of the menu, so staff know where they're sitting.",
+    "tableName": "Table name or number",
+    "tableNamePlaceholder": "e.g. 5 or Terrace 2",
+    "add": "Add",
+    "addRange": "Add tables 1 to",
+    "invalid": "Use up to 20 letters, numbers, spaces or dashes.",
+    "duplicate": "This table already has a code.",
+    "tooMany": "You can make codes for up to 100 tables.",
+    "saveError": "Couldn't save. Check your internet connection and try again.",
+    "empty": "No table codes yet. Without them, every table uses the code above.",
+    "tableCaption": "Table {table}",
+    "enlarge": "Show {table} large",
+    "remove": "Remove {table}",
+    "removeAll": "Remove all table codes",
+    "removeAllConfirm": "Remove all table codes? Codes you already printed then show no table name.",
+    "close": "Close"
   }
 }

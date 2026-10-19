@@ -287,6 +287,7 @@ create table restaurants (
   guest_languages text[] not null default '{en,fr,nl,de}',
   is_published boolean not null default false,
   show_allergens boolean not null default true, -- off: guests/chat see no allergen info (data kept)
+  qr_tables text[] not null default '{}',     -- table names with their own QR code (?t=<name>), max 100
   theme jsonb not null default '{}'::jsonb,    -- colours, fonts, template, hero image (see 4.4)
   plan text not null default 'pilot',          -- pilot | monthly (€30) | annual (€270)
   trial_ends_at timestamptz,
@@ -506,7 +507,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 5b. Service mode: stock toggles, search, "reset all for next service"
 6. `publish-menu` + translations
 7. Guest menu page `app.menubuddy.be/m/:slug`: language auto-detect, menu-order categories, photos, filters, tags, out-of-stock (realtime)
-7b. QR code (moved up at the owner's request, to check the guest menu by scanning): QR screen in the app, one code per restaurant + optional per-table codes, printable PDF. Until `menubuddy.be` is live it shows a **test code** (workers.dev address) marked "not for printing"; the print/download option appears only once the real domain is set.
+7b. QR code (moved up at the owner's request, to check the guest menu by scanning): QR screen in the app, one code per restaurant + optional per-table codes, printable PDF. Until `menubuddy.be` is live it shows a **test code** (workers.dev address) marked "not for printing"; the print/download option appears only once the real domain is set. Built: `/qr` (`routes/QrCodes.tsx`, lazy-loaded; codes drawn as SVG from the `qrcode` package), table names in `restaurants.qr_tables` (1–20 letters/digits/spaces/dashes, same rule as the guest page's `?t=`), large view per code to scan from another phone, PNG via the share sheet and an A4 print sheet of cut-out cards (live domain only).
 8. Cart + "Show to staff" screen
 9. Theme system: tokens + 2–3 templates first, then `suggest-theme` + live preview editor
 10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`

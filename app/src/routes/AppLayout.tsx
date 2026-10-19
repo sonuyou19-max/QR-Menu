@@ -14,7 +14,7 @@ export function AppLayout() {
   const { session } = useAuth();
   return (
     <div className="min-h-dvh">
-      <header className="border-line/70 bg-canvas/90 sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] backdrop-blur">
+      <header className="print:hidden border-line/70 bg-canvas/90 sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] backdrop-blur">
         <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4">
           <Link to="/" className="mr-auto">
             <Logo compact />
@@ -39,6 +39,7 @@ export function AppLayout() {
                   ["/service", t.nav.service],
                   ["/menu", t.nav.menu],
                   ["/upload", t.nav.upload],
+                  ["/qr", t.nav.qr],
                 ] as const)
             ).map(([to, label]) => (
               <li key={to}>
@@ -46,7 +47,7 @@ export function AppLayout() {
                   to={to}
                   end={to === "/"}
                   className={({ isActive }) =>
-                    `inline-flex min-h-11 items-center border-b-2 px-2 text-[0.9375rem] font-semibold whitespace-nowrap sm:px-3 sm:text-base ${
+                    `inline-flex min-h-11 items-center border-b-2 px-1.5 text-[0.9375rem] font-semibold whitespace-nowrap sm:px-3 sm:text-base ${
                       isActive
                         ? "border-brand text-ink"
                         : "text-ink-muted border-transparent"
@@ -60,10 +61,10 @@ export function AppLayout() {
           </ul>
         </nav>
       </header>
-      <main className="mx-auto max-w-3xl px-4 py-8">
+      <main className="mx-auto max-w-3xl px-4 py-8 print:max-w-none print:p-0">
         <Outlet />
       </main>
-      <footer className="text-ink-muted mx-auto max-w-3xl px-4 pb-10 text-sm">
+      <footer className="print:hidden text-ink-muted mx-auto max-w-3xl px-4 pb-10 text-sm">
         {session?.user.email &&
           fill(t.nav.account, { email: session.user.email })}
       </footer>

@@ -27,7 +27,8 @@
     "overview": "Overzicht",
     "menu": "Menukaart",
     "upload": "Uploaden",
-    "service": "Service"
+    "service": "Service",
+    "qr": "QR"
   },
   "overview": {
     "title": "Welkom bij MenuBuddy",
@@ -44,7 +45,11 @@
       },
       {
         "title": "Controleer en publiceer",
-        "text": "Kijk prijzen en allergenen na en print je QR-code."
+        "text": "Kijk prijzen en allergenen na en publiceer je menukaart."
+      },
+      {
+        "title": "Je QR-code",
+        "text": "Zet hem op je tafels. Gasten scannen hem en lezen de menukaart in hun taal."
       }
     ]
   },
@@ -345,5 +350,42 @@
     "emptyStaff": "Nog geen gerechten. Vraag de eigenaar om de menukaart toe te voegen.",
     "emptyLink": "Upload je menukaart",
     "hiddenNote": "Gerechten die verborgen zijn voor gasten staan hier niet bij."
+  },
+  "qr": {
+    "title": "QR-code",
+    "intro": "Gasten scannen deze code en lezen je menukaart in hun eigen taal. Zonder app.",
+    "notPublished": "Je menukaart staat nog niet online, dus gasten die scannen zien hem nog niet. Ingelogd zie je wel een voorbeeld.",
+    "toMenu": "Publiceer onder Menukaart",
+    "testTitle": "Testcode — niet afdrukken",
+    "testText": "Deze code opent je menukaart op ons testadres, zodat je hem nu al kunt proberen: scan hem met een andere telefoon, of tik op Menukaart openen. Zodra menubuddy.be online is, verschijnt hier je definitieve code, naar {address}. Druk alleen die af.",
+    "testBadge": "Test — niet afdrukken",
+    "mainTitle": "Code voor het hele restaurant",
+    "mainHint": "Eén code die aan elke tafel werkt. Handig voor het raam, de ingang en je papieren menukaarten.",
+    "codeLabel": "QR-code voor {target}",
+    "open": "Menukaart openen",
+    "share": "Link versturen",
+    "copied": "Link gekopieerd",
+    "download": "Afbeelding bewaren",
+    "print": "Code afdrukken",
+    "printAll": "Alle codes afdrukken",
+    "printHint": "Eén kaartje per code, klaar om uit te knippen. Op een telefoon kies je \"Bewaar als pdf\" in het afdrukscherm.",
+    "printLater": "Bewaren en afdrukken kan hier zodra het definitieve adres online is.",
+    "tablesTitle": "Codes per tafel (optioneel)",
+    "tablesHint": "Elke tafel krijgt een eigen code. Gasten zien dan hun tafel bovenaan de menukaart, zodat het personeel weet waar ze zitten.",
+    "tableName": "Naam of nummer van de tafel",
+    "tableNamePlaceholder": "bv. 5 of Terras 2",
+    "add": "Toevoegen",
+    "addRange": "Tafels 1 tot",
+    "invalid": "Gebruik maximaal 20 letters, cijfers, spaties of streepjes.",
+    "duplicate": "Deze tafel heeft al een code.",
+    "tooMany": "Je kunt codes maken voor maximaal 100 tafels.",
+    "saveError": "Opslaan lukte niet. Controleer je internetverbinding en probeer opnieuw.",
+    "empty": "Nog geen tafelcodes. Zonder tafelcodes gebruikt elke tafel de code hierboven.",
+    "tableCaption": "Tafel {table}",
+    "enlarge": "{table} groot tonen",
+    "remove": "{table} verwijderen",
+    "removeAll": "Alle tafelcodes verwijderen",
+    "removeAllConfirm": "Alle tafelcodes verwijderen? Codes die je al afdrukte tonen dan geen tafelnaam meer.",
+    "close": "Sluiten"
   }
 }

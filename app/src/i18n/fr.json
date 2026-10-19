@@ -27,7 +27,8 @@
     "overview": "Aperçu",
     "menu": "Carte",
     "upload": "Envoyer",
-    "service": "Service"
+    "service": "Service",
+    "qr": "QR"
   },
   "overview": {
     "title": "Bienvenue sur MenuBuddy",
@@ -44,7 +45,11 @@
       },
       {
         "title": "Vérifiez et publiez",
-        "text": "Vérifiez les prix et les allergènes, puis imprimez votre QR code."
+        "text": "Vérifiez les prix et les allergènes, puis publiez votre carte."
+      },
+      {
+        "title": "Votre QR code",
+        "text": "Placez-le sur vos tables. Les clients le scannent et lisent la carte dans leur langue."
       }
     ]
   },
@@ -345,5 +350,42 @@
     "emptyStaff": "Pas encore de plats. Demandez au propriétaire d'ajouter la carte.",
     "emptyLink": "Envoyer votre carte",
     "hiddenNote": "Les plats masqués pour les clients ne sont pas listés ici."
+  },
+  "qr": {
+    "title": "QR code",
+    "intro": "Vos clients scannent ce code et lisent votre carte dans leur langue. Sans application.",
+    "notPublished": "Votre carte n'est pas encore en ligne : les clients qui scannent ne la voient pas encore. Connecté, vous voyez un aperçu.",
+    "toMenu": "Publier sous Carte",
+    "testTitle": "Code de test — à ne pas imprimer",
+    "testText": "Ce code ouvre votre carte sur notre adresse de test, pour l'essayer dès maintenant : scannez-le avec un autre téléphone, ou touchez Ouvrir la carte. Dès que menubuddy.be sera en ligne, votre code définitif apparaîtra ici, vers {address}. N'imprimez que celui-là.",
+    "testBadge": "Test — ne pas imprimer",
+    "mainTitle": "Code pour tout le restaurant",
+    "mainHint": "Un seul code qui fonctionne à chaque table. Pratique pour la vitrine, l'entrée et vos cartes imprimées.",
+    "codeLabel": "QR code pour {target}",
+    "open": "Ouvrir la carte",
+    "share": "Envoyer le lien",
+    "copied": "Lien copié",
+    "download": "Enregistrer l'image",
+    "print": "Imprimer le code",
+    "printAll": "Imprimer tous les codes",
+    "printHint": "Une carte par code, prête à découper. Sur un téléphone, choisissez « Enregistrer en PDF » dans l'écran d'impression.",
+    "printLater": "Enregistrer et imprimer seront possibles ici dès que l'adresse définitive sera en ligne.",
+    "tablesTitle": "Codes par table (facultatif)",
+    "tablesHint": "Chaque table reçoit son propre code. Les clients voient alors leur table en haut de la carte, et le personnel sait où ils sont assis.",
+    "tableName": "Nom ou numéro de la table",
+    "tableNamePlaceholder": "p. ex. 5 ou Terrasse 2",
+    "add": "Ajouter",
+    "addRange": "Tables 1 à",
+    "invalid": "Utilisez au maximum 20 lettres, chiffres, espaces ou tirets.",
+    "duplicate": "Cette table a déjà un code.",
+    "tooMany": "Vous pouvez créer des codes pour 100 tables au maximum.",
+    "saveError": "L'enregistrement a échoué. Vérifiez votre connexion internet et réessayez.",
+    "empty": "Pas encore de codes par table. Sans eux, chaque table utilise le code ci-dessus.",
+    "tableCaption": "Table {table}",
+    "enlarge": "Afficher {table} en grand",
+    "remove": "Supprimer {table}",
+    "removeAll": "Supprimer tous les codes de table",
+    "removeAllConfirm": "Supprimer tous les codes de table ? Les codes déjà imprimés n'afficheront plus de nom de table.",
+    "close": "Fermer"
   }
 }

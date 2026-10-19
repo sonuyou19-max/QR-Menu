@@ -117,12 +117,13 @@ function matches(dish: GuestDish, filters: Set<Filter>): boolean {
 /** Table label from a per-table QR code (?t=5), kept for the "show to staff" screen. */
 function tableLabel(slug: string): string | null {
   const t = new URLSearchParams(location.search).get("t");
+  const valid = t && /^[\p{L}\p{N} _-]{1,20}$/u.test(t) ? t : null;
   const key = `mb.table.${slug}`;
   try {
-    if (t && /^[\p{L}\p{N} _-]{1,20}$/u.test(t)) sessionStorage.setItem(key, t);
+    if (valid) sessionStorage.setItem(key, valid);
     return sessionStorage.getItem(key);
   } catch {
-    return t;
+    return valid;
   }
 }
 

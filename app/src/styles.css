@@ -28,3 +28,9 @@
 @utility input {
   @apply rounded-control border-line bg-surface text-ink placeholder:text-oat-500 aria-invalid:border-danger w-full border px-3.5 py-3 text-base;
 }
+
+/* Printed QR cards (routes/QrCodes.tsx) go on A4. */
+@page {
+  size: A4;
+  margin: 12mm;
+}

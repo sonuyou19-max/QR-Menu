@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Check, ChevronRight, ListChecks, Store, Upload } from "lucide-react";
+import { Check, ChevronRight, ListChecks, QrCode, Store, Upload } from "lucide-react";
 import { fill, useI18n } from "../i18n";
 import { config, isLiveDomain, menuUrl } from "../lib/config";
 import { languageName } from "../lib/languages";
 import { supabase } from "../lib/supabase";
 import { useRestaurant } from "../restaurant/RestaurantProvider";
 
-const icons = [Store, Upload, ListChecks];
+const icons = [Store, Upload, ListChecks, QrCode];
 /** Steps that already have a screen. */
-const stepLinks: (string | null)[] = [null, "/upload", "/menu"];
+const stepLinks: (string | null)[] = [null, "/upload", "/menu", "/qr"];
 
 /** Owner start page. Steps become links as Phase 1 lands. */
 export function Overview() {

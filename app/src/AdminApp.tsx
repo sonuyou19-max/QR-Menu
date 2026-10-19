@@ -36,6 +36,13 @@ const router = createBrowserRouter([
                   { path: "/menu", element: <MenuEditor /> },
                   { path: "/upload", element: <Upload /> },
                   { path: "/upload/:id", element: <UploadResult /> },
+                  {
+                    path: "/qr",
+                    // QR drawing code loads only on this screen.
+                    lazy: async () => ({
+                      Component: (await import("./routes/QrCodes")).QrCodes,
+                    }),
+                  },
                 ],
               },
             ],

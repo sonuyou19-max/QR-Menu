@@ -263,6 +263,7 @@ export type Database = {
           plan: string;
           published_at: string | null;
           show_allergens: boolean;
+          qr_tables: string[];
           slug: string;
           source_language: string;
           theme: Json;
@@ -283,6 +284,7 @@ export type Database = {
           plan?: string;
           published_at?: string | null;
           show_allergens?: boolean;
+          qr_tables?: string[];
           slug: string;
           source_language?: string;
           theme?: Json;
@@ -303,6 +305,7 @@ export type Database = {
           plan?: string;
           published_at?: string | null;
           show_allergens?: boolean;
+          qr_tables?: string[];
           slug?: string;
           source_language?: string;
           theme?: Json;
