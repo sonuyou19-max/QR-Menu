@@ -16,8 +16,14 @@ interface Props {
   lang?: TranslatedLang;
   /** Category indexes to show (the phone is short). */
   categories?: number[];
+  /**
+   * Phones only (below 640 px): show this question + answer as an open chat above the bar, and
+   * leave out these dishes to make room. Larger screens show the chat as a card beside the phone.
+   */
+  chat?: { question: string; answer: string };
+  hideOnPhones?: string[];
 }
-const { lang = "en", categories = [1] } = Astro.props;
+const { lang = "en", categories = [1], chat, hideOnPhones = [] } = Astro.props;
 const ui = guestUi[lang];
 const shown = categories
   .map((i) => sampleMenu[i])
@@ -51,6 +57,7 @@ const shown = categories
                 class:list={[
                   "flex items-start gap-2 rounded-xl p-2.5",
                   out ? "bg-oat-100" : "bg-surface shadow-sm",
+                  hideOnPhones.includes(item.id) && "max-sm:hidden",
                 ]}
               >
                 <div class="min-w-0 flex-1">
@@ -99,8 +106,18 @@ const shown = categories
     ))}
   </div>
 
+  {chat && (
+    <div class="space-y-1.5 rounded-t-2xl border-t border-line bg-surface px-3 pt-3 pb-1 text-[12px] shadow-[0_-6px_16px_rgb(0_0_0/0.06)] sm:hidden">
+      <p class="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-sm bg-herb-700 px-3 py-1.5 text-white">
+        {chat.question}
+      </p>
+      <p class="w-fit max-w-[90%] rounded-2xl rounded-bl-sm bg-oat-100 px-3 py-1.5 text-ink">
+        {chat.answer}
+      </p>
+    </div>
+  )}
   <!-- Extra room at the bottom and sides: the phone screen has rounded corners. -->
-  <div class="border-t border-line bg-surface px-5 pt-2.5 pb-6">
+  <div class:list={["bg-surface px-5 pt-2.5 pb-5", chat ? "sm:border-t sm:border-line" : "border-t border-line"]}>
     <div class="flex items-center gap-2 rounded-full bg-oat-100 px-3 py-2 text-[12px] text-ink-muted">
       <MessageCircle class="size-4 text-herb-700" aria-hidden="true" />
       {ui.ask}
