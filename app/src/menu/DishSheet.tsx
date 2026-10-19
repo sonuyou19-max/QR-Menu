@@ -568,7 +568,9 @@ export function DishSheet({
               )}
               {confirmed
                 ? t.editor.sheet.allergensConfirmed
-                : t.editor.sheet.allergensSuggested}
+                : item.confidence
+                  ? t.editor.sheet.allergensSuggested
+                  : t.editor.sheet.allergensUnchecked}
             </p>
             {confirmed && missingFromConfirmed.length > 0 && (
               <p

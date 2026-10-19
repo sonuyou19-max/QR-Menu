@@ -243,6 +243,7 @@
       "dietary": "Dietary",
       "allergens": "Allergens (14 EU allergens)",
       "allergensSuggested": "Suggested by Buddy. Check them, then confirm. Guests only see confirmed allergens.",
+      "allergensUnchecked": "Not checked yet. Tick the allergens this dish contains, or tap Ask Buddy for a suggestion. Then confirm.",
       "allergensConfirmed": "Confirmed by you. Guests see these allergens.",
       "confirm": "Confirm allergens",
       "confirmNone": "Confirm: contains none of these",

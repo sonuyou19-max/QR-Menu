@@ -243,6 +243,7 @@
       "dietary": "Régime",
       "allergens": "Allergènes (14 allergènes UE)",
       "allergensSuggested": "Suggérés par Buddy. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
+      "allergensUnchecked": "Pas encore vérifiés. Cochez les allergènes de ce plat, ou touchez Demander à Buddy pour une suggestion. Puis confirmez.",
       "allergensConfirmed": "Confirmés par vous. Les clients voient ces allergènes.",
       "confirm": "Confirmer les allergènes",
       "confirmNone": "Confirmer : n'en contient aucun",

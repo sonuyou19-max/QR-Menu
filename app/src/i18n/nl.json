@@ -243,6 +243,7 @@
       "dietary": "Dieet",
       "allergens": "Allergenen (14 EU-allergenen)",
       "allergensSuggested": "Voorgesteld door Buddy. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
+      "allergensUnchecked": "Nog niet gecontroleerd. Vink de allergenen aan die in dit gerecht zitten, of tik op Vraag het Buddy voor een voorstel. Bevestig daarna.",
       "allergensConfirmed": "Bevestigd door jou. Gasten zien deze allergenen.",
       "confirm": "Allergenen bevestigen",
       "confirmNone": "Bevestigen: bevat geen van deze",
