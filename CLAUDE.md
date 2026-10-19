@@ -216,7 +216,7 @@ Footer: contact, privacy, terms, company details (KBO/BCE + VAT number once regi
 **Demo — both options:**
 - **A. Sample restaurant menu:** a phone frame on the page showing a sample Belgian brasserie with a Dutch menu; visitor can switch language, add to cart, open "Show to staff" and see sample chat answers. Plus a QR code so the owner can open it on their own phone.
   - Before the app exists: a self-contained React island with hard-coded sample data, styled like the real guest menu.
-  - Once the guest menu is built: replace with an iframe of `app.menubuddy.be/m/demo` (a real `demo` restaurant in the database).
+  - Once the guest menu is built: replace with an iframe of `app.menubuddy.be/m/demo` (a real `demo` restaurant in the database). **Done (step 10).**
 - **B. "Try with your own menu":** upload 1–3 menu photos (or a PDF), pick a language, see the menu translated in ~30 seconds inside the phone frame. Calls edge function `demo-translate`.
   - Guardrails (it costs AI credits and is public): Turnstile required; rate limit (e.g. 2 runs per IP per day, IP stored hashed); **global daily spend cap** — when reached, show "Demo is busy, book a demo instead"; max file size/pages; files and results **auto-deleted after 24 hours**; results never public or indexed; no chat in this mode.
   - Result labelled "Preview — not yet checked by the restaurant". CTA under it: "Want this for your restaurant? Book a demo" (prefill the restaurant name from the extraction). Optional "email me this preview" with a consent checkbox → `leads` (source `try_your_menu`).
@@ -467,7 +467,8 @@ create table usage_events (                     -- AI cost tracking per restaura
 /site                    Astro marketing website → menubuddy.be (Cloudflare Worker `menubuddy-site`)
   /src/pages             index (nl), /fr/, /en/, /demo, /privacy, /terms
   /src/components        page sections (Astro) + React islands:
-                         DemoPhone, TryYourMenu, BookDemoForm (pricing toggle is a tiny inline script, no React)
+                         TryYourMenu, BookDemoForm (pricing toggle is a tiny inline script, no React);
+                         the demo is an iframe of the app's /m/demo
   /src/i18n              nl.json, fr.json, en.json (all copy)
   /src/content           blog, case studies, city pages (later)
 /app                     React + Vite product → app.menubuddy.be (Cloudflare Worker `menubuddy-app`)
@@ -512,7 +513,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 7b. QR code (moved up at the owner's request, to check the guest menu by scanning): QR screen in the app, one code per restaurant + optional per-table codes, printable PDF. Until `menubuddy.be` is live it shows a **test code** (workers.dev address) marked "not for printing"; the print/download option appears only once the real domain is set. Built: `/qr` (`routes/QrCodes.tsx`, lazy-loaded; codes drawn as SVG from the `qrcode` package), table names in `restaurants.qr_tables` (1–20 letters/digits/spaces/dashes, same rule as the guest page's `?t=`), large view per code to scan from another phone, PNG via the share sheet and an A4 print sheet of cut-out cards (live domain only).
 8. Cart + "Show to staff" screen. Built: `guest/cart.ts` (localStorage `mb.cart.<slug>`, ids + qty + note only, max 20 per dish, notes ≤ 80 chars, cleared after 6 h; dishes that leave the menu are dropped, sold-out ones are flagged and left out of the total and the staff screen) and `guest/Order.tsx` (+ button, bottom bar, order sheet, dark full-screen staff screen with Wake Lock; dish names as on the menu, staff labels — table, note, total — in the restaurant's own language). The `add_to_cart` / `show_to_staff` events come with `track-event` in step 15.
 9. Theme system. 9a (built): look system, Look screen with live preview, logo/cover upload. 9b (built): `suggest-theme` (Buddy suggests a look from logo, cover photo, a menu page, dish names and optional website; "Suggest another" avoids its own earlier suggestions; 15 per restaurant per day; ~€0.01–0.02 each)
-10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`
+10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`. Built: migration `20261020190000_demo_restaurant` (generated from `site/src/data/sample-menu.ts`: Brasserie Lindehof, 8 dishes, 6 guest languages, one sold-out dish, one dish with unconfirmed allergens; no members, so it is changed only by migration). The site embeds `${PUBLIC_APP_URL}/m/demo?t=5&lang=<site language>` (`siteConfig.appUrl`, default the workers.dev test app) in the home-page phone frame and on `/menu-demo`; the guest page accepts `?lang=` as first language wish. The old `DemoPhone` island (with sample chat answers) is gone; the chat comes back with step 12. In the phone-preview Artifact the frame becomes a "Live demo ↗" link (the Artifact can't load other sites).
 11. (moved up to 7b)
 12. `menu-chat` with full guardrail layer + item cards with + in chat; build the eval file alongside
 13. `demo-translate` + "Try with your own menu" (Demo B) on the marketing site, with all its guardrails

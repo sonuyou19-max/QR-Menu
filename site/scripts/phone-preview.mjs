@@ -46,6 +46,12 @@ for (const lang of languages) {
     );
     // Astro's island loader is replaced by the bundled islands script below.
     body = body.replace(/<script>[\s\S]*?<\/script>/g, "");
+    // The preview can't load other sites in a frame: the live demo opens in a new tab instead.
+    body = body.replace(
+      /<iframe src="([^"]+)"[^>]*><\/iframe>/g,
+      (_, src) =>
+        `<a href="${src}" target="_blank" rel="noopener" class="flex h-full flex-col items-center justify-center gap-3 bg-oat-100 p-6 text-center font-semibold text-oat-900"><span class="text-5xl" aria-hidden="true">📱</span><span class="btn-primary">Live demo ↗</span></a>`,
+    );
     // Ids repeat across views, so namespace them per view.
     const prefix = `${lang}-${page}-`;
     body = body

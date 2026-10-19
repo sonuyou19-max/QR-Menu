@@ -2,7 +2,6 @@
 // chunked loader, so the whole preview can live in one HTML file.
 import type { ComponentType } from "react";
 import { createRoot } from "react-dom/client";
-import DemoPhone from "../src/components/demo/DemoPhone";
 import BookDemoForm from "../src/components/forms/BookDemoForm";
 
 // The preview page can't reach the network, so the form only validates and shows its success state.
@@ -10,7 +9,6 @@ const components: Record<
   string,
   { Component: ComponentType<any>; extra?: object }
 > = {
-  DemoPhone: { Component: DemoPhone },
   BookDemoForm: { Component: BookDemoForm, extra: { previewMode: true } },
 };
 

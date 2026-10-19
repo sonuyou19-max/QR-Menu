@@ -67,11 +67,11 @@
   "demo": {
     "eyebrow": "Demo",
     "title": "Try it yourself.",
-    "text": "This is a sample menu as your guests see it. Pick a language, add dishes to the cart and ask a question. Every dish keeps the name on the menu — the translation sits small underneath.",
+    "text": "This is the real guest menu of a sample restaurant, exactly as your guests see it. Pick a language, filter the dishes and add them to the order. Every dish keeps the name on the menu — the translation sits small underneath.",
     "points": [
       "Switch between 7 languages, from English to Chinese",
       "Tap + and open “Show to staff”",
-      "Ask a question: “Is the stoofvlees spicy?”"
+      "Filter for vegetarian or no beef"
     ],
     "sampleNote": "Sample restaurant with a fictional menu.",
     "phoneLabel": "Interactive demo of a guest menu",

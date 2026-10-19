@@ -67,11 +67,11 @@
   "demo": {
     "eyebrow": "Demo",
     "title": "Probeer het zelf.",
-    "text": "Dit is een voorbeeldmenu zoals je gasten het zien. Kies een taal, voeg gerechten toe aan het mandje en stel een vraag. De naam van elk gerecht blijft zoals op de kaart — de vertaling staat er klein onder.",
+    "text": "Dit is de echte gastenmenukaart van een voorbeeldrestaurant, precies zoals je gasten hem zien. Kies een taal, filter de gerechten en voeg ze toe aan de bestelling. De naam van elk gerecht blijft zoals op de kaart — de vertaling staat er klein onder.",
     "points": [
       "Wissel tussen 7 talen, van Engels tot Chinees",
       "Tik op + en open ‘Toon aan personeel’",
-      "Stel een vraag: “Is het stoofvlees pikant?”"
+      "Filter op vegetarisch of zonder rundvlees"
     ],
     "sampleNote": "Voorbeeldrestaurant met een fictief menu.",
     "phoneLabel": "Interactieve demo van een gastmenu",

@@ -1,8 +1,9 @@
 ---
-// Full-screen sample menu, opened from the QR code or the "full screen" button on the home page.
+// Full-screen demo: the real guest menu of the `demo` restaurant under a small bar with a way back
+// and "Book a demo". Opened from the QR code or the "full screen" button on the home page.
 import ArrowLeft from "@lucide/astro/icons/arrow-left";
 import Base from "../layouts/Base.astro";
-import DemoPhone from "./demo/DemoPhone";
+import { demoMenuUrl } from "../data/site";
 import { getDictionary, localePath, type Lang } from "../i18n";
 
 interface Props {
@@ -44,7 +45,12 @@ const t = getDictionary(lang);
       </a>
     </nav>
     <main id="main" class="min-h-0 flex-1">
-      <DemoPhone client:load label={t.demo.phoneLabel} fullscreen />
+      <iframe
+        src={demoMenuUrl(lang)}
+        title={t.demo.phoneLabel}
+        allow="screen-wake-lock"
+        class="block h-full w-full border-0 bg-white"
+      ></iframe>
     </main>
   </div>
 </Base>

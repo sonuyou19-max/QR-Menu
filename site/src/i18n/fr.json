@@ -67,11 +67,11 @@
   "demo": {
     "eyebrow": "Démo",
     "title": "Essayez vous-même.",
-    "text": "Voici une carte d'exemple telle que vos clients la voient. Choisissez une langue, ajoutez des plats au panier et posez une question. Le nom de chaque plat reste celui de la carte — la traduction apparaît en petit en dessous.",
+    "text": "Voici la vraie carte client d'un restaurant d'exemple, exactement comme vos clients la voient. Choisissez une langue, filtrez les plats et ajoutez-les à la commande. Le nom de chaque plat reste celui de la carte — la traduction apparaît en petit en dessous.",
     "points": [
       "Changez de langue : 7 langues, de l’anglais au chinois",
       "Touchez + puis « Montrer au personnel »",
-      "Posez une question : « Le stoofvlees est-il épicé ? »"
+      "Filtrez : végétarien ou sans bœuf"
     ],
     "sampleNote": "Restaurant d'exemple avec une carte fictive.",
     "phoneLabel": "Démo interactive d'une carte client",

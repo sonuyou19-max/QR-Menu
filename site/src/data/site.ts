@@ -12,4 +12,12 @@ export const siteConfig = {
    */
   turnstileSiteKey:
     import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA",
+  /** The product (guest menus + dashboard). Test address until app.menubuddy.be is live. */
+  appUrl:
+    import.meta.env.PUBLIC_APP_URL || "https://menubuddy-app.sonuyou19.workers.dev",
 };
+
+/** The real demo restaurant's guest menu (table 5), opened in the visitor's language. */
+export function demoMenuUrl(lang: string): string {
+  return `${siteConfig.appUrl}/m/demo?t=5&lang=${lang}`;
+}

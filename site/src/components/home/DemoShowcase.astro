@@ -1,11 +1,11 @@
 ---
-// Live demo (CLAUDE.md 4.6, Demo A): interactive sample menu + QR code / full-screen link.
-// Once the guest menu exists, the island is replaced by an iframe of app.menubuddy.be/m/demo.
+// Live demo (CLAUDE.md 4.6, Demo A): the real guest menu of the `demo` restaurant in a phone
+// frame, plus a QR code / full-screen link to open it on a phone.
 import Check from "@lucide/astro/icons/check";
 import Maximize from "@lucide/astro/icons/maximize-2";
 import QRCode from "qrcode";
 import PhoneFrame from "../phone/PhoneFrame.astro";
-import DemoPhone from "../demo/DemoPhone";
+import { demoMenuUrl } from "../../data/site";
 import { getDictionary, localePath, type Lang } from "../../i18n";
 
 interface Props {
@@ -73,7 +73,13 @@ const qrSvg = await QRCode.toString(new URL(fullscreenHref, Astro.site).href, {
 
     <div class="mx-auto w-full max-w-[22rem]">
       <PhoneFrame tone="onDark">
-        <DemoPhone client:visible label={t.demo.phoneLabel} />
+        <iframe
+          src={demoMenuUrl(lang)}
+          title={t.demo.phoneLabel}
+          loading="lazy"
+          allow="screen-wake-lock"
+          class="block h-full w-full border-0"
+        ></iframe>
       </PhoneFrame>
     </div>
   </div>

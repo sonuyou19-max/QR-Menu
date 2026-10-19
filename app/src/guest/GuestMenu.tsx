@@ -33,9 +33,14 @@ import { rtlLanguages, stringsFor, type GuestStrings } from "./strings";
 type Filter = "vegetarian" | "vegan" | "noPork" | "noBeef" | "glutenFree";
 const LANG_KEY = "mb.guestLang";
 
-/** Guest's language wishes, best first: their earlier pick, then the phone's languages. */
+/**
+ * Guest's language wishes, best first: a language in the link (?lang=fr, used by the marketing
+ * site's demo), their earlier pick, then the phone's languages.
+ */
 function wishedLanguages(): string[] {
   const wishes: string[] = [];
+  const fromLink = new URLSearchParams(location.search).get("lang");
+  if (fromLink && /^[a-z]{2}$/.test(fromLink)) wishes.push(fromLink);
   try {
     const saved = localStorage.getItem(LANG_KEY);
     if (saved) wishes.push(saved);
