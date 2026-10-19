@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
+  ChevronDown,
+  Globe,
   Info,
   LoaderCircle,
   MessageCircleQuestion,
@@ -257,12 +259,17 @@ export function GuestMenu({ slug }: { slug: string }) {
     });
 
   const languagePicker = restaurant.languages.length > 1 && (
-    <label className="shrink-0">
-      <span className="sr-only">{s.language}</span>
+    // Compact (globe + code) so the category chips keep the room; the phone's own picker
+    // still lists every language by its full name.
+    <label className="border-line bg-surface text-ink relative inline-flex h-9 shrink-0 items-center gap-1 rounded-full border ps-2.5 pe-2 font-sans text-sm font-semibold">
+      <Globe className="size-4" aria-hidden="true" />
+      <span aria-hidden="true">{shownLanguage.toUpperCase()}</span>
+      <ChevronDown className="text-ink-muted size-3.5" aria-hidden="true" />
       <select
         value={shownLanguage}
         onChange={(e) => changeLanguage(e.target.value)}
-        className="border-line bg-surface text-ink rounded-full border py-2 ps-3 pe-8 text-sm font-semibold"
+        aria-label={s.language}
+        className="absolute inset-0 cursor-pointer opacity-0"
       >
         {restaurant.languages.map((code) => (
           <option key={code} value={code}>
@@ -289,9 +296,10 @@ export function GuestMenu({ slug }: { slug: string }) {
       />
 
       <header className="bg-canvas/95 border-line sticky top-0 z-20 border-b pt-[env(safe-area-inset-top)] backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center gap-2 py-2.5 ps-4 pe-3">
+        <div className="mx-auto flex max-w-2xl items-center gap-3 py-2.5 ps-4 pe-4">
           <nav aria-label={s.categories} className="min-w-0 flex-1">
-            <ul className="-ms-4 flex [scrollbar-width:none] gap-2 overflow-x-auto ps-4">
+            {/* Chips fade out before the language button instead of being cut off. */}
+            <ul className="-ms-4 flex [scrollbar-width:none] gap-2 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-1.5rem),transparent)] ps-4 pe-6 rtl:[mask-image:linear-gradient(to_left,black_calc(100%-1.5rem),transparent)]">
               {categories.map((c) => (
                 <li key={c.id} className="shrink-0">
                   <a
