@@ -56,30 +56,9 @@ export const LookSuggestion = z.object({
 });
 export type LookSuggestion = z.infer<typeof LookSuggestion>;
 
-export type NearbyLook = Partial<Record<keyof LookSuggestion, string>>;
-
 const HEX = /^#[0-9a-f]{6}$/;
 export const isHex = (v: unknown): v is string =>
   typeof v === "string" && HEX.test(v.toLowerCase());
-
-function distance(a: string, b: string): number {
-  const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
-  const [x, y] = [p(a), p(b)];
-  return Math.hypot(x[0]! - y[0]!, x[1]! - y[1]!, x[2]! - y[2]!);
-}
-
-/** Same scoring as private.looks_alike in the database (migration 20261020120000). */
-export function looksAlike(a: NearbyLook, b: NearbyLook): boolean {
-  const close = (x?: string, y?: string, limit = 70) =>
-    isHex(x) && isHex(y) && distance(x.toLowerCase(), y.toLowerCase()) < limit;
-  let score = 0;
-  if (a.fonts === b.fonts) score += 3;
-  if (close(a.accent, b.accent)) score += 3;
-  if (close(a.background, b.background, 40)) score += 1;
-  for (const k of ["header", "layout", "headings", "ornament", "texture", "corners"] as const)
-    if (a[k] === b[k]) score += 1;
-  return score >= 8;
-}
 
 const dashboardLanguages = { nl: "Dutch", fr: "French", en: "English" } as const;
 export type DashboardLanguage = keyof typeof dashboardLanguages;
@@ -89,7 +68,7 @@ export function lookSystemPrompt(menuLanguage: string, owner: DashboardLanguage)
 
 Goals, in this order:
 1. It must feel like THIS restaurant. Take the main colour (accent) from the logo or the brand colours you see; only invent one when there is no logo or photo, and then pick one that suits the cuisine. The background is a light tint or cream that goes with it, or a dark colour for dark, elegant brands. Text colours are adjusted automatically, so choose freely.
-2. It must be distinctive. Restaurants nearby already use the looks listed under nearby_looks; do not choose the same font pair together with a similar main colour as any of them. Avoid the generic choices ("house" fonts, plain everything) unless they truly fit best.
+2. It must be distinctive, not a generic template: avoid the generic choices ("house" fonts, plain everything) unless they truly fit best. If earlier_suggestions are listed, the owner wants something different: choose another font pair and a clearly different main colour or template.
 3. It must stay readable and calm on a small screen.
 
 Options:

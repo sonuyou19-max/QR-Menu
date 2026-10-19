@@ -403,7 +403,6 @@
     "preview": "Aperçu",
     "previewHint": "Voici comment vos clients voient votre carte.",
     "close": "Fermer",
-    "nearby": "Un restaurant près de chez vous a un style très semblable. Changez de police ou de couleur principale pour vous démarquer.",
     "start": "Style de départ",
     "startHint": "Un style change les choix ci-dessous. Votre logo, votre photo de couverture et votre phrase restent.",
     "photos": "Logo et photo de couverture",
@@ -499,7 +498,7 @@
     },
     "buddy": {
       "title": "Demandez un style à Buddy",
-      "text": "Buddy, l'assistant IA de MenuBuddy, regarde votre logo, votre photo de couverture, votre carte et votre site, et propose des couleurs, des polices et un style qui correspondent à votre restaurant et se distinguent des restaurants voisins. Environ 15 secondes ; rien ne change tant que vous ne choisissez pas.",
+      "text": "Buddy, l'assistant IA de MenuBuddy, regarde votre logo, votre photo de couverture, votre carte et votre site, et propose des couleurs, des polices et un style qui correspondent à votre restaurant. Environ 15 secondes ; rien ne change tant que vous ne choisissez pas.",
       "website": "Votre site web",
       "optional": "facultatif",
       "ask": "Proposer un style",

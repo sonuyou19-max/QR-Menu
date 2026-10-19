@@ -403,7 +403,6 @@
     "preview": "Voorbeeld",
     "previewHint": "Zo zien gasten je menukaart.",
     "close": "Sluiten",
-    "nearby": "Een restaurant in je buurt heeft een erg gelijkaardige stijl. Kies een ander lettertype of een andere hoofdkleur om op te vallen.",
     "start": "Beginstijl",
     "startHint": "Een stijl verandert de keuzes hieronder. Je logo, omslagfoto en zin blijven.",
     "photos": "Logo en omslagfoto",
@@ -499,7 +498,7 @@
     },
     "buddy": {
       "title": "Vraag Buddy om een stijl",
-      "text": "Buddy, de AI-assistent van MenuBuddy, bekijkt je logo, omslagfoto, menukaart en website en stelt kleuren, lettertypes en een stijl voor die bij je restaurant passen en verschillen van restaurants in de buurt. Duurt ongeveer 15 seconden; er verandert niets tot je kiest.",
+      "text": "Buddy, de AI-assistent van MenuBuddy, bekijkt je logo, omslagfoto, menukaart en website en stelt kleuren, lettertypes en een stijl voor die bij je restaurant passen. Duurt ongeveer 15 seconden; er verandert niets tot je kiest.",
       "website": "Je website",
       "optional": "optioneel",
       "ask": "Stel een stijl voor",

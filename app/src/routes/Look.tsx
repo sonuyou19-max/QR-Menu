@@ -5,15 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import {
-  Check,
-  Eye,
-  ImagePlus,
-  LoaderCircle,
-  Sparkles,
-  Undo2,
-  X,
-} from "lucide-react";
+import { Check, Eye, ImagePlus, LoaderCircle, Undo2, X } from "lucide-react";
 import { useI18n } from "../i18n";
 import type { Json } from "../lib/database.types";
 import { supabase } from "../lib/supabase";
@@ -53,7 +45,6 @@ export function Look() {
   const [logo, setLogo] = useState<string | null>(restaurant.logo_path);
   const [history, setHistory] = useState<Theme[]>([]);
   const [status, setStatus] = useState<Status>("idle");
-  const [similar, setSimilar] = useState(0);
   const [imageColours, setImageColours] = useState<string[]>([]);
   const [busy, setBusy] = useState<"logo" | "cover" | null>(null);
   const [uploadError, setUploadError] = useState(false);
@@ -81,10 +72,6 @@ export function Look() {
         .eq("id", restaurant.id);
       if (error) return setStatus("error");
       setStatus("saved");
-      const { data } = await supabase.rpc("similar_looks_nearby", {
-        p_restaurant: restaurant.id,
-      });
-      setSimilar(data ?? 0);
       void reload();
     },
     [restaurant.id, reload],
@@ -179,16 +166,6 @@ export function Look() {
     <div className="pb-28">
       <h1 className="text-3xl font-semibold sm:text-4xl">{L.title}</h1>
       <p className="text-ink-muted mt-2 text-lg">{L.intro}</p>
-
-      {similar > 0 && (
-        <p
-          role="status"
-          className="bg-mustard-100 text-mustard-900 rounded-card mt-5 flex gap-2 p-4 font-medium"
-        >
-          <Sparkles className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
-          {L.nearby}
-        </p>
-      )}
 
       <BuddyLook
         restaurantId={restaurant.id}

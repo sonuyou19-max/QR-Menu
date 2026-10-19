@@ -403,7 +403,6 @@
     "preview": "Preview",
     "previewHint": "This is how guests see your menu.",
     "close": "Close",
-    "nearby": "A restaurant near you has a very similar look. Change the font or main colour to stand out.",
     "start": "Starting style",
     "startHint": "A style changes the choices below. Your logo, cover photo and line stay.",
     "photos": "Logo and cover photo",
@@ -499,7 +498,7 @@
     },
     "buddy": {
       "title": "Ask Buddy for a look",
-      "text": "Buddy, MenuBuddy's AI assistant, looks at your logo, cover photo, menu and website and suggests colours, fonts and a style that fit your restaurant and differ from restaurants nearby. Takes about 15 seconds; nothing changes until you choose.",
+      "text": "Buddy, MenuBuddy's AI assistant, looks at your logo, cover photo, menu and website and suggests colours, fonts and a style that fit your restaurant. Takes about 15 seconds; nothing changes until you choose.",
       "website": "Your website",
       "optional": "optional",
       "ask": "Suggest a look",

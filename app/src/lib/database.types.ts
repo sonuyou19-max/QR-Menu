@@ -449,7 +449,6 @@ export type Database = {
       is_slug_available: { Args: { p_slug: string }; Returns: boolean };
       reorder_categories: { Args: { p_ids: string[] }; Returns: undefined };
       reset_stock: { Args: { p_restaurant_id: string }; Returns: string[] };
-      similar_looks_nearby: { Args: { p_restaurant: string }; Returns: number };
       set_stock: {
         Args: { p_in_stock: boolean; p_item_ids: string[] };
         Returns: string[];

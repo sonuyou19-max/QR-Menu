@@ -1,7 +1,6 @@
 // Buddy suggests a look for the guest menu (CLAUDE.md 4.4, 7): one vision call on the logo,
 // cover photo, a page of the printed menu, the dish names and (optionally) the website text.
-// Looks of restaurants in the same area are passed as "avoid" and checked again afterwards, so
-// neighbours don't end up alike. Returns the suggestion only; the app applies it with undo.
+// Returns the suggestion only; the app applies it with undo.
 //
 // Deployed with verify_jwt = false: the user's token is checked here.
 import type { SupabaseClient } from "npm:@supabase/supabase-js@2";
@@ -21,14 +20,7 @@ import {
   json,
   requestUser,
 } from "../_shared/http.ts";
-import {
-  fontPairs,
-  isHex,
-  LookSuggestion,
-  lookSystemPrompt,
-  looksAlike,
-  type NearbyLook,
-} from "../_shared/look.ts";
+import { isHex, LookSuggestion, lookSystemPrompt } from "../_shared/look.ts";
 
 /** Suggestions per restaurant per day (usage_events kind 'theme'). */
 const MAX_PER_DAY = 15;
@@ -181,7 +173,7 @@ Deno.serve(async (req) => {
     return json({ ok: false, error: "not_found" }, 404, cors);
 
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-  const [{ count }, { data: restaurant }, { data: categories }, { data: upload }, { data: nearby }] =
+  const [{ count }, { data: restaurant }, { data: categories }, { data: upload }] =
     await Promise.all([
       db
         .from("usage_events")
@@ -207,7 +199,6 @@ Deno.serve(async (req) => {
         .order("created_at", { ascending: false })
         .limit(1)
         .maybeSingle(),
-      db.rpc("nearby_looks", { p_restaurant: restaurantId }),
     ]);
   if ((count ?? 0) >= MAX_PER_DAY)
     return json({ ok: false, error: "rate_limited" }, 429, cors);
@@ -239,10 +230,6 @@ Deno.serve(async (req) => {
     website ? websiteFacts(website) : Promise.resolve(null),
   ]);
 
-  const avoidLooks: NearbyLook[] = [
-    ...((nearby ?? []) as NearbyLook[]),
-    ...avoid.map((a) => a as NearbyLook),
-  ];
   const content: Anthropic.Beta.BetaContentBlockParam[] = [];
   const add = (label: string, block: ImageBlock | null) => {
     if (!block) return;
@@ -261,7 +248,7 @@ Deno.serve(async (req) => {
       has_cover_photo: !!cover,
       share_of_dishes_with_photo: Math.round(photoShare * 100) / 100,
       website: site ? JSON.parse(site) : null,
-      nearby_looks: avoidLooks.slice(0, 30),
+      earlier_suggestions: avoid,
     }),
   });
 
@@ -295,12 +282,6 @@ Deno.serve(async (req) => {
       tagline: s.tagline.trim().split(/\s+/).slice(0, 8).join(" ").slice(0, 60),
       vibe: s.vibe.trim().slice(0, 300),
     };
-    // Still too close to a neighbour: switch to a font pair nobody nearby uses.
-    if (avoidLooks.some((n) => looksAlike(look, n))) {
-      const used = new Set(avoidLooks.map((n) => n.fonts));
-      look.fonts =
-        fontPairs.find((f) => f !== "house" && !used.has(f)) ?? look.fonts;
-    }
     return json({ ok: true, suggestion: look }, 200, cors);
   } catch (e) {
     console.error(
