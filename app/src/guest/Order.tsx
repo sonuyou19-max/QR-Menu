@@ -289,7 +289,7 @@ export function OrderSheet({
                 </div>
               ) : (
                 <div className="mt-2 flex items-center justify-between gap-3">
-                  <span className="bg-oat-600 rounded-full px-2.5 py-0.5 text-xs font-bold text-white">
+                  <span className="bg-ink-muted text-canvas rounded-full px-2.5 py-0.5 text-xs font-bold">
                     {s.soldOut}
                   </span>
                   <button

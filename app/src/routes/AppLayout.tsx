@@ -39,6 +39,7 @@ export function AppLayout() {
                   ["/service", t.nav.service],
                   ["/menu", t.nav.menu],
                   ["/upload", t.nav.upload],
+                  ["/look", t.nav.look],
                   ["/qr", t.nav.qr],
                 ] as const)
             ).map(([to, label]) => (

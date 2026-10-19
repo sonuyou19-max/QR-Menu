@@ -16,6 +16,8 @@ import {
   type GuestMenuData,
 } from "./menu-data";
 import { useCart, type Cart } from "./cart";
+import { CategoryHeading, Hero, Ornament, useGuestLook } from "./Look";
+import type { Theme } from "../lib/theme";
 import {
   AddButton,
   DetailOrderControl,
@@ -191,6 +193,11 @@ export function GuestMenu({ slug }: { slug: string }) {
     if (menu) document.title = menu.restaurant.name;
   }, [shownLanguage, menu]);
 
+  const { theme, logo } = useGuestLook(
+    menu?.restaurant.theme,
+    menu?.restaurant.logo_path ?? null,
+  );
+
   if (menu === undefined && !failed)
     return (
       <div className="grid min-h-dvh place-items-center">
@@ -249,67 +256,66 @@ export function GuestMenu({ slug }: { slug: string }) {
       return next;
     });
 
+  const languagePicker = restaurant.languages.length > 1 && (
+    <label className="shrink-0">
+      <span className="sr-only">{s.language}</span>
+      <select
+        value={shownLanguage}
+        onChange={(e) => changeLanguage(e.target.value)}
+        className="border-line bg-surface text-ink rounded-full border py-2 ps-3 pe-8 text-sm font-semibold"
+      >
+        {restaurant.languages.map((code) => (
+          <option key={code} value={code}>
+            {nativeName(code)}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+
   return (
-    <div className="bg-canvas min-h-dvh">
+    <div className="min-h-dvh">
       {!restaurant.is_published && (
         <p className="bg-mustard-100 text-mustard-900 px-4 py-2 text-center text-sm font-semibold">
           {s.preview}
         </p>
       )}
 
+      <Hero
+        theme={theme}
+        logo={logo}
+        name={restaurant.name}
+        tableText={table && s.table.replace("{table}", table)}
+      />
+
       <header className="bg-canvas/95 border-line sticky top-0 z-20 border-b pt-[env(safe-area-inset-top)] backdrop-blur">
-        <div className="mx-auto flex max-w-2xl items-center gap-3 px-4 pt-3 pb-2">
-          <div className="min-w-0 flex-1">
-            <h1 className="truncate text-2xl font-semibold" dir="auto">
-              {restaurant.name}
-            </h1>
-            {table && (
-              <p className="text-ink-muted text-sm font-medium">
-                {s.table.replace("{table}", table)}
-              </p>
-            )}
-          </div>
-          {restaurant.languages.length > 1 && (
-            <label className="shrink-0">
-              <span className="sr-only">{s.language}</span>
-              <select
-                value={shownLanguage}
-                onChange={(e) => changeLanguage(e.target.value)}
-                className="border-line bg-surface rounded-full border py-2 ps-3 pe-8 text-sm font-semibold"
-              >
-                {restaurant.languages.map((code) => (
-                  <option key={code} value={code}>
-                    {nativeName(code)}
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
+        <div className="mx-auto flex max-w-2xl items-center gap-2 py-2.5 ps-4 pe-3">
+          <nav aria-label={s.categories} className="min-w-0 flex-1">
+            <ul className="-ms-4 flex [scrollbar-width:none] gap-2 overflow-x-auto ps-4">
+              {categories.map((c) => (
+                <li key={c.id} className="shrink-0">
+                  <a
+                    href={`#cat-${c.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById(`cat-${c.id}`)
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="bg-surface-muted text-ink inline-flex min-h-9 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap"
+                    dir="auto"
+                  >
+                    {c.translated_name &&
+                    plain(c.translated_name) !== plain(c.name)
+                      ? c.translated_name
+                      : c.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {languagePicker}
         </div>
-        <nav aria-label={s.categories} className="mx-auto max-w-2xl">
-          <ul className="flex [scrollbar-width:none] gap-2 overflow-x-auto px-4 pb-2.5">
-            {categories.map((c) => (
-              <li key={c.id} className="shrink-0">
-                <a
-                  href={`#cat-${c.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .getElementById(`cat-${c.id}`)
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="bg-oat-100 text-ink inline-flex min-h-9 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap"
-                  dir="auto"
-                >
-                  {c.translated_name &&
-                  plain(c.translated_name) !== plain(c.name)
-                    ? c.translated_name
-                    : c.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
       </header>
 
       <main
@@ -353,7 +359,7 @@ export function GuestMenu({ slug }: { slug: string }) {
           </div>
         )}
 
-        {categories.map((c) => {
+        {categories.map((c, index) => {
           const translated =
             c.translated_name && plain(c.translated_name) !== plain(c.name)
               ? c.translated_name
@@ -363,26 +369,35 @@ export function GuestMenu({ slug }: { slug: string }) {
               key={c.id}
               id={`cat-${c.id}`}
               aria-labelledby={`h-${c.id}`}
-              className="scroll-mt-32 pt-7"
+              className="scroll-mt-20 pt-7"
             >
-              <h2 id={`h-${c.id}`} className="text-2xl font-semibold">
-                <span dir="auto">{translated ?? c.name}</span>
-                {translated && (
-                  <span
-                    className="text-ink-muted block font-sans text-sm font-medium"
-                    dir="auto"
-                  >
-                    {c.name}
-                  </span>
-                )}
-              </h2>
-              <ul className="divide-line mt-2 divide-y">
+              {index > 0 && (
+                <Ornament
+                  theme={theme}
+                  name={restaurant.name}
+                  className="mb-6"
+                />
+              )}
+              <CategoryHeading
+                theme={theme}
+                id={`h-${c.id}`}
+                name={c.name}
+                translated={translated}
+              />
+              <ul
+                className={
+                  theme.layout === "list"
+                    ? "divide-line mt-2 divide-y"
+                    : "mt-4 space-y-3"
+                }
+              >
                 {c.items.map((dish) => (
                   <li key={dish.id}>
                     <DishCard
                       dish={dish}
                       money={money}
                       s={s}
+                      layout={theme.layout}
                       qty={cart.qtyOf(dish.id)}
                       onAdd={() => cart.add(dish.id)}
                       onOpen={() => setOpenDish(dish)}
@@ -560,6 +575,7 @@ function DishCard({
   dish,
   money,
   s,
+  layout,
   qty,
   onAdd,
   onOpen,
@@ -567,50 +583,84 @@ function DishCard({
   dish: GuestDish;
   money: Intl.NumberFormat;
   s: GuestStrings;
+  layout: Theme["layout"];
   qty: number;
   onAdd: () => void;
   onOpen: () => void;
 }) {
-  const thumb = dishImage(dish.thumb_path ?? dish.image_path);
+  const big = layout === "photos" ? dishImage(dish.image_path) : null;
+  const thumb = big ? null : dishImage(dish.thumb_path ?? dish.image_path);
   const helper = helperName(dish);
+  const add = dish.in_stock && (
+    <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
+  );
+  const text = (
+    <>
+      <span className="flex items-start gap-3">
+        <span
+          className="min-w-0 flex-1 text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
+          dir="auto"
+        >
+          {dish.name}
+        </span>
+        {dish.price !== null && (
+          <span className="text-brand-strong shrink-0 text-lg font-semibold tabular-nums">
+            {money.format(dish.price)}
+          </span>
+        )}
+      </span>
+      {helper && (
+        <span className="text-ink-muted block text-sm font-medium" dir="auto">
+          {helper}
+        </span>
+      )}
+      {!dish.in_stock && (
+        <span className="bg-ink-muted text-canvas mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold">
+          {s.soldOut}
+        </span>
+      )}
+      <Description dish={dish} s={s} clamp />
+      <Tags dish={dish} s={s} />
+      <AllergenLine dish={dish} s={s} />
+    </>
+  );
   // The whole card opens the dish (stretched button); the + sits above it.
+  const open = "text-start after:absolute after:inset-0 after:content-['']";
+  const card = layout === "list" ? "" : "bg-surface rounded-card shadow-sm";
+  const faded = dish.in_stock ? "" : "opacity-60";
+
+  if (big)
+    return (
+      <div className={`relative overflow-hidden ${card} ${faded}`}>
+        <img
+          src={big}
+          alt=""
+          loading="lazy"
+          className="aspect-[16/10] w-full object-cover"
+        />
+        {add && <div className="absolute end-3 top-3">{add}</div>}
+        <button
+          type="button"
+          onClick={onOpen}
+          className={`block w-full p-4 ${open}`}
+        >
+          {text}
+        </button>
+      </div>
+    );
+
   return (
     <div
-      className={`relative flex gap-3 py-4 ${dish.in_stock ? "" : "opacity-60"}`}
+      className={`relative flex gap-3 ${layout === "list" ? "py-4" : "p-4"} ${card} ${faded}`}
     >
       <button
         type="button"
         onClick={onOpen}
-        className="min-w-0 flex-1 text-start after:absolute after:inset-0 after:content-['']"
+        className={`min-w-0 flex-1 ${open}`}
       >
-        <span className="flex items-start gap-3">
-          <span
-            className="min-w-0 flex-1 text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
-            dir="auto"
-          >
-            {dish.name}
-          </span>
-          {dish.price !== null && (
-            <span className="shrink-0 text-lg font-semibold tabular-nums">
-              {money.format(dish.price)}
-            </span>
-          )}
-        </span>
-        {helper && (
-          <span className="text-ink-muted block text-sm font-medium" dir="auto">
-            {helper}
-          </span>
-        )}
-        {!dish.in_stock && (
-          <span className="bg-oat-600 mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold text-white">
-            {s.soldOut}
-          </span>
-        )}
-        <Description dish={dish} s={s} clamp />
-        <Tags dish={dish} s={s} />
-        <AllergenLine dish={dish} s={s} />
+        {text}
       </button>
-      {(thumb || dish.in_stock) && (
+      {(thumb || add) && (
         <div className="flex shrink-0 flex-col items-end gap-2">
           {thumb && (
             <img
@@ -620,9 +670,7 @@ function DishCard({
               className="rounded-control size-20 object-cover sm:size-24"
             />
           )}
-          {dish.in_stock && (
-            <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
-          )}
+          {add}
         </div>
       )}
     </div>
@@ -695,7 +743,7 @@ function DishDetail({
           </p>
         )}
         {!dish.in_stock && (
-          <p className="bg-oat-600 mt-2 inline-block rounded-full px-3 py-1 text-sm font-bold text-white">
+          <p className="bg-ink-muted text-canvas mt-2 inline-block rounded-full px-3 py-1 text-sm font-bold">
             {s.soldOut}
           </p>
         )}

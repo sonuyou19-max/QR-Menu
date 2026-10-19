@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Check, ChevronRight, ListChecks, QrCode, Store, Upload } from "lucide-react";
+import {
+  Check,
+  ChevronRight,
+  ListChecks,
+  Palette,
+  QrCode,
+  Store,
+  Upload,
+} from "lucide-react";
 import { fill, useI18n } from "../i18n";
 import { config, isLiveDomain, menuUrl } from "../lib/config";
 import { languageName } from "../lib/languages";
 import { supabase } from "../lib/supabase";
 import { useRestaurant } from "../restaurant/RestaurantProvider";
 
-const icons = [Store, Upload, ListChecks, QrCode];
+const icons = [Store, Upload, ListChecks, Palette, QrCode];
 /** Steps that already have a screen. */
-const stepLinks: (string | null)[] = [null, "/upload", "/menu", "/qr"];
+const stepLinks: (string | null)[] = [null, "/upload", "/menu", "/look", "/qr"];
 
 /** Owner start page. Steps become links as Phase 1 lands. */
 export function Overview() {
@@ -25,8 +33,12 @@ export function Overview() {
       .then(({ count }) => setMenuRead((count ?? 0) > 0));
   }, [restaurant.id]);
 
-  // Restaurant set up → menu has dishes → menu published (translated).
-  const doneSteps = restaurant.is_published ? 3 : menuRead ? 2 : 1;
+  // Set up, menu has dishes, published (translated), own look chosen; the QR code stays open.
+  const hasLook =
+    !!restaurant.theme &&
+    typeof restaurant.theme === "object" &&
+    Object.keys(restaurant.theme).length > 0;
+  const doneSteps = [true, menuRead, restaurant.is_published, hasLook, false];
   return (
     <div>
       <h1 className="text-3xl font-semibold sm:text-4xl">{restaurant.name}</h1>
@@ -71,7 +83,7 @@ export function Overview() {
       <ol className="mt-4 space-y-3">
         {t.overview.steps.map((step, i) => {
           const Icon = icons[i]!;
-          const done = i < doneSteps;
+          const done = doneSteps[i] ?? false;
           const link = stepLinks[i];
           const content = (
             <>

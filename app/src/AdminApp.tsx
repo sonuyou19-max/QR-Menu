@@ -37,6 +37,13 @@ const router = createBrowserRouter([
                   { path: "/upload", element: <Upload /> },
                   { path: "/upload/:id", element: <UploadResult /> },
                   {
+                    path: "/look",
+                    // Fonts and preview code load only on this screen.
+                    lazy: async () => ({
+                      Component: (await import("./routes/Look")).Look,
+                    }),
+                  },
+                  {
                     path: "/qr",
                     // QR drawing code loads only on this screen.
                     lazy: async () => ({

@@ -7,6 +7,8 @@ export async function compressImage(
   file: Blob,
   maxSide = 1600,
   quality = 0.85,
+  /** PNG keeps a logo's transparent background. */
+  type: "image/jpeg" | "image/png" = "image/jpeg",
 ): Promise<Blob> {
   const bitmap = await createImageBitmap(file, {
     imageOrientation: "from-image",
@@ -22,7 +24,7 @@ export async function compressImage(
   context.drawImage(bitmap, 0, 0, width, height);
   bitmap.close();
   const blob = await new Promise<Blob | null>((resolve) =>
-    canvas.toBlob(resolve, "image/jpeg", quality),
+    canvas.toBlob(resolve, type, quality),
   );
   if (!blob) throw new Error("could not encode image");
   return blob;

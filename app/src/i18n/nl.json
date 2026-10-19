@@ -25,10 +25,11 @@
     "logout": "Uitloggen",
     "account": "Ingelogd als {email}",
     "overview": "Overzicht",
-    "menu": "Menukaart",
+    "menu": "Menu",
     "upload": "Uploaden",
     "service": "Service",
-    "qr": "QR"
+    "qr": "QR",
+    "look": "Stijl"
   },
   "overview": {
     "title": "Welkom bij MenuBuddy",
@@ -46,6 +47,10 @@
       {
         "title": "Controleer en publiceer",
         "text": "Kijk prijzen en allergenen na en publiceer je menukaart."
+      },
+      {
+        "title": "Je eigen stijl",
+        "text": "Kleuren, lettertypes en foto's waardoor de menukaart voelt als je restaurant."
       },
       {
         "title": "Je QR-code",
@@ -94,7 +99,7 @@
     "languages": "Talen voor gasten",
     "open": "Openen",
     "inProgress": "Bezig",
-    "notPublished": "(nog niet online — publiceer hem bij Menukaart)",
+    "notPublished": "(nog niet online — publiceer hem bij Menu)",
     "futureNote": "Testadres. Zodra het domein gekocht is, verhuizen je menukaart en QR-code naar {address}."
   },
   "upload": {
@@ -280,7 +285,7 @@
       "deletedCategory": "\"{name}\" verwijderd",
       "pricesChanged": "{count} prijzen gewijzigd",
       "error": "Niet bewaard. Controleer je internetverbinding.",
-      "undo": "Ongedaan maken",
+      "undo": "Herstel",
       "close": "Melding sluiten"
     },
     "prices": {
@@ -355,7 +360,7 @@
     "title": "QR-code",
     "intro": "Gasten scannen deze code en lezen je menukaart in hun eigen taal. Zonder app.",
     "notPublished": "Je menukaart staat nog niet online, dus gasten die scannen zien hem nog niet. Ingelogd zie je wel een voorbeeld.",
-    "toMenu": "Publiceer onder Menukaart",
+    "toMenu": "Publiceer onder Menu",
     "testTitle": "Testcode — niet afdrukken",
     "testText": "Deze code opent je menukaart op ons testadres, zodat je hem nu al kunt proberen: scan hem met een andere telefoon, of tik op Menukaart openen. Zodra menubuddy.be online is, verschijnt hier je definitieve code, naar {address}. Druk alleen die af.",
     "testBadge": "Test — niet afdrukken",
@@ -387,5 +392,110 @@
     "removeAll": "Alle tafelcodes verwijderen",
     "removeAllConfirm": "Alle tafelcodes verwijderen? Codes die je al afdrukte tonen dan geen tafelnaam meer.",
     "close": "Sluiten"
+  },
+  "look": {
+    "title": "Stijl van je menukaart",
+    "intro": "Laat de menukaart voelen als je restaurant. Begin met een stijl en pas daarna alles aan wat je wil. Wijzigingen worden bewaard en zijn meteen zichtbaar voor gasten.",
+    "saving": "Bewaren…",
+    "saved": "Bewaard",
+    "saveError": "Bewaren lukte niet. Controleer je internetverbinding.",
+    "undo": "Herstel",
+    "preview": "Voorbeeld",
+    "previewHint": "Zo zien gasten je menukaart.",
+    "close": "Sluiten",
+    "nearby": "Een restaurant in je buurt heeft een erg gelijkaardige stijl. Kies een ander lettertype of een andere hoofdkleur om op te vallen.",
+    "start": "Beginstijl",
+    "startHint": "Een stijl verandert de keuzes hieronder. Je logo, omslagfoto en zin blijven.",
+    "photos": "Logo en omslagfoto",
+    "logo": "Logo",
+    "logoHint": "Het mooist met een doorzichtige achtergrond (PNG).",
+    "cover": "Omslagfoto",
+    "coverHint": "Je zaal, terras of signatuurgerecht, bovenaan de menukaart.",
+    "add": "Toevoegen",
+    "replace": "Vervangen",
+    "remove": "Verwijderen",
+    "uploading": "Uploaden…",
+    "uploadError": "De foto kon niet geüpload worden. Probeer een andere.",
+    "tagline": "Je zin",
+    "taglineHint": "Een korte zin in je eigen woorden, onder je naam. Gasten zien hem precies zoals je hem schrijft.",
+    "taglinePlaceholder": "bv. Belgische keuken sinds 1987",
+    "colours": "Kleuren",
+    "accent": "Hoofdkleur",
+    "accentHint": "Knoppen, prijzen en versieringen.",
+    "background": "Achtergrond",
+    "fromImages": "Uit je logo en foto",
+    "readable": "De tekstkleur past zich vanzelf aan, zodat alles goed leesbaar blijft.",
+    "pickColour": "Andere kleur",
+    "fonts": "Lettertypes",
+    "fontSample": "Stoofvlees met frietjes",
+    "header": "Bovenaan de menukaart",
+    "coverNeeded": "Voeg hierboven een omslagfoto toe om dit te gebruiken.",
+    "layout": "Gerechten",
+    "headings": "Titels van categorieën",
+    "ornament": "Versiering tussen categorieën",
+    "texture": "Achtergrondstructuur",
+    "corners": "Hoeken",
+    "options": {
+      "header": {
+        "cover": "Omslagfoto",
+        "centered": "Logo in het midden",
+        "band": "Gekleurde band"
+      },
+      "layout": {
+        "list": "Lijst",
+        "cards": "Kaartjes",
+        "photos": "Grote foto's"
+      },
+      "headings": {
+        "plain": "Eenvoudig",
+        "lined": "Met een lijn",
+        "centered": "Gecentreerd, hoofdletters"
+      },
+      "ornament": {
+        "none": "Geen",
+        "monogram": "Je initialen",
+        "flourish": "Krul",
+        "stars": "Sterren",
+        "dots": "Puntjes"
+      },
+      "texture": {
+        "plain": "Effen",
+        "paper": "Papier",
+        "linen": "Linnen",
+        "grain": "Korrel",
+        "dots": "Stippen"
+      },
+      "corners": {
+        "round": "Rond",
+        "soft": "Zacht",
+        "square": "Scherp"
+      }
+    },
+    "templates": {
+      "bistro": "Bistro",
+      "trattoria": "Trattoria",
+      "modern": "Modern",
+      "cafe": "Café",
+      "fine-dining": "Fine dining"
+    },
+    "templateHints": {
+      "bistro": "Klassieke Belgische brasserie",
+      "trattoria": "Warm en rustiek",
+      "modern": "Strak en sober",
+      "cafe": "Licht en speels",
+      "fine-dining": "Donker en elegant"
+    },
+    "fontNames": {
+      "house": "MenuBuddy",
+      "bistro": "Brasserie",
+      "trattoria": "Rustiek",
+      "elegant": "Elegant",
+      "classic": "Klassiek",
+      "airy": "Luchtig",
+      "modern": "Modern",
+      "urban": "Urban",
+      "grill": "Stevig",
+      "chalk": "Krijtbord"
+    }
   }
 }

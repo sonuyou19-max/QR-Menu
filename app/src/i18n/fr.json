@@ -28,7 +28,8 @@
     "menu": "Carte",
     "upload": "Envoyer",
     "service": "Service",
-    "qr": "QR"
+    "qr": "QR",
+    "look": "Style"
   },
   "overview": {
     "title": "Bienvenue sur MenuBuddy",
@@ -46,6 +47,10 @@
       {
         "title": "Vérifiez et publiez",
         "text": "Vérifiez les prix et les allergènes, puis publiez votre carte."
+      },
+      {
+        "title": "Votre propre style",
+        "text": "Couleurs, polices et photos qui donnent à la carte l'esprit de votre restaurant."
       },
       {
         "title": "Votre QR code",
@@ -387,5 +392,110 @@
     "removeAll": "Supprimer tous les codes de table",
     "removeAllConfirm": "Supprimer tous les codes de table ? Les codes déjà imprimés n'afficheront plus de nom de table.",
     "close": "Fermer"
+  },
+  "look": {
+    "title": "Le style de votre carte",
+    "intro": "Donnez à la carte l'esprit de votre restaurant. Partez d'un style, puis changez ce que vous voulez. Les changements sont enregistrés et visibles aussitôt par vos clients.",
+    "saving": "Enregistrement…",
+    "saved": "Enregistré",
+    "saveError": "L'enregistrement a échoué. Vérifiez votre connexion internet.",
+    "undo": "Annuler",
+    "preview": "Aperçu",
+    "previewHint": "Voici comment vos clients voient votre carte.",
+    "close": "Fermer",
+    "nearby": "Un restaurant près de chez vous a un style très semblable. Changez de police ou de couleur principale pour vous démarquer.",
+    "start": "Style de départ",
+    "startHint": "Un style change les choix ci-dessous. Votre logo, votre photo de couverture et votre phrase restent.",
+    "photos": "Logo et photo de couverture",
+    "logo": "Logo",
+    "logoHint": "Idéal avec un fond transparent (PNG).",
+    "cover": "Photo de couverture",
+    "coverHint": "Votre salle, votre terrasse ou votre plat signature, en haut de la carte.",
+    "add": "Ajouter",
+    "replace": "Remplacer",
+    "remove": "Supprimer",
+    "uploading": "Envoi…",
+    "uploadError": "La photo n'a pas pu être envoyée. Essayez-en une autre.",
+    "tagline": "Votre phrase",
+    "taglineHint": "Une courte phrase avec vos mots, sous votre nom. Vos clients la voient telle que vous l'écrivez.",
+    "taglinePlaceholder": "p. ex. Cuisine belge depuis 1987",
+    "colours": "Couleurs",
+    "accent": "Couleur principale",
+    "accentHint": "Boutons, prix et décorations.",
+    "background": "Fond",
+    "fromImages": "De votre logo et de votre photo",
+    "readable": "La couleur du texte s'adapte toute seule pour rester bien lisible.",
+    "pickColour": "Autre couleur",
+    "fonts": "Polices",
+    "fontSample": "Stoofvlees met frietjes",
+    "header": "Haut de la carte",
+    "coverNeeded": "Ajoutez une photo de couverture ci-dessus pour utiliser ceci.",
+    "layout": "Plats",
+    "headings": "Titres des catégories",
+    "ornament": "Décoration entre les catégories",
+    "texture": "Texture du fond",
+    "corners": "Coins",
+    "options": {
+      "header": {
+        "cover": "Photo de couverture",
+        "centered": "Logo au centre",
+        "band": "Bandeau coloré"
+      },
+      "layout": {
+        "list": "Liste",
+        "cards": "Cartes",
+        "photos": "Grandes photos"
+      },
+      "headings": {
+        "plain": "Simple",
+        "lined": "Avec un trait",
+        "centered": "Centré, majuscules"
+      },
+      "ornament": {
+        "none": "Aucune",
+        "monogram": "Vos initiales",
+        "flourish": "Arabesque",
+        "stars": "Étoiles",
+        "dots": "Points"
+      },
+      "texture": {
+        "plain": "Uni",
+        "paper": "Papier",
+        "linen": "Lin",
+        "grain": "Grain",
+        "dots": "Pois"
+      },
+      "corners": {
+        "round": "Ronds",
+        "soft": "Doux",
+        "square": "Nets"
+      }
+    },
+    "templates": {
+      "bistro": "Bistro",
+      "trattoria": "Trattoria",
+      "modern": "Moderne",
+      "cafe": "Café",
+      "fine-dining": "Gastronomique"
+    },
+    "templateHints": {
+      "bistro": "Brasserie belge classique",
+      "trattoria": "Chaleureux et rustique",
+      "modern": "Épuré et minimal",
+      "cafe": "Léger et ludique",
+      "fine-dining": "Sombre et élégant"
+    },
+    "fontNames": {
+      "house": "MenuBuddy",
+      "bistro": "Brasserie",
+      "trattoria": "Rustique",
+      "elegant": "Élégant",
+      "classic": "Classique",
+      "airy": "Aéré",
+      "modern": "Moderne",
+      "urban": "Urbain",
+      "grill": "Affirmé",
+      "chalk": "Ardoise"
+    }
   }
 }

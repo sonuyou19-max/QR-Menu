@@ -40,6 +40,9 @@ export interface GuestMenuData {
     language: string;
     show_allergens: boolean;
     is_published: boolean;
+    /** Raw look settings; read with readTheme(). */
+    theme: unknown;
+    logo_path: string | null;
   };
   categories: {
     id: string;
