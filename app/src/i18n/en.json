@@ -104,10 +104,10 @@
   },
   "upload": {
     "title": "Upload your menu",
-    "intro": "Take a photo of each page of your menu, in order. Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions. You check everything before guests see it.",
+    "intro": "Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions from photos of your menu or from your website. You check everything before guests see it.",
     "tipsTitle": "For the best result",
     "tips": [
-      "One menu page per photo, the whole page in view",
+      "One menu page per photo, in order, the whole page in view",
       "Good light, no glare, hold the phone straight",
       "Up to {max} photos"
     ],
@@ -136,11 +136,26 @@
       "unsupported": "One photo couldn't be opened. Try taking it again with the camera, or choose a JPEG or PNG.",
       "upload": "Uploading didn't work. Check your internet connection and try again.",
       "rateLimited": "You've read a lot of menus today. Try again tomorrow, or contact us.",
-      "generic": "That didn't work. Try again."
-    }
+      "generic": "That didn't work. Try again.",
+      "badUrl": "Enter your website address, for example www.yourrestaurant.be/menu.",
+      "social": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu."
+    },
+    "modeLabel": "Where is your menu?",
+    "modePhotos": "Photos",
+    "modeWebsite": "On my website",
+    "websiteLabel": "Address of your website or menu page",
+    "websitePlaceholder": "www.yourrestaurant.be/menu",
+    "websiteTips": [
+      "Paste the address of the page with your menu (or your home page: Buddy then looks for the menu page itself)",
+      "Buddy also reads menus in PDF or as images linked there",
+      "Buddy can't read Instagram or Facebook"
+    ],
+    "websiteSubmit": "Read my menu from the website",
+    "fetching": "Opening the website…",
+    "uploadedFrom": "{date} · {site}"
   },
   "result": {
-    "back": "Upload other photos",
+    "back": "Read another menu",
     "readingTitle": "Reading your menu…",
     "readingText": "This usually takes 30 to 90 seconds. You can leave this page: the result will be waiting here.",
     "elapsed": "{seconds} s",
@@ -149,7 +164,11 @@
       "not_a_menu": "These photos don't seem to show a menu. Take a photo of the menu pages and try again.",
       "unreadable": "The text was too hard to read. Take sharper photos with good light, one page per photo.",
       "server": "Something went wrong on our side. Try again in a moment.",
-      "stale": "This took too long and was stopped. Try again."
+      "stale": "This took too long and was stopped. Try again.",
+      "bad_url": "This website address isn't right. Check it and try again.",
+      "social_site": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
+      "site_unreachable": "Buddy couldn't open this website. Check the address and try again, or take photos of your menu.",
+      "no_menu_found": "Buddy found no menu on this website. Paste the address of the menu page itself, or take photos of your menu. (Some websites show their menu in a way Buddy can't read.)"
     },
     "retry": "Try again",
     "doneTitle": "We found {dishes} dishes in {categories} categories",
@@ -160,7 +179,8 @@
     "unknownDish": "Unknown dish: add a description later",
     "suggestedAllergens": "Suggested by Buddy: allergens (not confirmed yet)",
     "notFound": "This upload doesn't exist (anymore).",
-    "missingPriceOne": "1 dish has no price yet"
+    "missingPriceOne": "1 dish has no price yet",
+    "photosInstead": "Take photos"
   },
   "allergens": {
     "gluten": "Gluten",

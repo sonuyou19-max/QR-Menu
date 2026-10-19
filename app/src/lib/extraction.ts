@@ -46,7 +46,15 @@ export interface MenuExtraction {
 }
 
 /** Error codes process-menu stores in menu_uploads.error. */
-export type UploadError = "not_a_menu" | "unreadable" | "server";
+export type UploadError =
+  | "not_a_menu"
+  | "unreadable"
+  | "server"
+  // Website import (process-menu/website.ts)
+  | "bad_url"
+  | "social_site"
+  | "site_unreachable"
+  | "no_menu_found";
 
 /** Same limits as the edge function. */
 export const MAX_PHOTOS = 8;

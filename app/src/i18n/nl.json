@@ -104,10 +104,10 @@
   },
   "upload": {
     "title": "Upload je menukaart",
-    "intro": "Neem een foto van elke pagina van je menukaart, in volgorde. Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen. Jij controleert alles voordat gasten het zien.",
+    "intro": "Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen van foto's van je menukaart of van je website. Jij controleert alles voordat gasten het zien.",
     "tipsTitle": "Voor het beste resultaat",
     "tips": [
-      "Eén menupagina per foto, de hele pagina in beeld",
+      "Eén menupagina per foto, in volgorde, de hele pagina in beeld",
       "Goed licht, geen weerspiegeling, houd je telefoon recht",
       "Maximaal {max} foto's"
     ],
@@ -136,11 +136,26 @@
       "unsupported": "Eén foto kon niet geopend worden. Neem hem opnieuw met de camera, of kies een JPEG of PNG.",
       "upload": "Uploaden is niet gelukt. Controleer je internetverbinding en probeer opnieuw.",
       "rateLimited": "Je hebt vandaag al veel menukaarten laten lezen. Probeer het morgen opnieuw, of neem contact met ons op.",
-      "generic": "Dat is niet gelukt. Probeer opnieuw."
-    }
+      "generic": "Dat is niet gelukt. Probeer opnieuw.",
+      "badUrl": "Vul het adres van je website in, bijvoorbeeld www.jouwrestaurant.be/menu.",
+      "social": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart."
+    },
+    "modeLabel": "Waar staat je menukaart?",
+    "modePhotos": "Foto's",
+    "modeWebsite": "Op mijn website",
+    "websiteLabel": "Adres van je website of menupagina",
+    "websitePlaceholder": "www.jouwrestaurant.be/menu",
+    "websiteTips": [
+      "Plak het adres van de pagina met je menukaart (of je homepagina: Buddy zoekt dan zelf de menupagina)",
+      "Buddy leest ook menukaarten in PDF of als afbeelding die daar gelinkt staan",
+      "Instagram en Facebook kan Buddy niet lezen"
+    ],
+    "websiteSubmit": "Lees mijn menukaart van de website",
+    "fetching": "Website openen…",
+    "uploadedFrom": "{date} · {site}"
   },
   "result": {
-    "back": "Andere foto's uploaden",
+    "back": "Andere menukaart lezen",
     "readingTitle": "Je menukaart wordt gelezen…",
     "readingText": "Dit duurt meestal 30 tot 90 seconden. Je mag deze pagina verlaten: het resultaat staat hier straks klaar.",
     "elapsed": "{seconds} s",
@@ -149,7 +164,11 @@
       "not_a_menu": "Op deze foto's lijkt geen menukaart te staan. Fotografeer de menupagina's en probeer opnieuw.",
       "unreadable": "De tekst was te moeilijk leesbaar. Neem scherpere foto's met goed licht, één pagina per foto.",
       "server": "Er ging bij ons iets mis. Probeer het zo meteen opnieuw.",
-      "stale": "Dit duurde te lang en is gestopt. Probeer opnieuw."
+      "stale": "Dit duurde te lang en is gestopt. Probeer opnieuw.",
+      "bad_url": "Dit websiteadres klopt niet. Controleer het en probeer opnieuw.",
+      "social_site": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
+      "site_unreachable": "Buddy kon deze website niet openen. Controleer het adres en probeer opnieuw, of neem foto's van je menukaart.",
+      "no_menu_found": "Buddy vond geen menukaart op deze website. Plak het adres van de menupagina zelf, of neem foto's van je menukaart. (Sommige websites tonen hun menu op een manier die Buddy niet kan lezen.)"
     },
     "retry": "Opnieuw proberen",
     "doneTitle": "We vonden {dishes} gerechten in {categories} categorieën",
@@ -160,7 +179,8 @@
     "unknownDish": "Onbekend gerecht: voeg later een beschrijving toe",
     "suggestedAllergens": "Voorgesteld door Buddy: allergenen (nog niet bevestigd)",
     "notFound": "Deze upload bestaat niet (meer).",
-    "missingPriceOne": "1 gerecht heeft nog geen prijs"
+    "missingPriceOne": "1 gerecht heeft nog geen prijs",
+    "photosInstead": "Foto's nemen"
   },
   "allergens": {
     "gluten": "Gluten",

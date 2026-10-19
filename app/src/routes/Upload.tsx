@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   Camera,
   ChevronRight,
+  Globe,
   ImagePlus,
   LoaderCircle,
   Sparkles,
@@ -25,13 +26,45 @@ interface Photo {
 }
 
 type ErrorKey =
-  "tooMany" | "unsupported" | "upload" | "rateLimited" | "generic";
+  | "tooMany"
+  | "unsupported"
+  | "upload"
+  | "rateLimited"
+  | "generic"
+  | "badUrl"
+  | "social";
+type Mode = "photos" | "website";
 type Progress =
   | { step: "preparing" }
   | { step: "uploading"; n: number; total: number }
   | { step: "starting" };
 
-/** Pick menu photos (camera or gallery), compress them, upload, and start the AI reading. */
+/** The address as typed ("lindehof.be/menu"), as a full URL; null when it can't be one. */
+function websiteUrl(raw: string): URL | null {
+  const value = raw.trim();
+  if (!value || /\s/.test(value) || value.length > 500) return null;
+  try {
+    const url = new URL(
+      /^https?:\/\//i.test(value) ? value : `https://${value}`,
+    );
+    return url.hostname.includes(".") ? url : null;
+  } catch {
+    return null;
+  }
+}
+const isSocial = (url: URL) =>
+  /(^|\.)(instagram\.com|facebook\.com|fb\.com|tiktok\.com|linktr\.ee)$/i.test(
+    url.hostname,
+  );
+
+/** "www.lindehof.be/menu" for the list of earlier uploads. */
+const siteLabel = (raw: string) =>
+  raw.replace(/^https?:\/\//i, "").replace(/\/$/, "");
+
+/**
+ * Pick menu photos (camera or gallery), compress them, upload, and start the AI reading. Or give
+ * the address of the menu on the restaurant's website: process-menu fetches and reads it.
+ */
 export function Upload() {
   const { t, lang } = useI18n();
   const { restaurant } = useRestaurant();
@@ -39,6 +72,8 @@ export function Upload() {
   const cameraInput = useRef<HTMLInputElement>(null);
   const galleryInput = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+  const [mode, setMode] = useState<Mode>("photos");
+  const [site, setSite] = useState("");
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<ErrorKey | null>(null);
@@ -107,6 +142,47 @@ export function Upload() {
       return next;
     });
 
+  /** Insert the upload row and start process-menu; then show the reading screen. */
+  const start = async (
+    row: { id: string } & Partial<Tables<"menu_uploads">> & {
+        source_type: string;
+      },
+  ) => {
+    setProgress({ step: "starting" });
+    const { error: insertError } = await supabase.from("menu_uploads").insert({
+      ...row,
+      restaurant_id: restaurant.id,
+      status: "processing",
+    });
+    if (insertError) {
+      setProgress(null);
+      return showError("upload");
+    }
+    const { error: invokeError } = await supabase.functions.invoke(
+      "process-menu",
+      { body: { uploadId: row.id, lang } },
+    );
+    if (invokeError) {
+      const status = (invokeError as { context?: Response }).context?.status;
+      setProgress(null);
+      return showError(status === 429 ? "rateLimited" : "generic");
+    }
+    navigate(`/upload/${row.id}`);
+  };
+
+  const submitWebsite = async () => {
+    setError(null);
+    const url = websiteUrl(site);
+    if (!url) return showError("badUrl");
+    if (isSocial(url)) return showError("social");
+    await start({
+      id: crypto.randomUUID(),
+      source_type: "url",
+      source_url: url.href,
+      file_paths: [],
+    });
+  };
+
   const submit = async () => {
     setError(null);
     const uploadId = crypto.randomUUID();
@@ -123,28 +199,7 @@ export function Upload() {
         return showError("upload");
       }
     }
-    setProgress({ step: "starting" });
-    const { error: insertError } = await supabase.from("menu_uploads").insert({
-      id: uploadId,
-      restaurant_id: restaurant.id,
-      source_type: "photo",
-      file_paths: paths,
-      status: "processing",
-    });
-    if (insertError) {
-      setProgress(null);
-      return showError("upload");
-    }
-    const { error: invokeError } = await supabase.functions.invoke(
-      "process-menu",
-      { body: { uploadId, lang } },
-    );
-    if (invokeError) {
-      const status = (invokeError as { context?: Response }).context?.status;
-      setProgress(null);
-      return showError(status === 429 ? "rateLimited" : "generic");
-    }
-    navigate(`/upload/${uploadId}`);
+    await start({ id: uploadId, source_type: "photo", file_paths: paths });
   };
 
   const busy = progress !== null;
@@ -172,12 +227,48 @@ export function Upload() {
       </h1>
       <p className="text-ink-muted mt-2 text-lg">{t.upload.intro}</p>
 
+      <fieldset className="mt-6">
+        <legend className="font-semibold">{t.upload.modeLabel}</legend>
+        <div className="rounded-control bg-surface-muted mt-2 grid grid-cols-2 gap-1 p-1">
+          {(
+            [
+              ["photos", Camera, t.upload.modePhotos],
+              ["website", Globe, t.upload.modeWebsite],
+            ] as const
+          ).map(([value, Icon, label]) => (
+            <label
+              key={value}
+              className={`rounded-control flex min-h-12 cursor-pointer items-center justify-center gap-2 px-3 font-semibold has-[:focus-visible]:outline-2 ${
+                mode === value ? "bg-surface shadow-card" : "text-ink-muted"
+              }`}
+            >
+              <input
+                type="radio"
+                name="upload-mode"
+                value={value}
+                checked={mode === value}
+                disabled={busy}
+                onChange={() => {
+                  setMode(value);
+                  setError(null);
+                }}
+                className="sr-only"
+              />
+              <Icon className="size-5 shrink-0" aria-hidden="true" />
+              {label}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       <div className="rounded-card bg-mustard-50 mt-6 p-4">
         <p className="font-semibold">{t.upload.tipsTitle}</p>
         <ul className="mt-1.5 list-disc space-y-0.5 pl-5">
-          {t.upload.tips.map((tip) => (
-            <li key={tip}>{fill(tip, { max: MAX_PHOTOS })}</li>
-          ))}
+          {(mode === "photos" ? t.upload.tips : t.upload.websiteTips).map(
+            (tip) => (
+              <li key={tip}>{fill(tip, { max: MAX_PHOTOS })}</li>
+            ),
+          )}
         </ul>
       </div>
 
@@ -196,7 +287,49 @@ export function Upload() {
         </p>
       )}
 
-      {photos.length > 0 && (
+      {mode === "website" && (
+        <form
+          className="mt-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            void submitWebsite();
+          }}
+        >
+          <label className="block">
+            <span className="font-semibold">{t.upload.websiteLabel}</span>
+            <input
+              type="url"
+              inputMode="url"
+              autoComplete="url"
+              autoCapitalize="none"
+              spellCheck={false}
+              value={site}
+              onChange={(e) => setSite(e.target.value)}
+              placeholder={t.upload.websitePlaceholder}
+              maxLength={500}
+              disabled={busy}
+              className="input mt-1.5"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={busy || !site.trim()}
+            className="btn-primary mt-4 w-full text-lg"
+          >
+            {busy ? (
+              <LoaderCircle
+                className="size-5 animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <Sparkles className="size-5" aria-hidden="true" />
+            )}
+            {busy ? t.upload.fetching : t.upload.websiteSubmit}
+          </button>
+        </form>
+      )}
+
+      {mode === "photos" && photos.length > 0 && (
         <>
           <ol className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {photos.map((photo, i) => (
@@ -243,26 +376,28 @@ export function Upload() {
         </>
       )}
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <button
-          type="button"
-          disabled={busy || full}
-          onClick={() => cameraInput.current?.click()}
-          className={photos.length ? "btn-secondary" : "btn-primary"}
-        >
-          <Camera className="size-5" aria-hidden="true" />
-          {t.upload.takePhoto}
-        </button>
-        <button
-          type="button"
-          disabled={busy || full}
-          onClick={() => galleryInput.current?.click()}
-          className="btn-secondary"
-        >
-          <ImagePlus className="size-5" aria-hidden="true" />
-          {photos.length ? t.upload.addMore : t.upload.choosePhotos}
-        </button>
-      </div>
+      {mode === "photos" && (
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <button
+            type="button"
+            disabled={busy || full}
+            onClick={() => cameraInput.current?.click()}
+            className={photos.length ? "btn-secondary" : "btn-primary"}
+          >
+            <Camera className="size-5" aria-hidden="true" />
+            {t.upload.takePhoto}
+          </button>
+          <button
+            type="button"
+            disabled={busy || full}
+            onClick={() => galleryInput.current?.click()}
+            className="btn-secondary"
+          >
+            <ImagePlus className="size-5" aria-hidden="true" />
+            {photos.length ? t.upload.addMore : t.upload.choosePhotos}
+          </button>
+        </div>
+      )}
       <input
         ref={cameraInput}
         type="file"
@@ -286,7 +421,7 @@ export function Upload() {
         }}
       />
 
-      {(photos.length > 0 || busy) && (
+      {mode === "photos" && (photos.length > 0 || busy) && (
         <button
           type="button"
           disabled={busy || photos.length === 0}
@@ -316,13 +451,21 @@ export function Upload() {
                   className="rounded-card bg-surface shadow-card flex min-h-14 items-center gap-3 px-4 py-3"
                 >
                   <span className="min-w-0 flex-1">
-                    {fill(t.upload.uploadedOn, {
-                      date: new Date(u.created_at).toLocaleString(lang, {
-                        dateStyle: "medium",
-                        timeStyle: "short",
-                      }),
-                      count: u.file_paths?.length ?? 0,
-                    })}
+                    {u.source_type === "url" && u.source_url
+                      ? fill(t.upload.uploadedFrom, {
+                          date: new Date(u.created_at).toLocaleString(lang, {
+                            dateStyle: "medium",
+                            timeStyle: "short",
+                          }),
+                          site: siteLabel(u.source_url),
+                        })
+                      : fill(t.upload.uploadedOn, {
+                          date: new Date(u.created_at).toLocaleString(lang, {
+                            dateStyle: "medium",
+                            timeStyle: "short",
+                          }),
+                          count: u.file_paths?.length ?? 0,
+                        })}
                   </span>
                   <UploadStatusBadge upload={u} />
                   <ChevronRight

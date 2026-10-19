@@ -165,7 +165,12 @@ export function UploadResult() {
             {t.result.errors[code] ?? t.result.errors.server}
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {code !== "not_a_menu" && (
+            {![
+              "not_a_menu",
+              "bad_url",
+              "social_site",
+              "no_menu_found",
+            ].includes(code) && (
               <button
                 type="button"
                 disabled={retrying}

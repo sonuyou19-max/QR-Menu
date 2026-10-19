@@ -1,4 +1,6 @@
-// Reads an uploaded menu with Claude vision (CLAUDE.md 3, 5, 7).
+// Reads an uploaded menu with Claude vision (CLAUDE.md 3, 5, 7): photos, or the restaurant's
+// website (source_type "url": the page, plus the menu pages, PDFs and images it links to; see
+// website.ts).
 //
 // The owner's app uploads the photos to Storage (`menu-uploads/<restaurant_id>/<upload_id>/…`),
 // inserts a menu_uploads row and calls this function with its id. We check the caller owns the
@@ -32,9 +34,12 @@ import {
 import {
   extractionPagePrompt,
   extractionSystemPrompt,
+  extractionWebPrompt,
   type NoteLanguage,
 } from "../_shared/prompts.ts";
 import { limitWords } from "../_shared/text.ts";
+import { menuLinkPicker } from "./pick.ts";
+import { websiteParts } from "./website.ts";
 
 declare const EdgeRuntime: { waitUntil(promise: Promise<unknown>): void };
 
@@ -57,21 +62,36 @@ const notes = {
     onlyPhoto: "De foto kon niet gelezen worden.",
     photo: "Foto {n} kon niet gelezen worden.",
     notMenu: "Foto {n} lijkt geen menukaart.",
+    web: "Een deel van {url} kon niet gelezen worden.",
   },
   fr: {
     onlyPhoto: "La photo n'a pas pu être lue.",
     photo: "La photo {n} n'a pas pu être lue.",
     notMenu: "La photo {n} ne ressemble pas à une carte.",
+    web: "Une partie de {url} n'a pas pu être lue.",
   },
   en: {
     onlyPhoto: "The photo couldn't be read.",
     photo: "Photo {n} couldn't be read.",
     notMenu: "Photo {n} doesn't look like a menu.",
+    web: "Part of {url} couldn't be read.",
   },
 } satisfies Record<NoteLanguage, Record<string, string>>;
 
 type FileBlock =
-  Anthropic.Beta.BetaImageBlockParam | Anthropic.Beta.BetaRequestDocumentBlock;
+  | Anthropic.Beta.BetaImageBlockParam
+  | Anthropic.Beta.BetaRequestDocumentBlock
+  | Anthropic.Beta.BetaTextBlockParam;
+
+/** One model call: a photo, or one piece of the website (page text, PDF page, image). */
+interface Part {
+  block: FileBlock;
+  prompt: string;
+  /** First part of a new source: never continues the previous part's category. */
+  newSource: boolean;
+  /** Website parts: fetched because they might be the menu, so "not a menu" is no note. */
+  web?: { url: string };
+}
 
 async function loadFile(db: SupabaseClient, path: string): Promise<FileBlock> {
   const { data, error } = await db.storage.from("menu-uploads").download(path);
@@ -104,9 +124,7 @@ async function extractPage(
     deadline: number;
     lang: NoteLanguage;
   },
-  file: FileBlock,
-  page: number,
-  pages: number,
+  part: Part,
 ): Promise<PageResult | null> {
   for (let attempt = 1; attempt <= 2; attempt++) {
     const timeLeft = ctx.deadline - Date.now();
@@ -125,13 +143,7 @@ async function extractPage(
         messages: [
           {
             role: "user",
-            content: [
-              file,
-              {
-                type: "text",
-                text: extractionPagePrompt(page, pages, ctx.lang),
-              },
-            ],
+            content: [part.block, { type: "text", text: part.prompt }],
           },
         ],
       });
@@ -143,18 +155,18 @@ async function extractPage(
         output_tokens: response.usage.output_tokens,
       });
       if (response.stop_reason === "refusal") {
-        console.error("Refused", page, response.stop_details);
+        console.error("Refused", part.prompt, response.stop_details);
         return null;
       }
       if (response.parsed_output) return response.parsed_output;
-      console.error("No valid JSON", page, response.stop_reason);
+      console.error("No valid JSON", part.prompt, response.stop_reason);
     } catch (e) {
       // The SDK already retried rate limits, overloads and network errors.
       if (e instanceof Anthropic.APIError) {
-        console.error("Claude API error", page, e.status, e.message);
+        console.error("Claude API error", e.status, e.message);
         return null;
       }
-      console.error("Invalid result", page, e);
+      console.error("Invalid result", e);
     }
   }
   return null;
@@ -174,14 +186,24 @@ function mostCommon(values: string[], fallback: string): string {
 /** Merge the pages in order and tidy what the model returned (never invents anything). */
 function mergePages(
   results: (PageResult | null)[],
+  parts: Part[],
   sourceLanguage: string,
   lang: NoteLanguage,
 ): Extraction {
   const pages = results.filter((r): r is PageResult => r?.is_menu === true);
   const categories: Extraction["categories"] = [];
   const unreadable: string[] = [];
+  const website = parts.some((p) => p.web);
 
   results.forEach((r, i) => {
+    const web = parts[i]!.web;
+    if (web) {
+      if (r === null) {
+        const note = notes[lang].web.replace("{url}", web.url);
+        if (!unreadable.includes(note)) unreadable.push(note);
+      }
+      if (!r?.is_menu) return;
+    }
     if (r === null) {
       unreadable.push(
         results.length === 1
@@ -226,14 +248,30 @@ function mergePages(
       const continues =
         last &&
         j === 0 &&
-        (cat.continues_previous_page ||
-          !name ||
-          name.toLowerCase() === last.name.toLowerCase());
-      if (continues) last.items.push(...items);
+        (name.toLowerCase() === last.name.toLowerCase() ||
+          (!parts[i]!.newSource && (cat.continues_previous_page || !name)));
+      // A website can show the same category twice (menu page + PDF): merge it into the first.
+      const same = website
+        ? categories.find((c) => c.name.toLowerCase() === name.toLowerCase())
+        : undefined;
+      const target = continues ? last : same;
+      if (target) target.items.push(...items);
       else if (items.length > 0 || name)
         categories.push({ name: name || "Menu", items });
     });
   });
+
+  // Websites repeat dishes (highlights, menu page and its PDF): keep the first of each.
+  if (website)
+    for (const c of categories) {
+      const seen = new Set<string>();
+      c.items = c.items.filter((item) => {
+        const k = `${item.name.toLowerCase()}|${item.price ?? ""}`;
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      });
+    }
 
   return MenuExtraction.parse({
     restaurant_name:
@@ -253,7 +291,12 @@ function mergePages(
 
 async function processUpload(
   db: SupabaseClient,
-  upload: { id: string; restaurant_id: string; file_paths: string[] },
+  upload: {
+    id: string;
+    restaurant_id: string;
+    file_paths: string[];
+    source_url: string | null;
+  },
   sourceLanguage: string,
   lang: NoteLanguage,
 ) {
@@ -264,17 +307,54 @@ async function processUpload(
       .update({ status: "failed", error })
       .eq("id", upload.id);
   try {
-    const files = await Promise.all(
-      upload.file_paths.map((path) => loadFile(db, path)),
-    );
+    let parts: Part[];
+    if (upload.source_url) {
+      const found = await websiteParts(
+        upload.source_url,
+        menuLinkPicker(sourceLanguage, (usage) =>
+          db.from("usage_events").insert({
+            restaurant_id: upload.restaurant_id,
+            kind: "extract",
+            ...usage,
+          }),
+        ),
+      );
+      if ("error" in found) {
+        await fail(found.error);
+        return;
+      }
+      parts = found.parts.map((p) => ({
+        block: p.block,
+        prompt: extractionWebPrompt(p, lang),
+        newSource: p.n === 1,
+        web: { url: p.url },
+      }));
+    } else {
+      const files = await Promise.all(
+        upload.file_paths.map((path) => loadFile(db, path)),
+      );
+      parts = files.map((block, i) => ({
+        block,
+        prompt: extractionPagePrompt(i + 1, files.length, lang),
+        newSource: i === 0,
+      }));
+    }
     const ctx = { db, restaurantId: upload.restaurant_id, deadline, lang };
     const results = await Promise.all(
-      files.map((file, i) => extractPage(ctx, file, i + 1, files.length)),
+      parts.map((part) => extractPage(ctx, part)),
     );
-    const extraction = mergePages(results, sourceLanguage, lang);
+    const extraction = mergePages(results, parts, sourceLanguage, lang);
     if (extraction.categories.length === 0) {
       const notMenu = results.every((r) => r !== null && !r.is_menu);
-      await fail(notMenu ? "not_a_menu" : "unreadable");
+      await fail(
+        upload.source_url
+          ? notMenu
+            ? "no_menu_found"
+            : "unreadable"
+          : notMenu
+            ? "not_a_menu"
+            : "unreadable",
+      );
       return;
     }
     const { error } = await db
@@ -310,7 +390,7 @@ Deno.serve(async (req) => {
   const db = adminClient();
   const { data: upload } = await db
     .from("menu_uploads")
-    .select("id, restaurant_id, file_paths, status")
+    .select("id, restaurant_id, file_paths, source_type, source_url, status")
     .eq("id", parsed.data.uploadId)
     .maybeSingle();
   if (!upload) return json({ ok: false, error: "not_found" }, 404, cors);
@@ -327,9 +407,15 @@ Deno.serve(async (req) => {
   if (!owner || !restaurant)
     return json({ ok: false, error: "not_found" }, 404, cors);
 
-  // Only files in this restaurant's own folder (the row is owner-editable).
+  // Only files in this restaurant's own folder (the row is owner-editable). A website import has
+  // no files, only an address (checked when it is fetched).
   const paths: string[] = upload.file_paths ?? [];
-  if (
+  const sourceUrl =
+    upload.source_type === "url" ? (upload.source_url?.trim() ?? "") : null;
+  if (sourceUrl !== null) {
+    if (!sourceUrl || sourceUrl.length > 500 || paths.length > 0)
+      return json({ ok: false, error: "invalid" }, 400, cors);
+  } else if (
     paths.length === 0 ||
     paths.length > MAX_FILES ||
     !paths.every(
@@ -368,7 +454,12 @@ Deno.serve(async (req) => {
   EdgeRuntime.waitUntil(
     processUpload(
       db,
-      { id: upload.id, restaurant_id: upload.restaurant_id, file_paths: paths },
+      {
+        id: upload.id,
+        restaurant_id: upload.restaurant_id,
+        file_paths: paths,
+        source_url: sourceUrl,
+      },
       restaurant.source_language,
       parsed.data.lang,
     ),

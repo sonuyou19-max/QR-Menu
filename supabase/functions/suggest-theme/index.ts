@@ -21,6 +21,7 @@ import {
   requestUser,
 } from "../_shared/http.ts";
 import { isHex, LookSuggestion, lookSystemPrompt } from "../_shared/look.ts";
+import { publicUrl } from "../_shared/website.ts";
 
 /** Suggestions per restaurant per day (usage_events kind 'theme'). */
 const MAX_PER_DAY = 15;
@@ -59,27 +60,6 @@ async function image(
 }
 
 /** Is this a public web address we may fetch (no local or internal hosts)? */
-function publicUrl(raw: string, base?: URL): URL | null {
-  let url: URL;
-  try {
-    url = new URL(/^https?:\/\//i.test(raw) || base ? raw : `https://${raw}`, base);
-  } catch {
-    return null;
-  }
-  const host = url.hostname.toLowerCase();
-  if (
-    !["http:", "https:"].includes(url.protocol) ||
-    url.username ||
-    url.port ||
-    !host.includes(".") ||
-    /^[\d.]+$/.test(host) ||
-    host.startsWith("[") ||
-    /(^|\.)(localhost|local|internal|lan|home|arpa)$/.test(host)
-  )
-    return null;
-  return url;
-}
-
 /** Title, description, brand colours and the first visible text of the website's home page. */
 async function websiteFacts(raw: string): Promise<string | null> {
   let url = publicUrl(raw);

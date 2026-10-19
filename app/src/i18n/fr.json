@@ -104,10 +104,10 @@
   },
   "upload": {
     "title": "Envoyez votre carte",
-    "intro": "Prenez une photo de chaque page de votre carte, dans l'ordre. Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions. Vous vérifiez tout avant que vos clients ne le voient.",
+    "intro": "Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions sur des photos de votre carte ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",
     "tipsTitle": "Pour un meilleur résultat",
     "tips": [
-      "Une page de carte par photo, la page entière visible",
+      "Une page de carte par photo, dans l'ordre, la page entière visible",
       "Bonne lumière, sans reflets, téléphone bien droit",
       "Jusqu'à {max} photos"
     ],
@@ -136,11 +136,26 @@
       "unsupported": "Une photo n'a pas pu être ouverte. Reprenez-la avec l'appareil photo, ou choisissez un JPEG ou PNG.",
       "upload": "L'envoi n'a pas fonctionné. Vérifiez votre connexion internet et réessayez.",
       "rateLimited": "Vous avez déjà fait lire beaucoup de cartes aujourd'hui. Réessayez demain, ou contactez-nous.",
-      "generic": "Cela n'a pas fonctionné. Réessayez."
-    }
+      "generic": "Cela n'a pas fonctionné. Réessayez.",
+      "badUrl": "Indiquez l'adresse de votre site, par exemple www.votrerestaurant.be/carte.",
+      "social": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte."
+    },
+    "modeLabel": "Où se trouve votre carte ?",
+    "modePhotos": "Photos",
+    "modeWebsite": "Sur mon site web",
+    "websiteLabel": "Adresse de votre site ou de la page de votre carte",
+    "websitePlaceholder": "www.votrerestaurant.be/carte",
+    "websiteTips": [
+      "Collez l'adresse de la page de votre carte (ou votre page d'accueil : Buddy cherche alors la page de la carte)",
+      "Buddy lit aussi les cartes en PDF ou en image qui y sont liées",
+      "Buddy ne peut pas lire Instagram ni Facebook"
+    ],
+    "websiteSubmit": "Lire ma carte sur le site",
+    "fetching": "Ouverture du site…",
+    "uploadedFrom": "{date} · {site}"
   },
   "result": {
-    "back": "Envoyer d'autres photos",
+    "back": "Lire une autre carte",
     "readingTitle": "Lecture de votre carte…",
     "readingText": "Cela prend généralement 30 à 90 secondes. Vous pouvez quitter cette page : le résultat vous attendra ici.",
     "elapsed": "{seconds} s",
@@ -149,7 +164,11 @@
       "not_a_menu": "Ces photos ne semblent pas montrer une carte. Photographiez les pages de la carte et réessayez.",
       "unreadable": "Le texte était trop difficile à lire. Prenez des photos plus nettes avec une bonne lumière, une page par photo.",
       "server": "Un problème est survenu de notre côté. Réessayez dans un instant.",
-      "stale": "Cela a pris trop de temps et a été arrêté. Réessayez."
+      "stale": "Cela a pris trop de temps et a été arrêté. Réessayez.",
+      "bad_url": "Cette adresse de site n'est pas correcte. Vérifiez-la et réessayez.",
+      "social_site": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
+      "site_unreachable": "Buddy n'a pas pu ouvrir ce site. Vérifiez l'adresse et réessayez, ou prenez des photos de votre carte.",
+      "no_menu_found": "Buddy n'a pas trouvé de carte sur ce site. Collez l'adresse de la page de la carte elle-même, ou prenez des photos de votre carte. (Certains sites affichent leur carte d'une façon que Buddy ne peut pas lire.)"
     },
     "retry": "Réessayer",
     "doneTitle": "Nous avons trouvé {dishes} plats dans {categories} catégories",
@@ -160,7 +179,8 @@
     "unknownDish": "Plat inconnu : ajoutez une description plus tard",
     "suggestedAllergens": "Suggérés par Buddy : allergènes (pas encore confirmés)",
     "notFound": "Cet envoi n'existe pas (plus).",
-    "missingPriceOne": "1 plat n'a pas encore de prix"
+    "missingPriceOne": "1 plat n'a pas encore de prix",
+    "photosInstead": "Prendre des photos"
   },
   "allergens": {
     "gluten": "Gluten",
