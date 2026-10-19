@@ -74,6 +74,12 @@
       "languages": "Choose at least one language for your guests.",
       "slug": "Choose a web address that's free.",
       "generic": "That didn't work. Check your internet connection and try again."
+    },
+    "allergens": {
+      "question": "Show allergens on your menu?",
+      "hint": "You check and confirm the allergens of each dish before guests see them. You can change this any time.",
+      "yes": "Yes, show allergens",
+      "no": "No, guests ask staff"
     }
   },
   "overviewExtra": {
@@ -246,7 +252,8 @@
       "photoError": "The photo couldn't be uploaded. Try another one.",
       "delete": "Delete dish",
       "visibility": "Visible to guests",
-      "stock": "In stock today"
+      "stock": "In stock today",
+      "confirmNext": "Confirm & next dish"
     },
     "toast": {
       "saved": "Saved",
@@ -266,6 +273,15 @@
       "nothing": "No changes yet",
       "summary": "{count} prices will change:",
       "invalid": "Some prices aren't valid. Use for example 12,50."
+    },
+    "allergenSwitch": {
+      "title": "Allergens on your menu",
+      "label": "Show allergens to guests",
+      "offText": "Off: guests see no allergen information, only the note \"For allergies, please inform staff before ordering.\" Allergens you confirmed earlier are kept for when you switch this on again.",
+      "pending": "{count} dishes still need your allergen confirmation. Until you confirm them, guests see \"Allergen info not confirmed — please ask staff\" for those dishes.",
+      "pendingOne": "1 dish still needs your allergen confirmation. Until you confirm it, guests see \"Allergen info not confirmed — please ask staff\" for that dish.",
+      "start": "Start confirming",
+      "allConfirmed": "On: all dishes are confirmed. New dishes will ask for confirmation."
     }
   },
   "resultExtra": {

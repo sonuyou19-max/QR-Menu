@@ -40,12 +40,14 @@ export function CategorySection({
   currency,
   onEditDish,
   highlightId,
+  showAllergens,
 }: {
   category: Category;
   editor: MenuEditor;
   currency: string;
   onEditDish: (id: string) => void;
   highlightId: string | null;
+  showAllergens: boolean;
 }) {
   const { t } = useI18n();
   const sensors = useDragSensors();
@@ -175,6 +177,7 @@ export function CategorySection({
                 editor={editor}
                 onEdit={() => onEditDish(item.id)}
                 highlighted={highlightId === item.id}
+                showAllergens={showAllergens}
               />
             ))}
           </ul>

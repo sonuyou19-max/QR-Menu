@@ -74,6 +74,12 @@
       "languages": "Choisissez au moins une langue pour vos clients.",
       "slug": "Choisissez une adresse web libre.",
       "generic": "La création n'a pas fonctionné. Vérifiez votre connexion internet et réessayez."
+    },
+    "allergens": {
+      "question": "Afficher les allergènes sur votre carte ?",
+      "hint": "Vous vérifiez et confirmez les allergènes de chaque plat avant que les clients ne les voient. Vous pouvez changer cela à tout moment.",
+      "yes": "Oui, afficher les allergènes",
+      "no": "Non, les clients demandent au personnel"
     }
   },
   "overviewExtra": {
@@ -246,7 +252,8 @@
       "photoError": "La photo n'a pas pu être envoyée. Essayez-en une autre.",
       "delete": "Supprimer le plat",
       "visibility": "Visible pour les clients",
-      "stock": "Disponible aujourd'hui"
+      "stock": "Disponible aujourd'hui",
+      "confirmNext": "Confirmer et plat suivant"
     },
     "toast": {
       "saved": "Enregistré",
@@ -266,6 +273,15 @@
       "nothing": "Aucune modification",
       "summary": "{count} prix vont changer :",
       "invalid": "Certains prix ne sont pas valides. Utilisez par exemple 12,50."
+    },
+    "allergenSwitch": {
+      "title": "Allergènes sur votre carte",
+      "label": "Afficher les allergènes aux clients",
+      "offText": "Désactivé : les clients ne voient aucune information sur les allergènes, seulement la note « En cas d'allergie, prévenez le personnel avant de commander. » Les allergènes déjà confirmés sont conservés pour quand vous réactivez cette option.",
+      "pending": "{count} plats attendent encore votre confirmation des allergènes. Tant que vous ne les confirmez pas, les clients voient « Allergènes non confirmés — demandez au personnel » pour ces plats.",
+      "pendingOne": "1 plat attend encore votre confirmation des allergènes. Tant que vous ne le confirmez pas, les clients voient « Allergènes non confirmés — demandez au personnel » pour ce plat.",
+      "start": "Commencer à confirmer",
+      "allConfirmed": "Activé : tous les plats sont confirmés. Les nouveaux plats vous demanderont une confirmation."
     }
   },
   "resultExtra": {

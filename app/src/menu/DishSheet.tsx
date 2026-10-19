@@ -35,12 +35,21 @@ export function DishSheet({
   categories,
   restaurantId,
   editor,
+  showAllergens,
+  startAtAllergens = false,
+  onNextToConfirm,
   onClose,
 }: {
   item: Item;
   categories: Category[];
   restaurantId: string;
   editor: MenuEditor;
+  /** The restaurant shows allergens to guests; when false the allergen section is hidden. */
+  showAllergens: boolean;
+  /** Opened from "Start confirming": scroll straight to the allergens. */
+  startAtAllergens?: boolean;
+  /** Open the next dish whose allergens still need confirming (null when this is the last). */
+  onNextToConfirm: (() => void) | null;
   onClose: () => void;
 }) {
   const { t, lang } = useI18n();
@@ -65,6 +74,11 @@ export function DishSheet({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
+    if (startAtAllergens)
+      document
+        .getElementById(`${ids.name}-allergens`)
+        ?.scrollIntoView({ block: "start" });
+    // Only when the sheet opens.
   }, []);
 
   const saveName = () => {
@@ -84,10 +98,13 @@ export function DishSheet({
       void editor.updateItem(item.id, { menu_description: value });
   };
   // Save what's typed even when the sheet is closed without leaving the field first.
-  const close = () => {
+  const saveTyped = () => {
     saveName();
     if (parsePrice(price) !== undefined) savePrice();
     saveDescription();
+  };
+  const close = () => {
+    saveTyped();
     onClose();
   };
 
@@ -132,11 +149,13 @@ export function DishSheet({
       className="bg-canvas text-ink m-0 mt-auto max-h-[92dvh] w-full max-w-none rounded-t-[1.5rem] p-0 shadow-2xl backdrop:bg-black/40 sm:mt-0 sm:ml-auto sm:h-dvh sm:max-h-dvh sm:w-[30rem] sm:rounded-none sm:rounded-l-[1.5rem]"
     >
       <div className="bg-canvas/95 border-line sticky top-0 z-10 flex items-center gap-2 border-b px-4 py-2 backdrop-blur">
-        <h2
-          id={`${ids.name}-title`}
-          className="min-w-0 flex-1 truncate text-xl font-semibold"
-        >
-          {t.editor.sheet.title}
+        <h2 id={`${ids.name}-title`} className="min-w-0 flex-1">
+          <span className="text-ink-muted block font-sans text-sm font-medium">
+            {t.editor.sheet.title}
+          </span>
+          <span className="block truncate text-xl font-semibold">
+            {item.name}
+          </span>
         </h2>
         <button
           type="button"
@@ -384,57 +403,77 @@ export function DishSheet({
           </div>
         </Field>
 
-        <div
-          className={`rounded-card p-4 ${confirmed ? "bg-herb-50" : "bg-mustard-50"}`}
-          id={`${ids.name}-allergens`}
-        >
-          <p className="font-semibold">{t.editor.sheet.allergens}</p>
-          <p
-            className={`mt-0.5 flex gap-1.5 text-sm ${confirmed ? "text-herb-800" : "text-mustard-900"}`}
+        {showAllergens && (
+          <div
+            className={`rounded-card p-4 ${confirmed ? "bg-herb-50" : "bg-mustard-50"}`}
+            id={`${ids.name}-allergens`}
           >
-            {confirmed ? (
-              <ShieldCheck
-                className="mt-0.5 size-4 shrink-0"
-                aria-hidden="true"
-              />
-            ) : (
-              <ShieldAlert
-                className="mt-0.5 size-4 shrink-0"
-                aria-hidden="true"
-              />
-            )}
-            {confirmed
-              ? t.editor.sheet.allergensConfirmed
-              : t.editor.sheet.allergensSuggested}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {allergenCodes.map((code) => (
-              <Chip
-                key={code}
-                checked={item.allergens.includes(code)}
-                onClick={() => toggleAllergen(code)}
-              >
-                {t.allergens[code]}
-              </Chip>
-            ))}
-          </div>
-          {!confirmed && (
-            <button
-              type="button"
-              onClick={() =>
-                void editor.updateItem(item.id, {
-                  allergen_status: "confirmed",
-                })
-              }
-              className="btn-primary mt-4 w-full"
+            <p className="font-semibold">{t.editor.sheet.allergens}</p>
+            <p
+              className={`mt-0.5 flex gap-1.5 text-sm ${confirmed ? "text-herb-800" : "text-mustard-900"}`}
             >
-              <ShieldCheck className="size-5" aria-hidden="true" />
-              {item.allergens.length
-                ? t.editor.sheet.confirm
-                : t.editor.sheet.confirmNone}
-            </button>
-          )}
-        </div>
+              {confirmed ? (
+                <ShieldCheck
+                  className="mt-0.5 size-4 shrink-0"
+                  aria-hidden="true"
+                />
+              ) : (
+                <ShieldAlert
+                  className="mt-0.5 size-4 shrink-0"
+                  aria-hidden="true"
+                />
+              )}
+              {confirmed
+                ? t.editor.sheet.allergensConfirmed
+                : t.editor.sheet.allergensSuggested}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {allergenCodes.map((code) => (
+                <Chip
+                  key={code}
+                  checked={item.allergens.includes(code)}
+                  onClick={() => toggleAllergen(code)}
+                >
+                  {t.allergens[code]}
+                </Chip>
+              ))}
+            </div>
+            {!confirmed && (
+              <div className="mt-4 grid gap-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    void editor.updateItem(item.id, {
+                      allergen_status: "confirmed",
+                    })
+                  }
+                  className={onNextToConfirm ? "btn-secondary" : "btn-primary"}
+                >
+                  <ShieldCheck className="size-5" aria-hidden="true" />
+                  {item.allergens.length
+                    ? t.editor.sheet.confirm
+                    : t.editor.sheet.confirmNone}
+                </button>
+                {onNextToConfirm && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      saveTyped();
+                      void editor.updateItem(item.id, {
+                        allergen_status: "confirmed",
+                      });
+                      onNextToConfirm();
+                    }}
+                    className="btn-primary"
+                  >
+                    <ShieldCheck className="size-5" aria-hidden="true" />
+                    {t.editor.sheet.confirmNext}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="space-y-1">
           <Switch

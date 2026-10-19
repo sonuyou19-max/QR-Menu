@@ -20,6 +20,7 @@ import {
   type UploadError,
 } from "../lib/extraction";
 import { supabase } from "../lib/supabase";
+import { useRestaurant } from "../restaurant/RestaurantProvider";
 
 type Upload = Tables<"menu_uploads">;
 const POLL_MS = 3000;
@@ -54,6 +55,7 @@ export function UploadStatusBadge({ upload }: { upload: Upload }) {
 
 /** Waits for process-menu, then shows what the AI read (review + editing come in step 5). */
 export function UploadResult() {
+  const showAllergens = useRestaurant().restaurant.show_allergens;
   const { id } = useParams();
   const { t, lang } = useI18n();
   const [upload, setUpload] = useState<Upload | null | undefined>(undefined);
@@ -211,10 +213,12 @@ export function UploadResult() {
         })}
       </h1>
       <p className="text-ink-muted mt-2 text-lg">{t.resultExtra.doneText}</p>
-      <p className="text-ink-muted mt-2 text-sm">
-        <span aria-hidden="true">⚠︎ </span>
-        {t.result.suggestedAllergens}
-      </p>
+      {showAllergens && (
+        <p className="text-ink-muted mt-2 text-sm">
+          <span aria-hidden="true">⚠︎ </span>
+          {t.result.suggestedAllergens}
+        </p>
+      )}
 
       {(menu.unreadable_sections.length > 0 || missingPrices > 0) && (
         <div className="rounded-card bg-mustard-50 mt-6 space-y-2 p-4">
@@ -256,7 +260,12 @@ export function UploadResult() {
             </h2>
             <ul className="divide-line divide-y">
               {category.items.map((item, ii) => (
-                <DishRow key={`${ii}-${item.name}`} item={item} money={money} />
+                <DishRow
+                  key={`${ii}-${item.name}`}
+                  item={item}
+                  money={money}
+                  showAllergens={showAllergens}
+                />
               ))}
             </ul>
           </section>
@@ -381,9 +390,11 @@ function hasSeveralPrices(text: string | null): boolean {
 function DishRow({
   item,
   money,
+  showAllergens,
 }: {
   item: ExtractedItem;
   money: Intl.NumberFormat;
+  showAllergens: boolean;
 }) {
   const { t } = useI18n();
   const tags = (
@@ -430,7 +441,7 @@ function DishRow({
             {t.dietary[tag]}
           </span>
         ))}
-        {item.suggested_allergens.length > 0 && (
+        {showAllergens && item.suggested_allergens.length > 0 && (
           <span className="text-ink-muted">
             <span className="sr-only">{t.result.suggestedAllergens}: </span>
             <span aria-hidden="true">⚠︎ </span>

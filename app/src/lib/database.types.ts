@@ -258,6 +258,7 @@ export type Database = {
           logo_path: string | null;
           name: string;
           plan: string;
+          show_allergens: boolean;
           slug: string;
           source_language: string;
           theme: Json;
@@ -273,6 +274,7 @@ export type Database = {
           logo_path?: string | null;
           name: string;
           plan?: string;
+          show_allergens?: boolean;
           slug: string;
           source_language?: string;
           theme?: Json;
@@ -288,6 +290,7 @@ export type Database = {
           logo_path?: string | null;
           name?: string;
           plan?: string;
+          show_allergens?: boolean;
           slug?: string;
           source_language?: string;
           theme?: Json;
@@ -400,6 +403,7 @@ export type Database = {
           logo_path: string | null;
           name: string;
           plan: string;
+          show_allergens: boolean;
           slug: string;
           source_language: string;
           theme: Json;

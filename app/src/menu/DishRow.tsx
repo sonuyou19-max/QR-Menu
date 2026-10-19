@@ -19,12 +19,14 @@ export function DishRow({
   editor,
   onEdit,
   highlighted,
+  showAllergens,
 }: {
   item: Item;
   currency: string;
   editor: MenuEditor;
   onEdit: () => void;
   highlighted: boolean;
+  showAllergens: boolean;
 }) {
   const { t } = useI18n();
   const {
@@ -138,7 +140,7 @@ export function DishRow({
               {t.editor.dish.hiddenNote}
             </span>
           )}
-          {item.allergen_status !== "confirmed" && (
+          {showAllergens && item.allergen_status !== "confirmed" && (
             <button
               type="button"
               onClick={onEdit}

@@ -9,6 +9,7 @@ import {
 import { CircleCheck, CircleAlert, ShieldAlert, Upload } from "lucide-react";
 import { FullPageSpinner } from "../components/FullPageSpinner";
 import { fill, useI18n } from "../i18n";
+import { AllergenSwitch } from "../menu/AllergenSwitch";
 import { BulkPrices } from "../menu/BulkPrices";
 import { CategorySection, useDragSensors } from "../menu/CategorySection";
 import { DishSheet } from "../menu/DishSheet";
@@ -29,6 +30,12 @@ export function MenuEditor() {
   const [params, setParams] = useSearchParams();
   const tab = params.get("tab") === "prices" ? "prices" : "menu";
   const [editingId, setEditingId] = useState<string | null>(null);
+  // True while walking through dishes with "Start confirming" / "Confirm & next".
+  const [confirming, setConfirming] = useState(false);
+  const openDish = (id: string | null, viaConfirm = false) => {
+    setConfirming(viaConfirm);
+    setEditingId(id);
+  };
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const sensors = useDragSensors();
 
@@ -58,11 +65,21 @@ export function MenuEditor() {
   const categories = editor.categories;
   // Dishes in menu order, for the to-do links.
   const ordered: Item[] = categories.flatMap((c) => editor.itemsIn(c.id));
-  const needAllergens = ordered.filter(
+  const showAllergens = restaurant.show_allergens;
+  // Kept per dish even while allergens are off, so switching on only asks for these.
+  const unconfirmed = ordered.filter(
     (i) => i.allergen_status !== "confirmed" && !i.is_hidden,
   );
+  const needAllergens = showAllergens ? unconfirmed : [];
   const needPrice = ordered.filter((i) => i.price === null && !i.is_hidden);
   const editing = editor.items.find((i) => i.id === editingId) ?? null;
+  // "Confirm & next": the next unconfirmed dish after this one in menu order (then from the top).
+  const nextToConfirm = (() => {
+    if (!editing) return null;
+    const others = unconfirmed.filter((i) => i.id !== editing.id);
+    const index = ordered.findIndex((i) => i.id === editing.id);
+    return others.find((i) => ordered.indexOf(i) > index) ?? others[0] ?? null;
+  })();
 
   const goTo = (item: Item | undefined) => {
     if (!item) return;
@@ -92,6 +109,13 @@ export function MenuEditor() {
     <div className="pb-24">
       <h1 className="text-3xl font-semibold sm:text-4xl">{t.editor.title}</h1>
       <p className="text-ink-muted mt-1">{t.editor.autosave}</p>
+
+      {ordered.length > 0 && (
+        <AllergenSwitch
+          pendingCount={unconfirmed.length}
+          onStartConfirming={() => openDish(unconfirmed[0]?.id ?? null, true)}
+        />
+      )}
 
       {ordered.length > 0 && (
         <ul
@@ -199,8 +223,9 @@ export function MenuEditor() {
                       category={category}
                       editor={editor}
                       currency={restaurant.currency}
-                      onEditDish={setEditingId}
+                      onEditDish={(id) => openDish(id)}
                       highlightId={highlightId}
+                      showAllergens={showAllergens}
                     />
                   ))}
                 </div>
@@ -225,6 +250,11 @@ export function MenuEditor() {
           categories={categories}
           restaurantId={restaurant.id}
           editor={editor}
+          showAllergens={showAllergens}
+          startAtAllergens={confirming}
+          onNextToConfirm={
+            nextToConfirm ? () => openDish(nextToConfirm.id, true) : null
+          }
           onClose={() => setEditingId(null)}
         />
       )}

@@ -44,6 +44,7 @@ export function Setup() {
   const [guestLanguages, setGuestLanguages] = useState<string[]>(
     defaultGuestLanguages,
   );
+  const [showAllergens, setShowAllergens] = useState(true);
   const [slug, setSlug] = useState("");
   const [slugEdited, setSlugEdited] = useState(false);
   const [slugState, setSlugState] = useState<SlugState>("idle");
@@ -94,7 +95,7 @@ export function Setup() {
       return;
     }
     setSaving(true);
-    const { error } = await supabase.rpc("create_restaurant", {
+    const { data: created, error } = await supabase.rpc("create_restaurant", {
       p_name: name.trim(),
       p_slug: slug,
       p_address: address.trim(),
@@ -113,6 +114,12 @@ export function Setup() {
       }
       return;
     }
+    // New restaurants show allergens by default; only an explicit "no" needs saving.
+    if (!showAllergens && created)
+      await supabase
+        .from("restaurants")
+        .update({ show_allergens: false })
+        .eq("id", created.id);
     await reloadRestaurant();
     navigate("/", { replace: true });
   };
@@ -298,6 +305,43 @@ export function Setup() {
                 {t.setup.errors.languages}
               </p>
             )}
+          </fieldset>
+
+          <fieldset>
+            <legend className="font-semibold">
+              {t.setup.allergens.question}
+            </legend>
+            <p className="text-ink-muted text-sm">{t.setup.allergens.hint}</p>
+            <div role="radiogroup" className="mt-3 grid gap-2">
+              {([true, false] as const).map((value) => (
+                <button
+                  key={String(value)}
+                  type="button"
+                  role="radio"
+                  aria-checked={showAllergens === value}
+                  onClick={() => setShowAllergens(value)}
+                  className={`rounded-control flex min-h-12 items-center gap-2 border px-4 py-2 text-left font-medium ${
+                    showAllergens === value
+                      ? "border-herb-700 bg-herb-50 text-herb-800"
+                      : "border-line bg-surface text-ink"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`grid size-5 shrink-0 place-items-center rounded-full border-2 ${
+                      showAllergens === value
+                        ? "border-herb-700"
+                        : "border-oat-400"
+                    }`}
+                  >
+                    {showAllergens === value && (
+                      <span className="bg-herb-700 size-2.5 rounded-full" />
+                    )}
+                  </span>
+                  {value ? t.setup.allergens.yes : t.setup.allergens.no}
+                </button>
+              ))}
+            </div>
           </fieldset>
 
           <div>

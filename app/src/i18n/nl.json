@@ -74,6 +74,12 @@
       "languages": "Kies minstens één taal voor je gasten.",
       "slug": "Kies een webadres dat vrij is.",
       "generic": "Aanmaken lukte niet. Controleer je internetverbinding en probeer opnieuw."
+    },
+    "allergens": {
+      "question": "Allergenen tonen op je menukaart?",
+      "hint": "Je controleert en bevestigt de allergenen van elk gerecht voordat gasten ze zien. Je kunt dit altijd wijzigen.",
+      "yes": "Ja, toon allergenen",
+      "no": "Nee, gasten vragen het aan het personeel"
     }
   },
   "overviewExtra": {
@@ -246,7 +252,8 @@
       "photoError": "De foto kon niet geüpload worden. Probeer een andere.",
       "delete": "Gerecht verwijderen",
       "visibility": "Zichtbaar voor gasten",
-      "stock": "Vandaag op voorraad"
+      "stock": "Vandaag op voorraad",
+      "confirmNext": "Bevestigen & volgend gerecht"
     },
     "toast": {
       "saved": "Bewaard",
@@ -266,6 +273,15 @@
       "nothing": "Nog geen wijzigingen",
       "summary": "{count} prijzen wijzigen:",
       "invalid": "Sommige prijzen zijn niet geldig. Gebruik bijvoorbeeld 12,50."
+    },
+    "allergenSwitch": {
+      "title": "Allergenen op je menukaart",
+      "label": "Toon allergenen aan gasten",
+      "offText": "Uit: gasten zien geen allergeneninformatie, alleen de melding \"Heb je een allergie? Meld het aan het personeel voor je bestelt.\" Allergenen die je eerder bevestigde, blijven bewaard voor als je dit weer aanzet.",
+      "pending": "{count} gerechten wachten nog op je bevestiging van de allergenen. Tot je ze bevestigt, zien gasten bij die gerechten \"Allergeneninfo niet bevestigd — vraag het aan het personeel\".",
+      "pendingOne": "1 gerecht wacht nog op je bevestiging van de allergenen. Tot je het bevestigt, zien gasten bij dat gerecht \"Allergeneninfo niet bevestigd — vraag het aan het personeel\".",
+      "start": "Begin met bevestigen",
+      "allConfirmed": "Aan: alle gerechten zijn bevestigd. Bij nieuwe gerechten vragen we je opnieuw te bevestigen."
     }
   },
   "resultExtra": {
