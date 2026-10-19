@@ -254,7 +254,11 @@
       "delete": "Delete dish",
       "visibility": "Visible to guests",
       "stock": "In stock today",
-      "confirmNext": "Confirm & next dish"
+      "confirmNext": "Confirm & next dish",
+      "translations": "Translations",
+      "notTranslated": "Not translated yet",
+      "noHelper": "Name stays as is",
+      "translationsHint": "Made by the AI from your text. Change your text and tap \"Translate now\" to update."
     },
     "toast": {
       "saved": "Saved",
@@ -283,6 +287,20 @@
       "pendingOne": "1 dish still needs your allergen confirmation. Until you confirm it, guests see \"Allergen info not confirmed — please ask staff\" for that dish.",
       "start": "Start confirming",
       "allConfirmed": "On: all dishes are confirmed. New dishes will ask for confirmation."
+    },
+    "publish": {
+      "notPublishedTitle": "Your menu is not online yet",
+      "notPublishedText": "Publishing translates your menu into {languages} and makes it ready for guests. You can keep editing afterwards; you only pay for translating what changes.",
+      "publish": "Publish menu",
+      "running": "Translating into {languages}…",
+      "runningHint": "This usually takes under a minute. You can keep editing.",
+      "online": "Online · translated into {languages}",
+      "missing": "{count} dishes or categories not translated yet",
+      "missingOne": "1 dish or category not translated yet",
+      "missingHint": "You changed names or descriptions. Until you translate, guests see only your original text for those.",
+      "translateNow": "Translate now",
+      "error": "Translating didn't work. Try again in a moment.",
+      "rateLimited": "You've translated a lot today. Try again tomorrow."
     }
   },
   "resultExtra": {

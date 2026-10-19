@@ -63,18 +63,21 @@ export type Database = {
       };
       menu_categories: {
         Row: {
+          content_hash: string | null;
           id: string;
           name: string;
           restaurant_id: string;
           sort_order: number;
         };
         Insert: {
+          content_hash?: string | null;
           id?: string;
           name: string;
           restaurant_id: string;
           sort_order?: number;
         };
         Update: {
+          content_hash?: string | null;
           id?: string;
           name?: string;
           restaurant_id?: string;
@@ -258,10 +261,14 @@ export type Database = {
           logo_path: string | null;
           name: string;
           plan: string;
+          published_at: string | null;
           show_allergens: boolean;
           slug: string;
           source_language: string;
           theme: Json;
+          translation_error: string | null;
+          translation_started_at: string | null;
+          translation_status: string;
           trial_ends_at: string | null;
         };
         Insert: {
@@ -274,10 +281,14 @@ export type Database = {
           logo_path?: string | null;
           name: string;
           plan?: string;
+          published_at?: string | null;
           show_allergens?: boolean;
           slug: string;
           source_language?: string;
           theme?: Json;
+          translation_error?: string | null;
+          translation_started_at?: string | null;
+          translation_status?: string;
           trial_ends_at?: string | null;
         };
         Update: {
@@ -290,10 +301,14 @@ export type Database = {
           logo_path?: string | null;
           name?: string;
           plan?: string;
+          published_at?: string | null;
           show_allergens?: boolean;
           slug?: string;
           source_language?: string;
           theme?: Json;
+          translation_error?: string | null;
+          translation_started_at?: string | null;
+          translation_status?: string;
           trial_ends_at?: string | null;
         };
         Relationships: [];
@@ -403,10 +418,14 @@ export type Database = {
           logo_path: string | null;
           name: string;
           plan: string;
+          published_at: string | null;
           show_allergens: boolean;
           slug: string;
           source_language: string;
           theme: Json;
+          translation_error: string | null;
+          translation_started_at: string | null;
+          translation_status: string;
           trial_ends_at: string | null;
         };
         SetofOptions: {

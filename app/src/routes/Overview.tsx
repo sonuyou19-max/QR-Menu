@@ -25,8 +25,8 @@ export function Overview() {
       .then(({ count }) => setMenuRead((count ?? 0) > 0));
   }, [restaurant.id]);
 
-  // Restaurant set up; the upload step counts once the menu has dishes. Publishing is step 6.
-  const doneSteps = menuRead ? 2 : 1;
+  // Restaurant set up → menu has dishes → menu published (translated).
+  const doneSteps = restaurant.is_published ? 3 : menuRead ? 2 : 1;
   return (
     <div>
       <h1 className="text-3xl font-semibold sm:text-4xl">{restaurant.name}</h1>

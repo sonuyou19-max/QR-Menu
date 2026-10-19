@@ -10,6 +10,8 @@ import { CircleCheck, CircleAlert, ShieldAlert, Upload } from "lucide-react";
 import { FullPageSpinner } from "../components/FullPageSpinner";
 import { fill, useI18n } from "../i18n";
 import { AllergenSwitch } from "../menu/AllergenSwitch";
+import { PublishCard } from "../menu/PublishCard";
+import { useTranslations } from "../menu/useTranslations";
 import { BulkPrices } from "../menu/BulkPrices";
 import { CategorySection, useDragSensors } from "../menu/CategorySection";
 import { DishSheet } from "../menu/DishSheet";
@@ -57,6 +59,7 @@ export function MenuEditor() {
     [t],
   );
   const editor = useMenuEditor(restaurant.id, describe);
+  const translations = useTranslations(restaurant.id);
 
   if (editor.loadFailed && !editor.categories)
     return <FullPageSpinner error onRetry={() => void editor.reload()} />;
@@ -66,6 +69,22 @@ export function MenuEditor() {
   // Dishes in menu order, for the to-do links.
   const ordered: Item[] = categories.flatMap((c) => editor.itemsIn(c.id));
   const showAllergens = restaurant.show_allergens;
+  const guestLanguages = restaurant.guest_languages.filter(
+    (l) => l !== restaurant.source_language,
+  );
+  // What publish-menu would still translate: visible dishes and all categories.
+  const untranslated =
+    ordered.filter(
+      (i) =>
+        !i.is_hidden &&
+        translations.missingLanguages(i.id, i.content_hash, guestLanguages)
+          .length > 0,
+    ).length +
+    categories.filter(
+      (c) =>
+        translations.missingLanguages(c.id, c.content_hash, guestLanguages)
+          .length > 0,
+    ).length;
   // Kept per dish even while allergens are off, so switching on only asks for these.
   const unconfirmed = ordered.filter(
     (i) => i.allergen_status !== "confirmed" && !i.is_hidden,
@@ -109,6 +128,13 @@ export function MenuEditor() {
     <div className="pb-24">
       <h1 className="text-3xl font-semibold sm:text-4xl">{t.editor.title}</h1>
       <p className="text-ink-muted mt-1">{t.editor.autosave}</p>
+
+      {ordered.length > 0 && (
+        <PublishCard
+          untranslated={untranslated}
+          onTranslated={translations.reload}
+        />
+      )}
 
       {ordered.length > 0 && (
         <AllergenSwitch
@@ -252,6 +278,10 @@ export function MenuEditor() {
           editor={editor}
           showAllergens={showAllergens}
           startAtAllergens={confirming}
+          translations={translations.rows.filter(
+            (r) => r.entity_id === editing.id,
+          )}
+          guestLanguages={restaurant.is_published ? guestLanguages : []}
           onNextToConfirm={
             nextToConfirm ? () => openDish(nextToConfirm.id, true) : null
           }

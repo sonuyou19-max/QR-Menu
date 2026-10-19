@@ -7,7 +7,7 @@
 // lands in menu_uploads.raw_result with status "needs_review". The app polls the row.
 //
 // Deployed with verify_jwt = false: the user's token is checked here with auth.getUser().
-import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
+import type { SupabaseClient } from "npm:@supabase/supabase-js@2";
 import { encodeBase64 } from "jsr:@std/encoding@1/base64";
 import { betaZodOutputFormat } from "npm:@anthropic-ai/sdk@0.135.0/helpers/beta/zod";
 import { z } from "npm:zod@4";
@@ -17,6 +17,13 @@ import {
   fallbackOptions,
   menuModel,
 } from "../_shared/claude.ts";
+import {
+  adminClient,
+  corsHeaders,
+  isOwner,
+  json,
+  requestUser,
+} from "../_shared/http.ts";
 import {
   MenuExtraction,
   PageResult,
@@ -36,11 +43,6 @@ const MAX_RUNS_PER_DAY = 20;
 const STALE_AFTER_MS = 5 * 60 * 1000;
 /** Background work must end before the platform's 150 s wall-clock limit. */
 const BUDGET_MS = 140 * 1000;
-
-const allowedOrigins = (
-  Deno.env.get("ALLOWED_ORIGINS") ??
-  "https://app.menubuddy.be,http://localhost:5173"
-).split(",");
 
 const Body = z.object({
   uploadId: z.uuid(),
@@ -66,53 +68,6 @@ const notes = {
     notMenu: "Photo {n} doesn't look like a menu.",
   },
 } satisfies Record<NoteLanguage, Record<string, string>>;
-
-/** Our Cloudflare test deployments: menubuddy-app.<account>.workers.dev and its preview URLs. */
-function isTestDeployment(hostname: string): boolean {
-  return hostname.endsWith(".workers.dev") && /(^|-)menubuddy-/.test(hostname);
-}
-
-function corsHeaders(origin: string | null): Record<string, string> {
-  let allowed = false;
-  try {
-    allowed =
-      origin !== null &&
-      (allowedOrigins.includes(origin) ||
-        isTestDeployment(new URL(origin).hostname));
-  } catch {
-    allowed = false;
-  }
-  return {
-    ...(allowed ? { "Access-Control-Allow-Origin": origin! } : {}),
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers":
-      "authorization, content-type, apikey, x-client-info",
-    Vary: "Origin",
-  };
-}
-
-function json(body: unknown, status: number, cors: Record<string, string>) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...cors, "Content-Type": "application/json" },
-  });
-}
-
-function adminClient(): SupabaseClient {
-  const secretKey =
-    JSON.parse(Deno.env.get("SUPABASE_SECRET_KEYS") ?? "{}").default ??
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  return createClient(Deno.env.get("SUPABASE_URL")!, secretKey, {
-    auth: { persistSession: false },
-  });
-}
-
-function publishableKey(): string {
-  return (
-    JSON.parse(Deno.env.get("SUPABASE_PUBLISHABLE_KEYS") ?? "{}").default ??
-    Deno.env.get("SUPABASE_ANON_KEY")
-  );
-}
 
 type FileBlock =
   Anthropic.Beta.BetaImageBlockParam | Anthropic.Beta.BetaRequestDocumentBlock;
@@ -337,15 +292,7 @@ Deno.serve(async (req) => {
   if (req.method !== "POST")
     return json({ ok: false, error: "method" }, 405, cors);
 
-  const authorization = req.headers.get("Authorization");
-  if (!authorization) return json({ ok: false, error: "auth" }, 401, cors);
-  const userDb = createClient(Deno.env.get("SUPABASE_URL")!, publishableKey(), {
-    auth: { persistSession: false },
-    global: { headers: { Authorization: authorization } },
-  });
-  const {
-    data: { user },
-  } = await userDb.auth.getUser(authorization.replace(/^Bearer /i, ""));
+  const user = await requestUser(req);
   if (!user) return json({ ok: false, error: "auth" }, 401, cors);
 
   let body: unknown;
@@ -365,14 +312,8 @@ Deno.serve(async (req) => {
     .maybeSingle();
   if (!upload) return json({ ok: false, error: "not_found" }, 404, cors);
 
-  const [{ data: member }, { data: restaurant }] = await Promise.all([
-    db
-      .from("restaurant_members")
-      .select("role")
-      .eq("restaurant_id", upload.restaurant_id)
-      .eq("user_id", user.id)
-      .eq("role", "owner")
-      .maybeSingle(),
+  const [owner, { data: restaurant }] = await Promise.all([
+    isOwner(db, upload.restaurant_id, user.id),
     db
       .from("restaurants")
       .select("source_language")
@@ -380,7 +321,7 @@ Deno.serve(async (req) => {
       .single(),
   ]);
   // Same answer as "doesn't exist": don't reveal other restaurants' uploads.
-  if (!member || !restaurant)
+  if (!owner || !restaurant)
     return json({ ok: false, error: "not_found" }, 404, cors);
 
   // Only files in this restaurant's own folder (the row is owner-editable).

@@ -254,7 +254,11 @@
       "delete": "Gerecht verwijderen",
       "visibility": "Zichtbaar voor gasten",
       "stock": "Vandaag op voorraad",
-      "confirmNext": "Bevestigen & volgend gerecht"
+      "confirmNext": "Bevestigen & volgend gerecht",
+      "translations": "Vertalingen",
+      "notTranslated": "Nog niet vertaald",
+      "noHelper": "Naam blijft zoals hij is",
+      "translationsHint": "Gemaakt door de AI op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken."
     },
     "toast": {
       "saved": "Bewaard",
@@ -283,6 +287,20 @@
       "pendingOne": "1 gerecht wacht nog op je bevestiging van de allergenen. Tot je het bevestigt, zien gasten bij dat gerecht \"Allergeneninfo niet bevestigd — vraag het aan het personeel\".",
       "start": "Begin met bevestigen",
       "allConfirmed": "Aan: alle gerechten zijn bevestigd. Bij nieuwe gerechten vragen we je opnieuw te bevestigen."
+    },
+    "publish": {
+      "notPublishedTitle": "Je menukaart staat nog niet online",
+      "notPublishedText": "Publiceren vertaalt je menukaart naar {languages} en maakt hem klaar voor gasten. Je kunt daarna gewoon verder bewerken; alleen wat verandert, wordt opnieuw vertaald.",
+      "publish": "Menukaart publiceren",
+      "running": "Vertalen naar {languages}…",
+      "runningHint": "Dit duurt meestal minder dan een minuut. Je kunt gewoon verder bewerken.",
+      "online": "Online · vertaald naar {languages}",
+      "missing": "{count} gerechten of categorieën nog niet vertaald",
+      "missingOne": "1 gerecht of categorie nog niet vertaald",
+      "missingHint": "Je hebt namen of beschrijvingen gewijzigd. Tot je vertaalt, zien gasten daar alleen je originele tekst.",
+      "translateNow": "Nu vertalen",
+      "error": "Vertalen is niet gelukt. Probeer het zo meteen opnieuw.",
+      "rateLimited": "Je hebt vandaag al veel laten vertalen. Probeer het morgen opnieuw."
     }
   },
   "resultExtra": {

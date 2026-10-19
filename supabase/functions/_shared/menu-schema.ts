@@ -91,3 +91,21 @@ export const MenuExtraction = z.object({
   unreadable_sections: z.array(z.string()),
 });
 export type MenuExtraction = z.infer<typeof MenuExtraction>;
+
+/** What the model returns for one batch of texts to translate (publish-menu). */
+export const TranslationBatch = z.object({
+  entries: z.array(
+    z.object({
+      id: z.string().describe("The id exactly as given"),
+      name: z
+        .string()
+        .nullable()
+        .describe(
+          "Helper translation of the name, or null for brands, proper names and names that need no translation",
+        ),
+      menu_description: z.string().nullable(),
+      typical_description: z.string().nullable(),
+    }),
+  ),
+});
+export type TranslationBatch = z.infer<typeof TranslationBatch>;

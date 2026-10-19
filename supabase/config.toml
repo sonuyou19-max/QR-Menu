@@ -8,3 +8,7 @@ verify_jwt = false
 [functions.process-menu]
 # The owner's login token is checked inside the function (auth.getUser), then ownership of the upload.
 verify_jwt = false
+
+[functions.publish-menu]
+# The owner's login token is checked inside the function (requestUser), then ownership.
+verify_jwt = false

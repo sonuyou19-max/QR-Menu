@@ -106,6 +106,21 @@ export function useMenuEditor(
   const patchItemsLocal = (id: string, patch: Partial<Item>) =>
     setItems((list) => list.map((i) => (i.id === id ? { ...i, ...patch } : i)));
 
+  // Save, and take over the content_hash the database computes from the texts, so the
+  // "not translated yet" count follows edits without a reload.
+  const saveItem = (id: string, values: ItemPatch) =>
+    supabase
+      .from("menu_items")
+      .update(values)
+      .eq("id", id)
+      .select("content_hash")
+      .single()
+      .then((res) => {
+        if (res.data)
+          patchItemsLocal(id, { content_hash: res.data.content_hash });
+        return res;
+      });
+
   /** Change fields of one dish. `quiet` skips the toast (e.g. the stock switch). */
   const updateItem = useCallback(
     async (id: string, patch: ItemPatch, options: { quiet?: boolean } = {}) => {
@@ -117,14 +132,14 @@ export function useMenuEditor(
       const saved = await run(
         () => patchItemsLocal(id, patch as Partial<Item>),
         () => patchItemsLocal(id, before as Partial<Item>),
-        () => supabase.from("menu_items").update(patch).eq("id", id),
+        () => saveItem(id, patch),
       );
       if (saved && !options.quiet)
         show({ kind: "saved" }, async () => {
           await run(
             () => patchItemsLocal(id, before as Partial<Item>),
             () => patchItemsLocal(id, patch as Partial<Item>),
-            () => supabase.from("menu_items").update(before).eq("id", id),
+            () => saveItem(id, before),
           );
           setToast(null);
         });
@@ -136,26 +151,35 @@ export function useMenuEditor(
     async (id: string, name: string) => {
       const current = categoriesRef.current?.find((c) => c.id === id);
       if (!current || current.name === name) return;
-      const setName = (value: string) =>
+      const setLocal = (patch: Partial<Category>) =>
         setCategories(
           (list) =>
-            list?.map((c) => (c.id === id ? { ...c, name: value } : c)) ?? null,
+            list?.map((c) => (c.id === id ? { ...c, ...patch } : c)) ?? null,
         );
+      const setName = (value: string) => setLocal({ name: value });
+      // Like saveItem: keep the database's content_hash for the translation count.
+      const save = (value: string) =>
+        supabase
+          .from("menu_categories")
+          .update({ name: value })
+          .eq("id", id)
+          .select("content_hash")
+          .single()
+          .then((res) => {
+            if (res.data) setLocal({ content_hash: res.data.content_hash });
+            return res;
+          });
       const saved = await run(
         () => setName(name),
         () => setName(current.name),
-        () => supabase.from("menu_categories").update({ name }).eq("id", id),
+        () => save(name),
       );
       if (saved)
         show({ kind: "saved" }, async () => {
           await run(
             () => setName(current.name),
             () => setName(name),
-            () =>
-              supabase
-                .from("menu_categories")
-                .update({ name: current.name })
-                .eq("id", id),
+            () => save(current.name),
           );
           setToast(null);
         });

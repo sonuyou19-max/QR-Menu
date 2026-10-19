@@ -18,6 +18,8 @@ import {
   uploadDishPhoto,
 } from "./dishPhoto";
 import type { Category, Item, MenuEditor } from "./useMenuEditor";
+import type { Translation } from "./useTranslations";
+import { languageName } from "../lib/languages";
 
 const dietaryKeys = [
   "vegetarian",
@@ -37,6 +39,8 @@ export function DishSheet({
   editor,
   showAllergens,
   startAtAllergens = false,
+  translations,
+  guestLanguages,
   onNextToConfirm,
   onClose,
 }: {
@@ -48,6 +52,10 @@ export function DishSheet({
   showAllergens: boolean;
   /** Opened from "Start confirming": scroll straight to the allergens. */
   startAtAllergens?: boolean;
+  /** This dish's translation rows (any age). */
+  translations: Translation[];
+  /** Languages to show translations for (empty before the menu is published). */
+  guestLanguages: string[];
   /** Open the next dish whose allergens still need confirming (null when this is the last). */
   onNextToConfirm: (() => void) | null;
   onClose: () => void;
@@ -383,6 +391,59 @@ export function DishSheet({
               </button>
             </div>
           </div>
+        )}
+
+        {guestLanguages.length > 0 && (
+          <details className="rounded-card bg-surface border-line border p-4">
+            <summary className="cursor-pointer font-semibold">
+              {t.editor.sheet.translations}
+            </summary>
+            <p className="text-ink-muted mt-1 text-sm">
+              {t.editor.sheet.translationsHint}
+            </p>
+            <dl className="mt-3 space-y-3">
+              {guestLanguages.map((code) => {
+                const row = translations.find(
+                  (r) =>
+                    r.language === code && r.source_hash === item.content_hash,
+                );
+                return (
+                  <div key={code}>
+                    <dt className="text-ink-muted text-sm font-semibold">
+                      {languageName(code, lang)}
+                    </dt>
+                    <dd>
+                      {!row ? (
+                        <span className="text-mustard-800 text-sm font-medium">
+                          {t.editor.sheet.notTranslated}
+                        </span>
+                      ) : (
+                        <>
+                          <span className="font-medium">
+                            {row.name ?? (
+                              <span className="text-ink-muted text-sm font-normal">
+                                {t.editor.sheet.noHelper}
+                              </span>
+                            )}
+                          </span>
+                          {(row.menu_description ??
+                            row.typical_description) && (
+                            <span
+                              className={`text-ink-muted block text-sm ${
+                                row.menu_description ? "" : "italic"
+                              }`}
+                            >
+                              {row.menu_description ?? row.typical_description}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
+          </details>
         )}
 
         <Field label={t.editor.sheet.dietary}>

@@ -440,6 +440,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 - Shared code in `supabase/functions/_shared/`: `prompts.ts`, `schema.ts` (Zod), `claude.ts`, `ratelimit.ts`, `chat-guard.ts` (validation layer from 4.1).
 - Storage buckets: `menu-uploads` (private), `dish-images` (public read for published restaurants), `branding` (logos, hero images).
 - Realtime: guest page subscribes to `menu_items` changes for its restaurant (stock status, prices).
+- `publish-menu` (built): background job (`restaurants.translation_status`), batches of 25 texts per language in parallel, MENU_MODEL at low effort, dish category passed as context. `content_hash` on items/categories is set by DB triggers from the translatable texts; a translation is current when `translations.source_hash = content_hash`. Publishing goes online even with some translations missing (guests then see only the original). ~€0.10 for a 34-dish menu in 3 languages.
 
 ---
 

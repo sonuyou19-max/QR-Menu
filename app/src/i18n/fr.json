@@ -254,7 +254,11 @@
       "delete": "Supprimer le plat",
       "visibility": "Visible pour les clients",
       "stock": "Disponible aujourd'hui",
-      "confirmNext": "Confirmer et plat suivant"
+      "confirmNext": "Confirmer et plat suivant",
+      "translations": "Traductions",
+      "notTranslated": "Pas encore traduit",
+      "noHelper": "Le nom reste tel quel",
+      "translationsHint": "Faites par l'IA à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour les mettre à jour."
     },
     "toast": {
       "saved": "Enregistré",
@@ -283,6 +287,20 @@
       "pendingOne": "1 plat attend encore votre confirmation des allergènes. Tant que vous ne le confirmez pas, les clients voient « Allergènes non confirmés — demandez au personnel » pour ce plat.",
       "start": "Commencer à confirmer",
       "allConfirmed": "Activé : tous les plats sont confirmés. Les nouveaux plats vous demanderont une confirmation."
+    },
+    "publish": {
+      "notPublishedTitle": "Votre carte n'est pas encore en ligne",
+      "notPublishedText": "La publication traduit votre carte en {languages} et la prépare pour vos clients. Vous pouvez continuer à la modifier ensuite ; seul ce qui change est retraduit.",
+      "publish": "Publier la carte",
+      "running": "Traduction en {languages}…",
+      "runningHint": "Cela prend généralement moins d'une minute. Vous pouvez continuer à modifier.",
+      "online": "En ligne · traduite en {languages}",
+      "missing": "{count} plats ou catégories pas encore traduits",
+      "missingOne": "1 plat ou catégorie pas encore traduit",
+      "missingHint": "Vous avez modifié des noms ou descriptions. Tant que vous ne traduisez pas, les clients ne voient que votre texte d'origine pour ceux-ci.",
+      "translateNow": "Traduire maintenant",
+      "error": "La traduction n'a pas fonctionné. Réessayez dans un instant.",
+      "rateLimited": "Vous avez déjà beaucoup traduit aujourd'hui. Réessayez demain."
     }
   },
   "resultExtra": {
