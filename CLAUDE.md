@@ -501,10 +501,11 @@ create table usage_events (                     -- AI cost tracking per restaura
 5b. Service mode: stock toggles, search, "reset all for next service"
 6. `publish-menu` + translations
 7. Guest menu page `app.menubuddy.be/m/:slug`: language auto-detect, menu-order categories, photos, filters, tags, out-of-stock (realtime)
+7b. QR code (moved up at the owner's request, to check the guest menu by scanning): QR screen in the app, one code per restaurant + optional per-table codes, printable PDF. Until `menubuddy.be` is live it shows a **test code** (workers.dev address) marked "not for printing"; the print/download option appears only once the real domain is set.
 8. Cart + "Show to staff" screen
 9. Theme system: tokens + 2–3 templates first, then `suggest-theme` + live preview editor
 10. Create the real `demo` restaurant; switch the marketing site's Demo A to an iframe of `app.menubuddy.be/m/demo`
-11. QR code generation + printable PDF (one per restaurant, optional per table)
+11. (moved up to 7b)
 12. `menu-chat` with full guardrail layer + item cards with + in chat; build the eval file alongside
 13. `demo-translate` + "Try with your own menu" (Demo B) on the marketing site, with all its guardrails
 14. PDF + URL upload paths
