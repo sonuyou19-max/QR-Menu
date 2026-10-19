@@ -38,6 +38,7 @@ import {
   type Theme,
 } from "../lib/theme";
 import { Ornament, type PreviewMessage } from "../guest/Look";
+import { BuddyLook } from "../look/BuddyLook";
 import { coloursFrom, removeBranding, uploadBranding } from "../look/branding";
 import { useRestaurant } from "../restaurant/RestaurantProvider";
 
@@ -188,6 +189,13 @@ export function Look() {
           {L.nearby}
         </p>
       )}
+
+      <BuddyLook
+        restaurantId={restaurant.id}
+        name={restaurant.name}
+        current={theme}
+        onUse={change}
+      />
 
       <Section title={L.start} hint={L.startHint}>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

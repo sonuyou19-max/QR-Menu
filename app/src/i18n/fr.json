@@ -496,6 +496,22 @@
       "urban": "Urbain",
       "grill": "Affirmé",
       "chalk": "Ardoise"
+    },
+    "buddy": {
+      "title": "Demandez un style à Buddy",
+      "text": "Buddy, l'assistant IA de MenuBuddy, regarde votre logo, votre photo de couverture, votre carte et votre site, et propose des couleurs, des polices et un style qui correspondent à votre restaurant et se distinguent des restaurants voisins. Environ 15 secondes ; rien ne change tant que vous ne choisissez pas.",
+      "website": "Votre site web",
+      "optional": "facultatif",
+      "ask": "Proposer un style",
+      "asking": "Buddy regarde…",
+      "again": "Autre proposition",
+      "use": "Utiliser ce style",
+      "used": "Utilisé",
+      "usedHint": "Appliqué ci-dessous. Changez ce que vous voulez, ou touchez Annuler.",
+      "suggests": "Buddy propose :",
+      "sampleDescription": "Mijoté lentement dans de la bière brune belge.",
+      "limit": "Buddy a fait assez de propositions aujourd'hui. Réessayez demain.",
+      "failed": "Buddy n'a pas pu faire de proposition. Réessayez dans un instant."
     }
   }
 }

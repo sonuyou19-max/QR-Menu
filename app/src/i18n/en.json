@@ -496,6 +496,22 @@
       "urban": "Urban",
       "grill": "Bold",
       "chalk": "Chalkboard"
+    },
+    "buddy": {
+      "title": "Ask Buddy for a look",
+      "text": "Buddy, MenuBuddy's AI assistant, looks at your logo, cover photo, menu and website and suggests colours, fonts and a style that fit your restaurant and differ from restaurants nearby. Takes about 15 seconds; nothing changes until you choose.",
+      "website": "Your website",
+      "optional": "optional",
+      "ask": "Suggest a look",
+      "asking": "Buddy is looking…",
+      "again": "Suggest another",
+      "use": "Use this look",
+      "used": "Used",
+      "usedHint": "Applied below. Change anything you like, or tap Undo.",
+      "suggests": "Buddy suggests:",
+      "sampleDescription": "Slowly stewed in dark Belgian beer.",
+      "limit": "Buddy made enough suggestions for today. Try again tomorrow.",
+      "failed": "Buddy couldn't make a suggestion right now. Try again in a moment."
     }
   }
 }

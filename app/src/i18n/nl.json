@@ -496,6 +496,22 @@
       "urban": "Urban",
       "grill": "Stevig",
       "chalk": "Krijtbord"
+    },
+    "buddy": {
+      "title": "Vraag Buddy om een stijl",
+      "text": "Buddy, de AI-assistent van MenuBuddy, bekijkt je logo, omslagfoto, menukaart en website en stelt kleuren, lettertypes en een stijl voor die bij je restaurant passen en verschillen van restaurants in de buurt. Duurt ongeveer 15 seconden; er verandert niets tot je kiest.",
+      "website": "Je website",
+      "optional": "optioneel",
+      "ask": "Stel een stijl voor",
+      "asking": "Buddy kijkt…",
+      "again": "Een ander voorstel",
+      "use": "Gebruik deze stijl",
+      "used": "Gebruikt",
+      "usedHint": "Hieronder toegepast. Pas aan wat je wil, of tik op Herstel.",
+      "suggests": "Buddy stelt voor:",
+      "sampleDescription": "Langzaam gestoofd in donker Belgisch bier.",
+      "limit": "Buddy deed vandaag genoeg voorstellen. Probeer morgen opnieuw.",
+      "failed": "Buddy kon nu geen voorstel maken. Probeer het zo meteen opnieuw."
     }
   }
 }
