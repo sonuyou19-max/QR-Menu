@@ -4,8 +4,8 @@
 // "parts" that are read like photos: long page texts are cut at headings and PDFs split into
 // pages, so each model call stays small and they run in parallel inside the time limit.
 import { encodeBase64 } from "jsr:@std/encoding@1/base64";
-import { PDFDocument } from "npm:pdf-lib@1.17.1";
 import type { Anthropic } from "../_shared/claude.ts";
+import { splitPdf } from "./pdf.ts";
 import {
   countPrices,
   decodeHtml,
@@ -98,29 +98,6 @@ export function chunkText(text: string, size = CHUNK_CHARS): string[] {
   return chunks;
 }
 
-/** One single-page PDF per page (up to max), so pages are read in parallel like photos. */
-async function splitPdf(bytes: Uint8Array, max: number): Promise<Uint8Array[]> {
-  try {
-    const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
-    const count = Math.min(doc.getPageCount(), max);
-    if (doc.getPageCount() <= 1) return [bytes];
-    const pages: Uint8Array[] = [];
-    for (let i = 0; i < count; i++) {
-      const one = await PDFDocument.create();
-      const [page] = await one.copyPages(doc, [i]);
-      one.addPage(page);
-      pages.push(await one.save());
-    }
-    return pages;
-  } catch (e) {
-    console.error(
-      "pdf split failed, sending it whole",
-      e instanceof Error ? e.message : e,
-    );
-    return [bytes];
-  }
-}
-
 const textParts = (url: URL, text: string): WebPart[] => {
   const chunks = chunkText(text);
   return chunks.map((chunk, i) => ({
@@ -133,7 +110,7 @@ const textParts = (url: URL, text: string): WebPart[] => {
 };
 
 async function pdfParts(url: URL, bytes: Uint8Array): Promise<WebPart[]> {
-  const pages = await splitPdf(bytes, MAX_PDF_PAGES);
+  const { pages } = await splitPdf(bytes, MAX_PDF_PAGES);
   return pages.map((page, i) => ({
     kind: "pdf",
     url: url.href,

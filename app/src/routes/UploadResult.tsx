@@ -170,6 +170,7 @@ export function UploadResult() {
               "bad_url",
               "social_site",
               "no_menu_found",
+              "pdf_locked",
             ].includes(code) && (
               <button
                 type="button"

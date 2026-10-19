@@ -1,5 +1,5 @@
-// Reads an uploaded menu with Claude vision (CLAUDE.md 3, 5, 7): photos, or the restaurant's
-// website (source_type "url": the page, plus the menu pages, PDFs and images it links to; see
+// Reads an uploaded menu with Claude vision (CLAUDE.md 3, 5, 7): photos, a PDF (split into pages,
+// see pdf.ts), or the restaurant's website (source_type "url": the page, plus the menu pages, PDFs and images it links to; see
 // website.ts).
 //
 // The owner's app uploads the photos to Storage (`menu-uploads/<restaurant_id>/<upload_id>/…`),
@@ -38,12 +38,15 @@ import {
   type NoteLanguage,
 } from "../_shared/prompts.ts";
 import { limitWords } from "../_shared/text.ts";
+import { splitPdf } from "./pdf.ts";
 import { menuLinkPicker } from "./pick.ts";
 import { websiteParts } from "./website.ts";
 
 declare const EdgeRuntime: { waitUntil(promise: Promise<unknown>): void };
 
 const MAX_FILES = 8;
+/** Pages of an uploaded PDF that are read (the rest gets a note). */
+const MAX_PDF_PAGES = 8;
 const MAX_RUNS_PER_DAY = 20;
 /** A run still "processing" after this long has died; it may be started again. */
 const STALE_AFTER_MS = 5 * 60 * 1000;
@@ -63,18 +66,27 @@ const notes = {
     photo: "Foto {n} kon niet gelezen worden.",
     notMenu: "Foto {n} lijkt geen menukaart.",
     web: "Een deel van {url} kon niet gelezen worden.",
+    page: "Pagina {n} kon niet gelezen worden.",
+    notMenuPage: "Pagina {n} lijkt geen menukaart.",
+    pdfCut: "Alleen de eerste {max} van de {total} pagina's zijn gelezen.",
   },
   fr: {
     onlyPhoto: "La photo n'a pas pu être lue.",
     photo: "La photo {n} n'a pas pu être lue.",
     notMenu: "La photo {n} ne ressemble pas à une carte.",
     web: "Une partie de {url} n'a pas pu être lue.",
+    page: "La page {n} n'a pas pu être lue.",
+    notMenuPage: "La page {n} ne ressemble pas à une carte.",
+    pdfCut: "Seules les {max} premières pages sur {total} ont été lues.",
   },
   en: {
     onlyPhoto: "The photo couldn't be read.",
     photo: "Photo {n} couldn't be read.",
     notMenu: "Photo {n} doesn't look like a menu.",
     web: "Part of {url} couldn't be read.",
+    page: "Page {n} couldn't be read.",
+    notMenuPage: "Page {n} doesn't look like a menu.",
+    pdfCut: "Only the first {max} of {total} pages were read.",
   },
 } satisfies Record<NoteLanguage, Record<string, string>>;
 
@@ -91,6 +103,8 @@ interface Part {
   newSource: boolean;
   /** Website parts: fetched because they might be the menu, so "not a menu" is no note. */
   web?: { url: string };
+  /** A page of an uploaded PDF (notes say "page", not "photo"). */
+  pdfPage?: boolean;
 }
 
 async function loadFile(db: SupabaseClient, path: string): Promise<FileBlock> {
@@ -205,15 +219,21 @@ function mergePages(
       if (!r?.is_menu) return;
     }
     if (r === null) {
+      const pdf = parts[i]!.pdfPage;
       unreadable.push(
-        results.length === 1
+        results.length === 1 && !pdf
           ? notes[lang].onlyPhoto
-          : notes[lang].photo.replace("{n}", String(i + 1)),
+          : notes[lang][pdf ? "page" : "photo"].replace("{n}", String(i + 1)),
       );
       return;
     }
     if (!r.is_menu) {
-      unreadable.push(notes[lang].notMenu.replace("{n}", String(i + 1)));
+      unreadable.push(
+        notes[lang][parts[i]!.pdfPage ? "notMenuPage" : "notMenu"].replace(
+          "{n}",
+          String(i + 1),
+        ),
+      );
       return;
     }
     unreadable.push(...r.unreadable_sections);
@@ -296,6 +316,8 @@ async function processUpload(
     restaurant_id: string;
     file_paths: string[];
     source_url: string | null;
+    /** An uploaded PDF (one file), read page by page. */
+    pdf: boolean;
   },
   sourceLanguage: string,
   lang: NoteLanguage,
@@ -308,7 +330,38 @@ async function processUpload(
       .eq("id", upload.id);
   try {
     let parts: Part[];
-    if (upload.source_url) {
+    let pdfNote: string | null = null;
+    if (upload.pdf) {
+      const { data, error } = await db.storage
+        .from("menu-uploads")
+        .download(upload.file_paths[0]!);
+      if (error || !data) throw new Error(`download: ${error?.message}`);
+      const pdf = await splitPdf(
+        new Uint8Array(await data.arrayBuffer()),
+        MAX_PDF_PAGES,
+      );
+      if (pdf.locked) {
+        await fail("pdf_locked");
+        return;
+      }
+      if (pdf.total > MAX_PDF_PAGES)
+        pdfNote = notes[lang].pdfCut
+          .replace("{max}", String(MAX_PDF_PAGES))
+          .replace("{total}", String(pdf.total));
+      parts = pdf.pages.map((page, i) => ({
+        block: {
+          type: "document",
+          source: {
+            type: "base64",
+            media_type: "application/pdf",
+            data: encodeBase64(page),
+          },
+        },
+        prompt: extractionPagePrompt(i + 1, pdf.pages.length, lang, "page"),
+        newSource: i === 0,
+        pdfPage: true,
+      }));
+    } else if (upload.source_url) {
       const found = await websiteParts(
         upload.source_url,
         menuLinkPicker(sourceLanguage, (usage) =>
@@ -344,6 +397,7 @@ async function processUpload(
       parts.map((part) => extractPage(ctx, part)),
     );
     const extraction = mergePages(results, parts, sourceLanguage, lang);
+    if (pdfNote) extraction.unreadable_sections.push(pdfNote);
     if (extraction.categories.length === 0) {
       const notMenu = results.every((r) => r !== null && !r.is_menu);
       await fail(
@@ -412,9 +466,15 @@ Deno.serve(async (req) => {
   const paths: string[] = upload.file_paths ?? [];
   const sourceUrl =
     upload.source_type === "url" ? (upload.source_url?.trim() ?? "") : null;
+  const pdf = upload.source_type === "pdf";
   if (sourceUrl !== null) {
     if (!sourceUrl || sourceUrl.length > 500 || paths.length > 0)
       return json({ ok: false, error: "invalid" }, 400, cors);
+  } else if (
+    pdf &&
+    (paths.length !== 1 || !paths[0]!.toLowerCase().endsWith(".pdf"))
+  ) {
+    return json({ ok: false, error: "invalid" }, 400, cors);
   } else if (
     paths.length === 0 ||
     paths.length > MAX_FILES ||
@@ -459,6 +519,7 @@ Deno.serve(async (req) => {
         restaurant_id: upload.restaurant_id,
         file_paths: paths,
         source_url: sourceUrl,
+        pdf,
       },
       restaurant.source_language,
       parsed.data.lang,

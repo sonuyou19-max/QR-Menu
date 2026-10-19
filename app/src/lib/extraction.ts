@@ -54,7 +54,9 @@ export type UploadError =
   | "bad_url"
   | "social_site"
   | "site_unreachable"
-  | "no_menu_found";
+  | "no_menu_found"
+  // PDF upload
+  | "pdf_locked";
 
 /** Same limits as the edge function. */
 export const MAX_PHOTOS = 8;

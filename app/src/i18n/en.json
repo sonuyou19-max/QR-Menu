@@ -42,7 +42,7 @@
       },
       {
         "title": "Upload your menu",
-        "text": "Photos of your menu, or your website. Buddy, our AI assistant, turns it into dishes."
+        "text": "Photos or a PDF of your menu, or your website. Buddy, our AI assistant, turns it into dishes."
       },
       {
         "title": "Check and publish",
@@ -104,7 +104,7 @@
   },
   "upload": {
     "title": "Upload your menu",
-    "intro": "Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions from photos of your menu or from your website. You check everything before guests see it.",
+    "intro": "Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions from photos or a PDF of your menu, or from your website. You check everything before guests see it.",
     "tipsTitle": "For the best result",
     "tips": [
       "One menu page per photo, in order, the whole page in view",
@@ -138,11 +138,13 @@
       "rateLimited": "You've read a lot of menus today. Try again tomorrow, or contact us.",
       "generic": "That didn't work. Try again.",
       "badUrl": "Enter your website address, for example www.yourrestaurant.be/menu.",
-      "social": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu."
+      "social": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
+      "notPdf": "This file isn't a PDF. Choose the PDF of your menu, or take photos.",
+      "pdfTooBig": "This PDF is larger than 10 MB. Choose a smaller file, or take photos of your menu."
     },
     "modeLabel": "Where is your menu?",
     "modePhotos": "Photos",
-    "modeWebsite": "On my website",
+    "modeWebsite": "Website",
     "websiteLabel": "Address of your website or menu page",
     "websitePlaceholder": "www.yourrestaurant.be/menu",
     "websiteTips": [
@@ -152,7 +154,17 @@
     ],
     "websiteSubmit": "Read my menu from the website",
     "fetching": "Opening the website…",
-    "uploadedFrom": "{date} · {site}"
+    "uploadedFrom": "{date} · {site}",
+    "modePdf": "PDF",
+    "pdfTips": [
+      "Choose the PDF of your menu, for example the file from your designer or print shop",
+      "Up to 10 MB; Buddy reads up to 8 pages",
+      "PDFs with a password can't be read"
+    ],
+    "choosePdf": "Choose PDF",
+    "removePdf": "Remove PDF",
+    "uploadingPdf": "Uploading PDF…",
+    "uploadedPdf": "{date} · PDF"
   },
   "result": {
     "back": "Read another menu",
@@ -168,7 +180,8 @@
       "bad_url": "This website address isn't right. Check it and try again.",
       "social_site": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
       "site_unreachable": "Buddy couldn't open this website. Check the address and try again, or take photos of your menu.",
-      "no_menu_found": "Buddy found no menu on this website. Paste the address of the menu page itself, or take photos of your menu. (Some websites show their menu in a way Buddy can't read.)"
+      "no_menu_found": "Buddy found no menu on this website. Paste the address of the menu page itself, or take photos of your menu. (Some websites show their menu in a way Buddy can't read.)",
+      "pdf_locked": "This PDF is protected with a password. Save it without a password, or take photos of your menu."
     },
     "retry": "Try again",
     "doneTitle": "We found {dishes} dishes in {categories} categories",

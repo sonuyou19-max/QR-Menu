@@ -42,7 +42,7 @@
       },
       {
         "title": "Upload je menu",
-        "text": "Foto's van je menukaart, of je website. Buddy, onze AI-assistent, maakt er gerechten van."
+        "text": "Foto's of een PDF van je menukaart, of je website. Buddy, onze AI-assistent, maakt er gerechten van."
       },
       {
         "title": "Controleer en publiceer",
@@ -104,7 +104,7 @@
   },
   "upload": {
     "title": "Upload je menukaart",
-    "intro": "Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen van foto's van je menukaart of van je website. Jij controleert alles voordat gasten het zien.",
+    "intro": "Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen van foto's of een PDF van je menukaart, of van je website. Jij controleert alles voordat gasten het zien.",
     "tipsTitle": "Voor het beste resultaat",
     "tips": [
       "Eén menupagina per foto, in volgorde, de hele pagina in beeld",
@@ -138,11 +138,13 @@
       "rateLimited": "Je hebt vandaag al veel menukaarten laten lezen. Probeer het morgen opnieuw, of neem contact met ons op.",
       "generic": "Dat is niet gelukt. Probeer opnieuw.",
       "badUrl": "Vul het adres van je website in, bijvoorbeeld www.jouwrestaurant.be/menu.",
-      "social": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart."
+      "social": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
+      "notPdf": "Dit bestand is geen PDF. Kies de PDF van je menukaart, of neem foto's.",
+      "pdfTooBig": "Deze PDF is groter dan 10 MB. Kies een kleiner bestand, of neem foto's van je menukaart."
     },
     "modeLabel": "Waar staat je menukaart?",
     "modePhotos": "Foto's",
-    "modeWebsite": "Op mijn website",
+    "modeWebsite": "Website",
     "websiteLabel": "Adres van je website of menupagina",
     "websitePlaceholder": "www.jouwrestaurant.be/menu",
     "websiteTips": [
@@ -152,7 +154,17 @@
     ],
     "websiteSubmit": "Lees mijn menukaart van de website",
     "fetching": "Website openen…",
-    "uploadedFrom": "{date} · {site}"
+    "uploadedFrom": "{date} · {site}",
+    "modePdf": "PDF",
+    "pdfTips": [
+      "Kies de PDF van je menukaart, bijvoorbeeld het bestand van je ontwerper of drukker",
+      "Tot 10 MB; Buddy leest tot 8 pagina's",
+      "PDF's met een wachtwoord kunnen niet gelezen worden"
+    ],
+    "choosePdf": "PDF kiezen",
+    "removePdf": "PDF verwijderen",
+    "uploadingPdf": "PDF uploaden…",
+    "uploadedPdf": "{date} · PDF"
   },
   "result": {
     "back": "Andere menukaart lezen",
@@ -168,7 +180,8 @@
       "bad_url": "Dit websiteadres klopt niet. Controleer het en probeer opnieuw.",
       "social_site": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
       "site_unreachable": "Buddy kon deze website niet openen. Controleer het adres en probeer opnieuw, of neem foto's van je menukaart.",
-      "no_menu_found": "Buddy vond geen menukaart op deze website. Plak het adres van de menupagina zelf, of neem foto's van je menukaart. (Sommige websites tonen hun menu op een manier die Buddy niet kan lezen.)"
+      "no_menu_found": "Buddy vond geen menukaart op deze website. Plak het adres van de menupagina zelf, of neem foto's van je menukaart. (Sommige websites tonen hun menu op een manier die Buddy niet kan lezen.)",
+      "pdf_locked": "Deze PDF is beveiligd met een wachtwoord. Bewaar hem zonder wachtwoord, of neem foto's van je menukaart."
     },
     "retry": "Opnieuw proberen",
     "doneTitle": "We vonden {dishes} gerechten in {categories} categorieën",

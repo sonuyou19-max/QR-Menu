@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   Camera,
   ChevronRight,
+  FileText,
   Globe,
   ImagePlus,
   LoaderCircle,
@@ -32,8 +33,12 @@ type ErrorKey =
   | "rateLimited"
   | "generic"
   | "badUrl"
-  | "social";
-type Mode = "photos" | "website";
+  | "social"
+  | "notPdf"
+  | "pdfTooBig";
+type Mode = "photos" | "pdf" | "website";
+/** Same as the menu-uploads bucket limit. */
+const MAX_PDF_BYTES = 10 * 1024 * 1024;
 type Progress =
   | { step: "preparing" }
   | { step: "uploading"; n: number; total: number }
@@ -74,6 +79,8 @@ export function Upload() {
   const errorRef = useRef<HTMLParagraphElement>(null);
   const [mode, setMode] = useState<Mode>("photos");
   const [site, setSite] = useState("");
+  const [pdf, setPdf] = useState<File | null>(null);
+  const pdfInput = useRef<HTMLInputElement>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<ErrorKey | null>(null);
@@ -170,6 +177,38 @@ export function Upload() {
     navigate(`/upload/${row.id}`);
   };
 
+  /** A PDF of the menu: checked here (type, size), split into pages by process-menu. */
+  const pickPdf = async (files: FileList | null) => {
+    const file = files?.[0];
+    if (!file) return;
+    setError(null);
+    const head = await file
+      .slice(0, 5)
+      .text()
+      .catch(() => "");
+    if (!head.startsWith("%PDF")) return showError("notPdf");
+    if (file.size > MAX_PDF_BYTES) return showError("pdfTooBig");
+    setPdf(file);
+  };
+
+  const submitPdf = async () => {
+    if (!pdf) return;
+    setError(null);
+    const uploadId = crypto.randomUUID();
+    const path = `${restaurant.id}/${uploadId}/menu.pdf`;
+    setProgress({ step: "uploading", n: 1, total: 1 });
+    const { error: uploadError } = await supabase.storage
+      .from("menu-uploads")
+      .upload(path, new Blob([pdf], { type: "application/pdf" }), {
+        contentType: "application/pdf",
+      });
+    if (uploadError) {
+      setProgress(null);
+      return showError("upload");
+    }
+    await start({ id: uploadId, source_type: "pdf", file_paths: [path] });
+  };
+
   const submitWebsite = async () => {
     setError(null);
     const url = websiteUrl(site);
@@ -229,10 +268,11 @@ export function Upload() {
 
       <fieldset className="mt-6">
         <legend className="font-semibold">{t.upload.modeLabel}</legend>
-        <div className="rounded-control bg-surface-muted mt-2 grid grid-cols-2 gap-1 p-1">
+        <div className="rounded-control bg-surface-muted mt-2 grid grid-cols-3 gap-1 p-1">
           {(
             [
               ["photos", Camera, t.upload.modePhotos],
+              ["pdf", FileText, t.upload.modePdf],
               ["website", Globe, t.upload.modeWebsite],
             ] as const
           ).map(([value, Icon, label]) => (
@@ -264,11 +304,14 @@ export function Upload() {
       <div className="rounded-card bg-mustard-50 mt-6 p-4">
         <p className="font-semibold">{t.upload.tipsTitle}</p>
         <ul className="mt-1.5 list-disc space-y-0.5 pl-5">
-          {(mode === "photos" ? t.upload.tips : t.upload.websiteTips).map(
-            (tip) => (
-              <li key={tip}>{fill(tip, { max: MAX_PHOTOS })}</li>
-            ),
-          )}
+          {(mode === "photos"
+            ? t.upload.tips
+            : mode === "pdf"
+              ? t.upload.pdfTips
+              : t.upload.websiteTips
+          ).map((tip) => (
+            <li key={tip}>{fill(tip, { max: MAX_PHOTOS })}</li>
+          ))}
         </ul>
       </div>
 
@@ -285,6 +328,80 @@ export function Upload() {
           />
           {fill(t.upload.errors[error], { max: MAX_PHOTOS })}
         </p>
+      )}
+
+      {mode === "pdf" && (
+        <div className="mt-6">
+          {pdf ? (
+            <div className="rounded-card bg-surface shadow-card flex items-center gap-3 p-4">
+              <FileText
+                className="text-brand-strong size-8 shrink-0"
+                aria-hidden="true"
+              />
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-semibold">{pdf.name}</span>
+                <span className="text-ink-muted block text-sm">
+                  {pdf.size < 1024 * 1024
+                    ? `${Math.max(1, Math.round(pdf.size / 1024))} KB`
+                    : `${(pdf.size / 1024 / 1024).toLocaleString(lang, {
+                        maximumFractionDigits: 1,
+                      })} MB`}
+                </span>
+              </span>
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => setPdf(null)}
+                className="bg-surface-muted text-ink grid size-10 shrink-0 place-items-center rounded-full"
+                aria-label={t.upload.removePdf}
+              >
+                <X className="size-5" aria-hidden="true" />
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => pdfInput.current?.click()}
+              className="btn-primary w-full"
+            >
+              <FileText className="size-5" aria-hidden="true" />
+              {t.upload.choosePdf}
+            </button>
+          )}
+          <input
+            ref={pdfInput}
+            type="file"
+            accept="application/pdf,.pdf"
+            hidden
+            onChange={(e) => {
+              void pickPdf(e.target.files);
+              e.target.value = "";
+            }}
+          />
+          {(pdf || busy) && (
+            <button
+              type="button"
+              disabled={busy || !pdf}
+              onClick={() => void submitPdf()}
+              className="btn-primary mt-4 w-full text-lg"
+            >
+              {busy ? (
+                <LoaderCircle
+                  className="size-5 animate-spin"
+                  aria-hidden="true"
+                />
+              ) : (
+                <Sparkles className="size-5" aria-hidden="true" />
+              )}
+              {busy
+                ? progress?.step === "uploading"
+                  ? t.upload.uploadingPdf
+                  : t.upload.starting
+                : t.upload.submit}
+            </button>
+          )}
+        </div>
       )}
 
       {mode === "website" && (
@@ -451,21 +568,28 @@ export function Upload() {
                   className="rounded-card bg-surface shadow-card flex min-h-14 items-center gap-3 px-4 py-3"
                 >
                   <span className="min-w-0 flex-1">
-                    {u.source_type === "url" && u.source_url
-                      ? fill(t.upload.uploadedFrom, {
+                    {u.source_type === "pdf"
+                      ? fill(t.upload.uploadedPdf, {
                           date: new Date(u.created_at).toLocaleString(lang, {
                             dateStyle: "medium",
                             timeStyle: "short",
                           }),
-                          site: siteLabel(u.source_url),
                         })
-                      : fill(t.upload.uploadedOn, {
-                          date: new Date(u.created_at).toLocaleString(lang, {
-                            dateStyle: "medium",
-                            timeStyle: "short",
-                          }),
-                          count: u.file_paths?.length ?? 0,
-                        })}
+                      : u.source_type === "url" && u.source_url
+                        ? fill(t.upload.uploadedFrom, {
+                            date: new Date(u.created_at).toLocaleString(lang, {
+                              dateStyle: "medium",
+                              timeStyle: "short",
+                            }),
+                            site: siteLabel(u.source_url),
+                          })
+                        : fill(t.upload.uploadedOn, {
+                            date: new Date(u.created_at).toLocaleString(lang, {
+                              dateStyle: "medium",
+                              timeStyle: "short",
+                            }),
+                            count: u.file_paths?.length ?? 0,
+                          })}
                   </span>
                   <UploadStatusBadge upload={u} />
                   <ChevronRight

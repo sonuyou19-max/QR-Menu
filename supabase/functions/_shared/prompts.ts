@@ -24,12 +24,14 @@ export function extractionPagePrompt(
   page: number,
   pages: number,
   notesIn: NoteLanguage,
+  /** Photos of a printed menu, or pages of an uploaded PDF. */
+  unit: "photo" | "page" = "photo",
 ): string {
   const notes = ` Write unreadable_sections notes in ${noteLanguages[notesIn]}.`;
   if (pages === 1) return `This is the restaurant's menu. Read it.${notes}`;
-  return `This is photo ${page} of ${pages} of the same menu, in order. Read only this photo.${
+  return `This is ${unit} ${page} of ${pages} of the same menu, in order. Read only this ${unit}.${
     page > 1
-      ? " If the photo starts with dishes under no heading of their own, they continue the last category of the previous photo: put them in a category with continues_previous_page set to true (name it after that category if you can tell, otherwise leave the name empty)."
+      ? ` If the ${unit} starts with dishes under no heading of their own, they continue the last category of the previous ${unit}: put them in a category with continues_previous_page set to true (name it after that category if you can tell, otherwise leave the name empty).`
       : ""
   }${notes}`;
 }

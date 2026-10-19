@@ -42,7 +42,7 @@
       },
       {
         "title": "Envoyez votre carte",
-        "text": "Des photos de votre carte, ou votre site web. Buddy, notre assistant IA, en fait des plats."
+        "text": "Des photos ou un PDF de votre carte, ou votre site web. Buddy, notre assistant IA, en fait des plats."
       },
       {
         "title": "Vérifiez et publiez",
@@ -104,7 +104,7 @@
   },
   "upload": {
     "title": "Envoyez votre carte",
-    "intro": "Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions sur des photos de votre carte ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",
+    "intro": "Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions sur des photos ou un PDF de votre carte, ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",
     "tipsTitle": "Pour un meilleur résultat",
     "tips": [
       "Une page de carte par photo, dans l'ordre, la page entière visible",
@@ -138,11 +138,13 @@
       "rateLimited": "Vous avez déjà fait lire beaucoup de cartes aujourd'hui. Réessayez demain, ou contactez-nous.",
       "generic": "Cela n'a pas fonctionné. Réessayez.",
       "badUrl": "Indiquez l'adresse de votre site, par exemple www.votrerestaurant.be/carte.",
-      "social": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte."
+      "social": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
+      "notPdf": "Ce fichier n'est pas un PDF. Choisissez le PDF de votre carte, ou prenez des photos.",
+      "pdfTooBig": "Ce PDF dépasse 10 Mo. Choisissez un fichier plus petit, ou prenez des photos de votre carte."
     },
     "modeLabel": "Où se trouve votre carte ?",
     "modePhotos": "Photos",
-    "modeWebsite": "Sur mon site web",
+    "modeWebsite": "Site web",
     "websiteLabel": "Adresse de votre site ou de la page de votre carte",
     "websitePlaceholder": "www.votrerestaurant.be/carte",
     "websiteTips": [
@@ -152,7 +154,17 @@
     ],
     "websiteSubmit": "Lire ma carte sur le site",
     "fetching": "Ouverture du site…",
-    "uploadedFrom": "{date} · {site}"
+    "uploadedFrom": "{date} · {site}",
+    "modePdf": "PDF",
+    "pdfTips": [
+      "Choisissez le PDF de votre carte, par exemple le fichier de votre graphiste ou imprimeur",
+      "Jusqu'à 10 Mo ; Buddy lit jusqu'à 8 pages",
+      "Les PDF protégés par un mot de passe ne peuvent pas être lus"
+    ],
+    "choosePdf": "Choisir un PDF",
+    "removePdf": "Supprimer le PDF",
+    "uploadingPdf": "Envoi du PDF…",
+    "uploadedPdf": "{date} · PDF"
   },
   "result": {
     "back": "Lire une autre carte",
@@ -168,7 +180,8 @@
       "bad_url": "Cette adresse de site n'est pas correcte. Vérifiez-la et réessayez.",
       "social_site": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
       "site_unreachable": "Buddy n'a pas pu ouvrir ce site. Vérifiez l'adresse et réessayez, ou prenez des photos de votre carte.",
-      "no_menu_found": "Buddy n'a pas trouvé de carte sur ce site. Collez l'adresse de la page de la carte elle-même, ou prenez des photos de votre carte. (Certains sites affichent leur carte d'une façon que Buddy ne peut pas lire.)"
+      "no_menu_found": "Buddy n'a pas trouvé de carte sur ce site. Collez l'adresse de la page de la carte elle-même, ou prenez des photos de votre carte. (Certains sites affichent leur carte d'une façon que Buddy ne peut pas lire.)",
+      "pdf_locked": "Ce PDF est protégé par un mot de passe. Enregistrez-le sans mot de passe, ou prenez des photos de votre carte."
     },
     "retry": "Réessayer",
     "doneTitle": "Nous avons trouvé {dishes} plats dans {categories} catégories",
