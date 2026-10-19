@@ -40,7 +40,7 @@
       },
       {
         "title": "Envoyez votre carte",
-        "text": "Une photo ou un PDF de votre carte. L'IA la transforme en plats."
+        "text": "Une photo ou un PDF de votre carte. Buddy, notre assistant IA, la transforme en plats."
       },
       {
         "title": "Vérifiez et publiez",
@@ -94,7 +94,7 @@
   },
   "upload": {
     "title": "Envoyez votre carte",
-    "intro": "Prenez une photo de chaque page de votre carte, dans l'ordre. L'IA lit les plats, les prix et les descriptions. Vous vérifiez tout avant que vos clients ne le voient.",
+    "intro": "Prenez une photo de chaque page de votre carte, dans l'ordre. Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions. Vous vérifiez tout avant que vos clients ne le voient.",
     "tipsTitle": "Pour un meilleur résultat",
     "tips": [
       "Une page de carte par photo, la page entière visible",
@@ -148,7 +148,7 @@
     "priceMissing": "Prix manquant",
     "typical": "Préparation typique",
     "unknownDish": "Plat inconnu : ajoutez une description plus tard",
-    "suggestedAllergens": "Allergènes suggérés (pas encore confirmés)",
+    "suggestedAllergens": "Suggérés par Buddy : allergènes (pas encore confirmés)",
     "notFound": "Cet envoi n'existe pas (plus).",
     "missingPriceOne": "1 plat n'a pas encore de prix"
   },
@@ -193,7 +193,7 @@
     },
     "empty": {
       "title": "Votre carte est encore vide",
-      "text": "Envoyez une photo de votre carte et l'IA la remplit. Ou commencez vous-même par une catégorie.",
+      "text": "Envoyez une photo de votre carte et Buddy, notre assistant IA, la remplit. Ou commencez vous-même par une catégorie.",
       "upload": "Envoyer votre carte"
     },
     "add": "Ajouter",
@@ -233,7 +233,7 @@
       "category": "Catégorie",
       "description": "Description",
       "descriptionHint": "Votre propre description. Elle est traduite telle quelle.",
-      "typical": "Préparation typique (par l'IA)",
+      "typical": "Suggestion de Buddy : préparation typique",
       "typicalHint": "Affichée en italique aux clients si vous n'avez pas de description.",
       "typicalUse": "Utiliser comme ma description",
       "typicalHide": "Ne pas afficher",
@@ -242,7 +242,7 @@
       "unknown": "Plat inconnu : les clients voient « Demandez au personnel » tant que vous n'ajoutez pas de description.",
       "dietary": "Régime",
       "allergens": "Allergènes (14 allergènes UE)",
-      "allergensSuggested": "Suggérés par l'IA. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
+      "allergensSuggested": "Suggérés par Buddy. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
       "allergensConfirmed": "Confirmés par vous. Les clients voient ces allergènes.",
       "confirm": "Confirmer les allergènes",
       "confirmNone": "Confirmer : n'en contient aucun",
@@ -260,13 +260,13 @@
       "translations": "Traductions",
       "notTranslated": "Pas encore traduit",
       "noHelper": "Le nom reste tel quel",
-      "translationsHint": "Faites par l'IA à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour les mettre à jour.",
-      "suggest": "Suggestion de l'IA",
+      "translationsHint": "Traduit par Buddy à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour mettre à jour.",
+      "suggest": "Demander à Buddy",
       "suggestAgain": "Nouvelle suggestion",
       "suggesting": "Réflexion…",
       "suggestFailed": "Cela n'a pas fonctionné. Réessayez dans un instant.",
-      "suggestUnknown": "L'IA ne connaît pas ce plat. Écrivez vous-même une courte description pour que les clients sachent ce que c'est.",
-      "allergenHint": "L'IA pense que ce plat peut contenir : {allergens}. Vous avez confirmé autre chose ; vérifiez et modifiez si nécessaire."
+      "suggestUnknown": "Buddy ne connaît pas ce plat. Écrivez vous-même une courte description pour que les clients sachent ce que c'est.",
+      "allergenHint": "Buddy s'attend à ce que ce plat puisse contenir : {allergens}. Vous avez confirmé autre chose ; vérifiez avant de vous y fier."
     },
     "toast": {
       "saved": "Enregistré",

@@ -21,6 +21,7 @@ import {
 } from "../_shared/http.ts";
 import { DishSuggestion } from "../_shared/menu-schema.ts";
 import { dishSuggestionPrompt } from "../_shared/prompts.ts";
+import { limitWords } from "../_shared/text.ts";
 
 /** Suggestions per restaurant per day (logged as usage_events kind 'extract'). */
 const MAX_PER_DAY = 200;
@@ -119,7 +120,9 @@ Deno.serve(async (req) => {
         ok: true,
         suggestion: {
           ...suggestion,
-          typical_description: suggestion.typical_description?.trim() || null,
+          typical_description: suggestion.typical_description?.trim()
+            ? limitWords(suggestion.typical_description)
+            : null,
           suggested_allergens: [...new Set(suggestion.suggested_allergens)],
         },
       },

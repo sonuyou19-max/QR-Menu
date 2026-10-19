@@ -405,7 +405,6 @@ export function DishSheet({
             onChange={(e) => setDescription(e.target.value)}
             onBlur={saveDescription}
             rows={3}
-            maxLength={1000}
             className="input mt-1.5"
           />
           {suggestNote && (

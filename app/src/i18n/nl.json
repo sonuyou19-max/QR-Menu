@@ -40,7 +40,7 @@
       },
       {
         "title": "Upload je menu",
-        "text": "Een foto of PDF van je kaart. AI zet hem om in gerechten."
+        "text": "Een foto of PDF van je kaart. Buddy, onze AI-assistent, zet hem om in gerechten."
       },
       {
         "title": "Controleer en publiceer",
@@ -94,7 +94,7 @@
   },
   "upload": {
     "title": "Upload je menukaart",
-    "intro": "Neem een foto van elke pagina van je menukaart, in volgorde. De AI leest de gerechten, prijzen en beschrijvingen. Jij controleert alles voordat gasten het zien.",
+    "intro": "Neem een foto van elke pagina van je menukaart, in volgorde. Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen. Jij controleert alles voordat gasten het zien.",
     "tipsTitle": "Voor het beste resultaat",
     "tips": [
       "Eén menupagina per foto, de hele pagina in beeld",
@@ -148,7 +148,7 @@
     "priceMissing": "Prijs ontbreekt",
     "typical": "Typische bereiding",
     "unknownDish": "Onbekend gerecht: voeg later een beschrijving toe",
-    "suggestedAllergens": "Voorgestelde allergenen (nog niet bevestigd)",
+    "suggestedAllergens": "Voorgesteld door Buddy: allergenen (nog niet bevestigd)",
     "notFound": "Deze upload bestaat niet (meer).",
     "missingPriceOne": "1 gerecht heeft nog geen prijs"
   },
@@ -193,7 +193,7 @@
     },
     "empty": {
       "title": "Je menukaart is nog leeg",
-      "text": "Upload een foto van je menukaart en de AI vult hem in. Of begin zelf met een categorie.",
+      "text": "Upload een foto van je menukaart en Buddy, onze AI-assistent, vult hem in. Of begin zelf met een categorie.",
       "upload": "Upload je menukaart"
     },
     "add": "Toevoegen",
@@ -233,7 +233,7 @@
       "category": "Categorie",
       "description": "Beschrijving",
       "descriptionHint": "Je eigen beschrijving. Die wordt letterlijk vertaald.",
-      "typical": "Typische bereiding (door AI)",
+      "typical": "Voorstel van Buddy: typische bereiding",
       "typicalHint": "Gasten zien dit schuin gedrukt als je zelf geen beschrijving hebt.",
       "typicalUse": "Gebruik als mijn beschrijving",
       "typicalHide": "Niet tonen",
@@ -242,7 +242,7 @@
       "unknown": "Onbekend gerecht: gasten zien \"Vraag het aan het personeel\" tot je een beschrijving toevoegt.",
       "dietary": "Dieet",
       "allergens": "Allergenen (14 EU-allergenen)",
-      "allergensSuggested": "Voorgesteld door de AI. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
+      "allergensSuggested": "Voorgesteld door Buddy. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
       "allergensConfirmed": "Bevestigd door jou. Gasten zien deze allergenen.",
       "confirm": "Allergenen bevestigen",
       "confirmNone": "Bevestigen: bevat geen van deze",
@@ -260,13 +260,13 @@
       "translations": "Vertalingen",
       "notTranslated": "Nog niet vertaald",
       "noHelper": "Naam blijft zoals hij is",
-      "translationsHint": "Gemaakt door de AI op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken.",
-      "suggest": "Voorstel door AI",
+      "translationsHint": "Vertaald door Buddy op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken.",
+      "suggest": "Vraag het Buddy",
       "suggestAgain": "Nieuw voorstel",
       "suggesting": "Even denken…",
       "suggestFailed": "Dat is niet gelukt. Probeer het zo meteen opnieuw.",
-      "suggestUnknown": "De AI kent dit gerecht niet. Schrijf zelf een korte beschrijving, zodat gasten weten wat het is.",
-      "allergenHint": "De AI denkt dat dit gerecht dit kan bevatten: {allergens}. Jij bevestigde iets anders; controleer en pas aan indien nodig."
+      "suggestUnknown": "Buddy kent dit gerecht niet. Schrijf zelf een korte beschrijving, zodat gasten weten wat het is.",
+      "allergenHint": "Buddy verwacht dat dit gerecht dit kan bevatten: {allergens}. Jij bevestigde iets anders; controleer het voor je erop vertrouwt."
     },
     "toast": {
       "saved": "Bewaard",

@@ -34,6 +34,7 @@ import {
   extractionSystemPrompt,
   type NoteLanguage,
 } from "../_shared/prompts.ts";
+import { limitWords } from "../_shared/text.ts";
 
 declare const EdgeRuntime: { waitUntil(promise: Promise<unknown>): void };
 
@@ -213,7 +214,9 @@ function mergePages(
             menu_description: menuDescription,
             typical_description: menuDescription
               ? null
-              : item.typical_description?.trim() || null,
+              : item.typical_description?.trim()
+                ? limitWords(item.typical_description)
+                : null,
             suggested_allergens: [...new Set(item.suggested_allergens)],
           };
         })

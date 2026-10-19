@@ -40,7 +40,7 @@
       },
       {
         "title": "Upload your menu",
-        "text": "A photo or PDF of your menu. AI turns it into dishes."
+        "text": "A photo or PDF of your menu. Buddy, our AI assistant, turns it into dishes."
       },
       {
         "title": "Check and publish",
@@ -94,7 +94,7 @@
   },
   "upload": {
     "title": "Upload your menu",
-    "intro": "Take a photo of each page of your menu, in order. The AI reads the dishes, prices and descriptions. You check everything before guests see it.",
+    "intro": "Take a photo of each page of your menu, in order. Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions. You check everything before guests see it.",
     "tipsTitle": "For the best result",
     "tips": [
       "One menu page per photo, the whole page in view",
@@ -148,7 +148,7 @@
     "priceMissing": "Price missing",
     "typical": "Typical preparation",
     "unknownDish": "Unknown dish: add a description later",
-    "suggestedAllergens": "Suggested allergens (not confirmed yet)",
+    "suggestedAllergens": "Suggested by Buddy: allergens (not confirmed yet)",
     "notFound": "This upload doesn't exist (anymore).",
     "missingPriceOne": "1 dish has no price yet"
   },
@@ -193,7 +193,7 @@
     },
     "empty": {
       "title": "Your menu is still empty",
-      "text": "Upload a photo of your menu and the AI fills it in. Or start with a category yourself.",
+      "text": "Upload a photo of your menu and Buddy, our AI assistant, fills it in. Or start with a category yourself.",
       "upload": "Upload your menu"
     },
     "add": "Add",
@@ -233,7 +233,7 @@
       "category": "Category",
       "description": "Description",
       "descriptionHint": "Your own description. It is translated as written.",
-      "typical": "Typical preparation (by AI)",
+      "typical": "Buddy's suggestion: typical preparation",
       "typicalHint": "Shown in italics to guests when you have no description of your own.",
       "typicalUse": "Use as my description",
       "typicalHide": "Don't show",
@@ -242,7 +242,7 @@
       "unknown": "Unknown dish: guests see \"Ask staff\" until you add a description.",
       "dietary": "Dietary",
       "allergens": "Allergens (14 EU allergens)",
-      "allergensSuggested": "Suggested by the AI. Check them, then confirm. Guests only see confirmed allergens.",
+      "allergensSuggested": "Suggested by Buddy. Check them, then confirm. Guests only see confirmed allergens.",
       "allergensConfirmed": "Confirmed by you. Guests see these allergens.",
       "confirm": "Confirm allergens",
       "confirmNone": "Confirm: contains none of these",
@@ -260,13 +260,13 @@
       "translations": "Translations",
       "notTranslated": "Not translated yet",
       "noHelper": "Name stays as is",
-      "translationsHint": "Made by the AI from your text. Change your text and tap \"Translate now\" to update.",
-      "suggest": "Suggest with AI",
+      "translationsHint": "Translated by Buddy from your text. Change your text and tap \"Translate now\" to update.",
+      "suggest": "Ask Buddy",
       "suggestAgain": "Suggest again",
       "suggesting": "Thinking…",
       "suggestFailed": "That didn't work. Try again in a moment.",
-      "suggestUnknown": "The AI doesn't know this dish. Write a short description yourself so guests know what it is.",
-      "allergenHint": "The AI thinks this dish may contain: {allergens}. You confirmed otherwise; check and change if needed."
+      "suggestUnknown": "Buddy doesn't know this dish. Write a short description yourself so guests know what it is.",
+      "allergenHint": "Buddy expects this dish may contain: {allergens}. You confirmed otherwise; check before you rely on it."
     },
     "toast": {
       "saved": "Saved",

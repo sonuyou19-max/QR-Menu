@@ -67,13 +67,15 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
 
 ## 4. Core content rules (IMPORTANT)
 
+**Owner-facing name for the AI: "Buddy"** (introduced once as "Buddy, MenuBuddy's AI assistant" on the overview, upload and empty-menu texts; "Ask Buddy", "Buddy's suggestion", "Buddy expects…" elsewhere). Allergen wording stays cautious ("expects… check before you rely on it"). Guests see "Typical preparation" without a name.
+
 **Restaurant data is the source of truth.** The owner has approved it, so it wins over AI general knowledge.
 
 **Dish names stay as on the menu.** The original dish name (e.g. "Stoofvlees met frietjes", "Tagliatelle al ragù") is always the main, prominent name — in the guest menu, item detail sheet, chat item cards, cart and "Show to staff" screen. The translated name is a helper line shown smaller underneath (or as a short gloss), never a replacement. Extraction must copy names **verbatim** (spelling, accents, capitalisation, Italian/French terms) — no correcting, translating or "improving". Only the owner can edit a name.
 
 Per item, keep descriptions separate:
 - `menu_description` — description provided/approved by the restaurant (translated faithfully; never add or remove ingredients).
-- `typical_description` — AI explanation of how the dish is typically made, used only when the restaurant gave no description. Shown in a distinct style (italic + ⓘ "Typical preparation"). Owner can accept, edit (it then becomes `menu_description`) or hide it during review.
+- `typical_description` — AI explanation of how the dish is typically made, used only when the restaurant gave no description. **Max 30 words** (prompt + server-side `limitWords` in `_shared/text.ts`); the owner's own descriptions have no length limit. Shown in a distinct style (italic + ⓘ "Typical preparation"). Owner can accept, edit (it then becomes `menu_description`) or hide it during review.
 - `confidence` — `"known_dish"` | `"likely"` | `"unknown"`. For creative names ("Chef's Autumn Dream") with no description: no invented ingredients; show "Ask staff".
 
 **Allergens (legal sensitivity):** EU regulation 1169/2011 requires restaurants to provide allergen info for the 14 EU allergens.
