@@ -155,6 +155,10 @@ export function DishSheet({
     null,
   );
   const [allergenHint, setAllergenHint] = useState<Allergen[]>([]);
+  // Allergens the AI expects that the owner hasn't ticked (yet); disappears as they tick them.
+  const missingFromConfirmed = allergenHint.filter(
+    (a) => !item.allergens.includes(a),
+  );
   const suggest = async () => {
     setSuggesting(true);
     setSuggestNote(null);
@@ -567,7 +571,7 @@ export function DishSheet({
                 ? t.editor.sheet.allergensConfirmed
                 : t.editor.sheet.allergensSuggested}
             </p>
-            {allergenHint.length > 0 && (
+            {confirmed && missingFromConfirmed.length > 0 && (
               <p
                 role="status"
                 className="bg-mustard-100 text-mustard-900 rounded-control mt-2 flex gap-1.5 p-2.5 text-sm font-medium"
@@ -577,7 +581,9 @@ export function DishSheet({
                   aria-hidden="true"
                 />
                 {fill(t.editor.sheet.allergenHint, {
-                  allergens: allergenHint.map((a) => t.allergens[a]).join(", "),
+                  allergens: missingFromConfirmed
+                    .map((a) => t.allergens[a])
+                    .join(", "),
                 })}
               </p>
             )}
