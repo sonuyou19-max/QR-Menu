@@ -77,7 +77,9 @@
     "phoneLabel": "Interactive demo of a guest menu",
     "qrTitle": "Open it on your phone",
     "qrText": "Scan the code with your phone camera and try the menu the way your guests see it.",
-    "openFullscreen": "Open the demo full screen"
+    "openFullscreen": "Open the demo full screen",
+    "tryTitle": "Try it with your own menu",
+    "tryText": "Take a photo of your menu and see it translated in about a minute."
   },
   "tryMenu": {
     "eyebrow": "Try it with your own menu",
@@ -117,7 +119,9 @@
       "not_a_menu": "These photos don't seem to show a menu. Take a photo of a menu page and try again.",
       "unreadable": "The text was too hard to read. Take a sharper photo with good light, one page per photo.",
       "server": "Something went wrong on our side. Try again in a moment."
-    }
+    },
+    "metaTitle": "Try it with your own menu — MenuBuddy",
+    "metaDescription": "Take a photo of your menu and see it translated into your guests' language in about a minute."
   },
   "features": {
     "eyebrow": "What you get",

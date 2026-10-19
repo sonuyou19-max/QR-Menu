@@ -77,7 +77,9 @@
     "phoneLabel": "Démo interactive d'une carte client",
     "qrTitle": "Ouvrez-la sur votre smartphone",
     "qrText": "Scannez le code avec l'appareil photo de votre smartphone et essayez la carte comme vos clients.",
-    "openFullscreen": "Ouvrir la démo en plein écran"
+    "openFullscreen": "Ouvrir la démo en plein écran",
+    "tryTitle": "Essayez avec votre propre carte",
+    "tryText": "Prenez une photo de votre carte et voyez-la traduite en une minute environ."
   },
   "tryMenu": {
     "eyebrow": "Essayez avec votre propre carte",
@@ -117,7 +119,9 @@
       "not_a_menu": "Ces photos ne semblent pas montrer une carte. Photographiez une page de la carte et réessayez.",
       "unreadable": "Le texte était trop difficile à lire. Prenez une photo plus nette avec une bonne lumière, une page par photo.",
       "server": "Un problème est survenu de notre côté. Réessayez dans un instant."
-    }
+    },
+    "metaTitle": "Essayez avec votre propre carte — MenuBuddy",
+    "metaDescription": "Prenez une photo de votre carte et voyez-la traduite dans la langue de vos clients en une minute environ."
   },
   "features": {
     "eyebrow": "Ce que vous obtenez",

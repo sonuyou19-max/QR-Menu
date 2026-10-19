@@ -77,7 +77,9 @@
     "phoneLabel": "Interactieve demo van een gastmenu",
     "qrTitle": "Open het op je gsm",
     "qrText": "Scan de code met de camera van je gsm en probeer het menu zoals je gasten het zien.",
-    "openFullscreen": "Open de demo op volledig scherm"
+    "openFullscreen": "Open de demo op volledig scherm",
+    "tryTitle": "Probeer het met je eigen menukaart",
+    "tryText": "Neem een foto van je menukaart en zie hem in ongeveer een minuut vertaald."
   },
   "tryMenu": {
     "eyebrow": "Probeer het met je eigen menukaart",
@@ -117,7 +119,9 @@
       "not_a_menu": "Op deze foto's lijkt geen menukaart te staan. Fotografeer een menupagina en probeer opnieuw.",
       "unreadable": "De tekst was te moeilijk leesbaar. Neem een scherpere foto met goed licht, één pagina per foto.",
       "server": "Er ging bij ons iets mis. Probeer het zo meteen opnieuw."
-    }
+    },
+    "metaTitle": "Probeer het met je eigen menukaart — MenuBuddy",
+    "metaDescription": "Neem een foto van je menukaart en zie hem in ongeveer een minuut vertaald in de taal van je gasten."
   },
   "features": {
     "eyebrow": "Wat je krijgt",

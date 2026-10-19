@@ -3,6 +3,8 @@
 // frame, plus a QR code / full-screen link to open it on a phone.
 import Check from "@lucide/astro/icons/check";
 import Maximize from "@lucide/astro/icons/maximize-2";
+import Camera from "@lucide/astro/icons/camera";
+import ArrowRight from "@lucide/astro/icons/arrow-right";
 import QRCode from "qrcode";
 import PhoneFrame from "../phone/PhoneFrame.astro";
 import { demoMenuUrl } from "../../data/site";
@@ -69,6 +71,21 @@ const qrSvg = await QRCode.toString(new URL(fullscreenHref, Astro.site).href, {
         </div>
       </div>
       <p class="mt-6 text-sm text-oat-300">{t.demo.sampleNote}</p>
+
+      <a
+        href={localePath(lang, "/try")}
+        data-cta="try-your-menu"
+        class="mt-8 flex items-center gap-4 rounded-card bg-mustard-400 p-5 text-oat-950 hover:bg-mustard-300"
+      >
+        <Camera class="size-7 shrink-0" aria-hidden="true" />
+        <span class="min-w-0 flex-1">
+          <span class="block font-display text-xl font-semibold">
+            {t.demo.tryTitle}
+          </span>
+          <span class="mt-0.5 block">{t.demo.tryText}</span>
+        </span>
+        <ArrowRight class="size-5 shrink-0" aria-hidden="true" />
+      </a>
     </div>
 
     <div class="mx-auto w-full max-w-[22rem]">
