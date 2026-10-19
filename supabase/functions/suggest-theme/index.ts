@@ -21,6 +21,7 @@ import {
   requestUser,
 } from "../_shared/http.ts";
 import { isHex, LookSuggestion, lookSystemPrompt } from "../_shared/look.ts";
+import { shortLine } from "../_shared/text.ts";
 import { publicUrl } from "../_shared/website.ts";
 
 /** Suggestions per restaurant per day (usage_events kind 'theme'). */
@@ -59,7 +60,6 @@ async function image(
   };
 }
 
-/** Is this a public web address we may fetch (no local or internal hosts)? */
 /** Title, description, brand colours and the first visible text of the website's home page. */
 async function websiteFacts(raw: string): Promise<string | null> {
   let url = publicUrl(raw);
@@ -259,7 +259,7 @@ Deno.serve(async (req) => {
       background: isHex(s.background) ? s.background.toLowerCase() : "#fbf7f1",
       header: s.header === "cover" && !cover ? "centered" : s.header,
       layout: s.layout === "photos" && photoShare < 0.5 ? "cards" : s.layout,
-      tagline: s.tagline.trim().split(/\s+/).slice(0, 8).join(" ").slice(0, 60),
+      tagline: shortLine(s.tagline),
       vibe: s.vibe.trim().slice(0, 300),
     };
     return json({ ok: true, suggestion: look }, 200, cors);
