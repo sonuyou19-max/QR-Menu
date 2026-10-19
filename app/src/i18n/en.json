@@ -301,7 +301,8 @@
       "translateNow": "Translate now",
       "error": "Translating didn't work. Try again in a moment.",
       "rateLimited": "You've translated a lot today. Try again tomorrow."
-    }
+    },
+    "previewAsGuest": "Preview as guest"
   },
   "resultExtra": {
     "useMenu": "Use this menu",

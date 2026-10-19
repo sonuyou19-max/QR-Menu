@@ -6,7 +6,13 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { CircleCheck, CircleAlert, ShieldAlert, Upload } from "lucide-react";
+import {
+  CircleCheck,
+  CircleAlert,
+  Eye,
+  ShieldAlert,
+  Upload,
+} from "lucide-react";
 import { FullPageSpinner } from "../components/FullPageSpinner";
 import { fill, useI18n } from "../i18n";
 import { AllergenSwitch } from "../menu/AllergenSwitch";
@@ -126,8 +132,25 @@ export function MenuEditor() {
 
   return (
     <div className="pb-24">
-      <h1 className="text-3xl font-semibold sm:text-4xl">{t.editor.title}</h1>
-      <p className="text-ink-muted mt-1">{t.editor.autosave}</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-semibold sm:text-4xl">
+            {t.editor.title}
+          </h1>
+          <p className="text-ink-muted mt-1">{t.editor.autosave}</p>
+        </div>
+        {ordered.length > 0 && (
+          <a
+            href={`/m/${restaurant.slug}`}
+            target="_blank"
+            rel="noopener"
+            className="btn-secondary"
+          >
+            <Eye className="size-5" aria-hidden="true" />
+            {t.editor.previewAsGuest}
+          </a>
+        )}
+      </div>
 
       {ordered.length > 0 && (
         <PublishCard

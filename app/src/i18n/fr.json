@@ -301,7 +301,8 @@
       "translateNow": "Traduire maintenant",
       "error": "La traduction n'a pas fonctionné. Réessayez dans un instant.",
       "rateLimited": "Vous avez déjà beaucoup traduit aujourd'hui. Réessayez demain."
-    }
+    },
+    "previewAsGuest": "Voir comme un client"
   },
   "resultExtra": {
     "useMenu": "Utiliser cette carte",

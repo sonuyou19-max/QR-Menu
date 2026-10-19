@@ -1,59 +1,14 @@
-// Must run before the Supabase client reads the address bar.
-import "./lib/link-error";
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import "./styles.css";
-import { AuthProvider } from "./auth/AuthProvider";
-import { I18nProvider } from "./i18n";
-import { AppLayout } from "./routes/AppLayout";
-import { Login } from "./routes/Login";
-import { MenuEditor } from "./routes/MenuEditor";
-import { Overview } from "./routes/Overview";
-import { RequireAuth } from "./routes/RequireAuth";
-import { Service } from "./routes/Service";
-import { Setup } from "./routes/Setup";
-import { Upload } from "./routes/Upload";
-import { UploadResult } from "./routes/UploadResult";
-import { OwnerOnly, RestaurantGate } from "./restaurant/RestaurantProvider";
 
-const router = createBrowserRouter([
-  { path: "/login", element: <Login /> },
-  {
-    element: <RequireAuth />,
-    children: [
-      {
-        element: <RestaurantGate />,
-        children: [
-          { path: "/setup", element: <Setup /> },
-          {
-            element: <AppLayout />,
-            children: [
-              { path: "/service", element: <Service /> },
-              {
-                element: <OwnerOnly />,
-                children: [
-                  { index: true, element: <Overview /> },
-                  { path: "/menu", element: <MenuEditor /> },
-                  { path: "/upload", element: <Upload /> },
-                  { path: "/upload/:id", element: <UploadResult /> },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  { path: "*", element: <Navigate to="/" replace /> },
-]);
-
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <I18nProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </I18nProvider>
-  </StrictMode>,
-);
+// Two apps in one: guests scanning a QR code (/m/<slug>) only download the menu page; the
+// dashboard (editor, drag and drop, uploads) is a separate download for owners and staff.
+const root = createRoot(document.getElementById("root")!);
+const guest = location.pathname.match(/^\/m\/([a-z0-9-]+)\/?$/);
+if (guest) {
+  void import("./guest/GuestApp").then(({ renderGuest }) =>
+    renderGuest(root, guest[1]!),
+  );
+} else {
+  void import("./AdminApp").then(({ renderAdmin }) => renderAdmin(root));
+}

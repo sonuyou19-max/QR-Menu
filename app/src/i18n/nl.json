@@ -301,7 +301,8 @@
       "translateNow": "Nu vertalen",
       "error": "Vertalen is niet gelukt. Probeer het zo meteen opnieuw.",
       "rateLimited": "Je hebt vandaag al veel laten vertalen. Probeer het morgen opnieuw."
-    }
+    },
+    "previewAsGuest": "Bekijk als gast"
   },
   "resultExtra": {
     "useMenu": "Gebruik deze menukaart",

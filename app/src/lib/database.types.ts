@@ -435,6 +435,10 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      get_menu: {
+        Args: { p_language?: string; p_slug: string };
+        Returns: Json;
+      };
       import_menu_upload: {
         Args: { p_mode: string; p_upload_id: string };
         Returns: undefined;

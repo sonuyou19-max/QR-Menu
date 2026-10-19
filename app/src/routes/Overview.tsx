@@ -36,6 +36,19 @@ export function Overview() {
           <dd className="text-ink inline font-medium break-all">
             {config.menuBase}
             {restaurant.slug}
+            {restaurant.is_published && (
+              <>
+                {" · "}
+                <a
+                  href={`/m/${restaurant.slug}`}
+                  target="_blank"
+                  rel="noopener"
+                  className="text-brand-strong underline underline-offset-2"
+                >
+                  {t.editor.previewAsGuest}
+                </a>
+              </>
+            )}
           </dd>
         </div>
         <div>
