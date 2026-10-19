@@ -422,6 +422,11 @@ export type Database = {
       };
       is_slug_available: { Args: { p_slug: string }; Returns: boolean };
       reorder_categories: { Args: { p_ids: string[] }; Returns: undefined };
+      reset_stock: { Args: { p_restaurant_id: string }; Returns: string[] };
+      set_stock: {
+        Args: { p_in_stock: boolean; p_item_ids: string[] };
+        Returns: string[];
+      };
       reorder_items: {
         Args: { p_category_id: string; p_ids: string[] };
         Returns: undefined;

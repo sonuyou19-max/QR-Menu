@@ -11,10 +11,11 @@ import { Login } from "./routes/Login";
 import { MenuEditor } from "./routes/MenuEditor";
 import { Overview } from "./routes/Overview";
 import { RequireAuth } from "./routes/RequireAuth";
+import { Service } from "./routes/Service";
 import { Setup } from "./routes/Setup";
 import { Upload } from "./routes/Upload";
 import { UploadResult } from "./routes/UploadResult";
-import { RestaurantGate } from "./restaurant/RestaurantProvider";
+import { OwnerOnly, RestaurantGate } from "./restaurant/RestaurantProvider";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -28,10 +29,16 @@ const router = createBrowserRouter([
           {
             element: <AppLayout />,
             children: [
-              { index: true, element: <Overview /> },
-              { path: "/menu", element: <MenuEditor /> },
-              { path: "/upload", element: <Upload /> },
-              { path: "/upload/:id", element: <UploadResult /> },
+              { path: "/service", element: <Service /> },
+              {
+                element: <OwnerOnly />,
+                children: [
+                  { index: true, element: <Overview /> },
+                  { path: "/menu", element: <MenuEditor /> },
+                  { path: "/upload", element: <Upload /> },
+                  { path: "/upload/:id", element: <UploadResult /> },
+                ],
+              },
             ],
           },
         ],

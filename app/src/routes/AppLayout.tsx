@@ -5,9 +5,11 @@ import { Logo } from "../components/Logo";
 import { LanguagePicker } from "../components/LanguagePicker";
 import { fill, useI18n } from "../i18n";
 import { supabase } from "../lib/supabase";
+import { useRestaurant } from "../restaurant/RestaurantProvider";
 
 /** Shell for logged-in owner pages. */
 export function AppLayout() {
+  const { role } = useRestaurant();
   const { t } = useI18n();
   const { session } = useAuth();
   return (
@@ -29,20 +31,22 @@ export function AppLayout() {
           </button>
         </div>
         <nav aria-label="MenuBuddy" className="mx-auto max-w-3xl px-2">
-          <ul className="flex gap-1 overflow-x-auto">
-            {(
-              [
-                ["/", t.nav.overview],
-                ["/menu", t.nav.menu],
-                ["/upload", t.nav.upload],
-              ] as const
+          <ul className="flex justify-between gap-0.5 overflow-x-auto sm:justify-start sm:gap-1">
+            {(role === "staff"
+              ? ([["/service", t.nav.service]] as const)
+              : ([
+                  ["/", t.nav.overview],
+                  ["/service", t.nav.service],
+                  ["/menu", t.nav.menu],
+                  ["/upload", t.nav.upload],
+                ] as const)
             ).map(([to, label]) => (
               <li key={to}>
                 <NavLink
                   to={to}
                   end={to === "/"}
                   className={({ isActive }) =>
-                    `inline-flex min-h-11 items-center border-b-2 px-3 font-semibold whitespace-nowrap ${
+                    `inline-flex min-h-11 items-center border-b-2 px-2 text-[0.9375rem] font-semibold whitespace-nowrap sm:px-3 sm:text-base ${
                       isActive
                         ? "border-brand text-ink"
                         : "text-ink-muted border-transparent"

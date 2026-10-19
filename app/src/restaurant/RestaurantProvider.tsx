@@ -12,8 +12,12 @@ import { supabase } from "../lib/supabase";
 
 export type Restaurant = Tables<"restaurants">;
 
+/** Owners can do everything; staff accounts only get Service mode (CLAUDE.md 4.5). */
+export type Role = "owner" | "staff";
+
 interface RestaurantState {
   restaurant: Restaurant;
+  role: Role;
   reload: () => Promise<void>;
 }
 
@@ -29,6 +33,7 @@ export function RestaurantGate() {
   const [restaurant, setRestaurant] = useState<Restaurant | null | undefined>(
     undefined,
   );
+  const [role, setRole] = useState<Role>("owner");
   const [failed, setFailed] = useState(false);
 
   const reload = useCallback(async () => {
@@ -41,6 +46,21 @@ export function RestaurantGate() {
     if (error) {
       setFailed(true);
       return;
+    }
+    if (data) {
+      // Own membership only (RLS also returns the rest of the team).
+      const { data: session } = await supabase.auth.getSession();
+      const { data: member, error: memberError } = await supabase
+        .from("restaurant_members")
+        .select("role")
+        .eq("restaurant_id", data.id)
+        .eq("user_id", session.session?.user.id ?? "")
+        .maybeSingle();
+      if (memberError) {
+        setFailed(true);
+        return;
+      }
+      setRole(member?.role === "staff" ? "staff" : "owner");
     }
     setFailed(false);
     setRestaurant(data);
@@ -59,7 +79,7 @@ export function RestaurantGate() {
   return (
     <ReloadContext.Provider value={reload}>
       {restaurant ? (
-        <RestaurantContext.Provider value={{ restaurant, reload }}>
+        <RestaurantContext.Provider value={{ restaurant, role, reload }}>
           <Outlet />
         </RestaurantContext.Provider>
       ) : (
@@ -79,4 +99,10 @@ export function useRestaurant(): RestaurantState {
 /** Reload the restaurant after creating or changing it. */
 export function useReloadRestaurant(): () => Promise<void> {
   return useContext(ReloadContext);
+}
+
+/** Owner-only pages: staff accounts are sent to Service mode. */
+export function OwnerOnly() {
+  const { role } = useRestaurant();
+  return role === "staff" ? <Navigate to="/service" replace /> : <Outlet />;
 }

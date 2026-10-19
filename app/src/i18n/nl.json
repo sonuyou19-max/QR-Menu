@@ -26,7 +26,8 @@
     "account": "Ingelogd als {email}",
     "overview": "Overzicht",
     "menu": "Menukaart",
-    "upload": "Uploaden"
+    "upload": "Uploaden",
+    "service": "Service"
   },
   "overview": {
     "title": "Welkom bij MenuBuddy",
@@ -294,5 +295,27 @@
     "importError": "Dat is niet gelukt. Probeer opnieuw.",
     "doneText": "Vergelijk namen en prijzen met je menukaart en tik dan op \"Gebruik deze menukaart\". Daarna kun je alles verbeteren, allergenen bevestigen en foto's toevoegen.",
     "used": "Deze menukaart is toegevoegd. Open je menukaart om hem na te kijken."
+  },
+  "service": {
+    "title": "Service",
+    "intro": "Tik op een gerecht om het te wisselen tussen op voorraad en uitverkocht. Gasten zien het meteen.",
+    "search": "Zoek een gerecht",
+    "searchClear": "Zoekveld leegmaken",
+    "noResults": "Geen gerecht gevonden voor \"{query}\".",
+    "outNow": "Nu uitverkocht",
+    "outNone": "Alles is op voorraad.",
+    "backInStock": "{name} weer op voorraad zetten",
+    "inStock": "Op voorraad",
+    "outOfStock": "Uitverkocht",
+    "reset": "Alles resetten voor de volgende service",
+    "resetConfirm": "Alle {count} uitverkochte gerechten weer op voorraad zetten?",
+    "resetConfirmOne": "Het uitverkochte gerecht weer op voorraad zetten?",
+    "resetYes": "Ja, alles weer op voorraad",
+    "resetDone": "{count} gerechten weer op voorraad",
+    "resetDoneOne": "1 gerecht weer op voorraad",
+    "empty": "Nog geen gerechten. Voeg eerst je menukaart toe.",
+    "emptyStaff": "Nog geen gerechten. Vraag de eigenaar om de menukaart toe te voegen.",
+    "emptyLink": "Upload je menukaart",
+    "hiddenNote": "Gerechten die verborgen zijn voor gasten staan hier niet bij."
   }
 }

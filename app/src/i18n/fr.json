@@ -26,7 +26,8 @@
     "account": "Connecté en tant que {email}",
     "overview": "Aperçu",
     "menu": "Carte",
-    "upload": "Envoyer"
+    "upload": "Envoyer",
+    "service": "Service"
   },
   "overview": {
     "title": "Bienvenue sur MenuBuddy",
@@ -294,5 +295,27 @@
     "importError": "Cela n'a pas fonctionné. Réessayez.",
     "doneText": "Comparez les noms et les prix avec votre carte, puis touchez « Utiliser cette carte ». Ensuite, vous pourrez tout corriger, confirmer les allergènes et ajouter des photos.",
     "used": "Cette carte a été ajoutée. Ouvrez votre carte pour la vérifier."
+  },
+  "service": {
+    "title": "Service",
+    "intro": "Touchez un plat pour le passer de disponible à épuisé. Vos clients le voient tout de suite.",
+    "search": "Chercher un plat",
+    "searchClear": "Effacer la recherche",
+    "noResults": "Aucun plat trouvé pour « {query} ».",
+    "outNow": "Épuisé maintenant",
+    "outNone": "Tout est disponible.",
+    "backInStock": "Remettre {name} en stock",
+    "inStock": "Disponible",
+    "outOfStock": "Épuisé",
+    "reset": "Tout réinitialiser pour le prochain service",
+    "resetConfirm": "Remettre les {count} plats épuisés en stock ?",
+    "resetConfirmOne": "Remettre le plat épuisé en stock ?",
+    "resetYes": "Oui, tout remettre en stock",
+    "resetDone": "{count} plats remis en stock",
+    "resetDoneOne": "1 plat remis en stock",
+    "empty": "Pas encore de plats. Ajoutez d'abord votre carte.",
+    "emptyStaff": "Pas encore de plats. Demandez au propriétaire d'ajouter la carte.",
+    "emptyLink": "Envoyer votre carte",
+    "hiddenNote": "Les plats masqués pour les clients ne sont pas listés ici."
   }
 }

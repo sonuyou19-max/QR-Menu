@@ -26,7 +26,8 @@
     "account": "Logged in as {email}",
     "overview": "Overview",
     "menu": "Menu",
-    "upload": "Upload"
+    "upload": "Upload",
+    "service": "Service"
   },
   "overview": {
     "title": "Welcome to MenuBuddy",
@@ -294,5 +295,27 @@
     "importError": "That didn't work. Try again.",
     "doneText": "Compare names and prices with your menu, then tap \"Use this menu\". Afterwards you can correct everything, confirm allergens and add photos.",
     "used": "This menu has been added. Open your menu to check it."
+  },
+  "service": {
+    "title": "Service",
+    "intro": "Tap a dish to switch it between in stock and sold out. Guests see it right away.",
+    "search": "Search a dish",
+    "searchClear": "Clear search",
+    "noResults": "No dish found for \"{query}\".",
+    "outNow": "Sold out now",
+    "outNone": "Everything is in stock.",
+    "backInStock": "Put {name} back in stock",
+    "inStock": "In stock",
+    "outOfStock": "Sold out",
+    "reset": "Reset all for next service",
+    "resetConfirm": "Put all {count} sold-out dishes back in stock?",
+    "resetConfirmOne": "Put the 1 sold-out dish back in stock?",
+    "resetYes": "Yes, all back in stock",
+    "resetDone": "{count} dishes back in stock",
+    "resetDoneOne": "1 dish back in stock",
+    "empty": "No dishes yet. Add your menu first.",
+    "emptyStaff": "No dishes yet. Ask the owner to add the menu.",
+    "emptyLink": "Upload your menu",
+    "hiddenNote": "Dishes hidden from guests are not listed here."
   }
 }
