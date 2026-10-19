@@ -38,11 +38,11 @@
     "steps": [
       {
         "title": "Stel je restaurant in",
-        "text": "Naam, adres, logo en de talen voor je gasten."
+        "text": "Naam, adres en de talen voor je gasten."
       },
       {
         "title": "Upload je menu",
-        "text": "Een foto of PDF van je kaart. Buddy, onze AI-assistent, zet hem om in gerechten."
+        "text": "Foto's van je menukaart, of je website. Buddy, onze AI-assistent, maakt er gerechten van."
       },
       {
         "title": "Controleer en publiceer",
@@ -532,5 +532,16 @@
       "limit": "Buddy deed vandaag genoeg voorstellen. Probeer morgen opnieuw.",
       "failed": "Buddy kon nu geen voorstel maken. Probeer het zo meteen opnieuw."
     }
+  },
+  "settings": {
+    "title": "Gegevens van je restaurant",
+    "intro": "Wijzigingen worden automatisch bewaard.",
+    "guestLanguagesHint": "Je menukaart wordt in deze talen vertaald.",
+    "translateNote": "Nieuw: {languages}. Tik op “Nu vertalen” onder Menu zodat gasten je menukaart in die taal kunnen lezen.",
+    "goToMenu": "Naar Menu",
+    "allergensNote": "Bevestig de allergenen van elk gerecht onder Menu voordat gasten ze zien.",
+    "webAddressLocked": "Je QR-codes verwijzen naar dit adres, dus het blijft hetzelfde. Een ander adres nodig? Neem contact met ons op.",
+    "lookTitle": "Logo, kleuren en omslagfoto",
+    "lookText": "Wijzig ze onder Stijl."
   }
 }

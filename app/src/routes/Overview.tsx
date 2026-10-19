@@ -17,7 +17,13 @@ import { useRestaurant } from "../restaurant/RestaurantProvider";
 
 const icons = [Store, Upload, ListChecks, Palette, QrCode];
 /** Steps that already have a screen. */
-const stepLinks: (string | null)[] = [null, "/upload", "/menu", "/look", "/qr"];
+const stepLinks: (string | null)[] = [
+  "/settings",
+  "/upload",
+  "/menu",
+  "/look",
+  "/qr",
+];
 
 /** Owner start page. Steps become links as Phase 1 lands. */
 export function Overview() {

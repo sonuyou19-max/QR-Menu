@@ -38,11 +38,11 @@
     "steps": [
       {
         "title": "Configurez votre restaurant",
-        "text": "Nom, adresse, logo et les langues pour vos clients."
+        "text": "Nom, adresse et les langues pour vos clients."
       },
       {
         "title": "Envoyez votre carte",
-        "text": "Une photo ou un PDF de votre carte. Buddy, notre assistant IA, la transforme en plats."
+        "text": "Des photos de votre carte, ou votre site web. Buddy, notre assistant IA, en fait des plats."
       },
       {
         "title": "Vérifiez et publiez",
@@ -532,5 +532,16 @@
       "limit": "Buddy a fait assez de propositions aujourd'hui. Réessayez demain.",
       "failed": "Buddy n'a pas pu faire de proposition. Réessayez dans un instant."
     }
+  },
+  "settings": {
+    "title": "Infos du restaurant",
+    "intro": "Les modifications sont enregistrées automatiquement.",
+    "guestLanguagesHint": "Votre carte est traduite dans ces langues.",
+    "translateNote": "Nouveau : {languages}. Touchez « Traduire maintenant » sous Menu pour que vos clients puissent lire votre carte dans cette langue.",
+    "goToMenu": "Aller à Menu",
+    "allergensNote": "Confirmez les allergènes de chaque plat sous Menu avant que vos clients ne les voient.",
+    "webAddressLocked": "Vos codes QR mènent à cette adresse, elle reste donc la même. Besoin d'une autre adresse ? Contactez-nous.",
+    "lookTitle": "Logo, couleurs et photo de couverture",
+    "lookText": "Modifiez-les sous Style."
   }
 }

@@ -11,6 +11,7 @@ import { MenuEditor } from "./routes/MenuEditor";
 import { Overview } from "./routes/Overview";
 import { RequireAuth } from "./routes/RequireAuth";
 import { Service } from "./routes/Service";
+import { Settings } from "./routes/Settings";
 import { Setup } from "./routes/Setup";
 import { Upload } from "./routes/Upload";
 import { UploadResult } from "./routes/UploadResult";
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
                 children: [
                   { index: true, element: <Overview /> },
                   { path: "/menu", element: <MenuEditor /> },
+                  { path: "/settings", element: <Settings /> },
                   { path: "/upload", element: <Upload /> },
                   { path: "/upload/:id", element: <UploadResult /> },
                   {

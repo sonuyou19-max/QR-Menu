@@ -38,11 +38,11 @@
     "steps": [
       {
         "title": "Set up your restaurant",
-        "text": "Name, address, logo and the languages for your guests."
+        "text": "Name, address and the languages for your guests."
       },
       {
         "title": "Upload your menu",
-        "text": "A photo or PDF of your menu. Buddy, our AI assistant, turns it into dishes."
+        "text": "Photos of your menu, or your website. Buddy, our AI assistant, turns it into dishes."
       },
       {
         "title": "Check and publish",
@@ -532,5 +532,16 @@
       "limit": "Buddy made enough suggestions for today. Try again tomorrow.",
       "failed": "Buddy couldn't make a suggestion right now. Try again in a moment."
     }
+  },
+  "settings": {
+    "title": "Restaurant details",
+    "intro": "Changes are saved automatically.",
+    "guestLanguagesHint": "Your menu gets translated into these languages.",
+    "translateNote": "New: {languages}. Tap “Translate now” under Menu so guests can read your menu in it.",
+    "goToMenu": "Go to Menu",
+    "allergensNote": "Confirm the allergens of each dish under Menu before guests see them.",
+    "webAddressLocked": "Your QR codes point to this address, so it stays the same. Need a different one? Contact us.",
+    "lookTitle": "Logo, colours and cover photo",
+    "lookText": "Change them under Look."
   }
 }
