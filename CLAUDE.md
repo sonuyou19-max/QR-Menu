@@ -75,7 +75,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
 
 Per item, keep descriptions separate:
 - `menu_description` — description provided/approved by the restaurant (translated faithfully; never add or remove ingredients).
-- `typical_description` — AI explanation of how the dish is typically made, used only when the restaurant gave no description. **Max 30 words** (prompt + server-side `limitWords` in `_shared/text.ts`); the owner's own descriptions have no length limit. Shown in a distinct style (italic + ⓘ "Typical preparation"). Owner can accept, edit (it then becomes `menu_description`) or hide it during review.
+- `typical_description` — AI explanation of how the dish is typically made, used only when the restaurant gave no description. **Max 25 words**, and places only as country + broad direction ("northern India", never a state or city) (prompt + server-side `limitWords` in `_shared/text.ts`); the owner's own descriptions have no length limit. Shown in a distinct style (italic + ⓘ "Typical preparation"). Owner can accept, edit (it then becomes `menu_description`) or hide it during review.
 - `confidence` — `"known_dish"` | `"likely"` | `"unknown"`. For creative names ("Chef's Autumn Dream") with no description: no invented ingredients; show "Ask staff".
 
 **Allergens (legal sensitivity):** EU regulation 1169/2011 requires restaurants to provide allergen info for the 14 EU allergens.

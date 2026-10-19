@@ -1,7 +1,7 @@
 // Limits for texts Buddy (the AI) writes. The owner's own descriptions have no limit.
 
 /** Buddy's "typical preparation" stays short enough to read on a phone. */
-export const MAX_BUDDY_WORDS = 30;
+export const MAX_BUDDY_WORDS = 25;
 
 /**
  * Keep at most `max` words. Cut at the last sentence or clause break inside the limit when there
