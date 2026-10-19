@@ -519,7 +519,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 12. `menu-chat` with full guardrail layer + item cards with + in chat; build the eval file alongside. Built (see section 7); 14/14 evals pass. The marketing site's demo iframe gets the real chat too.
 13. `demo-translate` + "Try with your own menu" (Demo B) on the marketing site, with all its guardrails
 14. PDF + URL upload paths
-15. Analytics dashboard incl. guest questions + flagging
+15. Analytics dashboard incl. guest questions + flagging; plus an **AI cost view for the founder only** (not restaurant owners): AI cost per restaurant per month from `usage_events`, split by job (extract / translate / chat / theme / dish), compared with the €30 plan, plus the marketing-site demo runs (`demo_runs`) as their own line
 16. Pilot with 3–5 restaurants for free
 
 **Later:** billing via Mollie/Stripe (€30/month or €270/year, excl. VAT), staff invites (Service-mode-only accounts), multiple menus (lunch/dinner/drinks), send cart to a staff tablet, Cal.com booking, blog / case studies / city pages on the site
