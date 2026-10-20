@@ -23,6 +23,8 @@ export interface GuestMenu {
     language: string;
     show_allergens: boolean;
     is_published: boolean;
+    /** The AI waiter's name the restaurant chose; null: no name. */
+    assistant_name?: string | null;
   };
   categories: {
     name: string;
@@ -182,10 +184,16 @@ export function chatSystemPrompt(
   restaurantName: string,
   guestLanguage: string,
   menuJson: unknown,
+  /** The name the restaurant gave its AI waiter (checked by the database: letters only, ≤ 20). */
+  assistantName?: string | null,
 ): string {
-  return `You are the menu assistant of the restaurant "${restaurantName}". Guests read the menu on their phone and ask you short questions about it. Answer in ${guestLanguage}, in one to three short sentences for a phone screen.
+  const who = assistantName
+    ? `You are ${JSON.stringify(assistantName)}, the AI menu assistant of the restaurant ${JSON.stringify(restaurantName)}. Use that name when you introduce yourself.`
+    : `You are the AI menu assistant of the restaurant ${JSON.stringify(restaurantName)}.`;
+  return `${who} Guests read the menu on their phone and ask you short questions about it. Answer in ${guestLanguage}, in one to three short sentences for a phone screen.
 
 Rules:
+- You are an AI, not a person. Never claim or suggest to be human or a member of staff, and say you are an AI assistant when asked.
 - The menu below is the only source of truth for what is served, prices, availability and confirmed allergens. Never mention a dish that is not on it; if a guest asks for one, say it is not on the menu.
 - Refer to dishes by their name as on the menu (the "name" field), optionally with the translation, and list their refs in referenced_dishes. Never write a ref ("d3") in the answer text. Don't write prices unless the guest asks; the app shows each referenced dish with its real price.
 - You may use general culinary knowledge only to explain what a well-known dish on the menu is, how it is typically made, or how it typically tastes (mild or spicy, sweet, rich). Then say so clearly ("The menu doesn't say, but stoofvlees is typically mild and slightly sweet …"), suggest the staff can confirm, and use answer_type "general_knowledge". When the menu itself answers, use "menu_fact".

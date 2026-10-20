@@ -55,6 +55,11 @@ export interface GuestStrings {
   };
   chat: {
     open: string;
+    /** With the restaurant's own name for its AI waiter: "Ask {name}". */
+    openNamed: string;
+    /** Shown next to the waiter's name: the chat always says it is an AI. */
+    aiLabel: string;
+    introNamed: string;
     title: string;
     intro: string;
     placeholder: string;
@@ -129,8 +134,13 @@ const en: GuestStrings = {
   },
   chat: {
     open: "Ask about the menu",
+    openNamed: "Ask {name}",
+    aiLabel: "AI assistant",
+    introNamed:
+      "Hi, I'm {name}, this restaurant's AI assistant. Ask me anything about the dishes. For allergies, always check with the staff.",
     title: "Questions about the menu",
-    intro: "Ask anything about the dishes. Answers come from this restaurant's menu.",
+    intro:
+      "Ask anything about the dishes. Answers come from this restaurant's menu.",
     placeholder: "Type your question…",
     send: "Send",
     s1: "What's vegetarian here?",
@@ -141,8 +151,10 @@ const en: GuestStrings = {
     error: "Something went wrong. Check your connection and try again.",
     limit: "You've asked a lot of questions. Please ask the staff for more.",
     busy: "The assistant is busy right now. Please ask the staff.",
-    unconfirmed: "Allergen info for this dish isn't confirmed by the restaurant — please ask staff.",
-    disclaimer: "Answers are written by AI from the menu. When in doubt, ask the staff.",
+    unconfirmed:
+      "Allergen info for this dish isn't confirmed by the restaurant — please ask staff.",
+    disclaimer:
+      "Answers are written by AI from the menu. When in doubt, ask the staff.",
     clear: "Start over",
   },
   allergenNames: {
@@ -224,20 +236,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Vraag iets over de kaart",
+      openNamed: "Vraag het aan {name}",
+      aiLabel: "AI-assistent",
+      introNamed:
+        "Hallo, ik ben {name}, de AI-assistent van dit restaurant. Vraag me alles over de gerechten. Bij allergieën: check altijd bij het personeel.",
       title: "Vragen over de menukaart",
-      intro: "Vraag gerust iets over de gerechten. De antwoorden komen uit de menukaart van dit restaurant.",
+      intro:
+        "Vraag gerust iets over de gerechten. De antwoorden komen uit de menukaart van dit restaurant.",
       placeholder: "Typ je vraag…",
       send: "Verstuur",
       s1: "Wat is hier vegetarisch?",
       s2: "Welke gerechten zijn pikant?",
       s3: "Welke gerechten zijn zonder gluten?",
       thinking: "De kaart wordt bekeken…",
-      fallback: "Sorry, daar heb ik geen antwoord op — vraag het aan het personeel.",
+      fallback:
+        "Sorry, daar heb ik geen antwoord op — vraag het aan het personeel.",
       error: "Er ging iets mis. Controleer je verbinding en probeer opnieuw.",
       limit: "Je stelde al veel vragen. Vraag het verder aan het personeel.",
       busy: "De assistent is nu even druk. Vraag het aan het personeel.",
-      unconfirmed: "De allergeneninformatie van dit gerecht is niet bevestigd door het restaurant — vraag het aan het personeel.",
-      disclaimer: "Antwoorden worden door AI geschreven op basis van de menukaart. Twijfel je, vraag het aan het personeel.",
+      unconfirmed:
+        "De allergeneninformatie van dit gerecht is niet bevestigd door het restaurant — vraag het aan het personeel.",
+      disclaimer:
+        "Antwoorden worden door AI geschreven op basis van de menukaart. Twijfel je, vraag het aan het personeel.",
       clear: "Opnieuw beginnen",
     },
     allergenNames: {
@@ -315,8 +335,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Une question sur la carte ?",
+      openNamed: "Demandez à {name}",
+      aiLabel: "Assistant IA",
+      introNamed:
+        "Bonjour, je suis {name}, l'assistant IA de ce restaurant. Posez-moi vos questions sur les plats. En cas d'allergie, vérifiez toujours auprès du personnel.",
       title: "Questions sur la carte",
-      intro: "Posez vos questions sur les plats. Les réponses viennent de la carte de ce restaurant.",
+      intro:
+        "Posez vos questions sur les plats. Les réponses viennent de la carte de ce restaurant.",
       placeholder: "Écrivez votre question…",
       send: "Envoyer",
       s1: "Qu'y a-t-il de végétarien ?",
@@ -325,10 +350,13 @@ export const guestStrings: Record<string, GuestStrings> = {
       thinking: "Je consulte la carte…",
       fallback: "Désolé, je n'ai pas de réponse — demandez au personnel.",
       error: "Un problème est survenu. Vérifiez votre connexion et réessayez.",
-      limit: "Vous avez posé beaucoup de questions. Pour la suite, demandez au personnel.",
+      limit:
+        "Vous avez posé beaucoup de questions. Pour la suite, demandez au personnel.",
       busy: "L'assistant est occupé pour le moment. Demandez au personnel.",
-      unconfirmed: "Les informations sur les allergènes de ce plat ne sont pas confirmées par le restaurant — demandez au personnel.",
-      disclaimer: "Les réponses sont rédigées par une IA à partir de la carte. En cas de doute, demandez au personnel.",
+      unconfirmed:
+        "Les informations sur les allergènes de ce plat ne sont pas confirmées par le restaurant — demandez au personnel.",
+      disclaimer:
+        "Les réponses sont rédigées par une IA à partir de la carte. En cas de doute, demandez au personnel.",
       clear: "Recommencer",
     },
     allergenNames: {
@@ -407,20 +435,30 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Frage zur Speisekarte",
+      openNamed: "Frag {name}",
+      aiLabel: "KI-Assistent",
+      introNamed:
+        "Hallo, ich bin {name}, der KI-Assistent dieses Restaurants. Frag mich alles zu den Gerichten. Bei Allergien bitte immer beim Personal nachfragen.",
       title: "Fragen zur Speisekarte",
-      intro: "Fragen Sie alles zu den Gerichten. Die Antworten stammen aus der Speisekarte dieses Restaurants.",
+      intro:
+        "Fragen Sie alles zu den Gerichten. Die Antworten stammen aus der Speisekarte dieses Restaurants.",
       placeholder: "Ihre Frage…",
       send: "Senden",
       s1: "Was ist hier vegetarisch?",
       s2: "Welche Gerichte sind scharf?",
       s3: "Welche Gerichte sind glutenfrei?",
       thinking: "Ich sehe in der Speisekarte nach…",
-      fallback: "Leider kann ich das nicht beantworten — bitte fragen Sie das Personal.",
-      error: "Etwas ist schiefgelaufen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-      limit: "Sie haben schon viele Fragen gestellt. Bitte fragen Sie das Personal.",
+      fallback:
+        "Leider kann ich das nicht beantworten — bitte fragen Sie das Personal.",
+      error:
+        "Etwas ist schiefgelaufen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      limit:
+        "Sie haben schon viele Fragen gestellt. Bitte fragen Sie das Personal.",
       busy: "Der Assistent ist gerade ausgelastet. Bitte fragen Sie das Personal.",
-      unconfirmed: "Die Allergenangaben für dieses Gericht sind vom Restaurant nicht bestätigt — bitte fragen Sie das Personal.",
-      disclaimer: "Antworten werden von einer KI anhand der Speisekarte verfasst. Im Zweifel fragen Sie das Personal.",
+      unconfirmed:
+        "Die Allergenangaben für dieses Gericht sind vom Restaurant nicht bestätigt — bitte fragen Sie das Personal.",
+      disclaimer:
+        "Antworten werden von einer KI anhand der Speisekarte verfasst. Im Zweifel fragen Sie das Personal.",
       clear: "Neu beginnen",
     },
     allergenNames: {
@@ -495,8 +533,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Pregunta sobre la carta",
+      openNamed: "Pregunta a {name}",
+      aiLabel: "Asistente de IA",
+      introNamed:
+        "Hola, soy {name}, el asistente de IA de este restaurante. Pregúntame lo que quieras sobre los platos. Si tienes alergias, consulta siempre al personal.",
       title: "Preguntas sobre la carta",
-      intro: "Pregunta lo que quieras sobre los platos. Las respuestas salen de la carta de este restaurante.",
+      intro:
+        "Pregunta lo que quieras sobre los platos. Las respuestas salen de la carta de este restaurante.",
       placeholder: "Escribe tu pregunta…",
       send: "Enviar",
       s1: "¿Qué hay vegetariano?",
@@ -507,8 +550,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "Algo ha fallado. Comprueba tu conexión e inténtalo de nuevo.",
       limit: "Has hecho muchas preguntas. Para más, pregunta al personal.",
       busy: "El asistente está ocupado ahora mismo. Pregunta al personal.",
-      unconfirmed: "La información sobre alérgenos de este plato no está confirmada por el restaurante; pregunta al personal.",
-      disclaimer: "Las respuestas las escribe una IA a partir de la carta. Si tienes dudas, pregunta al personal.",
+      unconfirmed:
+        "La información sobre alérgenos de este plato no está confirmada por el restaurante; pregunta al personal.",
+      disclaimer:
+        "Las respuestas las escribe una IA a partir de la carta. Si tienes dudas, pregunta al personal.",
       clear: "Empezar de nuevo",
     },
     allergenNames: {
@@ -585,8 +630,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Domanda sul menù",
+      openNamed: "Chiedi a {name}",
+      aiLabel: "Assistente IA",
+      introNamed:
+        "Ciao, sono {name}, l'assistente IA di questo ristorante. Chiedimi qualsiasi cosa sui piatti. Per le allergie, chiedi sempre al personale.",
       title: "Domande sul menù",
-      intro: "Chiedi pure dei piatti. Le risposte vengono dal menù di questo ristorante.",
+      intro:
+        "Chiedi pure dei piatti. Le risposte vengono dal menù di questo ristorante.",
       placeholder: "Scrivi la tua domanda…",
       send: "Invia",
       s1: "Cosa c'è di vegetariano?",
@@ -597,8 +647,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "Qualcosa è andato storto. Controlla la connessione e riprova.",
       limit: "Hai fatto molte domande. Per altre, chiedi al personale.",
       busy: "L'assistente è occupato in questo momento. Chiedi al personale.",
-      unconfirmed: "Le informazioni sugli allergeni di questo piatto non sono confermate dal ristorante: chiedi al personale.",
-      disclaimer: "Le risposte sono scritte da un'IA in base al menù. Nel dubbio, chiedi al personale.",
+      unconfirmed:
+        "Le informazioni sugli allergeni di questo piatto non sono confermate dal ristorante: chiedi al personale.",
+      disclaimer:
+        "Le risposte sono scritte da un'IA in base al menù. Nel dubbio, chiedi al personale.",
       clear: "Ricomincia",
     },
     allergenNames: {
@@ -674,8 +726,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Pergunte sobre o menu",
+      openNamed: "Pergunte a {name}",
+      aiLabel: "Assistente de IA",
+      introNamed:
+        "Olá, sou {name}, o assistente de IA deste restaurante. Pergunte-me o que quiser sobre os pratos. Em caso de alergias, confirme sempre com a equipa.",
       title: "Perguntas sobre o menu",
-      intro: "Pergunte o que quiser sobre os pratos. As respostas vêm do menu deste restaurante.",
+      intro:
+        "Pergunte o que quiser sobre os pratos. As respostas vêm do menu deste restaurante.",
       placeholder: "Escreva a sua pergunta…",
       send: "Enviar",
       s1: "O que há de vegetariano?",
@@ -686,8 +743,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "Algo correu mal. Verifique a ligação e tente de novo.",
       limit: "Já fez muitas perguntas. Para mais, pergunte ao pessoal.",
       busy: "O assistente está ocupado neste momento. Pergunte ao pessoal.",
-      unconfirmed: "A informação sobre alergénios deste prato não está confirmada pelo restaurante — pergunte ao pessoal.",
-      disclaimer: "As respostas são escritas por IA com base no menu. Em caso de dúvida, pergunte ao pessoal.",
+      unconfirmed:
+        "A informação sobre alergénios deste prato não está confirmada pelo restaurante — pergunte ao pessoal.",
+      disclaimer:
+        "As respostas são escritas por IA com base no menu. Em caso de dúvida, pergunte ao pessoal.",
       clear: "Recomeçar",
     },
     allergenNames: {
@@ -762,8 +821,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "Zapytaj o menu",
+      openNamed: "Zapytaj: {name}",
+      aiLabel: "Asystent AI",
+      introNamed:
+        "Cześć, jestem {name}, asystent AI tej restauracji. Zapytaj mnie o dowolne danie. W razie alergii zawsze upewnij się u obsługi.",
       title: "Pytania o menu",
-      intro: "Zapytaj o dowolne danie. Odpowiedzi pochodzą z menu tej restauracji.",
+      intro:
+        "Zapytaj o dowolne danie. Odpowiedzi pochodzą z menu tej restauracji.",
       placeholder: "Wpisz pytanie…",
       send: "Wyślij",
       s1: "Co jest tu wegetariańskie?",
@@ -774,8 +838,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "Coś poszło nie tak. Sprawdź połączenie i spróbuj ponownie.",
       limit: "Zadano już wiele pytań. O resztę zapytaj obsługę.",
       busy: "Asystent jest teraz zajęty. Zapytaj obsługę.",
-      unconfirmed: "Informacje o alergenach tego dania nie są potwierdzone przez restaurację — zapytaj obsługę.",
-      disclaimer: "Odpowiedzi pisze AI na podstawie menu. W razie wątpliwości zapytaj obsługę.",
+      unconfirmed:
+        "Informacje o alergenach tego dania nie są potwierdzone przez restaurację — zapytaj obsługę.",
+      disclaimer:
+        "Odpowiedzi pisze AI na podstawie menu. W razie wątpliwości zapytaj obsługę.",
       clear: "Zacznij od nowa",
     },
     allergenNames: {
@@ -848,6 +914,10 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "询问菜单",
+      openNamed: "问问 {name}",
+      aiLabel: "AI 助手",
+      introNamed:
+        "你好，我是 {name}，这家餐厅的 AI 助手。关于菜品的问题都可以问我。如有过敏，请务必向服务员确认。",
       title: "菜单问答",
       intro: "关于菜品的任何问题都可以问。回答来自本餐厅的菜单。",
       placeholder: "输入你的问题…",
@@ -939,20 +1009,28 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "メニューについて質問",
+      openNamed: "{name}に質問",
+      aiLabel: "AIアシスタント",
+      introNamed:
+        "こんにちは、このレストランのAIアシスタントの{name}です。料理について何でも聞いてください。アレルギーについては必ずスタッフに確認してください。",
       title: "メニューについての質問",
-      intro: "料理について何でも聞いてください。回答はこのお店のメニューに基づいています。",
+      intro:
+        "料理について何でも聞いてください。回答はこのお店のメニューに基づいています。",
       placeholder: "質問を入力…",
       send: "送信",
       s1: "ベジタリアン料理はどれ？",
       s2: "辛い料理はどれ？",
       s3: "グルテンを含まない料理は？",
       thinking: "メニューを確認しています…",
-      fallback: "申し訳ありません、お答えできません。スタッフにお尋ねください。",
+      fallback:
+        "申し訳ありません、お答えできません。スタッフにお尋ねください。",
       error: "問題が発生しました。接続を確認して、もう一度お試しください。",
       limit: "たくさん質問されました。続きはスタッフにお尋ねください。",
       busy: "アシスタントは現在混み合っています。スタッフにお尋ねください。",
-      unconfirmed: "この料理のアレルゲン情報はお店で確認されていません。スタッフにお尋ねください。",
-      disclaimer: "回答はメニューをもとに AI が作成しています。不明な点はスタッフにお尋ねください。",
+      unconfirmed:
+        "この料理のアレルゲン情報はお店で確認されていません。スタッフにお尋ねください。",
+      disclaimer:
+        "回答はメニューをもとに AI が作成しています。不明な点はスタッフにお尋ねください。",
       clear: "最初から",
     },
     allergenNames: {
@@ -1028,8 +1106,13 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "메뉴에 대해 질문하기",
+      openNamed: "{name}에게 물어보기",
+      aiLabel: "AI 어시스턴트",
+      introNamed:
+        "안녕하세요, 이 레스토랑의 AI 어시스턴트 {name}입니다. 요리에 대해 무엇이든 물어보세요. 알레르기가 있다면 꼭 직원에게 확인하세요.",
       title: "메뉴 질문",
-      intro: "요리에 대해 무엇이든 물어보세요. 답변은 이 식당의 메뉴를 바탕으로 합니다.",
+      intro:
+        "요리에 대해 무엇이든 물어보세요. 답변은 이 식당의 메뉴를 바탕으로 합니다.",
       placeholder: "질문을 입력하세요…",
       send: "보내기",
       s1: "채식 메뉴는 무엇인가요?",
@@ -1040,8 +1123,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "문제가 발생했어요. 연결을 확인하고 다시 시도해 주세요.",
       limit: "질문을 많이 하셨어요. 더 궁금한 점은 직원에게 문의해 주세요.",
       busy: "지금은 도우미가 바빠요. 직원에게 문의해 주세요.",
-      unconfirmed: "이 요리의 알레르기 정보는 식당에서 확인되지 않았어요. 직원에게 문의해 주세요.",
-      disclaimer: "답변은 메뉴를 바탕으로 AI가 작성합니다. 궁금하면 직원에게 문의해 주세요.",
+      unconfirmed:
+        "이 요리의 알레르기 정보는 식당에서 확인되지 않았어요. 직원에게 문의해 주세요.",
+      disclaimer:
+        "답변은 메뉴를 바탕으로 AI가 작성합니다. 궁금하면 직원에게 문의해 주세요.",
       clear: "처음부터",
     },
     allergenNames: {
@@ -1115,6 +1200,10 @@ export const guestStrings: Record<string, GuestStrings> = {
     },
     chat: {
       open: "اسأل عن قائمة الطعام",
+      openNamed: "اسأل {name}",
+      aiLabel: "مساعد ذكاء اصطناعي",
+      introNamed:
+        "مرحبًا، أنا {name}، مساعد الذكاء الاصطناعي في هذا المطعم. اسألني أي شيء عن الأطباق. في حال وجود حساسية، تحقّق دائمًا مع الموظفين.",
       title: "أسئلة عن قائمة الطعام",
       intro: "اسأل عن أي طبق. الإجابات مأخوذة من قائمة هذا المطعم.",
       placeholder: "اكتب سؤالك…",
@@ -1127,8 +1216,10 @@ export const guestStrings: Record<string, GuestStrings> = {
       error: "حدث خطأ ما. تحقّق من الاتصال وحاول مرة أخرى.",
       limit: "لقد طرحت أسئلة كثيرة. يرجى سؤال الموظفين عن المزيد.",
       busy: "المساعد مشغول الآن. يرجى سؤال الموظفين.",
-      unconfirmed: "معلومات مسببات الحساسية لهذا الطبق غير مؤكدة من المطعم — يرجى سؤال الموظفين.",
-      disclaimer: "الإجابات يكتبها الذكاء الاصطناعي من القائمة. عند الشك، اسأل الموظفين.",
+      unconfirmed:
+        "معلومات مسببات الحساسية لهذا الطبق غير مؤكدة من المطعم — يرجى سؤال الموظفين.",
+      disclaimer:
+        "الإجابات يكتبها الذكاء الاصطناعي من القائمة. عند الشك، اسأل الموظفين.",
       clear: "البدء من جديد",
     },
     allergenNames: {

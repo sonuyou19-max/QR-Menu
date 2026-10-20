@@ -596,6 +596,13 @@
     "allergensNote": "Confirmez les allergènes de chaque plat sous Menu avant que vos clients ne les voient.",
     "webAddressLocked": "Vos codes QR mènent à cette adresse, elle reste donc la même. Besoin d'une autre adresse ? Contactez-nous.",
     "lookTitle": "Logo, couleurs et photo de couverture",
-    "lookText": "Modifiez-les sous Style."
+    "lookText": "Modifiez-les sous Style.",
+    "assistantLabel": "Nom de votre serveur IA",
+    "assistantHint": "Les clients voient ce nom dans le chat sur votre menu, toujours avec « Assistant IA » à côté. Laissez vide pour ne pas lui donner de nom.",
+    "assistantPlaceholder": "Par exemple Jane, Ravi ou Giulia",
+    "assistantError": "Uniquement des lettres (pas de chiffres, liens ni symboles), 20 au maximum.",
+    "assistantPreview": "Les clients voient :",
+    "assistantButton": "Demandez à {name}",
+    "assistantButtonDefault": "Une question sur la carte ?"
   }
 }

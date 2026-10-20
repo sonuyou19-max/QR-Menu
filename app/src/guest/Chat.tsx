@@ -61,6 +61,7 @@ export default function Chat({
   money,
   onOpenDish,
   onClose,
+  assistantName,
 }: {
   slug: string;
   language: string;
@@ -70,6 +71,8 @@ export default function Chat({
   money: Intl.NumberFormat;
   onOpenDish: (dish: GuestDish) => void;
   onClose: () => void;
+  /** The restaurant's own name for its AI waiter, if it chose one. */
+  assistantName?: string | null | undefined;
 }) {
   const c = s.chat;
   const ref = useRef<HTMLDialogElement>(null);
@@ -167,8 +170,20 @@ export default function Chat({
           className="text-brand-strong size-6 shrink-0"
           aria-hidden="true"
         />
-        <h2 id="chat-title" className="min-w-0 flex-1 text-lg leading-tight font-semibold">
-          {c.title}
+        <h2
+          id="chat-title"
+          className="min-w-0 flex-1 text-lg leading-tight font-semibold"
+        >
+          {assistantName ? (
+            <>
+              <span dir="auto">{assistantName}</span>
+              <span className="text-ink-muted block font-sans text-sm font-normal">
+                {c.aiLabel}
+              </span>
+            </>
+          ) : (
+            c.title
+          )}
         </h2>
         {messages.length > 0 && (
           <button
@@ -198,7 +213,11 @@ export default function Chat({
       >
         {messages.length === 0 && (
           <div>
-            <p className="text-ink-muted">{c.intro}</p>
+            <p className="text-ink-muted">
+              {assistantName
+                ? c.introNamed.replace("{name}", assistantName)
+                : c.intro}
+            </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {[c.s1, c.s2, c.s3].map((q) => (
                 <button

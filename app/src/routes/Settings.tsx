@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router";
-import { ArrowLeft, Check, Languages, Lock, Palette } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  Languages,
+  Lock,
+  MessageCircle,
+  Palette,
+} from "lucide-react";
 import { fill, useI18n } from "../i18n";
 import { config } from "../lib/config";
 import {
@@ -18,9 +25,16 @@ import {
 
 type Fields = Pick<
   Restaurant,
-  "name" | "address" | "source_language" | "guest_languages" | "show_allergens"
+  | "name"
+  | "address"
+  | "assistant_name"
+  | "source_language"
+  | "guest_languages"
+  | "show_allergens"
 >;
 const TYPING_PAUSE_MS = 800;
+/** Same rule as the database: letters (any script), spaces, - ' . — no digits, links or markup. */
+const BAD_ASSISTANT_CHARS = /[0-9<>{}[\]\\/:@#$%^&*=+|~"`_\r\n\t]/;
 
 /**
  * Restaurant details after setup (overview step 1): name, address, menu language, guest
@@ -31,10 +45,17 @@ export function Settings() {
   const { t, lang } = useI18n();
   const { restaurant, reload } = useRestaurant();
   const s = t.settings;
-  const ids = { name: useId(), address: useId(), source: useId() };
+  const ids = {
+    name: useId(),
+    address: useId(),
+    assistant: useId(),
+    source: useId(),
+  };
 
   const [name, setName] = useState(restaurant.name);
   const [address, setAddress] = useState(restaurant.address ?? "");
+  const [assistant, setAssistant] = useState(restaurant.assistant_name ?? "");
+  const [assistantError, setAssistantError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [languagesError, setLanguagesError] = useState(false);
   const [added, setAdded] = useState<string[]>([]);
@@ -70,6 +91,8 @@ export function Settings() {
             .eq("id", restaurant.id);
           if ("name" in before) setName(before.name ?? "");
           if ("address" in before) setAddress(before.address ?? "");
+          if ("assistant_name" in before)
+            setAssistant(before.assistant_name ?? "");
           if ("guest_languages" in before) setAdded([]);
           await reload();
           setToast(null);
@@ -81,14 +104,16 @@ export function Settings() {
 
   // Name and address: saved after a short pause in typing, and when leaving the field. The timer
   // reads the latest values through a ref, not the ones from when it was started.
-  const latest = useRef({ name, address, saved, save });
-  latest.current = { name, address, saved, save };
+  const latest = useRef({ name, address, assistant, saved, save });
+  latest.current = { name, address, assistant, saved, save };
   const saveText = useCallback(() => {
     if (typing.current) clearTimeout(typing.current);
     typing.current = null;
-    const { name, address, saved, save } = latest.current;
+    const { name, address, assistant, saved, save } = latest.current;
     const trimmedName = name.trim();
     const trimmedAddress = address.trim();
+    const trimmedAssistant = assistant.trim().replace(/\s+/g, " ");
+    const assistantOk = !BAD_ASSISTANT_CHARS.test(trimmedAssistant);
     const patch: Partial<Fields> = {};
     const before: Partial<Fields> = {};
     if (trimmedName && trimmedName !== saved.name) {
@@ -99,6 +124,11 @@ export function Settings() {
       patch.address = trimmedAddress || null;
       before.address = saved.address;
     }
+    if (assistantOk && trimmedAssistant !== (saved.assistant_name ?? "")) {
+      patch.assistant_name = trimmedAssistant || null;
+      before.assistant_name = saved.assistant_name;
+    }
+    setAssistantError(!assistantOk);
     setNameError(!trimmedName);
     if (Object.keys(patch).length) void save(patch, before);
   }, []);
@@ -218,6 +248,55 @@ export function Settings() {
             maxLength={200}
             className="input mt-1.5"
           />
+        </div>
+
+        <div>
+          <label htmlFor={ids.assistant} className="block font-semibold">
+            {s.assistantLabel}
+            <span className="text-ink-muted font-normal">
+              {" "}
+              ({t.setup.optional})
+            </span>
+          </label>
+          <p className="text-ink-muted text-sm">{s.assistantHint}</p>
+          <input
+            id={ids.assistant}
+            value={assistant}
+            onChange={(e) => {
+              setAssistant(e.target.value);
+              textChanged();
+            }}
+            onBlur={saveText}
+            placeholder={s.assistantPlaceholder}
+            autoComplete="off"
+            maxLength={20}
+            aria-invalid={assistantError || undefined}
+            aria-describedby={`${ids.assistant}-preview${assistantError ? ` ${ids.assistant}-error` : ""}`}
+            className="input mt-1.5"
+          />
+          {assistantError && (
+            <p
+              id={`${ids.assistant}-error`}
+              className="text-danger mt-1.5 text-sm font-medium"
+            >
+              {s.assistantError}
+            </p>
+          )}
+          <p
+            id={`${ids.assistant}-preview`}
+            className="text-ink-muted mt-2 flex flex-wrap items-center gap-2 text-sm"
+          >
+            {s.assistantPreview}
+            <span className="bg-surface border-line text-ink inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 font-semibold">
+              <MessageCircle
+                className="text-brand-strong size-4"
+                aria-hidden="true"
+              />
+              {assistant.trim()
+                ? s.assistantButton.replace("{name}", assistant.trim())
+                : s.assistantButtonDefault}
+            </span>
+          </p>
         </div>
 
         <div>

@@ -125,6 +125,7 @@ Deno.serve(async (req) => {
     menu.restaurant.name,
     languageName(language),
     menuJson,
+    menu.restaurant.assistant_name,
   );
   const history = messages.slice(-8).map((m) => ({
     role: m.role === "guest" ? ("user" as const) : ("assistant" as const),

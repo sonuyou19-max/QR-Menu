@@ -285,6 +285,7 @@ export type Database = {
       restaurants: {
         Row: {
           address: string | null;
+          assistant_name: string | null;
           created_at: string;
           currency: string;
           guest_languages: string[];
@@ -307,6 +308,7 @@ export type Database = {
         };
         Insert: {
           address?: string | null;
+          assistant_name?: string | null;
           created_at?: string;
           currency?: string;
           guest_languages?: string[];
@@ -328,6 +330,7 @@ export type Database = {
         };
         Update: {
           address?: string | null;
+          assistant_name?: string | null;
           created_at?: string;
           currency?: string;
           guest_languages?: string[];
@@ -446,6 +449,7 @@ export type Database = {
         };
         Returns: {
           address: string | null;
+          assistant_name: string | null;
           created_at: string;
           currency: string;
           guest_languages: string[];

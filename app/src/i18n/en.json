@@ -596,6 +596,13 @@
     "allergensNote": "Confirm the allergens of each dish under Menu before guests see them.",
     "webAddressLocked": "Your QR codes point to this address, so it stays the same. Need a different one? Contact us.",
     "lookTitle": "Logo, colours and cover photo",
-    "lookText": "Change them under Look."
+    "lookText": "Change them under Look.",
+    "assistantLabel": "Name of your AI waiter",
+    "assistantHint": "Guests see this name in the chat about your menu, always with “AI assistant” next to it. Leave it empty for no name.",
+    "assistantPlaceholder": "For example Jane, Ravi or Giulia",
+    "assistantError": "Use letters only (no digits, links or symbols), at most 20.",
+    "assistantPreview": "Guests see:",
+    "assistantButton": "Ask {name}",
+    "assistantButtonDefault": "Ask about the menu"
   }
 }

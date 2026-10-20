@@ -507,7 +507,9 @@ export function GuestMenu({ slug }: { slug: string }) {
             className="text-brand-strong size-5"
             aria-hidden="true"
           />
-          {s.chat.open}
+          {restaurant.assistant_name
+            ? s.chat.openNamed.replace("{name}", restaurant.assistant_name)
+            : s.chat.open}
         </button>
       )}
       {chatOpen && (
@@ -521,6 +523,7 @@ export function GuestMenu({ slug }: { slug: string }) {
             money={money}
             onOpenDish={openDishByGuest}
             onClose={() => setChatOpen(false)}
+            assistantName={restaurant.assistant_name}
           />
         </Suspense>
       )}
@@ -858,12 +861,7 @@ function DishDetail({
         <Description dish={dish} s={s} />
         <Tags dish={dish} s={s} />
         <AllergenLine dish={dish} s={s} />
-        <DetailOrderControl
-          dish={dish}
-          cart={cart}
-          money={money}
-          s={s}
-        />
+        <DetailOrderControl dish={dish} cart={cart} money={money} s={s} />
       </div>
     </dialog>
   );

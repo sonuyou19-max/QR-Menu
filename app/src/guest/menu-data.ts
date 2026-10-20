@@ -43,6 +43,8 @@ export interface GuestMenuData {
     /** Raw look settings; read with readTheme(). */
     theme: unknown;
     logo_path: string | null;
+    /** The restaurant's own name for its AI waiter; null: the chat's generic texts. */
+    assistant_name?: string | null;
     /** The look's tagline in the guest's language; null: show it as written. */
     tagline_translated?: string | null;
   };

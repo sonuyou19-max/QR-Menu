@@ -596,6 +596,13 @@
     "allergensNote": "Bevestig de allergenen van elk gerecht onder Menu voordat gasten ze zien.",
     "webAddressLocked": "Je QR-codes verwijzen naar dit adres, dus het blijft hetzelfde. Een ander adres nodig? Neem contact met ons op.",
     "lookTitle": "Logo, kleuren en omslagfoto",
-    "lookText": "Wijzig ze onder Stijl."
+    "lookText": "Wijzig ze onder Stijl.",
+    "assistantLabel": "Naam van je AI-ober",
+    "assistantHint": "Gasten zien deze naam in de chat over je menu, altijd met “AI-assistent” erbij. Laat leeg voor geen naam.",
+    "assistantPlaceholder": "Bijvoorbeeld Jane, Ravi of Giulia",
+    "assistantError": "Gebruik alleen letters (geen cijfers, links of tekens), maximaal 20.",
+    "assistantPreview": "Gasten zien:",
+    "assistantButton": "Vraag het aan {name}",
+    "assistantButtonDefault": "Vraag iets over de kaart"
   }
 }

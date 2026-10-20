@@ -69,6 +69,8 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
 
 ## 4. Core content rules (IMPORTANT)
 
+**The restaurant names its own AI waiter** (owner's decision): `restaurants.assistant_name` (optional, 1–20 letters, no digits/links/symbols; set in `/settings` with a preview). Guests see "Ask Jane" on the chat button, "Jane · AI assistant" in the chat header and "Hi, I'm Jane, this restaurant's AI assistant…" (`guest/strings.ts` `openNamed`/`aiLabel`/`introNamed`, 12 languages); `menu-chat` tells the model its name. The chat always says it is an AI, never a person (EU AI Act transparency), named or not. Without a name the chat keeps its generic texts. The brand name is being changed (menubuddy.eu exists in Benelux with a similar product); the owner wants an abstract name, not a descriptive one.
+
 **Owner-facing name for the AI: "Buddy"** (introduced once as "Buddy, MenuBuddy's AI assistant" on the overview, upload and empty-menu texts; "Ask Buddy", "Buddy's suggestion", "Buddy expects…" elsewhere). Allergen wording stays cautious ("expects… check before you rely on it"). Guests see "Typical preparation" without a name.
 
 **Restaurant data is the source of truth.** The owner has approved it, so it wins over AI general knowledge.
