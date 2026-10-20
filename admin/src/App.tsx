@@ -2,6 +2,10 @@ import { useEffect, useState, type SubmitEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { LoaderCircle, LogOut, MailCheck } from "lucide-react";
 import { AiCosts } from "./AiCosts";
+import { Leads } from "./Leads";
+import { Restaurant } from "./Restaurant";
+import { Restaurants } from "./Restaurants";
+import { Today } from "./Today";
 import { supabase } from "./supabase";
 
 export function App() {
@@ -37,7 +41,7 @@ export function App() {
     );
 
   return (
-    <div className="mx-auto min-h-dvh max-w-3xl px-4 pt-[max(1.5rem,env(safe-area-inset-top))] pb-12">
+    <div className="mx-auto min-h-dvh max-w-6xl px-4 pt-[max(1.5rem,env(safe-area-inset-top))] pb-12">
       <header className="flex items-center justify-between gap-3">
         <p className="font-display text-xl font-semibold">MenuBuddy HQ</p>
         {session && (
@@ -51,11 +55,11 @@ export function App() {
           </button>
         )}
       </header>
-      <main className="mt-8">
+      <main className="mt-4">
         {!session ? (
           <Login />
         ) : founder ? (
-          <AiCosts />
+          <Dashboard />
         ) : (
           <p className="text-danger">
             This dashboard is only for the MenuBuddy team.
@@ -120,5 +124,78 @@ function Login() {
         Send login link
       </button>
     </form>
+  );
+}
+
+const tabs = [
+  { href: "#/", label: "Today", match: (p: string) => p === "/" },
+  {
+    href: "#/restaurants",
+    label: "Restaurants",
+    match: (p: string) => p.startsWith("/restaurants") || p.startsWith("/r/"),
+  },
+  { href: "#/leads", label: "Leads", match: (p: string) => p === "/leads" },
+  { href: "#/costs", label: "Costs", match: (p: string) => p === "/costs" },
+];
+
+/** Screens live after the # (e.g. #/r/<id>), so the static host needs no routes. */
+function useHashPath() {
+  const read = () => location.hash.slice(1) || "/";
+  const [path, setPath] = useState(read);
+  useEffect(() => {
+    const onChange = () => {
+      setPath(read());
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("hashchange", onChange);
+    return () => window.removeEventListener("hashchange", onChange);
+  }, []);
+  return path;
+}
+
+function Dashboard() {
+  const full = useHashPath();
+  const [path, search = ""] = full.split("?");
+  const restaurant = path!.match(/^\/r\/([0-9a-f-]{36})$/)?.[1];
+  const screen = restaurant ? (
+    <Restaurant key={restaurant} id={restaurant} />
+  ) : path === "/restaurants" ? (
+    <Restaurants
+      key={search}
+      initialFilter={new URLSearchParams(search).get("f") ?? undefined}
+    />
+  ) : path === "/leads" ? (
+    <Leads />
+  ) : path === "/costs" ? (
+    <AiCosts />
+  ) : (
+    <Today />
+  );
+  return (
+    <>
+      <nav
+        aria-label="Sections"
+        className="bg-canvas/95 border-line sticky top-0 z-10 -mx-4 mb-5 flex gap-1 overflow-x-auto border-b px-4 backdrop-blur"
+      >
+        {tabs.map((t) => {
+          const active = t.match(path!);
+          return (
+            <a
+              key={t.href}
+              href={t.href}
+              aria-current={active ? "page" : undefined}
+              className={`-mb-px flex min-h-12 shrink-0 items-center border-b-2 px-3 font-semibold ${
+                active
+                  ? "border-brand text-ink"
+                  : "text-ink-muted border-transparent"
+              }`}
+            >
+              {t.label}
+            </a>
+          );
+        })}
+      </nav>
+      {screen}
+    </>
   );
 }

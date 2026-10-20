@@ -13,7 +13,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
 **Three websites:**
 - `menubuddy.be` — marketing website for restaurant owners (Astro). **Designed and built first** (see 4.6).
 - `app.menubuddy.be` — the product: guest menus (`/m/:slug`) + owner/staff admin.
-- `admin.menubuddy.be` — **MenuBuddy HQ**, the founder's own dashboard (AI costs). Never reachable for customers: nothing about it in the app, no sign-ups, data only for accounts in `private.founders`.
+- `admin.menubuddy.be` — **MenuBuddy HQ**, the founder's own working dashboard (business numbers, what needs attention, restaurants, leads, AI costs). Never reachable for customers: nothing about it in the app, no sign-ups, data only for accounts in `private.founders`.
 - `menubuddy.be` is a placeholder; final name TBD.
 
 ---
@@ -25,7 +25,7 @@ A B2B SaaS for restaurants: the restaurant uploads its menu **once** (photo, PDF
   - `/app` — **product** on `app.menubuddy.be`: React + Vite + TypeScript, one app containing:
     - `/m/:slug` — public guest menu (mobile-first, fast, no login). Per-table QR: `/m/:slug?t=5`.
     - admin (login required): `/login`, `/` (overview), `/service`, `/menu`, `/upload`, `/qr`, `/settings`.
-  - `/admin` — **MenuBuddy HQ** (founder only): React + Vite + TypeScript, English only, one screen for now (AI costs, `src/AiCosts.tsx`). Login link only for existing accounts (`shouldCreateUser: false`, same answer for any address); `is_founder()` gates the screen and every founder RPC checks `private.founders` itself. `noindex` + `robots.txt` disallow.
+  - `/admin` — **MenuBuddy HQ** (founder only): React + Vite + TypeScript, English only, built to stay useful with hundreds of restaurants. Screens behind `#/…` (static host, no routes): **Today** (`Today.tsx`: monthly revenue from plans, restaurants online, guest visits vs last week, AI cost vs revenue; "Needs attention" shows only non-empty groups, 3 items each — answers marked wrong, failed imports, failed translations, new leads, pilots ending within 14 days, stuck in setup 3+ days, online but no guests 14 days, AI cost > €9; visits per day; funnel lead → paying), **Restaurants** (`Restaurants.tsx`: search, filters, sort; `Restaurant.tsx` per restaurant: owner, visits, languages, questions with wrong ones first, AI cost by job, imports), **Leads** (`Leads.tsx`: pipeline with status change, tap to email/call), **Costs** (`AiCosts.tsx`). Data from `hq_overview()`, `hq_restaurants()`, `hq_restaurant(id)`, `hq_leads()`, `hq_set_lead_status()`, `founder_ai_costs(month)` (migration `20261022120000_hq_dashboard`; revenue = what the plans add up to until billing exists; the `demo` restaurant is left out of business numbers). Login link only for existing accounts (`shouldCreateUser: false`, same answer for any address); `is_founder()` gates the screen and every founder RPC checks `private.founders` itself. `noindex` + `robots.txt` disallow.
   - Printed QR codes point to `https://app.menubuddy.be/m/:slug` — never a `workers.dev` URL. Buy the domain before printing any QR code, and never change this URL pattern once codes are printed.
   - Supabase Auth redirect URLs must include `https://app.menubuddy.be/*`.
   - Site and app link to each other via env vars (`PUBLIC_APP_URL` in the site, `VITE_SITE_URL` in the app).

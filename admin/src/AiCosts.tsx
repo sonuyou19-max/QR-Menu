@@ -1,28 +1,18 @@
-// AI cost per restaurant per month (CLAUDE.md 10 step 15), split by job, compared with the €30
-// plan, plus the marketing site's "Try your own menu" demo as its own line. founder_ai_costs()
-// answers null for anyone who is not a founder.
-import { useEffect, useState } from "react";
+// AI cost per month (CLAUDE.md 10 step 15): the total against revenue, what it is spent on, and
+// the most expensive restaurants. Per-restaurant detail lives on the restaurant's own page.
+// founder_ai_costs() answers null for anyone who is not a founder.
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { supabase } from "./supabase";
-
-const lang = "en-GB";
-const PLAN_EUR = 30;
-const kinds = [
-  "extract",
-  "translate",
-  "chat",
-  "theme",
-  "dish",
-  "demo",
-] as const;
-const kindNames: Record<(typeof kinds)[number], string> = {
-  extract: "Reading menus",
-  translate: "Translating",
-  chat: "Guest chat",
-  theme: "Look suggestions",
-  dish: "Dish suggestions",
-  demo: "Demo previews",
-};
+import {
+  eur,
+  jobLabels,
+  locale,
+  num,
+  PLAN_EUR,
+  useRpc,
+  type RestaurantRow,
+} from "./lib";
+import { Card, Failed, Loading, RankBars, Tile } from "./ui";
 
 interface Costs {
   month: string;
@@ -31,20 +21,16 @@ interface Costs {
   rows: {
     restaurant_id: string | null;
     name: string | null;
-    slug: string | null;
-    plan: string | null;
     eur: number;
     unpriced: boolean;
-    kinds: Partial<
-      Record<
-        (typeof kinds)[number],
-        {
-          calls: number;
-          input_tokens: number;
-          output_tokens: number;
-          eur: number;
-        }
-      >
+    kinds: Record<
+      string,
+      {
+        calls: number;
+        input_tokens: number;
+        output_tokens: number;
+        eur: number;
+      }
     >;
   }[];
 }
@@ -58,176 +44,152 @@ const monthStart = (offset: number) => {
 
 export function AiCosts() {
   const [offset, setOffset] = useState(0);
-  const [data, setData] = useState<Costs | null | undefined>(undefined);
+  const { data } = useRpc<Costs>("founder_ai_costs", {
+    p_month: monthStart(offset),
+  });
+  const { data: restaurants } = useRpc<RestaurantRow[]>("hq_restaurants");
 
-  useEffect(() => {
-    setData(undefined);
-    void supabase
-      .rpc("founder_ai_costs", { p_month: monthStart(offset) })
-      .then(({ data: result, error }) =>
-        setData(error ? null : (result as unknown as Costs | null)),
-      );
-  }, [offset]);
-
-  const eur = (n: number) =>
-    n.toLocaleString(lang, {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: n > 0 && n < 0.1 ? 3 : 2,
-    });
   const monthName = new Date(
     `${monthStart(offset)}T12:00:00`,
-  ).toLocaleDateString(lang, { month: "long", year: "numeric" });
-  const total = data?.rows.reduce((sum, r) => sum + r.eur, 0) ?? 0;
+  ).toLocaleDateString(locale, {
+    month: "long",
+    year: "numeric",
+  });
+  const switcher = (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        onClick={() => setOffset((o) => o - 1)}
+        aria-label="Previous month"
+        className="rounded-control border-line bg-surface grid size-11 place-items-center border"
+      >
+        <ChevronLeft className="size-5" aria-hidden="true" />
+      </button>
+      <p className="min-w-36 text-center font-semibold">{monthName}</p>
+      <button
+        type="button"
+        onClick={() => setOffset((o) => Math.min(0, o + 1))}
+        disabled={offset === 0}
+        aria-label="Next month"
+        className="rounded-control border-line bg-surface grid size-11 place-items-center border disabled:opacity-40"
+      >
+        <ChevronRight className="size-5" aria-hidden="true" />
+      </button>
+    </div>
+  );
+
+  if (data === undefined)
+    return (
+      <div className="space-y-4">
+        {switcher}
+        <Loading />
+      </div>
+    );
+  if (data === null)
+    return (
+      <div className="space-y-4">
+        {switcher}
+        <Failed />
+      </div>
+    );
+
+  const total = data.rows.reduce((s, r) => s + r.eur, 0);
+  const business = (restaurants ?? []).filter((r) => !r.is_demo);
+  const revenue = business.reduce((s, r) => s + r.mrr, 0);
+  const online = business.filter((r) => r.is_published).length;
+  const byJob = new Map<string, number>();
+  for (const r of data.rows)
+    for (const [kind, k] of Object.entries(r.kinds))
+      byJob.set(kind, (byJob.get(kind) ?? 0) + k.eur);
+  const unpriced = data.rows.some((r) => r.unpriced);
 
   return (
-    <div>
-      <h1 className="text-3xl font-semibold sm:text-4xl">AI costs</h1>
-      <p className="text-ink-muted mt-2">
-        What the AI cost per restaurant this month, compared with the €30 plan.
-      </p>
-
-      <div className="mt-5 flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setOffset((o) => o - 1)}
-          aria-label="Previous month"
-          className="rounded-control border-line grid size-11 place-items-center border"
-        >
-          <ChevronLeft className="size-5" aria-hidden="true" />
-        </button>
-        <p className="min-w-40 text-center font-semibold capitalize">
-          {monthName}
+    <div className="space-y-5">
+      {switcher}
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <Tile
+          label="AI cost"
+          value={eur(total)}
+          sub={offset === 0 ? "so far this month" : undefined}
+        />
+        <Tile
+          label="Share of revenue"
+          value={revenue > 0 ? `${Math.round((total / revenue) * 100)}%` : "–"}
+          sub={
+            revenue > 0
+              ? `of ${eur(revenue)} a month`
+              : "No paying restaurants yet"
+          }
+        />
+        <Tile
+          label="Per online restaurant"
+          value={online ? eur(total / online) : "–"}
+          sub={`${num(online)} online · plan is ${eur(PLAN_EUR)}`}
+        />
+      </div>
+      {unpriced && (
+        <p className="text-danger text-sm">
+          Some calls used a model without a price, so their cost isn't counted.
+          Add it in private.ai_prices.
         </p>
-        <button
-          type="button"
-          onClick={() => setOffset((o) => Math.min(0, o + 1))}
-          disabled={offset === 0}
-          aria-label="Next month"
-          className="rounded-control border-line grid size-11 place-items-center border disabled:opacity-40"
+      )}
+
+      <div className="grid gap-3 lg:grid-cols-2">
+        <Card title="Spent on">
+          <RankBars
+            rows={[...byJob.entries()]
+              .sort((a, b) => b[1] - a[1])
+              .map(([kind, value]) => ({
+                key: kind,
+                label: jobLabels[kind] ?? kind,
+                value,
+              }))}
+            format={(n) => eur(n, true)}
+            empty="No AI use this month"
+          />
+        </Card>
+        <Card
+          title="Most expensive"
+          action={<span className="text-ink-muted text-sm">top 10</span>}
         >
-          <ChevronRight className="size-5" aria-hidden="true" />
-        </button>
+          <RankBars
+            rows={[...data.rows]
+              .sort((a, b) => b.eur - a.eur)
+              .slice(0, 10)
+              .map((r) => ({
+                key: r.restaurant_id ?? "demo",
+                label: r.restaurant_id
+                  ? r.name
+                  : "Website demo (Try your own menu)",
+                value: r.eur,
+                href: r.restaurant_id ? `#/r/${r.restaurant_id}` : undefined,
+                sub: r.restaurant_id
+                  ? `${((r.eur / PLAN_EUR) * 100).toLocaleString(locale, { maximumFractionDigits: 1 })}% of the €30 plan`
+                  : undefined,
+              }))}
+            format={(n) => eur(n, true)}
+            empty="No AI use this month"
+          />
+        </Card>
       </div>
 
-      {data === undefined ? (
-        <div className="bg-surface-muted rounded-card mt-6 h-40 animate-pulse" />
-      ) : data === null ? (
-        <p className="text-danger mt-6">Couldn't load the numbers.</p>
-      ) : (
-        <>
-          <div className="rounded-card bg-surface shadow-card mt-6 p-4">
-            <p className="text-ink-muted text-sm">Total AI cost this month</p>
-            <p className="mt-1 text-3xl font-semibold tabular-nums">
-              {eur(total)}
-            </p>
-          </div>
-
-          {data.rows.length === 0 ? (
-            <p className="text-ink-muted mt-6">No AI use in this month.</p>
-          ) : (
-            <ul className="mt-4 space-y-3">
-              {data.rows.map((row) => {
-                const share = row.eur / PLAN_EUR;
-                return (
-                  <li
-                    key={row.restaurant_id ?? "demo"}
-                    className="rounded-card bg-surface shadow-card p-4"
-                  >
-                    <div className="flex items-baseline justify-between gap-3">
-                      <p className="min-w-0 truncate font-semibold">
-                        {row.restaurant_id ? row.name : "Website demo"}
-                      </p>
-                      <p className="font-semibold tabular-nums">
-                        {eur(row.eur)}
-                      </p>
-                    </div>
-                    {row.restaurant_id && (
-                      <>
-                        <p className="text-ink-muted mt-0.5 text-sm">
-                          {(share * 100).toLocaleString(lang, {
-                            maximumFractionDigits: share < 0.1 ? 1 : 0,
-                          })}
-                          % of the €30 plan
-                        </p>
-                        <span
-                          className="bg-surface-muted mt-2 block h-1.5 rounded-full"
-                          aria-hidden="true"
-                        >
-                          <span
-                            className={`block h-full rounded-full ${share > 0.5 ? "bg-danger" : "bg-brand"}`}
-                            style={{
-                              width: `${Math.min(100, Math.max(share * 100, 1))}%`,
-                            }}
-                          />
-                        </span>
-                      </>
-                    )}
-                    <table className="mt-3 w-full text-sm">
-                      <thead className="text-ink-muted text-left text-xs">
-                        <tr>
-                          <th className="py-1 font-normal">Job</th>
-                          <th className="py-1 text-right font-normal">Calls</th>
-                          <th className="py-1 text-right font-normal">
-                            Tokens
-                          </th>
-                          <th className="py-1 text-right font-normal">Cost</th>
-                        </tr>
-                      </thead>
-                      <tbody className="tabular-nums">
-                        {kinds.map((kind) => {
-                          const k = row.kinds[kind];
-                          if (!k) return null;
-                          return (
-                            <tr key={kind} className="border-line border-t">
-                              <td className="py-1.5">{kindNames[kind]}</td>
-                              <td className="py-1.5 text-right">
-                                {k.calls.toLocaleString(lang)}
-                              </td>
-                              <td className="py-1.5 text-right">
-                                {(
-                                  k.input_tokens + k.output_tokens
-                                ).toLocaleString(lang)}
-                              </td>
-                              <td className="py-1.5 text-right">
-                                {eur(k.eur)}
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                    {row.unpriced && (
-                      <p className="text-danger mt-2 text-sm">
-                        Some calls used a model without a price: their cost is
-                        not counted.
-                      </p>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-
-          <details className="text-ink-muted mt-6 text-sm">
-            <summary className="min-h-11 cursor-pointer py-2 font-semibold">
-              Prices used
-            </summary>
-            <ul className="mt-1 space-y-1">
-              {data.prices.map((p) => (
-                <li key={p.model}>
-                  {p.model}: ${p.input} in / ${p.output} out per million tokens
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2">
-              Converted at $1 = €{data.usd_to_eur}. Change prices in the
-              Supabase SQL editor (table private.ai_prices).
-            </p>
-          </details>
-        </>
-      )}
+      <details className="text-ink-muted text-sm">
+        <summary className="min-h-11 cursor-pointer py-2 font-semibold">
+          Prices used
+        </summary>
+        <ul className="mt-1 space-y-1">
+          {data.prices.map((p) => (
+            <li key={p.model}>
+              {p.model}: ${p.input} in / ${p.output} out per million tokens
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2">
+          Converted at $1 = €{data.usd_to_eur}. Change prices in the Supabase
+          SQL editor (table private.ai_prices). Revenue is what the current
+          plans add up to, excl. VAT.
+        </p>
+      </details>
     </div>
   );
 }
