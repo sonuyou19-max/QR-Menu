@@ -28,3 +28,7 @@ verify_jwt = false
 [functions.demo-translate]
 # "Try with your own menu" on the marketing site: anonymous; honeypot + Turnstile + limits guard it.
 verify_jwt = false
+
+[functions.track-event]
+# Anonymous guest events from the guest page (often via sendBeacon, which can't send headers).
+verify_jwt = false

@@ -28,6 +28,7 @@ import {
 } from "./menu-data";
 import { useCart, type Cart } from "./cart";
 import { CategoryHeading, Hero, Ornament, useGuestLook } from "./Look";
+import { firstVisitThisSession, useTracker } from "./track";
 import { readTheme, type Theme } from "../lib/theme";
 import {
   AddButton,
@@ -115,6 +116,35 @@ export function GuestMenu({ slug }: { slug: string }) {
   const [orderOpen, setOrderOpen] = useState(false);
   const [staffOpen, setStaffOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  // The Look screen's preview frame shows the page too: that isn't a guest.
+  const inPreview = useMemo(
+    () => new URLSearchParams(window.location.search).has("preview"),
+    [],
+  );
+  const track = useTracker(slug, {
+    enabled: !!menu?.restaurant.is_published && !inPreview,
+    language: menu?.restaurant.language ?? language,
+    table,
+  });
+  // Every way a guest adds a dish (list, dish sheet, order sheet, chat) goes through this cart.
+  const trackedCart = useMemo(
+    () => ({
+      ...cart,
+      add: (id: string) => {
+        cart.add(id);
+        track("add_to_cart", id);
+      },
+    }),
+    [cart, track],
+  );
+  const openDishByGuest = (dish: GuestDish) => {
+    setOpenDish(dish);
+    track("view_item", dish.id);
+  };
+  const published = !!menu?.restaurant.is_published;
+  useEffect(() => {
+    if (published && !inPreview && firstVisitThisSession(slug)) track("scan");
+  }, [published, inPreview, slug, track]);
   const requested = useRef(language);
   // The first answer tells which languages exist; pick the best one once, then follow the guest.
   const autoPicked = useRef(false);
@@ -264,6 +294,7 @@ export function GuestMenu({ slug }: { slug: string }) {
       // Not remembered; it still applies now.
     }
     setLanguage(lang);
+    track("language_switch", undefined, lang);
   };
 
   const lines = orderLines(cart, dishes);
@@ -431,8 +462,8 @@ export function GuestMenu({ slug }: { slug: string }) {
                       s={s}
                       layout={theme.layout}
                       qty={cart.qtyOf(dish.id)}
-                      onAdd={() => cart.add(dish.id)}
-                      onOpen={() => setOpenDish(dish)}
+                      onAdd={() => trackedCart.add(dish.id)}
+                      onOpen={() => openDishByGuest(dish)}
                     />
                   </li>
                 ))}
@@ -456,7 +487,7 @@ export function GuestMenu({ slug }: { slug: string }) {
           dish={openDish}
           money={money}
           s={s}
-          cart={cart}
+          cart={trackedCart}
           onClose={() => setOpenDish(null)}
         />
       )}
@@ -486,9 +517,9 @@ export function GuestMenu({ slug }: { slug: string }) {
             language={shownLanguage}
             s={s}
             dishes={dishes}
-            cart={cart}
+            cart={trackedCart}
             money={money}
-            onOpenDish={setOpenDish}
+            onOpenDish={openDishByGuest}
             onClose={() => setChatOpen(false)}
           />
         </Suspense>
@@ -505,11 +536,14 @@ export function GuestMenu({ slug }: { slug: string }) {
       {orderOpen && (
         <OrderSheet
           lines={lines}
-          cart={cart}
+          cart={trackedCart}
           money={money}
           s={s}
           table={table}
-          onShowStaff={() => setStaffOpen(true)}
+          onShowStaff={() => {
+            setStaffOpen(true);
+            track("show_to_staff");
+          }}
           onClose={() => setOrderOpen(false)}
         />
       )}
@@ -824,7 +858,12 @@ function DishDetail({
         <Description dish={dish} s={s} />
         <Tags dish={dish} s={s} />
         <AllergenLine dish={dish} s={s} />
-        <DetailOrderControl dish={dish} cart={cart} money={money} s={s} />
+        <DetailOrderControl
+          dish={dish}
+          cart={cart}
+          money={money}
+          s={s}
+        />
       </div>
     </dialog>
   );
