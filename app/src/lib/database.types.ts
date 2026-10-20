@@ -471,6 +471,10 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      founder_ai_costs: {
+        Args: { p_month?: string; p_usd_to_eur?: number };
+        Returns: Json;
+      };
       get_menu: {
         Args: { p_language?: string; p_slug: string };
         Returns: Json;
@@ -479,6 +483,7 @@ export type Database = {
         Args: { p_mode: string; p_upload_id: string };
         Returns: undefined;
       };
+      is_founder: { Args: never; Returns: boolean };
       is_slug_available: { Args: { p_slug: string }; Returns: boolean };
       reorder_categories: { Args: { p_ids: string[] }; Returns: undefined };
       reset_stock: { Args: { p_restaurant_id: string }; Returns: string[] };

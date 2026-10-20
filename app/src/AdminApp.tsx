@@ -32,6 +32,13 @@ const router = createBrowserRouter([
             children: [
               { path: "/service", element: <Service /> },
               {
+                path: "/founder",
+                // Founder only: the data is refused to anyone else (founder_ai_costs).
+                lazy: async () => ({
+                  Component: (await import("./routes/Founder")).Founder,
+                }),
+              },
+              {
                 element: <OwnerOnly />,
                 children: [
                   { index: true, element: <Overview /> },

@@ -215,6 +215,15 @@ async function run(runId: string, photos: string[], language: string) {
       })
       .eq("id", runId);
   }
+  // demo_runs is emptied after 24 h: keep the cost for the founder's monthly AI cost view.
+  if (usage.input || usage.output)
+    await db.from("usage_events").insert({
+      restaurant_id: null,
+      kind: "demo",
+      model: menuModel,
+      input_tokens: usage.input,
+      output_tokens: usage.output,
+    });
 }
 
 Deno.serve(async (req) => {
