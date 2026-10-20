@@ -43,7 +43,7 @@ export function App() {
   return (
     <div className="mx-auto min-h-dvh max-w-6xl px-4 pt-[max(1.5rem,env(safe-area-inset-top))] pb-12">
       <header className="flex items-center justify-between gap-3">
-        <p className="font-display text-xl font-semibold">MenuBuddy HQ</p>
+        <p className="font-display text-xl font-semibold">Brisolo HQ</p>
         {session && (
           <button
             type="button"
@@ -62,7 +62,7 @@ export function App() {
           <Dashboard />
         ) : (
           <p className="text-danger">
-            This dashboard is only for the MenuBuddy team.
+            This dashboard is only for the Brisolo team.
           </p>
         )}
       </main>

@@ -1,6 +1,6 @@
 # @menubuddy/design-tokens
 
-MenuBuddy's brand tokens, shared by `/site` (Astro) and `/app` (React + Vite) so both look like one brand.
+Brisolo's brand tokens, shared by `/site` (Astro) and `/app` (React + Vite) so both look like one brand.
 
 - `src/tokens.ts` — **source of truth**: palette, semantic colours, fonts, radius, shadows, contrast pairs.
 - `theme.css` — **generated** Tailwind v4 `@theme` block. Don't edit; run `npm run build:tokens` from the repo root.

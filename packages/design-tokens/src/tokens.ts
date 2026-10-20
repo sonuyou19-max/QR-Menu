@@ -1,11 +1,11 @@
 /**
- * MenuBuddy brand tokens — the single source of truth for the marketing site
+ * Brisolo brand tokens — the single source of truth for the marketing site
  * and the admin app. `npm run build` turns this file into `theme.css`
  * (a Tailwind v4 `@theme` block) and fails if a text/background pair
  * listed in `contrastPairs` misses WCAG AA.
  *
  * Restaurant guest-menu themes (CLAUDE.md 4.4) are separate, per-restaurant
- * tokens; these are only MenuBuddy's own brand.
+ * tokens; these are only Brisolo's own brand.
  */
 
 /** Warm, food-first palette: paprika (brand), mustard (accent), herb (in stock / success), oat (warm neutrals). */

@@ -1,4 +1,4 @@
-// One restaurant in full: who runs it, how guests use it, what Buddy answered, how its menu
+// One restaurant in full: who runs it, how guests use it, what Brisolo answered, how its menu
 // imports went and what its AI cost this month (by job).
 import { ArrowLeft, ExternalLink, Flag, Mail } from "lucide-react";
 import {

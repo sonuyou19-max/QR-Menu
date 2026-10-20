@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://menubuddy.be/sitemap-index.xml
+Sitemap: https://brisolo.be/sitemap-index.xml

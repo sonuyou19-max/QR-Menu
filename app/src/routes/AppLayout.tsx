@@ -14,7 +14,7 @@ export function AppLayout() {
   const { session } = useAuth();
   return (
     <div className="min-h-dvh">
-      <header className="print:hidden border-line/70 bg-canvas/90 sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] backdrop-blur">
+      <header className="border-line/70 bg-canvas/90 sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] backdrop-blur print:hidden">
         <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4">
           <Link to="/" className="mr-auto">
             <Logo compact />
@@ -30,7 +30,7 @@ export function AppLayout() {
             <LogOut className="size-5" aria-hidden="true" />
           </button>
         </div>
-        <nav aria-label="MenuBuddy" className="mx-auto max-w-3xl px-2">
+        <nav aria-label="Brisolo" className="mx-auto max-w-3xl px-2">
           <ul className="flex justify-between gap-0.5 overflow-x-auto sm:justify-start sm:gap-1">
             {(role === "staff"
               ? ([["/service", t.nav.service]] as const)
@@ -65,7 +65,7 @@ export function AppLayout() {
       <main className="mx-auto max-w-3xl px-4 py-8 print:max-w-none print:p-0">
         <Outlet />
       </main>
-      <footer className="print:hidden text-ink-muted mx-auto max-w-3xl px-4 pb-10 text-sm">
+      <footer className="text-ink-muted mx-auto max-w-3xl px-4 pb-10 text-sm print:hidden">
         {session?.user.email &&
           fill(t.nav.account, { email: session.user.email })}
       </footer>

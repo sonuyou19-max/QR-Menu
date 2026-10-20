@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "MenuBuddy — votre carte dans la langue de chaque client",
+    "title": "Brisolo — Votre carte. Plus intelligente.",
     "description": "Vos clients scannent un QR code sur la table et lisent votre carte dans leur langue, avec une explication pour chaque plat. Vous envoyez votre carte une fois, l'IA traduit, vous vérifiez. 30 € par mois."
   },
   "nav": {
     "skipToContent": "Aller au contenu",
     "main": "Menu principal",
-    "home": "MenuBuddy — page d'accueil",
+    "home": "Brisolo — page d'accueil",
     "howItWorks": "Comment ça marche",
     "demo": "Démo",
     "pricing": "Tarif",
@@ -83,7 +83,7 @@
   "tryMenu": {
     "eyebrow": "Essayez avec votre propre carte",
     "title": "Voyez votre propre carte traduite.",
-    "text": "Prenez une photo de votre carte (jusqu'à 3 pages) et choisissez une langue. Buddy, notre assistant IA, la lit et la traduit en une minute environ.",
+    "text": "Prenez une photo de votre carte (jusqu'à 3 pages) et choisissez une langue. Brisolo, notre assistant IA, la lit et la traduit en une minute environ.",
     "photosLabel": "Photos de votre carte",
     "takePhoto": "Prendre une photo",
     "choosePhotos": "Choisir des photos",
@@ -96,7 +96,7 @@
     "submit": "Traduire ma carte",
     "preparing": "Préparation des photos…",
     "sending": "Envoi…",
-    "reading": "Buddy lit votre carte…",
+    "reading": "Brisolo lit votre carte…",
     "readingHint": "Cela prend 30 à 90 secondes. Gardez cette page ouverte.",
     "elapsed": "{seconds} s",
     "privacy": "Vos photos servent uniquement à cet aperçu et ne sont pas conservées. L'aperçu est supprimé après 24 heures.",
@@ -105,7 +105,7 @@
     "typical": "Préparation typique",
     "yourMenu": "Votre carte",
     "ctaTitle": "Vous voulez ceci pour votre restaurant ?",
-    "ctaText": "Dans MenuBuddy, vous vérifiez chaque plat, prix et allergène avant que vos clients ne les voient.",
+    "ctaText": "Dans Brisolo, vous vérifiez chaque plat, prix et allergène avant que vos clients ne les voient.",
     "ctaButton": "Réserver une démo",
     "again": "Essayer d'autres photos",
     "errors": {
@@ -119,7 +119,7 @@
       "unreadable": "Le texte était trop difficile à lire. Prenez une photo plus nette avec une bonne lumière, une page par photo.",
       "server": "Un problème est survenu de notre côté. Réessayez dans un instant."
     },
-    "metaTitle": "Essayez avec votre propre carte — MenuBuddy",
+    "metaTitle": "Essayez avec votre propre carte — Brisolo",
     "metaDescription": "Prenez une photo de votre carte et voyez-la traduite dans la langue de vos clients en une minute environ."
   },
   "features": {
@@ -205,7 +205,7 @@
     "monthly": "Mensuel",
     "annual": "Annuel",
     "save": "-25 %",
-    "planName": "MenuBuddy",
+    "planName": "Brisolo",
     "perMonth": "par mois",
     "perYear": "par an",
     "perDay": "Soit 1 € par jour.",
@@ -258,7 +258,7 @@
     "cta": "Demander une démo"
   },
   "footer": {
-    "tagline": "Votre carte, dans la langue de chaque client.",
+    "tagline": "Votre carte. Plus intelligente.",
     "madeIn": "Conçu à Louvain.",
     "explore": "Découvrir",
     "language": "Langue",
@@ -268,8 +268,8 @@
     "contact": "Contact"
   },
   "demoPage": {
-    "metaTitle": "Demander une démo — MenuBuddy",
-    "metaDescription": "Demandez une démo sans engagement de MenuBuddy. Nous vous montrons votre propre carte dans toutes les langues.",
+    "metaTitle": "Demander une démo — Brisolo",
+    "metaDescription": "Demandez une démo sans engagement de Brisolo. Nous vous montrons votre propre carte dans toutes les langues.",
     "title": "Demander une démo",
     "intro": "Laissez vos coordonnées et nous vous contactons dans un délai d'un jour ouvrable pour fixer un moment.",
     "expectTitle": "À quoi vous attendre ?",
@@ -280,7 +280,7 @@
     ]
   },
   "menuDemoPage": {
-    "metaTitle": "Carte d'exemple — MenuBuddy",
+    "metaTitle": "Carte d'exemple — Brisolo",
     "metaDescription": "Essayez une carte d'exemple telle que vos clients la voient sur leur smartphone.",
     "badge": "Exemple",
     "cta": "Demander une démo"

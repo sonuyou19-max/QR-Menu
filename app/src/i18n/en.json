@@ -32,7 +32,7 @@
     "look": "Look"
   },
   "overview": {
-    "title": "Welcome to MenuBuddy",
+    "title": "Welcome to Brisolo",
     "intro": "You're logged in. Here's how to get your menu online:",
     "soon": "Coming soon",
     "steps": [
@@ -42,7 +42,7 @@
       },
       {
         "title": "Upload your menu",
-        "text": "Photos or a PDF of your menu, or your website. Buddy, our AI assistant, turns it into dishes."
+        "text": "Photos or a PDF of your menu, or your website. Brisolo, our AI assistant, turns it into dishes."
       },
       {
         "title": "Check and publish",
@@ -111,7 +111,7 @@
     "visits": "Menu visits",
     "added": "Dishes added to an order",
     "shownToStaff": "Orders shown to staff",
-    "questions": "Questions to Buddy",
+    "questions": "Questions to the AI waiter",
     "empty": "No guests yet in this period. Put the QR code on the tables and the numbers appear here.",
     "perDay": "Visits per day",
     "visitsOn": "{date}: {count} visits",
@@ -120,16 +120,16 @@
     "topAdded": "Most added dishes",
     "noneYet": "Nothing yet",
     "seeQuestions": "Guest questions",
-    "seeQuestionsText": "What guests asked Buddy, and what Buddy answered. Mark a wrong answer."
+    "seeQuestionsText": "What guests asked your AI waiter, and what it answered. Mark a wrong answer."
   },
   "questions": {
     "back": "Overview",
     "title": "Guest questions",
-    "intro": "What guests asked Buddy about your menu, newest first. See a wrong answer? Mark it: we use these to make Buddy better.",
+    "intro": "What guests asked your AI waiter about your menu, newest first. See a wrong answer? Mark it: we use these to make the answers better.",
     "show": "Show",
     "all": "All questions",
     "flaggedOnly": "Marked as wrong",
-    "none": "No questions yet. Guests ask Buddy with the chat button on your menu.",
+    "none": "No questions yet. Guests ask them with the chat button on your menu.",
     "noneFlagged": "No answers marked as wrong.",
     "loadFailed": "Couldn't load the questions. Try again in a moment.",
     "flag": "Wrong answer",
@@ -145,7 +145,7 @@
   },
   "upload": {
     "title": "Upload your menu",
-    "intro": "Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions from photos or a PDF of your menu, or from your website. You check everything before guests see it.",
+    "intro": "Brisolo, our AI assistant, reads the dishes, prices and descriptions from photos or a PDF of your menu, or from your website. You check everything before guests see it.",
     "tipsTitle": "For the best result",
     "tips": [
       "One menu page per photo, in order, the whole page in view",
@@ -179,7 +179,7 @@
       "rateLimited": "You've read a lot of menus today. Try again tomorrow, or contact us.",
       "generic": "That didn't work. Try again.",
       "badUrl": "Enter your website address, for example www.yourrestaurant.be/menu.",
-      "social": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
+      "social": "Brisolo can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
       "notPdf": "This file isn't a PDF. Choose the PDF of your menu, or take photos.",
       "pdfTooBig": "This PDF is larger than 10 MB. Choose a smaller file, or take photos of your menu."
     },
@@ -189,9 +189,9 @@
     "websiteLabel": "Address of your website or menu page",
     "websitePlaceholder": "www.yourrestaurant.be/menu",
     "websiteTips": [
-      "Paste the address of the page with your menu (or your home page: Buddy then looks for the menu page itself)",
-      "Buddy also reads menus in PDF or as images linked there",
-      "Buddy can't read Instagram or Facebook"
+      "Paste the address of the page with your menu (or your home page: Brisolo then looks for the menu page itself)",
+      "Brisolo also reads menus in PDF or as images linked there",
+      "Brisolo can't read Instagram or Facebook"
     ],
     "websiteSubmit": "Read my menu from the website",
     "fetching": "Opening the website…",
@@ -199,7 +199,7 @@
     "modePdf": "PDF",
     "pdfTips": [
       "Choose the PDF of your menu, for example the file from your designer or print shop",
-      "Up to 10 MB; Buddy reads up to 8 pages",
+      "Up to 10 MB; Brisolo reads up to 8 pages",
       "PDFs with a password can't be read"
     ],
     "choosePdf": "Choose PDF",
@@ -219,9 +219,9 @@
       "server": "Something went wrong on our side. Try again in a moment.",
       "stale": "This took too long and was stopped. Try again.",
       "bad_url": "This website address isn't right. Check it and try again.",
-      "social_site": "Buddy can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
-      "site_unreachable": "Buddy couldn't open this website. Check the address and try again, or take photos of your menu.",
-      "no_menu_found": "Buddy found no menu on this website. Paste the address of the menu page itself, or take photos of your menu. (Some websites show their menu in a way Buddy can't read.)",
+      "social_site": "Brisolo can't read Instagram or Facebook pages. Use your own website, or take photos of your menu.",
+      "site_unreachable": "Brisolo couldn't open this website. Check the address and try again, or take photos of your menu.",
+      "no_menu_found": "Brisolo found no menu on this website. Paste the address of the menu page itself, or take photos of your menu. (Some websites show their menu in a way Brisolo can't read.)",
       "pdf_locked": "This PDF is protected with a password. Save it without a password, or take photos of your menu."
     },
     "retry": "Try again",
@@ -231,7 +231,7 @@
     "priceMissing": "Price missing",
     "typical": "Typical preparation",
     "unknownDish": "Unknown dish: add a description later",
-    "suggestedAllergens": "Suggested by Buddy: allergens (not confirmed yet)",
+    "suggestedAllergens": "Suggested by Brisolo: allergens (not confirmed yet)",
     "notFound": "This upload doesn't exist (anymore).",
     "missingPriceOne": "1 dish has no price yet",
     "photosInstead": "Take photos"
@@ -277,7 +277,7 @@
     },
     "empty": {
       "title": "Your menu is still empty",
-      "text": "Upload a photo of your menu and Buddy, our AI assistant, fills it in. Or start with a category yourself.",
+      "text": "Upload a photo of your menu and Brisolo, our AI assistant, fills it in. Or start with a category yourself.",
       "upload": "Upload your menu"
     },
     "add": "Add",
@@ -317,7 +317,7 @@
       "category": "Category",
       "description": "Description",
       "descriptionHint": "Your own description. It is translated as written.",
-      "typical": "Buddy's suggestion: typical preparation",
+      "typical": "Brisolo's suggestion: typical preparation",
       "typicalHint": "Shown in italics to guests when you have no description of your own.",
       "typicalUse": "Use as my description",
       "typicalHide": "Don't show",
@@ -326,8 +326,8 @@
       "unknown": "Unknown dish: guests see \"Ask staff\" until you add a description.",
       "dietary": "Dietary",
       "allergens": "Allergens (14 EU allergens)",
-      "allergensSuggested": "Suggested by Buddy. Check them, then confirm. Guests only see confirmed allergens.",
-      "allergensUnchecked": "Not checked yet. Tick the allergens this dish contains, or tap Ask Buddy for a suggestion. Then confirm.",
+      "allergensSuggested": "Suggested by Brisolo. Check them, then confirm. Guests only see confirmed allergens.",
+      "allergensUnchecked": "Not checked yet. Tick the allergens this dish contains, or tap Ask Brisolo for a suggestion. Then confirm.",
       "allergensConfirmed": "Confirmed by you. Guests see these allergens.",
       "confirm": "Confirm allergens",
       "confirmNone": "Confirm: contains none of these",
@@ -345,13 +345,13 @@
       "translations": "Translations",
       "notTranslated": "Not translated yet",
       "noHelper": "Name stays as is",
-      "translationsHint": "Translated by Buddy from your text. Change your text and tap \"Translate now\" to update.",
-      "suggest": "Ask Buddy",
+      "translationsHint": "Translated by Brisolo from your text. Change your text and tap \"Translate now\" to update.",
+      "suggest": "Ask Brisolo",
       "suggestAgain": "Suggest again",
       "suggesting": "Thinking…",
       "suggestFailed": "That didn't work. Try again in a moment.",
-      "suggestUnknown": "Buddy doesn't know this dish. Write a short description yourself so guests know what it is.",
-      "allergenHint": "Buddy expects this dish may contain: {allergens}. You confirmed otherwise; check before you rely on it."
+      "suggestUnknown": "Brisolo doesn't know this dish. Write a short description yourself so guests know what it is.",
+      "allergenHint": "Brisolo expects this dish may contain: {allergens}. You confirmed otherwise; check before you rely on it."
     },
     "toast": {
       "saved": "Saved",
@@ -436,7 +436,7 @@
     "notPublished": "Your menu isn't online yet, so guests who scan can't see it. Logged in, you see a preview.",
     "toMenu": "Publish under Menu",
     "testTitle": "Test code — not for printing",
-    "testText": "This code opens your menu on our test address, so you can try it now: scan it with another phone, or tap Open menu. Once menubuddy.be is live, your final code appears here, pointing to {address}. Only print that one.",
+    "testText": "This code opens your menu on our test address, so you can try it now: scan it with another phone, or tap Open menu. Once brisolo.be is live, your final code appears here, pointing to {address}. Only print that one.",
     "testBadge": "Test — don't print",
     "mainTitle": "Code for the whole restaurant",
     "mainHint": "One code that works at every table. Good for the window, the entrance and your printed menus.",
@@ -559,7 +559,7 @@
       "fine-dining": "Dark and elegant"
     },
     "fontNames": {
-      "house": "MenuBuddy",
+      "house": "Brisolo",
       "bistro": "Brasserie",
       "trattoria": "Rustic",
       "elegant": "Elegant",
@@ -571,20 +571,20 @@
       "chalk": "Chalkboard"
     },
     "buddy": {
-      "title": "Ask Buddy for a look",
-      "text": "Buddy, MenuBuddy's AI assistant, looks at your logo, cover photo, menu and website and suggests colours, fonts and a style that fit your restaurant. Takes about 15 seconds; nothing changes until you choose.",
+      "title": "Ask Brisolo for a look",
+      "text": "Brisolo, our AI assistant, looks at your logo, cover photo, menu and website and suggests colours, fonts and a style that fit your restaurant. Takes about 15 seconds; nothing changes until you choose.",
       "website": "Your website",
       "optional": "optional",
       "ask": "Suggest a look",
-      "asking": "Buddy is looking…",
+      "asking": "Brisolo is looking…",
       "again": "Suggest another",
       "use": "Use this look",
       "used": "Used",
       "usedHint": "Applied below. Change anything you like, or tap Undo.",
-      "suggests": "Buddy suggests:",
+      "suggests": "Brisolo suggests:",
       "sampleDescription": "Slowly stewed in dark Belgian beer.",
-      "limit": "Buddy made enough suggestions for today. Try again tomorrow.",
-      "failed": "Buddy couldn't make a suggestion right now. Try again in a moment."
+      "limit": "Brisolo made enough suggestions for today. Try again tomorrow.",
+      "failed": "Brisolo couldn't make a suggestion right now. Try again in a moment."
     }
   },
   "settings": {

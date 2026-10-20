@@ -1,4 +1,4 @@
-// "Guest questions" (CLAUDE.md 4.1 Monitoring): what guests asked Buddy and what it answered,
+// "Guest questions" (CLAUDE.md 4.1 Monitoring): what guests asked Brisolo and what it answered,
 // newest first. The owner marks a wrong answer; flagged answers go into the test set
 // (menu-chat/evals.json) before prompts or models change. Owners may only change flagged_by_owner.
 import { useCallback, useEffect, useState } from "react";

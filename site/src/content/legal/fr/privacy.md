@@ -1,11 +1,11 @@
 ---
 title: Politique de confidentialité
-description: Comment MenuBuddy traite vos données personnelles sur menubuddy.be.
+description: Comment Brisolo traite vos données personnelles sur brisolo.be.
 updated: 2026-10-18
 draft: true
 ---
 
-Cette politique de confidentialité s'applique au site menubuddy.be. MenuBuddy est un projet en cours de création basé à Louvain, en Belgique. Nous indiquerons ici le numéro d'entreprise dès l'inscription de la société. Vous pouvez nous joindre via l'adresse de contact en bas de cette page.
+Cette politique de confidentialité s'applique au site brisolo.be. Brisolo est un projet en cours de création basé à Louvain, en Belgique. Nous indiquerons ici le numéro d'entreprise dès l'inscription de la société. Vous pouvez nous joindre via l'adresse de contact en bas de cette page.
 
 ## Les données que nous collectons
 

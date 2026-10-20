@@ -11,7 +11,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       <span
         className={`font-display text-xl font-semibold tracking-tight ${compact ? "max-[379px]:sr-only" : ""}`}
       >
-        MenuBuddy
+        Brisolo
       </span>
     </span>
   );

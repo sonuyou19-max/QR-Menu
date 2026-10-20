@@ -1,4 +1,4 @@
-// Shared data shapes, formatting and data loading for MenuBuddy HQ. All numbers come from the
+// Shared data shapes, formatting and data loading for Brisolo HQ. All numbers come from the
 // hq_* database functions, which answer null to anyone who is not a founder.
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "./supabase";

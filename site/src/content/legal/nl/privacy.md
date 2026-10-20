@@ -1,11 +1,11 @@
 ---
 title: Privacybeleid
-description: Hoe MenuBuddy omgaat met je persoonsgegevens op menubuddy.be.
+description: Hoe Brisolo omgaat met je persoonsgegevens op brisolo.be.
 updated: 2026-10-18
 draft: true
 ---
 
-Dit privacybeleid geldt voor de website menubuddy.be. MenuBuddy is een project in oprichting uit Leuven, België. Zodra de onderneming is ingeschreven, vermelden we hier het ondernemingsnummer. Je kunt ons bereiken via het contactadres onderaan deze pagina.
+Dit privacybeleid geldt voor de website brisolo.be. Brisolo is een project in oprichting uit Leuven, België. Zodra de onderneming is ingeschreven, vermelden we hier het ondernemingsnummer. Je kunt ons bereiken via het contactadres onderaan deze pagina.
 
 ## Welke gegevens we verzamelen
 

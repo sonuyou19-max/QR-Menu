@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "MenuBuddy — your menu in every guest's language",
+    "title": "Brisolo — Your menu. Smarter.",
     "description": "Guests scan a QR code on the table and read your menu in their own language, with an explanation of every dish. Upload your menu once, AI translates, you check. €30 a month."
   },
   "nav": {
     "skipToContent": "Skip to content",
     "main": "Main menu",
-    "home": "MenuBuddy — home",
+    "home": "Brisolo — home",
     "howItWorks": "How it works",
     "demo": "Demo",
     "pricing": "Pricing",
@@ -83,7 +83,7 @@
   "tryMenu": {
     "eyebrow": "Try it with your own menu",
     "title": "See your own menu translated.",
-    "text": "Take a photo of your menu (up to 3 pages) and choose a language. Buddy, our AI assistant, reads and translates it in about a minute.",
+    "text": "Take a photo of your menu (up to 3 pages) and choose a language. Brisolo, our AI assistant, reads and translates it in about a minute.",
     "photosLabel": "Photos of your menu",
     "takePhoto": "Take a photo",
     "choosePhotos": "Choose photos",
@@ -96,7 +96,7 @@
     "submit": "Translate my menu",
     "preparing": "Preparing photos…",
     "sending": "Sending…",
-    "reading": "Buddy is reading your menu…",
+    "reading": "Brisolo is reading your menu…",
     "readingHint": "This takes 30 to 90 seconds. Keep this page open.",
     "elapsed": "{seconds} s",
     "privacy": "Your photos are only used for this preview and are not stored. The preview is deleted after 24 hours.",
@@ -105,7 +105,7 @@
     "typical": "Typical preparation",
     "yourMenu": "Your menu",
     "ctaTitle": "Want this for your restaurant?",
-    "ctaText": "In MenuBuddy you check every dish, price and allergen before guests see it.",
+    "ctaText": "In Brisolo you check every dish, price and allergen before guests see it.",
     "ctaButton": "Book a demo",
     "again": "Try other photos",
     "errors": {
@@ -119,7 +119,7 @@
       "unreadable": "The text was too hard to read. Take a sharper photo with good light, one page per photo.",
       "server": "Something went wrong on our side. Try again in a moment."
     },
-    "metaTitle": "Try it with your own menu — MenuBuddy",
+    "metaTitle": "Try it with your own menu — Brisolo",
     "metaDescription": "Take a photo of your menu and see it translated into your guests' language in about a minute."
   },
   "features": {
@@ -205,7 +205,7 @@
     "monthly": "Monthly",
     "annual": "Annual",
     "save": "Save 25%",
-    "planName": "MenuBuddy",
+    "planName": "Brisolo",
     "perMonth": "per month",
     "perYear": "per year",
     "perDay": "That's €1 per day.",
@@ -258,7 +258,7 @@
     "cta": "Book a demo"
   },
   "footer": {
-    "tagline": "Your menu, in every guest's language.",
+    "tagline": "Your menu. Smarter.",
     "madeIn": "Made in Leuven.",
     "explore": "Explore",
     "language": "Language",
@@ -268,8 +268,8 @@
     "contact": "Contact"
   },
   "demoPage": {
-    "metaTitle": "Book a demo — MenuBuddy",
-    "metaDescription": "Book a free, no-obligation MenuBuddy demo. We'll show you your own menu in every language.",
+    "metaTitle": "Book a demo — Brisolo",
+    "metaDescription": "Book a free, no-obligation Brisolo demo. We'll show you your own menu in every language.",
     "title": "Book a demo",
     "intro": "Leave your details and we'll get in touch within 1 working day to find a time.",
     "expectTitle": "What to expect",
@@ -280,7 +280,7 @@
     ]
   },
   "menuDemoPage": {
-    "metaTitle": "Sample menu — MenuBuddy",
+    "metaTitle": "Sample menu — Brisolo",
     "metaDescription": "Try a sample menu the way your guests see it on their phone.",
     "badge": "Sample",
     "cta": "Book a demo"

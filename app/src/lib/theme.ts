@@ -205,7 +205,7 @@ export const presets: Record<
   },
 };
 
-/** A restaurant that hasn't chosen yet keeps MenuBuddy's own look. */
+/** A restaurant that hasn't chosen yet keeps Brisolo's own look. */
 export const defaultTheme: Theme = {
   template: "bistro",
   fonts: "house",

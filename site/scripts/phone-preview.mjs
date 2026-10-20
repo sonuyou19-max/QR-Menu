@@ -113,7 +113,7 @@ const islands = (
   Array.isArray(bundle) ? bundle[0] : bundle
 ).output[0].code.replaceAll("</script", "<\\/script");
 
-const doc = `<title>MenuBuddy Site Preview</title>
+const doc = `<title>Brisolo Site Preview</title>
 <style>${css}
 body { background: var(--color-canvas); font-size: 1rem; }
 astro-island { display: contents; }

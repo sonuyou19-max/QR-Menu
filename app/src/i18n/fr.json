@@ -32,7 +32,7 @@
     "look": "Style"
   },
   "overview": {
-    "title": "Bienvenue sur MenuBuddy",
+    "title": "Bienvenue sur Brisolo",
     "intro": "Vous êtes connecté. Voici comment mettre votre carte en ligne :",
     "soon": "Bientôt",
     "steps": [
@@ -42,7 +42,7 @@
       },
       {
         "title": "Envoyez votre carte",
-        "text": "Des photos ou un PDF de votre carte, ou votre site web. Buddy, notre assistant IA, en fait des plats."
+        "text": "Des photos ou un PDF de votre carte, ou votre site web. Brisolo, notre assistant IA, en fait des plats."
       },
       {
         "title": "Vérifiez et publiez",
@@ -111,7 +111,7 @@
     "visits": "Visites de votre menu",
     "added": "Plats ajoutés à une commande",
     "shownToStaff": "Commandes montrées au personnel",
-    "questions": "Questions à Buddy",
+    "questions": "Questions à votre serveur IA",
     "empty": "Pas encore de clients sur cette période. Placez le QR code sur les tables et les chiffres apparaîtront ici.",
     "perDay": "Visites par jour",
     "visitsOn": "{date} : {count} visites",
@@ -120,16 +120,16 @@
     "topAdded": "Plats les plus ajoutés",
     "noneYet": "Rien pour l'instant",
     "seeQuestions": "Questions des clients",
-    "seeQuestionsText": "Ce que les clients ont demandé à Buddy, et ce que Buddy a répondu. Signalez une mauvaise réponse."
+    "seeQuestionsText": "Ce que les clients ont demandé à votre serveur IA, et ce qu'il a répondu. Signalez une mauvaise réponse."
   },
   "questions": {
     "back": "Vue d'ensemble",
     "title": "Questions des clients",
-    "intro": "Ce que les clients ont demandé à Buddy sur votre menu, les plus récentes d'abord. Une réponse est fausse ? Signalez-la : cela nous aide à améliorer Buddy.",
+    "intro": "Ce que les clients ont demandé à votre serveur IA sur votre menu, les plus récentes d'abord. Une réponse est fausse ? Signalez-la : cela nous aide à améliorer les réponses.",
     "show": "Afficher",
     "all": "Toutes les questions",
     "flaggedOnly": "Signalées comme fausses",
-    "none": "Pas encore de questions. Les clients interrogent Buddy avec le bouton de chat sur votre menu.",
+    "none": "Pas encore de questions. Les clients les posent avec le bouton de chat sur votre menu.",
     "noneFlagged": "Aucune réponse signalée comme fausse.",
     "loadFailed": "Impossible de charger les questions. Réessayez dans un instant.",
     "flag": "Réponse fausse",
@@ -145,7 +145,7 @@
   },
   "upload": {
     "title": "Envoyez votre carte",
-    "intro": "Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions sur des photos ou un PDF de votre carte, ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",
+    "intro": "Brisolo, notre assistant IA, lit les plats, les prix et les descriptions sur des photos ou un PDF de votre carte, ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",
     "tipsTitle": "Pour un meilleur résultat",
     "tips": [
       "Une page de carte par photo, dans l'ordre, la page entière visible",
@@ -179,7 +179,7 @@
       "rateLimited": "Vous avez déjà fait lire beaucoup de cartes aujourd'hui. Réessayez demain, ou contactez-nous.",
       "generic": "Cela n'a pas fonctionné. Réessayez.",
       "badUrl": "Indiquez l'adresse de votre site, par exemple www.votrerestaurant.be/carte.",
-      "social": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
+      "social": "Brisolo ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
       "notPdf": "Ce fichier n'est pas un PDF. Choisissez le PDF de votre carte, ou prenez des photos.",
       "pdfTooBig": "Ce PDF dépasse 10 Mo. Choisissez un fichier plus petit, ou prenez des photos de votre carte."
     },
@@ -189,9 +189,9 @@
     "websiteLabel": "Adresse de votre site ou de la page de votre carte",
     "websitePlaceholder": "www.votrerestaurant.be/carte",
     "websiteTips": [
-      "Collez l'adresse de la page de votre carte (ou votre page d'accueil : Buddy cherche alors la page de la carte)",
-      "Buddy lit aussi les cartes en PDF ou en image qui y sont liées",
-      "Buddy ne peut pas lire Instagram ni Facebook"
+      "Collez l'adresse de la page de votre carte (ou votre page d'accueil : Brisolo cherche alors la page de la carte)",
+      "Brisolo lit aussi les cartes en PDF ou en image qui y sont liées",
+      "Brisolo ne peut pas lire Instagram ni Facebook"
     ],
     "websiteSubmit": "Lire ma carte sur le site",
     "fetching": "Ouverture du site…",
@@ -199,7 +199,7 @@
     "modePdf": "PDF",
     "pdfTips": [
       "Choisissez le PDF de votre carte, par exemple le fichier de votre graphiste ou imprimeur",
-      "Jusqu'à 10 Mo ; Buddy lit jusqu'à 8 pages",
+      "Jusqu'à 10 Mo ; Brisolo lit jusqu'à 8 pages",
       "Les PDF protégés par un mot de passe ne peuvent pas être lus"
     ],
     "choosePdf": "Choisir un PDF",
@@ -219,9 +219,9 @@
       "server": "Un problème est survenu de notre côté. Réessayez dans un instant.",
       "stale": "Cela a pris trop de temps et a été arrêté. Réessayez.",
       "bad_url": "Cette adresse de site n'est pas correcte. Vérifiez-la et réessayez.",
-      "social_site": "Buddy ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
-      "site_unreachable": "Buddy n'a pas pu ouvrir ce site. Vérifiez l'adresse et réessayez, ou prenez des photos de votre carte.",
-      "no_menu_found": "Buddy n'a pas trouvé de carte sur ce site. Collez l'adresse de la page de la carte elle-même, ou prenez des photos de votre carte. (Certains sites affichent leur carte d'une façon que Buddy ne peut pas lire.)",
+      "social_site": "Brisolo ne peut pas lire les pages Instagram ou Facebook. Utilisez votre propre site, ou prenez des photos de votre carte.",
+      "site_unreachable": "Brisolo n'a pas pu ouvrir ce site. Vérifiez l'adresse et réessayez, ou prenez des photos de votre carte.",
+      "no_menu_found": "Brisolo n'a pas trouvé de carte sur ce site. Collez l'adresse de la page de la carte elle-même, ou prenez des photos de votre carte. (Certains sites affichent leur carte d'une façon que Brisolo ne peut pas lire.)",
       "pdf_locked": "Ce PDF est protégé par un mot de passe. Enregistrez-le sans mot de passe, ou prenez des photos de votre carte."
     },
     "retry": "Réessayer",
@@ -231,7 +231,7 @@
     "priceMissing": "Prix manquant",
     "typical": "Préparation typique",
     "unknownDish": "Plat inconnu : ajoutez une description plus tard",
-    "suggestedAllergens": "Suggérés par Buddy : allergènes (pas encore confirmés)",
+    "suggestedAllergens": "Suggérés par Brisolo : allergènes (pas encore confirmés)",
     "notFound": "Cet envoi n'existe pas (plus).",
     "missingPriceOne": "1 plat n'a pas encore de prix",
     "photosInstead": "Prendre des photos"
@@ -277,7 +277,7 @@
     },
     "empty": {
       "title": "Votre carte est encore vide",
-      "text": "Envoyez une photo de votre carte et Buddy, notre assistant IA, la remplit. Ou commencez vous-même par une catégorie.",
+      "text": "Envoyez une photo de votre carte et Brisolo, notre assistant IA, la remplit. Ou commencez vous-même par une catégorie.",
       "upload": "Envoyer votre carte"
     },
     "add": "Ajouter",
@@ -317,7 +317,7 @@
       "category": "Catégorie",
       "description": "Description",
       "descriptionHint": "Votre propre description. Elle est traduite telle quelle.",
-      "typical": "Suggestion de Buddy : préparation typique",
+      "typical": "Suggestion de Brisolo : préparation typique",
       "typicalHint": "Affichée en italique aux clients si vous n'avez pas de description.",
       "typicalUse": "Utiliser comme ma description",
       "typicalHide": "Ne pas afficher",
@@ -326,8 +326,8 @@
       "unknown": "Plat inconnu : les clients voient « Demandez au personnel » tant que vous n'ajoutez pas de description.",
       "dietary": "Régime",
       "allergens": "Allergènes (14 allergènes UE)",
-      "allergensSuggested": "Suggérés par Buddy. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
-      "allergensUnchecked": "Pas encore vérifiés. Cochez les allergènes de ce plat, ou touchez Demander à Buddy pour une suggestion. Puis confirmez.",
+      "allergensSuggested": "Suggérés par Brisolo. Vérifiez-les puis confirmez. Les clients ne voient que les allergènes confirmés.",
+      "allergensUnchecked": "Pas encore vérifiés. Cochez les allergènes de ce plat, ou touchez Demander à Brisolo pour une suggestion. Puis confirmez.",
       "allergensConfirmed": "Confirmés par vous. Les clients voient ces allergènes.",
       "confirm": "Confirmer les allergènes",
       "confirmNone": "Confirmer : n'en contient aucun",
@@ -345,13 +345,13 @@
       "translations": "Traductions",
       "notTranslated": "Pas encore traduit",
       "noHelper": "Le nom reste tel quel",
-      "translationsHint": "Traduit par Buddy à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour mettre à jour.",
-      "suggest": "Demander à Buddy",
+      "translationsHint": "Traduit par Brisolo à partir de votre texte. Modifiez votre texte et touchez « Traduire maintenant » pour mettre à jour.",
+      "suggest": "Demander à Brisolo",
       "suggestAgain": "Nouvelle suggestion",
       "suggesting": "Réflexion…",
       "suggestFailed": "Cela n'a pas fonctionné. Réessayez dans un instant.",
-      "suggestUnknown": "Buddy ne connaît pas ce plat. Écrivez vous-même une courte description pour que les clients sachent ce que c'est.",
-      "allergenHint": "Buddy s'attend à ce que ce plat puisse contenir : {allergens}. Vous avez confirmé autre chose ; vérifiez avant de vous y fier."
+      "suggestUnknown": "Brisolo ne connaît pas ce plat. Écrivez vous-même une courte description pour que les clients sachent ce que c'est.",
+      "allergenHint": "Brisolo s'attend à ce que ce plat puisse contenir : {allergens}. Vous avez confirmé autre chose ; vérifiez avant de vous y fier."
     },
     "toast": {
       "saved": "Enregistré",
@@ -436,7 +436,7 @@
     "notPublished": "Votre carte n'est pas encore en ligne : les clients qui scannent ne la voient pas encore. Connecté, vous voyez un aperçu.",
     "toMenu": "Publier sous Carte",
     "testTitle": "Code de test — à ne pas imprimer",
-    "testText": "Ce code ouvre votre carte sur notre adresse de test, pour l'essayer dès maintenant : scannez-le avec un autre téléphone, ou touchez Ouvrir la carte. Dès que menubuddy.be sera en ligne, votre code définitif apparaîtra ici, vers {address}. N'imprimez que celui-là.",
+    "testText": "Ce code ouvre votre carte sur notre adresse de test, pour l'essayer dès maintenant : scannez-le avec un autre téléphone, ou touchez Ouvrir la carte. Dès que brisolo.be sera en ligne, votre code définitif apparaîtra ici, vers {address}. N'imprimez que celui-là.",
     "testBadge": "Test — ne pas imprimer",
     "mainTitle": "Code pour tout le restaurant",
     "mainHint": "Un seul code qui fonctionne à chaque table. Pratique pour la vitrine, l'entrée et vos cartes imprimées.",
@@ -559,7 +559,7 @@
       "fine-dining": "Sombre et élégant"
     },
     "fontNames": {
-      "house": "MenuBuddy",
+      "house": "Brisolo",
       "bistro": "Brasserie",
       "trattoria": "Rustique",
       "elegant": "Élégant",
@@ -571,20 +571,20 @@
       "chalk": "Ardoise"
     },
     "buddy": {
-      "title": "Demandez un style à Buddy",
-      "text": "Buddy, l'assistant IA de MenuBuddy, regarde votre logo, votre photo de couverture, votre carte et votre site, et propose des couleurs, des polices et un style qui correspondent à votre restaurant. Environ 15 secondes ; rien ne change tant que vous ne choisissez pas.",
+      "title": "Demandez un style à Brisolo",
+      "text": "Brisolo, notre assistant IA, regarde votre logo, votre photo de couverture, votre carte et votre site, et propose des couleurs, des polices et un style qui correspondent à votre restaurant. Environ 15 secondes ; rien ne change tant que vous ne choisissez pas.",
       "website": "Votre site web",
       "optional": "facultatif",
       "ask": "Proposer un style",
-      "asking": "Buddy regarde…",
+      "asking": "Brisolo regarde…",
       "again": "Autre proposition",
       "use": "Utiliser ce style",
       "used": "Utilisé",
       "usedHint": "Appliqué ci-dessous. Changez ce que vous voulez, ou touchez Annuler.",
-      "suggests": "Buddy propose :",
+      "suggests": "Brisolo propose :",
       "sampleDescription": "Mijoté lentement dans de la bière brune belge.",
-      "limit": "Buddy a fait assez de propositions aujourd'hui. Réessayez demain.",
-      "failed": "Buddy n'a pas pu faire de proposition. Réessayez dans un instant."
+      "limit": "Brisolo a fait assez de propositions aujourd'hui. Réessayez demain.",
+      "failed": "Brisolo n'a pas pu faire de proposition. Réessayez dans un instant."
     }
   },
   "settings": {

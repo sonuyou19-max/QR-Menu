@@ -1,29 +1,29 @@
 ---
 title: Gebruiksvoorwaarden
-description: De voorwaarden voor het gebruik van de website menubuddy.be.
+description: De voorwaarden voor het gebruik van de website brisolo.be.
 updated: 2026-10-18
 draft: true
 ---
 
-Deze voorwaarden gelden voor het gebruik van de website menubuddy.be. MenuBuddy is een project in oprichting uit Leuven, België. Zodra de onderneming is ingeschreven, vermelden we hier het ondernemingsnummer.
+Deze voorwaarden gelden voor het gebruik van de website brisolo.be. Brisolo is een project in oprichting uit Leuven, België. Zodra de onderneming is ingeschreven, vermelden we hier het ondernemingsnummer.
 
 ## De website
 
-De website geeft informatie over MenuBuddy en laat je een demo aanvragen. We doen ons best om de informatie juist en actueel te houden, maar kunnen niet garanderen dat ze altijd volledig of foutloos is.
+De website geeft informatie over Brisolo en laat je een demo aanvragen. We doen ons best om de informatie juist en actueel te houden, maar kunnen niet garanderen dat ze altijd volledig of foutloos is.
 
 Prijzen op de website zijn exclusief btw en kunnen veranderen. De prijs die geldt, is de prijs in je overeenkomst.
 
 ## Het voorbeeldmenu
 
-Het voorbeeldmenu ("Brasserie Lindehof") is fictief. Het toont hoe MenuBuddy werkt. Gerechten, prijzen, allergenen en antwoorden in de demo zijn voorbeelden en geen informatie over een echt restaurant.
+Het voorbeeldmenu ("Brasserie Lindehof") is fictief. Het toont hoe Brisolo werkt. Gerechten, prijzen, allergenen en antwoorden in de demo zijn voorbeelden en geen informatie over een echt restaurant.
 
-## De dienst MenuBuddy
+## De dienst Brisolo
 
-Het gebruik van MenuBuddy door een restaurant valt onder een aparte overeenkomst, die we afsluiten bij de start van een pilot of abonnement. Deze gebruiksvoorwaarden gaan alleen over de website.
+Het gebruik van Brisolo door een restaurant valt onder een aparte overeenkomst, die we afsluiten bij de start van een pilot of abonnement. Deze gebruiksvoorwaarden gaan alleen over de website.
 
 ## Intellectuele eigendom
 
-Teksten, ontwerp, logo en software op deze website zijn van MenuBuddy of worden met toestemming gebruikt. Je mag ze niet overnemen zonder onze schriftelijke toestemming.
+Teksten, ontwerp, logo en software op deze website zijn van Brisolo of worden met toestemming gebruikt. Je mag ze niet overnemen zonder onze schriftelijke toestemming.
 
 ## Aansprakelijkheid
 

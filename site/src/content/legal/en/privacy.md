@@ -1,11 +1,11 @@
 ---
 title: Privacy policy
-description: How MenuBuddy handles your personal data on menubuddy.be.
+description: How Brisolo handles your personal data on brisolo.be.
 updated: 2026-10-18
 draft: true
 ---
 
-This privacy policy applies to the website menubuddy.be. MenuBuddy is a company being set up in Leuven, Belgium. We will add the company number here once it is registered. You can reach us at the contact address at the bottom of this page.
+This privacy policy applies to the website brisolo.be. Brisolo is a company being set up in Leuven, Belgium. We will add the company number here once it is registered. You can reach us at the contact address at the bottom of this page.
 
 ## What we collect
 

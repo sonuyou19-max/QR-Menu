@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "MenuBuddy brand tokens shared by /site and /app (Tailwind v4 theme, fonts, logo).",
+  "description": "Brisolo brand tokens shared by /site and /app (Tailwind v4 theme, fonts, logo).",
   "exports": {
     ".": "./src/tokens.ts",
     "./theme.css": "./theme.css",

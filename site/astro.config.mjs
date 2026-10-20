@@ -8,7 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 const unlisted = ["/styleguide/", "/menu-demo/"];
 
 export default defineConfig({
-  site: process.env.SITE_URL ?? "https://menubuddy.be",
+  site: process.env.SITE_URL ?? "https://brisolo.be",
   integrations: [
     react(),
     sitemap({

@@ -27,7 +27,7 @@ const groups: {
 }[] = [
   {
     key: "flagged_answers",
-    title: "Owners marked Buddy's answer as wrong",
+    title: "Owners marked Brisolo's answer as wrong",
     link: (id) => `#/r/${id}`,
     more: "#/restaurants",
     note: (i) => `“${i.note ?? ""}” · ${ago(i.at)}`,
@@ -232,7 +232,7 @@ function AttentionCard({
 const funnelSteps: { key: keyof Overview["funnel"]; label: string }[] = [
   { key: "leads", label: "Asked for a demo" },
   { key: "signed_up", label: "Signed up" },
-  { key: "menu_read", label: "Menu read by Buddy" },
+  { key: "menu_read", label: "Menu read by Brisolo" },
   { key: "online", label: "Menu online" },
   { key: "guests", label: "Guests in the last 30 days" },
   { key: "paying", label: "Paying" },

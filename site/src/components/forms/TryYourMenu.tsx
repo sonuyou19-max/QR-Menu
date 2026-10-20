@@ -67,7 +67,7 @@ export interface TryYourMenuProps {
   t: Copy;
   endpoint: string;
   siteKey: string;
-  /** Book-a-demo page; the restaurant name Buddy read is passed along. */
+  /** Book-a-demo page; the restaurant name Brisolo read is passed along. */
   demoHref: string;
   /** Phone preview (claude.ai page): no network there, so the form only shows itself. */
   previewMode?: boolean;
@@ -132,7 +132,7 @@ export default function TryYourMenu({
     };
   }, [lang, siteKey, previewMode]);
 
-  // A reload while Buddy is reading picks the same run up again.
+  // A reload while Brisolo is reading picks the same run up again.
   useEffect(() => {
     try {
       const saved = JSON.parse(sessionStorage.getItem(RUN_KEY) ?? "null") as {

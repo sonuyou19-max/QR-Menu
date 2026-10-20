@@ -32,7 +32,7 @@
     "look": "Stijl"
   },
   "overview": {
-    "title": "Welkom bij MenuBuddy",
+    "title": "Welkom bij Brisolo",
     "intro": "Je bent ingelogd. Zo zet je je menu online:",
     "soon": "Binnenkort",
     "steps": [
@@ -42,7 +42,7 @@
       },
       {
         "title": "Upload je menu",
-        "text": "Foto's of een PDF van je menukaart, of je website. Buddy, onze AI-assistent, maakt er gerechten van."
+        "text": "Foto's of een PDF van je menukaart, of je website. Brisolo, onze AI-assistent, maakt er gerechten van."
       },
       {
         "title": "Controleer en publiceer",
@@ -111,7 +111,7 @@
     "visits": "Bezoeken aan je menu",
     "added": "Gerechten aan een bestelling toegevoegd",
     "shownToStaff": "Bestellingen aan personeel getoond",
-    "questions": "Vragen aan Buddy",
+    "questions": "Vragen aan je AI-ober",
     "empty": "Nog geen gasten in deze periode. Zet de QR-code op de tafels, dan verschijnen de cijfers hier.",
     "perDay": "Bezoeken per dag",
     "visitsOn": "{date}: {count} bezoeken",
@@ -120,16 +120,16 @@
     "topAdded": "Meest toegevoegde gerechten",
     "noneYet": "Nog niets",
     "seeQuestions": "Vragen van gasten",
-    "seeQuestionsText": "Wat gasten aan Buddy vroegen, en wat Buddy antwoordde. Markeer een fout antwoord."
+    "seeQuestionsText": "Wat gasten aan je AI-ober vroegen, en wat die antwoordde. Markeer een fout antwoord."
   },
   "questions": {
     "back": "Overzicht",
     "title": "Vragen van gasten",
-    "intro": "Wat gasten aan Buddy vroegen over je menu, nieuwste eerst. Zie je een fout antwoord? Markeer het: zo maken we Buddy beter.",
+    "intro": "Wat gasten aan je AI-ober vroegen over je menu, nieuwste eerst. Zie je een fout antwoord? Markeer het: zo maken we de antwoorden beter.",
     "show": "Tonen",
     "all": "Alle vragen",
     "flaggedOnly": "Gemarkeerd als fout",
-    "none": "Nog geen vragen. Gasten vragen het Buddy met de chatknop op je menu.",
+    "none": "Nog geen vragen. Gasten stellen ze met de chatknop op je menu.",
     "noneFlagged": "Geen antwoorden gemarkeerd als fout.",
     "loadFailed": "De vragen konden niet geladen worden. Probeer het zo opnieuw.",
     "flag": "Fout antwoord",
@@ -145,7 +145,7 @@
   },
   "upload": {
     "title": "Upload je menukaart",
-    "intro": "Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen van foto's of een PDF van je menukaart, of van je website. Jij controleert alles voordat gasten het zien.",
+    "intro": "Brisolo, onze AI-assistent, leest de gerechten, prijzen en beschrijvingen van foto's of een PDF van je menukaart, of van je website. Jij controleert alles voordat gasten het zien.",
     "tipsTitle": "Voor het beste resultaat",
     "tips": [
       "Eén menupagina per foto, in volgorde, de hele pagina in beeld",
@@ -179,7 +179,7 @@
       "rateLimited": "Je hebt vandaag al veel menukaarten laten lezen. Probeer het morgen opnieuw, of neem contact met ons op.",
       "generic": "Dat is niet gelukt. Probeer opnieuw.",
       "badUrl": "Vul het adres van je website in, bijvoorbeeld www.jouwrestaurant.be/menu.",
-      "social": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
+      "social": "Brisolo kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
       "notPdf": "Dit bestand is geen PDF. Kies de PDF van je menukaart, of neem foto's.",
       "pdfTooBig": "Deze PDF is groter dan 10 MB. Kies een kleiner bestand, of neem foto's van je menukaart."
     },
@@ -189,9 +189,9 @@
     "websiteLabel": "Adres van je website of menupagina",
     "websitePlaceholder": "www.jouwrestaurant.be/menu",
     "websiteTips": [
-      "Plak het adres van de pagina met je menukaart (of je homepagina: Buddy zoekt dan zelf de menupagina)",
-      "Buddy leest ook menukaarten in PDF of als afbeelding die daar gelinkt staan",
-      "Instagram en Facebook kan Buddy niet lezen"
+      "Plak het adres van de pagina met je menukaart (of je homepagina: Brisolo zoekt dan zelf de menupagina)",
+      "Brisolo leest ook menukaarten in PDF of als afbeelding die daar gelinkt staan",
+      "Instagram en Facebook kan Brisolo niet lezen"
     ],
     "websiteSubmit": "Lees mijn menukaart van de website",
     "fetching": "Website openen…",
@@ -199,7 +199,7 @@
     "modePdf": "PDF",
     "pdfTips": [
       "Kies de PDF van je menukaart, bijvoorbeeld het bestand van je ontwerper of drukker",
-      "Tot 10 MB; Buddy leest tot 8 pagina's",
+      "Tot 10 MB; Brisolo leest tot 8 pagina's",
       "PDF's met een wachtwoord kunnen niet gelezen worden"
     ],
     "choosePdf": "PDF kiezen",
@@ -219,9 +219,9 @@
       "server": "Er ging bij ons iets mis. Probeer het zo meteen opnieuw.",
       "stale": "Dit duurde te lang en is gestopt. Probeer opnieuw.",
       "bad_url": "Dit websiteadres klopt niet. Controleer het en probeer opnieuw.",
-      "social_site": "Buddy kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
-      "site_unreachable": "Buddy kon deze website niet openen. Controleer het adres en probeer opnieuw, of neem foto's van je menukaart.",
-      "no_menu_found": "Buddy vond geen menukaart op deze website. Plak het adres van de menupagina zelf, of neem foto's van je menukaart. (Sommige websites tonen hun menu op een manier die Buddy niet kan lezen.)",
+      "social_site": "Brisolo kan Instagram- en Facebookpagina's niet lezen. Gebruik je eigen website, of neem foto's van je menukaart.",
+      "site_unreachable": "Brisolo kon deze website niet openen. Controleer het adres en probeer opnieuw, of neem foto's van je menukaart.",
+      "no_menu_found": "Brisolo vond geen menukaart op deze website. Plak het adres van de menupagina zelf, of neem foto's van je menukaart. (Sommige websites tonen hun menu op een manier die Brisolo niet kan lezen.)",
       "pdf_locked": "Deze PDF is beveiligd met een wachtwoord. Bewaar hem zonder wachtwoord, of neem foto's van je menukaart."
     },
     "retry": "Opnieuw proberen",
@@ -231,7 +231,7 @@
     "priceMissing": "Prijs ontbreekt",
     "typical": "Typische bereiding",
     "unknownDish": "Onbekend gerecht: voeg later een beschrijving toe",
-    "suggestedAllergens": "Voorgesteld door Buddy: allergenen (nog niet bevestigd)",
+    "suggestedAllergens": "Voorgesteld door Brisolo: allergenen (nog niet bevestigd)",
     "notFound": "Deze upload bestaat niet (meer).",
     "missingPriceOne": "1 gerecht heeft nog geen prijs",
     "photosInstead": "Foto's nemen"
@@ -277,7 +277,7 @@
     },
     "empty": {
       "title": "Je menukaart is nog leeg",
-      "text": "Upload een foto van je menukaart en Buddy, onze AI-assistent, vult hem in. Of begin zelf met een categorie.",
+      "text": "Upload een foto van je menukaart en Brisolo, onze AI-assistent, vult hem in. Of begin zelf met een categorie.",
       "upload": "Upload je menukaart"
     },
     "add": "Toevoegen",
@@ -317,7 +317,7 @@
       "category": "Categorie",
       "description": "Beschrijving",
       "descriptionHint": "Je eigen beschrijving. Die wordt letterlijk vertaald.",
-      "typical": "Voorstel van Buddy: typische bereiding",
+      "typical": "Voorstel van Brisolo: typische bereiding",
       "typicalHint": "Gasten zien dit schuin gedrukt als je zelf geen beschrijving hebt.",
       "typicalUse": "Gebruik als mijn beschrijving",
       "typicalHide": "Niet tonen",
@@ -326,8 +326,8 @@
       "unknown": "Onbekend gerecht: gasten zien \"Vraag het aan het personeel\" tot je een beschrijving toevoegt.",
       "dietary": "Dieet",
       "allergens": "Allergenen (14 EU-allergenen)",
-      "allergensSuggested": "Voorgesteld door Buddy. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
-      "allergensUnchecked": "Nog niet gecontroleerd. Vink de allergenen aan die in dit gerecht zitten, of tik op Vraag het Buddy voor een voorstel. Bevestig daarna.",
+      "allergensSuggested": "Voorgesteld door Brisolo. Controleer en bevestig ze. Gasten zien alleen bevestigde allergenen.",
+      "allergensUnchecked": "Nog niet gecontroleerd. Vink de allergenen aan die in dit gerecht zitten, of tik op Vraag het Brisolo voor een voorstel. Bevestig daarna.",
       "allergensConfirmed": "Bevestigd door jou. Gasten zien deze allergenen.",
       "confirm": "Allergenen bevestigen",
       "confirmNone": "Bevestigen: bevat geen van deze",
@@ -345,13 +345,13 @@
       "translations": "Vertalingen",
       "notTranslated": "Nog niet vertaald",
       "noHelper": "Naam blijft zoals hij is",
-      "translationsHint": "Vertaald door Buddy op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken.",
-      "suggest": "Vraag het Buddy",
+      "translationsHint": "Vertaald door Brisolo op basis van jouw tekst. Pas je tekst aan en tik op \"Nu vertalen\" om ze bij te werken.",
+      "suggest": "Vraag het Brisolo",
       "suggestAgain": "Nieuw voorstel",
       "suggesting": "Even denken…",
       "suggestFailed": "Dat is niet gelukt. Probeer het zo meteen opnieuw.",
-      "suggestUnknown": "Buddy kent dit gerecht niet. Schrijf zelf een korte beschrijving, zodat gasten weten wat het is.",
-      "allergenHint": "Buddy verwacht dat dit gerecht dit kan bevatten: {allergens}. Jij bevestigde iets anders; controleer het voor je erop vertrouwt."
+      "suggestUnknown": "Brisolo kent dit gerecht niet. Schrijf zelf een korte beschrijving, zodat gasten weten wat het is.",
+      "allergenHint": "Brisolo verwacht dat dit gerecht dit kan bevatten: {allergens}. Jij bevestigde iets anders; controleer het voor je erop vertrouwt."
     },
     "toast": {
       "saved": "Bewaard",
@@ -436,7 +436,7 @@
     "notPublished": "Je menukaart staat nog niet online, dus gasten die scannen zien hem nog niet. Ingelogd zie je wel een voorbeeld.",
     "toMenu": "Publiceer onder Menu",
     "testTitle": "Testcode — niet afdrukken",
-    "testText": "Deze code opent je menukaart op ons testadres, zodat je hem nu al kunt proberen: scan hem met een andere telefoon, of tik op Menukaart openen. Zodra menubuddy.be online is, verschijnt hier je definitieve code, naar {address}. Druk alleen die af.",
+    "testText": "Deze code opent je menukaart op ons testadres, zodat je hem nu al kunt proberen: scan hem met een andere telefoon, of tik op Menukaart openen. Zodra brisolo.be online is, verschijnt hier je definitieve code, naar {address}. Druk alleen die af.",
     "testBadge": "Test — niet afdrukken",
     "mainTitle": "Code voor het hele restaurant",
     "mainHint": "Eén code die aan elke tafel werkt. Handig voor het raam, de ingang en je papieren menukaarten.",
@@ -559,7 +559,7 @@
       "fine-dining": "Donker en elegant"
     },
     "fontNames": {
-      "house": "MenuBuddy",
+      "house": "Brisolo",
       "bistro": "Brasserie",
       "trattoria": "Rustiek",
       "elegant": "Elegant",
@@ -571,20 +571,20 @@
       "chalk": "Krijtbord"
     },
     "buddy": {
-      "title": "Vraag Buddy om een stijl",
-      "text": "Buddy, de AI-assistent van MenuBuddy, bekijkt je logo, omslagfoto, menukaart en website en stelt kleuren, lettertypes en een stijl voor die bij je restaurant passen. Duurt ongeveer 15 seconden; er verandert niets tot je kiest.",
+      "title": "Vraag Brisolo om een stijl",
+      "text": "Brisolo, onze AI-assistent, bekijkt je logo, omslagfoto, menukaart en website en stelt kleuren, lettertypes en een stijl voor die bij je restaurant passen. Duurt ongeveer 15 seconden; er verandert niets tot je kiest.",
       "website": "Je website",
       "optional": "optioneel",
       "ask": "Stel een stijl voor",
-      "asking": "Buddy kijkt…",
+      "asking": "Brisolo kijkt…",
       "again": "Een ander voorstel",
       "use": "Gebruik deze stijl",
       "used": "Gebruikt",
       "usedHint": "Hieronder toegepast. Pas aan wat je wil, of tik op Herstel.",
-      "suggests": "Buddy stelt voor:",
+      "suggests": "Brisolo stelt voor:",
       "sampleDescription": "Langzaam gestoofd in donker Belgisch bier.",
-      "limit": "Buddy deed vandaag genoeg voorstellen. Probeer morgen opnieuw.",
-      "failed": "Buddy kon nu geen voorstel maken. Probeer het zo meteen opnieuw."
+      "limit": "Brisolo deed vandaag genoeg voorstellen. Probeer morgen opnieuw.",
+      "failed": "Brisolo kon nu geen voorstel maken. Probeer het zo meteen opnieuw."
     }
   },
   "settings": {

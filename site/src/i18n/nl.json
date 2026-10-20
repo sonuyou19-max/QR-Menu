@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "MenuBuddy — je menukaart in de taal van elke gast",
+    "title": "Brisolo — Je menukaart. Slimmer.",
     "description": "Gasten scannen een QR-code op tafel en lezen je menu in hun eigen taal, met uitleg bij elk gerecht. Eén keer je menu uploaden, AI vertaalt, jij controleert. €30 per maand."
   },
   "nav": {
     "skipToContent": "Naar de inhoud",
     "main": "Hoofdmenu",
-    "home": "MenuBuddy — startpagina",
+    "home": "Brisolo — startpagina",
     "howItWorks": "Hoe het werkt",
     "demo": "Demo",
     "pricing": "Prijs",
@@ -83,7 +83,7 @@
   "tryMenu": {
     "eyebrow": "Probeer het met je eigen menukaart",
     "title": "Zie je eigen menukaart vertaald.",
-    "text": "Neem een foto van je menukaart (tot 3 pagina's) en kies een taal. Buddy, onze AI-assistent, leest en vertaalt hem in ongeveer een minuut.",
+    "text": "Neem een foto van je menukaart (tot 3 pagina's) en kies een taal. Brisolo, onze AI-assistent, leest en vertaalt hem in ongeveer een minuut.",
     "photosLabel": "Foto's van je menukaart",
     "takePhoto": "Foto nemen",
     "choosePhotos": "Foto's kiezen",
@@ -96,7 +96,7 @@
     "submit": "Vertaal mijn menukaart",
     "preparing": "Foto's klaarmaken…",
     "sending": "Versturen…",
-    "reading": "Buddy leest je menukaart…",
+    "reading": "Brisolo leest je menukaart…",
     "readingHint": "Dit duurt 30 tot 90 seconden. Laat deze pagina open.",
     "elapsed": "{seconds} s",
     "privacy": "Je foto's worden alleen voor dit voorbeeld gebruikt en niet bewaard. Het voorbeeld wordt na 24 uur gewist.",
@@ -105,7 +105,7 @@
     "typical": "Typische bereiding",
     "yourMenu": "Je menukaart",
     "ctaTitle": "Dit voor jouw restaurant?",
-    "ctaText": "In MenuBuddy controleer je elk gerecht, elke prijs en elk allergeen voordat gasten ze zien.",
+    "ctaText": "In Brisolo controleer je elk gerecht, elke prijs en elk allergeen voordat gasten ze zien.",
     "ctaButton": "Plan een demo",
     "again": "Andere foto's proberen",
     "errors": {
@@ -119,7 +119,7 @@
       "unreadable": "De tekst was te moeilijk leesbaar. Neem een scherpere foto met goed licht, één pagina per foto.",
       "server": "Er ging bij ons iets mis. Probeer het zo meteen opnieuw."
     },
-    "metaTitle": "Probeer het met je eigen menukaart — MenuBuddy",
+    "metaTitle": "Probeer het met je eigen menukaart — Brisolo",
     "metaDescription": "Neem een foto van je menukaart en zie hem in ongeveer een minuut vertaald in de taal van je gasten."
   },
   "features": {
@@ -205,7 +205,7 @@
     "monthly": "Maandelijks",
     "annual": "Jaarlijks",
     "save": "Bespaar 25%",
-    "planName": "MenuBuddy",
+    "planName": "Brisolo",
     "perMonth": "per maand",
     "perYear": "per jaar",
     "perDay": "Dat is €1 per dag.",
@@ -258,7 +258,7 @@
     "cta": "Demo aanvragen"
   },
   "footer": {
-    "tagline": "Je menukaart, in de taal van elke gast.",
+    "tagline": "Je menukaart. Slimmer.",
     "madeIn": "Gemaakt in Leuven.",
     "explore": "Ontdek",
     "language": "Taal",
@@ -268,8 +268,8 @@
     "contact": "Contact"
   },
   "demoPage": {
-    "metaTitle": "Demo aanvragen — MenuBuddy",
-    "metaDescription": "Vraag een vrijblijvende demo van MenuBuddy aan. We tonen hoe je menu in elke taal werkt, met je eigen kaart.",
+    "metaTitle": "Demo aanvragen — Brisolo",
+    "metaDescription": "Vraag een vrijblijvende demo van Brisolo aan. We tonen hoe je menu in elke taal werkt, met je eigen kaart.",
     "title": "Demo aanvragen",
     "intro": "Laat je gegevens achter en we nemen binnen 1 werkdag contact op om een moment af te spreken.",
     "expectTitle": "Wat mag je verwachten?",
@@ -280,7 +280,7 @@
     ]
   },
   "menuDemoPage": {
-    "metaTitle": "Voorbeeldmenu — MenuBuddy",
+    "metaTitle": "Voorbeeldmenu — Brisolo",
     "metaDescription": "Probeer een voorbeeldmenu zoals je gasten het zien op hun gsm.",
     "badge": "Voorbeeld",
     "cta": "Demo aanvragen"

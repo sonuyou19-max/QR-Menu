@@ -61,7 +61,7 @@ export default function BookDemoForm({
   const uid = useId();
   const id = (name: string) => `${uid}${name}`;
 
-  // "Try with your own menu" links here with the restaurant name Buddy read from the photos.
+  // "Try with your own menu" links here with the restaurant name Brisolo read from the photos.
   useEffect(() => {
     const restaurant = new URLSearchParams(window.location.search)
       .get("restaurant")
