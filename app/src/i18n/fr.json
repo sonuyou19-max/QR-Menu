@@ -102,6 +102,47 @@
     "notPublished": "(pas encore en ligne — publiez-la dans Carte)",
     "futureNote": "Adresse de test. Une fois le domaine acheté, votre carte et votre QR code passeront à {address}."
   },
+  "insights": {
+    "title": "Vos clients",
+    "period": "Période",
+    "lastDays": "{days} derniers jours",
+    "notPublished": "Dès que votre menu est en ligne, vous verrez ici combien de clients l'ouvrent, dans quelles langues et quels plats ils regardent.",
+    "loadFailed": "Impossible de charger les chiffres. Réessayez dans un instant.",
+    "visits": "Visites de votre menu",
+    "added": "Plats ajoutés à une commande",
+    "shownToStaff": "Commandes montrées au personnel",
+    "questions": "Questions à Buddy",
+    "empty": "Pas encore de clients sur cette période. Placez le QR code sur les tables et les chiffres apparaîtront ici.",
+    "perDay": "Visites par jour",
+    "visitsOn": "{date} : {count} visites",
+    "languages": "Langues de vos clients",
+    "topViewed": "Plats les plus ouverts",
+    "topAdded": "Plats les plus ajoutés",
+    "noneYet": "Rien pour l'instant",
+    "seeQuestions": "Questions des clients",
+    "seeQuestionsText": "Ce que les clients ont demandé à Buddy, et ce que Buddy a répondu. Signalez une mauvaise réponse."
+  },
+  "questions": {
+    "back": "Vue d'ensemble",
+    "title": "Questions des clients",
+    "intro": "Ce que les clients ont demandé à Buddy sur votre menu, les plus récentes d'abord. Une réponse est fausse ? Signalez-la : cela nous aide à améliorer Buddy.",
+    "show": "Afficher",
+    "all": "Toutes les questions",
+    "flaggedOnly": "Signalées comme fausses",
+    "none": "Pas encore de questions. Les clients interrogent Buddy avec le bouton de chat sur votre menu.",
+    "noneFlagged": "Aucune réponse signalée comme fausse.",
+    "loadFailed": "Impossible de charger les questions. Réessayez dans un instant.",
+    "flag": "Réponse fausse",
+    "flagged": "Signalée comme fausse — touchez pour annuler",
+    "showMore": "Afficher plus",
+    "types": {
+      "menu_fact": "D'après votre menu",
+      "general_knowledge": "Connaissance générale",
+      "cannot_answer": "Renvoyé au personnel",
+      "off_topic": "Hors sujet",
+      "error": "Pas de réponse"
+    }
+  },
   "upload": {
     "title": "Envoyez votre carte",
     "intro": "Buddy, l'assistant IA de MenuBuddy, lit les plats, les prix et les descriptions sur des photos ou un PDF de votre carte, ou sur votre site web. Vous vérifiez tout avant que vos clients ne le voient.",

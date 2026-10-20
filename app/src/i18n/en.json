@@ -102,6 +102,47 @@
     "notPublished": "(not online yet — publish it under Menu)",
     "futureNote": "Test address. Once the domain is bought, your menu and QR code move to {address}."
   },
+  "insights": {
+    "title": "Your guests",
+    "period": "Period",
+    "lastDays": "Last {days} days",
+    "notPublished": "Once your menu is online, you'll see here how many guests open it, in which languages, and which dishes they look at.",
+    "loadFailed": "Couldn't load the numbers. Try again in a moment.",
+    "visits": "Menu visits",
+    "added": "Dishes added to an order",
+    "shownToStaff": "Orders shown to staff",
+    "questions": "Questions to Buddy",
+    "empty": "No guests yet in this period. Put the QR code on the tables and the numbers appear here.",
+    "perDay": "Visits per day",
+    "visitsOn": "{date}: {count} visits",
+    "languages": "Guest languages",
+    "topViewed": "Most opened dishes",
+    "topAdded": "Most added dishes",
+    "noneYet": "Nothing yet",
+    "seeQuestions": "Guest questions",
+    "seeQuestionsText": "What guests asked Buddy, and what Buddy answered. Mark a wrong answer."
+  },
+  "questions": {
+    "back": "Overview",
+    "title": "Guest questions",
+    "intro": "What guests asked Buddy about your menu, newest first. See a wrong answer? Mark it: we use these to make Buddy better.",
+    "show": "Show",
+    "all": "All questions",
+    "flaggedOnly": "Marked as wrong",
+    "none": "No questions yet. Guests ask Buddy with the chat button on your menu.",
+    "noneFlagged": "No answers marked as wrong.",
+    "loadFailed": "Couldn't load the questions. Try again in a moment.",
+    "flag": "Wrong answer",
+    "flagged": "Marked as wrong — tap to undo",
+    "showMore": "Show more",
+    "types": {
+      "menu_fact": "From your menu",
+      "general_knowledge": "General knowledge",
+      "cannot_answer": "Referred to staff",
+      "off_topic": "Off topic",
+      "error": "No answer"
+    }
+  },
   "upload": {
     "title": "Upload your menu",
     "intro": "Buddy, MenuBuddy's AI assistant, reads the dishes, prices and descriptions from photos or a PDF of your menu, or from your website. You check everything before guests see it.",

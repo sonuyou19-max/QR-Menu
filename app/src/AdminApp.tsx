@@ -9,6 +9,7 @@ import { AppLayout } from "./routes/AppLayout";
 import { Login } from "./routes/Login";
 import { MenuEditor } from "./routes/MenuEditor";
 import { Overview } from "./routes/Overview";
+import { Questions } from "./routes/Questions";
 import { RequireAuth } from "./routes/RequireAuth";
 import { Service } from "./routes/Service";
 import { Settings } from "./routes/Settings";
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
                   { index: true, element: <Overview /> },
                   { path: "/menu", element: <MenuEditor /> },
                   { path: "/settings", element: <Settings /> },
+                  { path: "/questions", element: <Questions /> },
                   { path: "/upload", element: <Upload /> },
                   { path: "/upload/:id", element: <UploadResult /> },
                   {

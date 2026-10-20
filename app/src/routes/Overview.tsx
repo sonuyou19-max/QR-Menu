@@ -10,6 +10,7 @@ import {
   Upload,
 } from "lucide-react";
 import { fill, useI18n } from "../i18n";
+import { InsightsSection } from "../insights/Insights";
 import { config, isLiveDomain, menuUrl } from "../lib/config";
 import { languageName } from "../lib/languages";
 import { supabase } from "../lib/supabase";
@@ -150,6 +151,8 @@ export function Overview() {
           );
         })}
       </ol>
+
+      <InsightsSection />
     </div>
   );
 }

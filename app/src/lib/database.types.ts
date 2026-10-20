@@ -16,6 +16,38 @@ export type Database = {
   };
   public: {
     Tables: {
+      chat_logs: {
+        Row: {
+          answer: string;
+          answer_type: string;
+          created_at: string;
+          flagged_by_owner: boolean;
+          id: number;
+          ip_hash: string | null;
+          language: string;
+          question: string;
+          referenced_item_ids: string[];
+          restaurant_id: string;
+          session_id: string;
+        };
+        Insert: {
+          answer: string;
+          answer_type: string;
+          created_at?: string;
+          flagged_by_owner?: boolean;
+          id?: never;
+          ip_hash?: string | null;
+          language: string;
+          question: string;
+          referenced_item_ids?: string[];
+          restaurant_id: string;
+          session_id: string;
+        };
+        Update: {
+          flagged_by_owner?: boolean;
+        };
+        Relationships: [];
+      };
       leads: {
         Row: {
           city: string | null;
@@ -450,6 +482,10 @@ export type Database = {
       is_slug_available: { Args: { p_slug: string }; Returns: boolean };
       reorder_categories: { Args: { p_ids: string[] }; Returns: undefined };
       reset_stock: { Args: { p_restaurant_id: string }; Returns: string[] };
+      restaurant_insights: {
+        Args: { p_days?: number; p_restaurant: string };
+        Returns: Json;
+      };
       set_stock: {
         Args: { p_in_stock: boolean; p_item_ids: string[] };
         Returns: string[];

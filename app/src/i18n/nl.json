@@ -102,6 +102,47 @@
     "notPublished": "(nog niet online — publiceer hem bij Menu)",
     "futureNote": "Testadres. Zodra het domein gekocht is, verhuizen je menukaart en QR-code naar {address}."
   },
+  "insights": {
+    "title": "Je gasten",
+    "period": "Periode",
+    "lastDays": "Laatste {days} dagen",
+    "notPublished": "Zodra je menu online staat, zie je hier hoeveel gasten het openen, in welke talen, en welke gerechten ze bekijken.",
+    "loadFailed": "De cijfers konden niet geladen worden. Probeer het zo opnieuw.",
+    "visits": "Bezoeken aan je menu",
+    "added": "Gerechten aan een bestelling toegevoegd",
+    "shownToStaff": "Bestellingen aan personeel getoond",
+    "questions": "Vragen aan Buddy",
+    "empty": "Nog geen gasten in deze periode. Zet de QR-code op de tafels, dan verschijnen de cijfers hier.",
+    "perDay": "Bezoeken per dag",
+    "visitsOn": "{date}: {count} bezoeken",
+    "languages": "Talen van je gasten",
+    "topViewed": "Meest geopende gerechten",
+    "topAdded": "Meest toegevoegde gerechten",
+    "noneYet": "Nog niets",
+    "seeQuestions": "Vragen van gasten",
+    "seeQuestionsText": "Wat gasten aan Buddy vroegen, en wat Buddy antwoordde. Markeer een fout antwoord."
+  },
+  "questions": {
+    "back": "Overzicht",
+    "title": "Vragen van gasten",
+    "intro": "Wat gasten aan Buddy vroegen over je menu, nieuwste eerst. Zie je een fout antwoord? Markeer het: zo maken we Buddy beter.",
+    "show": "Tonen",
+    "all": "Alle vragen",
+    "flaggedOnly": "Gemarkeerd als fout",
+    "none": "Nog geen vragen. Gasten vragen het Buddy met de chatknop op je menu.",
+    "noneFlagged": "Geen antwoorden gemarkeerd als fout.",
+    "loadFailed": "De vragen konden niet geladen worden. Probeer het zo opnieuw.",
+    "flag": "Fout antwoord",
+    "flagged": "Gemarkeerd als fout — tik om te herstellen",
+    "showMore": "Meer tonen",
+    "types": {
+      "menu_fact": "Uit je menu",
+      "general_knowledge": "Algemene kennis",
+      "cannot_answer": "Doorverwezen naar personeel",
+      "off_topic": "Niet over het menu",
+      "error": "Geen antwoord"
+    }
+  },
   "upload": {
     "title": "Upload je menukaart",
     "intro": "Buddy, de AI-assistent van MenuBuddy, leest de gerechten, prijzen en beschrijvingen van foto's of een PDF van je menukaart, of van je website. Jij controleert alles voordat gasten het zien.",
