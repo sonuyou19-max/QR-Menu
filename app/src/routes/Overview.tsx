@@ -31,7 +31,6 @@ export function Overview() {
   const { t, lang } = useI18n();
   const { restaurant } = useRestaurant();
   const [menuRead, setMenuRead] = useState(false);
-  const [founder, setFounder] = useState(false);
 
   useEffect(() => {
     void supabase
@@ -40,11 +39,6 @@ export function Overview() {
       .eq("restaurant_id", restaurant.id)
       .then(({ count }) => setMenuRead((count ?? 0) > 0));
   }, [restaurant.id]);
-  useEffect(() => {
-    void supabase
-      .rpc("is_founder")
-      .then(({ data }) => setFounder(data === true));
-  }, []);
 
   // Set up, menu has dishes, published (translated), own look chosen; the QR code stays open.
   const hasLook =
@@ -159,16 +153,6 @@ export function Overview() {
       </ol>
 
       <InsightsSection />
-
-      {founder && (
-        <Link
-          to="/founder"
-          className="text-brand-strong mt-8 inline-flex min-h-11 items-center gap-1 font-semibold underline underline-offset-2"
-        >
-          {t.founder.link}
-          <ChevronRight className="size-4" aria-hidden="true" />
-        </Link>
-      )}
     </div>
   );
 }

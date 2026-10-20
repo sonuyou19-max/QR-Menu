@@ -597,33 +597,5 @@
     "webAddressLocked": "Your QR codes point to this address, so it stays the same. Need a different one? Contact us.",
     "lookTitle": "Logo, colours and cover photo",
     "lookText": "Change them under Look."
-  },
-  "founder": {
-    "title": "AI costs",
-    "intro": "Only you see this page. What the AI cost per restaurant this month, compared with the €30 plan.",
-    "link": "AI costs (only you)",
-    "previous": "Previous month",
-    "next": "Next month",
-    "notAllowed": "This page is only for the MenuBuddy team.",
-    "total": "Total AI cost this month",
-    "none": "No AI use in this month.",
-    "demoLine": "Website demo",
-    "ofPlan": "{percent}% of the €30 plan",
-    "job": "Job",
-    "calls": "Calls",
-    "tokens": "Tokens",
-    "cost": "Cost",
-    "unpriced": "Some calls used a model without a price: their cost is not counted.",
-    "pricesTitle": "Prices used",
-    "priceLine": "{model}: ${input} in / ${output} out per million tokens",
-    "pricesNote": "Converted at $1 = €{rate}. Change prices in the SQL editor (table private.ai_prices).",
-    "kinds": {
-      "extract": "Reading menus",
-      "translate": "Translating",
-      "chat": "Guest chat",
-      "theme": "Look suggestions",
-      "dish": "Dish suggestions",
-      "demo": "Demo previews"
-    }
   }
 }

@@ -5,7 +5,8 @@
   "workspaces": [
     "packages/*",
     "site",
-    "app"
+    "app",
+    "admin"
   ],
   "engines": {
     "node": ">=22.22.0"
@@ -20,7 +21,9 @@
     "build:site:test": "SITE_URL=https://menubuddy-site.sonuyou19.workers.dev PUBLIC_SITE_NOINDEX=true npm run build -w @menubuddy/site",
     "dev:app": "npm run dev -w @menubuddy/app",
     "build:app": "npm run build -w @menubuddy/app",
-    "build:app:test": "npm run build -w @menubuddy/app"
+    "build:app:test": "npm run build -w @menubuddy/app",
+    "dev:admin": "npm run dev -w @menubuddy/admin",
+    "build:admin": "npm run build -w @menubuddy/admin"
   },
   "devDependencies": {
     "prettier": "^3.9.10",

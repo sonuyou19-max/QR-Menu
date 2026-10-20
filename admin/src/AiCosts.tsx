@@ -1,11 +1,11 @@
-// AI cost per restaurant per month, for the founder only (CLAUDE.md 10 step 15), not for
-// restaurant owners: founder_ai_costs() answers null for anyone else. Split by job, compared with
-// the €30 plan, plus the marketing site's "Try your own menu" demo as its own line.
+// AI cost per restaurant per month (CLAUDE.md 10 step 15), split by job, compared with the €30
+// plan, plus the marketing site's "Try your own menu" demo as its own line. founder_ai_costs()
+// answers null for anyone who is not a founder.
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { fill, useI18n } from "../i18n";
-import { supabase } from "../lib/supabase";
+import { supabase } from "./supabase";
 
+const lang = "en-GB";
 const PLAN_EUR = 30;
 const kinds = [
   "extract",
@@ -15,6 +15,14 @@ const kinds = [
   "dish",
   "demo",
 ] as const;
+const kindNames: Record<(typeof kinds)[number], string> = {
+  extract: "Reading menus",
+  translate: "Translating",
+  chat: "Guest chat",
+  theme: "Look suggestions",
+  dish: "Dish suggestions",
+  demo: "Demo previews",
+};
 
 interface Costs {
   month: string;
@@ -48,9 +56,7 @@ const monthStart = (offset: number) => {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-01`;
 };
 
-export function Founder() {
-  const { t, lang } = useI18n();
-  const T = t.founder;
+export function AiCosts() {
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState<Costs | null | undefined>(undefined);
 
@@ -77,14 +83,16 @@ export function Founder() {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold sm:text-4xl">{T.title}</h1>
-      <p className="text-ink-muted mt-2">{T.intro}</p>
+      <h1 className="text-3xl font-semibold sm:text-4xl">AI costs</h1>
+      <p className="text-ink-muted mt-2">
+        What the AI cost per restaurant this month, compared with the €30 plan.
+      </p>
 
       <div className="mt-5 flex items-center gap-2">
         <button
           type="button"
           onClick={() => setOffset((o) => o - 1)}
-          aria-label={T.previous}
+          aria-label="Previous month"
           className="rounded-control border-line grid size-11 place-items-center border"
         >
           <ChevronLeft className="size-5" aria-hidden="true" />
@@ -96,7 +104,7 @@ export function Founder() {
           type="button"
           onClick={() => setOffset((o) => Math.min(0, o + 1))}
           disabled={offset === 0}
-          aria-label={T.next}
+          aria-label="Next month"
           className="rounded-control border-line grid size-11 place-items-center border disabled:opacity-40"
         >
           <ChevronRight className="size-5" aria-hidden="true" />
@@ -106,18 +114,18 @@ export function Founder() {
       {data === undefined ? (
         <div className="bg-surface-muted rounded-card mt-6 h-40 animate-pulse" />
       ) : data === null ? (
-        <p className="text-danger mt-6">{T.notAllowed}</p>
+        <p className="text-danger mt-6">Couldn't load the numbers.</p>
       ) : (
         <>
           <div className="rounded-card bg-surface shadow-card mt-6 p-4">
-            <p className="text-ink-muted text-sm">{T.total}</p>
+            <p className="text-ink-muted text-sm">Total AI cost this month</p>
             <p className="mt-1 text-3xl font-semibold tabular-nums">
               {eur(total)}
             </p>
           </div>
 
           {data.rows.length === 0 ? (
-            <p className="text-ink-muted mt-6">{T.none}</p>
+            <p className="text-ink-muted mt-6">No AI use in this month.</p>
           ) : (
             <ul className="mt-4 space-y-3">
               {data.rows.map((row) => {
@@ -129,7 +137,7 @@ export function Founder() {
                   >
                     <div className="flex items-baseline justify-between gap-3">
                       <p className="min-w-0 truncate font-semibold">
-                        {row.restaurant_id ? row.name : T.demoLine}
+                        {row.restaurant_id ? row.name : "Website demo"}
                       </p>
                       <p className="font-semibold tabular-nums">
                         {eur(row.eur)}
@@ -138,11 +146,10 @@ export function Founder() {
                     {row.restaurant_id && (
                       <>
                         <p className="text-ink-muted mt-0.5 text-sm">
-                          {fill(T.ofPlan, {
-                            percent: (share * 100).toLocaleString(lang, {
-                              maximumFractionDigits: share < 0.1 ? 1 : 0,
-                            }),
+                          {(share * 100).toLocaleString(lang, {
+                            maximumFractionDigits: share < 0.1 ? 1 : 0,
                           })}
+                          % of the €30 plan
                         </p>
                         <span
                           className="bg-surface-muted mt-2 block h-1.5 rounded-full"
@@ -160,16 +167,12 @@ export function Founder() {
                     <table className="mt-3 w-full text-sm">
                       <thead className="text-ink-muted text-left text-xs">
                         <tr>
-                          <th className="py-1 font-normal">{T.job}</th>
+                          <th className="py-1 font-normal">Job</th>
+                          <th className="py-1 text-right font-normal">Calls</th>
                           <th className="py-1 text-right font-normal">
-                            {T.calls}
+                            Tokens
                           </th>
-                          <th className="py-1 text-right font-normal">
-                            {T.tokens}
-                          </th>
-                          <th className="py-1 text-right font-normal">
-                            {T.cost}
-                          </th>
+                          <th className="py-1 text-right font-normal">Cost</th>
                         </tr>
                       </thead>
                       <tbody className="tabular-nums">
@@ -178,7 +181,7 @@ export function Founder() {
                           if (!k) return null;
                           return (
                             <tr key={kind} className="border-line border-t">
-                              <td className="py-1.5">{T.kinds[kind]}</td>
+                              <td className="py-1.5">{kindNames[kind]}</td>
                               <td className="py-1.5 text-right">
                                 {k.calls.toLocaleString(lang)}
                               </td>
@@ -196,7 +199,10 @@ export function Founder() {
                       </tbody>
                     </table>
                     {row.unpriced && (
-                      <p className="text-danger mt-2 text-sm">{T.unpriced}</p>
+                      <p className="text-danger mt-2 text-sm">
+                        Some calls used a model without a price: their cost is
+                        not counted.
+                      </p>
                     )}
                   </li>
                 );
@@ -206,21 +212,18 @@ export function Founder() {
 
           <details className="text-ink-muted mt-6 text-sm">
             <summary className="min-h-11 cursor-pointer py-2 font-semibold">
-              {T.pricesTitle}
+              Prices used
             </summary>
             <ul className="mt-1 space-y-1">
               {data.prices.map((p) => (
                 <li key={p.model}>
-                  {fill(T.priceLine, {
-                    model: p.model,
-                    input: p.input,
-                    output: p.output,
-                  })}
+                  {p.model}: ${p.input} in / ${p.output} out per million tokens
                 </li>
               ))}
             </ul>
             <p className="mt-2">
-              {fill(T.pricesNote, { rate: data.usd_to_eur })}
+              Converted at $1 = €{data.usd_to_eur}. Change prices in the
+              Supabase SQL editor (table private.ai_prices).
             </p>
           </details>
         </>

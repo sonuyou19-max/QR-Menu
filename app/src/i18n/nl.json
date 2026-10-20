@@ -597,33 +597,5 @@
     "webAddressLocked": "Je QR-codes verwijzen naar dit adres, dus het blijft hetzelfde. Een ander adres nodig? Neem contact met ons op.",
     "lookTitle": "Logo, kleuren en omslagfoto",
     "lookText": "Wijzig ze onder Stijl."
-  },
-  "founder": {
-    "title": "AI-kosten",
-    "intro": "Alleen jij ziet deze pagina. Wat de AI deze maand per restaurant kostte, vergeleken met het abonnement van €30.",
-    "link": "AI-kosten (alleen jij)",
-    "previous": "Vorige maand",
-    "next": "Volgende maand",
-    "notAllowed": "Deze pagina is alleen voor het MenuBuddy-team.",
-    "total": "Totale AI-kosten deze maand",
-    "none": "Geen AI-gebruik in deze maand.",
-    "demoLine": "Demo op de website",
-    "ofPlan": "{percent}% van het abonnement van €30",
-    "job": "Taak",
-    "calls": "Oproepen",
-    "tokens": "Tokens",
-    "cost": "Kosten",
-    "unpriced": "Sommige oproepen gebruikten een model zonder prijs: die kosten zijn niet meegeteld.",
-    "pricesTitle": "Gebruikte prijzen",
-    "priceLine": "{model}: ${input} in / ${output} uit per miljoen tokens",
-    "pricesNote": "Omgerekend aan $1 = €{rate}. Prijzen aanpassen in de SQL-editor (tabel private.ai_prices).",
-    "kinds": {
-      "extract": "Menu's lezen",
-      "translate": "Vertalen",
-      "chat": "Chat met gasten",
-      "theme": "Stijlvoorstellen",
-      "dish": "Gerechtvoorstellen",
-      "demo": "Demo-voorbeelden"
-    }
   }
 }

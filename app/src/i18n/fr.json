@@ -597,33 +597,5 @@
     "webAddressLocked": "Vos codes QR mènent à cette adresse, elle reste donc la même. Besoin d'une autre adresse ? Contactez-nous.",
     "lookTitle": "Logo, couleurs et photo de couverture",
     "lookText": "Modifiez-les sous Style."
-  },
-  "founder": {
-    "title": "Coûts IA",
-    "intro": "Vous seul voyez cette page. Ce que l'IA a coûté par restaurant ce mois-ci, comparé à l'abonnement de 30 €.",
-    "link": "Coûts IA (vous seul)",
-    "previous": "Mois précédent",
-    "next": "Mois suivant",
-    "notAllowed": "Cette page est réservée à l'équipe MenuBuddy.",
-    "total": "Coût IA total ce mois-ci",
-    "none": "Aucune utilisation de l'IA ce mois-ci.",
-    "demoLine": "Démo du site",
-    "ofPlan": "{percent} % de l'abonnement de 30 €",
-    "job": "Tâche",
-    "calls": "Appels",
-    "tokens": "Tokens",
-    "cost": "Coût",
-    "unpriced": "Certains appels ont utilisé un modèle sans prix : leur coût n'est pas compté.",
-    "pricesTitle": "Prix utilisés",
-    "priceLine": "{model} : {input} $ en entrée / {output} $ en sortie par million de tokens",
-    "pricesNote": "Converti à 1 $ = {rate} €. Modifiez les prix dans l'éditeur SQL (table private.ai_prices).",
-    "kinds": {
-      "extract": "Lecture des menus",
-      "translate": "Traduction",
-      "chat": "Chat clients",
-      "theme": "Suggestions de style",
-      "dish": "Suggestions de plats",
-      "demo": "Aperçus de démo"
-    }
   }
 }
