@@ -8,7 +8,10 @@ import {
   eur,
   num,
   useRpc,
+  sizeLabels,
   type AttentionGroup,
+  type AttentionItem,
+  type PlanSize,
   type Overview,
 } from "./lib";
 import { Card, DayBars, Failed, Loading, Tile } from "./ui";
@@ -23,7 +26,7 @@ const groups: {
   title: string;
   link: (id: string) => string;
   more: string;
-  note: (item: { note?: string | null; at?: string | null }) => string;
+  note: (item: AttentionItem) => string;
 }[] = [
   {
     key: "flagged_answers",
@@ -74,6 +77,14 @@ const groups: {
     link: (id) => `#/r/${id}`,
     more: "#/restaurants?f=quiet",
     note: (i) => `Last guest ${ago(i.at)}`,
+  },
+  {
+    key: "above_plan",
+    title: "Above their plan for 2 months: suggest the next plan",
+    link: (id) => `#/r/${id}`,
+    more: "#/restaurants?f=above",
+    note: (i) =>
+      `${sizeLabels[(i.note ?? "small") as PlanSize]} plan · ${num(i.visits ?? 0)} menu visits in 30 days`,
   },
   {
     key: "high_ai_cost",

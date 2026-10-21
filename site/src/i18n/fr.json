@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisolo — Votre carte. Plus intelligente.",
-    "description": "Vos clients scannent un QR code sur la table et lisent votre carte dans leur langue, avec une explication pour chaque plat. Vous envoyez votre carte une fois, l'IA traduit, vous vérifiez. 30 € par mois."
+    "description": "Vos clients scannent un QR code sur la table et lisent votre carte dans leur langue, avec une explication pour chaque plat. Vous envoyez votre carte une fois, l'IA traduit, vous vérifiez. À partir de 29 € par mois."
   },
   "nav": {
     "skipToContent": "Aller au contenu",
@@ -200,27 +200,47 @@
   },
   "pricing": {
     "eyebrow": "Tarif",
-    "title": "Une seule formule. Tout compris.",
+    "title": "Vous payez selon votre taille. Tout est inclus.",
     "billingLabel": "Facturation",
     "monthly": "Mensuel",
     "annual": "Annuel",
-    "save": "-25 %",
-    "planName": "Brisolo",
+    "save": "2 mois offerts",
     "perMonth": "par mois",
     "perYear": "par an",
-    "perDay": "Soit 1 € par jour.",
-    "annualEquivalent": "= {price} par mois, 25 % de réduction",
-    "monthlyAlternative": "Ou {price} par an — 25 % de réduction.",
+    "perDay": "Soit {price} par jour.",
+    "annualEquivalent": "= {price} par mois, 2 mois offerts",
+    "monthlyAlternative": "Ou {price} par an — 2 mois offerts.",
     "vat": "Prix hors TVA.",
     "includes": [
-      "Toutes les fonctionnalités",
+      "Toutes les fonctions, dans chaque formule",
       "Toutes les langues pour vos clients",
+      "Votre propre serveur IA",
       "Plats et QR codes illimités",
-      "Modifications en ligne immédiatement",
+      "Modifications visibles immédiatement",
       "Formule mensuelle : résiliable chaque mois"
     ],
     "pilot": "Pilote gratuit pour les premiers restaurants à Louvain.",
-    "cta": "Demander une démo"
+    "cta": "Demander une démo",
+    "intro": "Vous choisissez votre formule selon le nombre de places assises. Chaque formule comprend toutes les fonctions.",
+    "plans": {
+      "small": {
+        "name": "Petit",
+        "seats": "Jusqu'à 40 places",
+        "who": "Bistrot, café, snack"
+      },
+      "medium": {
+        "name": "Moyen",
+        "seats": "De 40 à 100 places",
+        "who": "Un restaurant classique"
+      },
+      "large": {
+        "name": "Grand",
+        "seats": "Plus de 100 places",
+        "who": "Brasserie animée, restaurant d'hôtel"
+      }
+    },
+    "includesTitle": "Chaque formule comprend",
+    "sizeNote": "Vous choisissez votre formule selon le nombre de places. Votre carte est-elle ouverte bien plus souvent que prévu deux mois de suite (environ {small} visites par mois pour Petit, {medium} pour Moyen) ? Nous vous proposerons alors la formule suivante. Nous ne changeons jamais votre formule ni votre facture sans vous le demander."
   },
   "faq": {
     "eyebrow": "Questions fréquentes",
@@ -241,6 +261,10 @@
       {
         "q": "Et les allergènes, côté légal ?",
         "a": "La réglementation européenne vous oblige à informer sur les 14 allergènes. Notre IA propose les allergènes de chaque plat, mais vos clients ne les voient comme une information fiable qu'après votre confirmation. En bas de la carte, il est toujours indiqué : « En cas d'allergie, prévenez le personnel avant de commander. »"
+      },
+      {
+        "q": "De quelle formule ai-je besoin ?",
+        "a": "Cela dépend de votre nombre de places : Petit jusqu'à 40, Moyen de 40 à 100, Grand plus de 100. Chaque formule comprend toutes les fonctions. Si votre carte est ouverte bien plus souvent que prévu deux mois de suite, nous vous proposerons la formule suivante ; nous ne la changeons jamais sans vous le demander."
       },
       {
         "q": "Puis-je résilier à tout moment ?",

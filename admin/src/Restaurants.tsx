@@ -7,7 +7,7 @@ import {
   change,
   eur,
   num,
-  planLabels,
+  planText,
   useRpc,
   type RestaurantRow,
 } from "./lib";
@@ -39,6 +39,11 @@ const filters = [
     key: "paying",
     label: "Paying",
     test: (r: RestaurantRow) => !r.is_demo && r.plan !== "pilot",
+  },
+  {
+    key: "above",
+    label: "Above plan",
+    test: (r: RestaurantRow) => !r.is_demo && r.above_plan,
   },
   { key: "demo", label: "Demo", test: (r: RestaurantRow) => r.is_demo },
 ] as const;
@@ -179,7 +184,7 @@ export function Restaurants({
                     {r.is_demo ? (
                       <Badge>Demo</Badge>
                     ) : (
-                      <Badge>{planLabels[r.plan]}</Badge>
+                      <Badge>{planText(r)}</Badge>
                     )}
                   </span>
                   <span className="text-ink-muted mt-1 block text-sm tabular-nums">

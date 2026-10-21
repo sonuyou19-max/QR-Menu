@@ -8,7 +8,8 @@ import {
   jobLabels,
   locale,
   num,
-  PLAN_EUR,
+  sizePrices,
+  sizeLabels,
   useRpc,
   type RestaurantRow,
 } from "./lib";
@@ -102,6 +103,13 @@ export function AiCosts() {
     for (const [kind, k] of Object.entries(r.kinds))
       byJob.set(kind, (byJob.get(kind) ?? 0) + k.eur);
   const unpriced = data.rows.some((r) => r.unpriced);
+  const sizeOf = new Map(business.map((r) => [r.id, r.plan_size]));
+  /** AI cost as a share of the restaurant's own plan price. */
+  const planShare = (id: string, cost: number) => {
+    const size = sizeOf.get(id) ?? "small";
+    const pct = (cost / sizePrices[size]) * 100;
+    return `${pct.toLocaleString(locale, { maximumFractionDigits: 1 })}% of the ${sizeLabels[size]} plan (€${sizePrices[size]})`;
+  };
 
   return (
     <div className="space-y-5">
@@ -124,7 +132,7 @@ export function AiCosts() {
         <Tile
           label="Per online restaurant"
           value={online ? eur(total / online) : "–"}
-          sub={`${num(online)} online · plan is ${eur(PLAN_EUR)}`}
+          sub={`${num(online)} online · plans €29–79`}
         />
       </div>
       {unpriced && (
@@ -164,7 +172,7 @@ export function AiCosts() {
                 value: r.eur,
                 href: r.restaurant_id ? `#/r/${r.restaurant_id}` : undefined,
                 sub: r.restaurant_id
-                  ? `${((r.eur / PLAN_EUR) * 100).toLocaleString(locale, { maximumFractionDigits: 1 })}% of the €30 plan`
+                  ? planShare(r.restaurant_id, r.eur)
                   : undefined,
               }))}
             format={(n) => eur(n, true)}

@@ -1,7 +1,7 @@
 ---
 import Check from "@lucide/astro/icons/check";
 import Section from "../Section.astro";
-import { pricing } from "../../data/pricing";
+import { annualPerMonth, perDay, plans } from "../../data/pricing";
 import {
   fill,
   formatPrice,
@@ -16,6 +16,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = getDictionary(lang);
 const price = (n: number) => formatPrice(lang, n);
+const visits = (n: number) =>
+  n.toLocaleString(lang === "en" ? "en-GB" : `${lang}-BE`);
 ---
 
 <Section
@@ -25,9 +27,11 @@ const price = (n: number) => formatPrice(lang, n);
   center
   class="bg-surface"
 >
-  <div data-pricing data-billing="monthly" class="group mx-auto mt-10 max-w-md">
-    <!-- Hidden until JS runs; without JS the card shows monthly with the annual price as a line below. -->
-    <div data-billing-toggle hidden class="mb-6 flex justify-center">
+  <p class="mx-auto mt-4 max-w-xl text-lg text-ink-muted">{t.pricing.intro}</p>
+
+  <div data-pricing data-billing="monthly" class="group mx-auto mt-8 max-w-6xl">
+    <!-- Hidden until JS runs; without JS each card shows monthly with the annual price below. -->
+    <div data-billing-toggle hidden class="mb-8 flex justify-center">
       <div
         role="group"
         aria-label={t.pricing.billingLabel}
@@ -55,40 +59,71 @@ const price = (n: number) => formatPrice(lang, n);
       </div>
     </div>
 
-    <div class="rounded-card border-2 border-ink bg-canvas p-8 text-left shadow-card">
-      <p class="font-display text-2xl font-semibold">{t.pricing.planName}</p>
-      <div aria-live="polite" class="mt-4">
-        <div class="group-data-[billing=annual]:hidden">
-          <p class="flex items-baseline gap-2">
-            <span class="font-display text-6xl font-semibold">
-              {price(pricing.monthly)}
-            </span>
-            <span class="text-ink-muted">{t.pricing.perMonth}</span>
-          </p>
-          <p class="mt-2 font-semibold text-brand">{t.pricing.perDay}</p>
-          <p class="mt-1 text-sm text-ink-muted">
-            {fill(t.pricing.monthlyAlternative, {
-              price: price(pricing.annual),
-            })}
-          </p>
-        </div>
-        <div class="hidden group-data-[billing=annual]:block">
-          <p class="flex items-baseline gap-2">
-            <span class="font-display text-6xl font-semibold">
-              {price(pricing.annual)}
-            </span>
-            <span class="text-ink-muted">{t.pricing.perYear}</span>
-          </p>
-          <p class="mt-2 font-semibold text-brand">
-            {fill(t.pricing.annualEquivalent, {
-              price: price(pricing.annualPerMonth),
-            })}
-          </p>
-        </div>
-      </div>
-      <p class="mt-1 text-sm text-ink-muted">{t.pricing.vat}</p>
+    <ul class="grid gap-5 text-left lg:grid-cols-3" aria-live="polite">
+      {plans.map((plan) => {
+        const text = t.pricing.plans[plan.key];
+        const featured = plan.key === "medium";
+        return (
+          <li
+            class:list={[
+              "flex flex-col rounded-card bg-canvas p-7 shadow-card",
+              featured ? "border-2 border-ink" : "border border-line",
+            ]}
+          >
+            <h3 class="font-display text-2xl font-semibold">{text.name}</h3>
+            <p class="mt-1 font-semibold">{text.seats}</p>
+            <p class="text-ink-muted">{text.who}</p>
 
-      <ul class="mt-6 space-y-2.5 border-t border-line pt-6">
+            <div class="mt-5 group-data-[billing=annual]:hidden">
+              <p class="flex items-baseline gap-2">
+                <span class="font-display text-5xl font-semibold">
+                  {price(plan.monthly)}
+                </span>
+                <span class="text-ink-muted">{t.pricing.perMonth}</span>
+              </p>
+              <p class="mt-2 font-semibold text-brand">
+                {fill(t.pricing.perDay, { price: price(perDay(plan.monthly)) })}
+              </p>
+              <p class="mt-1 text-sm text-ink-muted">
+                {fill(t.pricing.monthlyAlternative, {
+                  price: price(plan.annual),
+                })}
+              </p>
+            </div>
+            <div class="mt-5 hidden group-data-[billing=annual]:block">
+              <p class="flex items-baseline gap-2">
+                <span class="font-display text-5xl font-semibold">
+                  {price(plan.annual)}
+                </span>
+                <span class="text-ink-muted">{t.pricing.perYear}</span>
+              </p>
+              <p class="mt-2 font-semibold text-brand">
+                {fill(t.pricing.annualEquivalent, {
+                  price: price(annualPerMonth(plan.annual)),
+                })}
+              </p>
+            </div>
+
+            <div class="mt-auto pt-6">
+              <a
+                href={localePath(lang, "/demo")}
+                data-cta={`pricing-${plan.key}`}
+                class:list={[
+                  "w-full",
+                  featured ? "btn-primary" : "btn-secondary",
+                ]}
+              >
+                {t.pricing.cta}
+              </a>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="mx-auto mt-10 max-w-3xl text-left">
+      <h3 class="font-sans text-lg font-semibold">{t.pricing.includesTitle}</h3>
+      <ul class="mt-3 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
         {t.pricing.includes.map((item) => (
           <li class="flex gap-3">
             <Check
@@ -99,17 +134,14 @@ const price = (n: number) => formatPrice(lang, n);
           </li>
         ))}
       </ul>
-
-      <a
-        href={localePath(lang, "/demo")}
-        data-cta="pricing"
-        class="btn-primary mt-8 w-full text-lg"
-      >
-        {t.pricing.cta}
-      </a>
-      <p class="mt-4 text-center text-[15px] font-medium text-herb-700">
-        {t.pricing.pilot}
+      <p class="mt-6 text-ink-muted">
+        {fill(t.pricing.sizeNote, {
+          small: visits(plans[0].visitsPerMonth),
+          medium: visits(plans[1].visitsPerMonth),
+        })}
       </p>
+      <p class="mt-2 text-sm text-ink-muted">{t.pricing.vat}</p>
+      <p class="mt-4 font-medium text-herb-700">{t.pricing.pilot}</p>
     </div>
   </div>
 </Section>

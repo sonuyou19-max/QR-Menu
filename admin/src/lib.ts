@@ -6,10 +6,12 @@ import { supabase } from "./supabase";
 export const locale = "en-GB";
 export const appUrl =
   import.meta.env.VITE_APP_URL || "https://menubuddy-app.sonuyou19.workers.dev";
-export const PLAN_EUR = 30;
+/** Monthly list price per plan size (excl. VAT); annual = 10 months. */
+export const sizePrices = { small: 29, medium: 49, large: 79 } as const;
 
 export type Stage = "setup" | "live" | "quiet";
 export type Plan = "pilot" | "monthly" | "annual";
+export type PlanSize = keyof typeof sizePrices;
 
 export interface RestaurantRow {
   id: string;
@@ -17,6 +19,8 @@ export interface RestaurantRow {
   slug: string;
   address: string | null;
   plan: Plan;
+  plan_size: PlanSize;
+  seats: number | null;
   mrr: number;
   trial_ends_at: string | null;
   created_at: string;
@@ -30,6 +34,11 @@ export interface RestaurantRow {
   visits_7d: number;
   visits_prev_7d: number;
   visits_30d: number;
+  visits_prev_30d: number;
+  /** Menu visits a month the plan expects; null = no limit (large). */
+  visit_limit: number | null;
+  /** Above the limit in both of the last two 30-day periods. */
+  above_plan: boolean;
   last_visit: string | null;
   questions_30d: number;
   flagged_30d: number;
@@ -70,6 +79,8 @@ export interface AttentionItem {
   name: string;
   note?: string | null;
   at?: string | null;
+  /** Menu visits in the last 30 days (above_plan). */
+  visits?: number;
 }
 export interface AttentionGroup {
   count: number;
@@ -102,6 +113,7 @@ export interface Overview {
     | "failed_imports"
     | "translation_failed"
     | "flagged_answers"
+    | "above_plan"
     | "high_ai_cost",
     AttentionGroup
   >;
@@ -139,10 +151,30 @@ export const stageLabels: Record<Stage, string> = {
   setup: "Setting up",
 };
 export const planLabels: Record<Plan, string> = {
-  pilot: "Pilot",
-  monthly: "€30/month",
-  annual: "€270/year",
+  pilot: "Pilot (free)",
+  monthly: "Monthly",
+  annual: "Annual",
 };
+export const sizeLabels: Record<PlanSize, string> = {
+  small: "Small",
+  medium: "Medium",
+  large: "Large",
+};
+/** "Medium · €49/month", "Small · pilot". */
+export function planText(r: { plan: Plan; plan_size: PlanSize }): string {
+  const price = sizePrices[r.plan_size];
+  return `${sizeLabels[r.plan_size]} · ${
+    r.plan === "pilot"
+      ? "pilot"
+      : r.plan === "annual"
+        ? `€${price * 10}/year`
+        : `€${price}/month`
+  }`;
+}
+/** The plan the seats point to: up to 40 small, up to 100 medium, more large. */
+export const sizeForSeats = (seats: number): PlanSize =>
+  seats <= 40 ? "small" : seats <= 100 ? "medium" : "large";
+
 export const jobLabels: Record<string, string> = {
   extract: "Reading menus",
   translate: "Translating",

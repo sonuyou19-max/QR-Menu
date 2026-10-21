@@ -603,6 +603,16 @@
     "assistantError": "Use letters only (no digits, links or symbols), at most 20.",
     "assistantPreview": "Guests see:",
     "assistantButton": "Ask {name}",
-    "assistantButtonDefault": "Ask about the menu"
+    "assistantButtonDefault": "Ask about the menu",
+    "seatsLabel": "Number of seats",
+    "seatsHint": "We use this to pick your plan: up to 40 seats Small, 40 to 100 Medium, more than 100 Large.",
+    "seatsError": "Enter a whole number from 1 to 2000.",
+    "yourPlan": "Your plan: {plan}.",
+    "pilotNote": "You're in the free pilot.",
+    "planNames": {
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large"
+    }
   }
 }

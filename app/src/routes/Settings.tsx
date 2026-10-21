@@ -28,6 +28,7 @@ type Fields = Pick<
   | "name"
   | "address"
   | "assistant_name"
+  | "seats"
   | "source_language"
   | "guest_languages"
   | "show_allergens"
@@ -49,6 +50,7 @@ export function Settings() {
     name: useId(),
     address: useId(),
     assistant: useId(),
+    seats: useId(),
     source: useId(),
   };
 
@@ -56,6 +58,8 @@ export function Settings() {
   const [address, setAddress] = useState(restaurant.address ?? "");
   const [assistant, setAssistant] = useState(restaurant.assistant_name ?? "");
   const [assistantError, setAssistantError] = useState(false);
+  const [seats, setSeats] = useState(restaurant.seats?.toString() ?? "");
+  const [seatsError, setSeatsError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [languagesError, setLanguagesError] = useState(false);
   const [added, setAdded] = useState<string[]>([]);
@@ -91,6 +95,7 @@ export function Settings() {
             .eq("id", restaurant.id);
           if ("name" in before) setName(before.name ?? "");
           if ("address" in before) setAddress(before.address ?? "");
+          if ("seats" in before) setSeats(before.seats?.toString() ?? "");
           if ("assistant_name" in before)
             setAssistant(before.assistant_name ?? "");
           if ("guest_languages" in before) setAdded([]);
@@ -104,12 +109,12 @@ export function Settings() {
 
   // Name and address: saved after a short pause in typing, and when leaving the field. The timer
   // reads the latest values through a ref, not the ones from when it was started.
-  const latest = useRef({ name, address, assistant, saved, save });
-  latest.current = { name, address, assistant, saved, save };
+  const latest = useRef({ name, address, assistant, seats, saved, save });
+  latest.current = { name, address, assistant, seats, saved, save };
   const saveText = useCallback(() => {
     if (typing.current) clearTimeout(typing.current);
     typing.current = null;
-    const { name, address, assistant, saved, save } = latest.current;
+    const { name, address, assistant, seats, saved, save } = latest.current;
     const trimmedName = name.trim();
     const trimmedAddress = address.trim();
     const trimmedAssistant = assistant.trim().replace(/\s+/g, " ");
@@ -128,6 +133,17 @@ export function Settings() {
       patch.assistant_name = trimmedAssistant || null;
       before.assistant_name = saved.assistant_name;
     }
+    // Seats: a whole number from 1 to 2000, or empty.
+    const seatsText = seats.trim();
+    const seatsValue = seatsText ? Number(seatsText) : null;
+    const seatsOk =
+      seatsValue === null ||
+      (Number.isInteger(seatsValue) && seatsValue >= 1 && seatsValue <= 2000);
+    if (seatsOk && seatsValue !== saved.seats) {
+      patch.seats = seatsValue;
+      before.seats = saved.seats;
+    }
+    setSeatsError(!seatsOk);
     setAssistantError(!assistantOk);
     setNameError(!trimmedName);
     if (Object.keys(patch).length) void save(patch, before);
@@ -248,6 +264,44 @@ export function Settings() {
             maxLength={200}
             className="input mt-1.5"
           />
+        </div>
+
+        <div>
+          <label htmlFor={ids.seats} className="block font-semibold">
+            {s.seatsLabel}
+          </label>
+          <p className="text-ink-muted text-sm">{s.seatsHint}</p>
+          <input
+            id={ids.seats}
+            value={seats}
+            onChange={(e) => {
+              setSeats(e.target.value.replace(/[^0-9]/g, ""));
+              textChanged();
+            }}
+            onBlur={saveText}
+            inputMode="numeric"
+            autoComplete="off"
+            maxLength={4}
+            aria-invalid={seatsError || undefined}
+            aria-describedby={`${ids.seats}-plan${seatsError ? ` ${ids.seats}-error` : ""}`}
+            className="input mt-1.5 max-w-40"
+          />
+          {seatsError && (
+            <p
+              id={`${ids.seats}-error`}
+              className="text-danger mt-1.5 text-sm font-medium"
+            >
+              {s.seatsError}
+            </p>
+          )}
+          <p id={`${ids.seats}-plan`} className="text-ink-muted mt-2 text-sm">
+            {fill(s.yourPlan, {
+              plan: s.planNames[
+                saved.plan_size as "small" | "medium" | "large"
+              ],
+            })}
+            {saved.plan === "pilot" && ` ${s.pilotNote}`}
+          </p>
         </div>
 
         <div>

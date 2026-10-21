@@ -1,6 +1,8 @@
 // One restaurant in full: who runs it, how guests use it, what Brisolo answered, how its menu
 // imports went and what its AI cost this month (by job).
+import { useState } from "react";
 import { ArrowLeft, ExternalLink, Flag, Mail } from "lucide-react";
+import { supabase } from "./supabase";
 import {
   ago,
   appUrl,
@@ -10,8 +12,13 @@ import {
   jobLabels,
   languageName,
   num,
-  PLAN_EUR,
   planLabels,
+  planText,
+  sizeForSeats,
+  sizeLabels,
+  sizePrices,
+  type Plan,
+  type PlanSize,
   useRpc,
   type RestaurantDetail,
 } from "./lib";
@@ -35,7 +42,9 @@ const answerTypes: Record<string, string> = {
 };
 
 export function Restaurant({ id }: { id: string }) {
-  const { data: r } = useRpc<RestaurantDetail>("hq_restaurant", { p_id: id });
+  const { data: r, reload } = useRpc<RestaurantDetail>("hq_restaurant", {
+    p_id: id,
+  });
   const back = (
     <a
       href="#/restaurants"
@@ -53,7 +62,8 @@ export function Restaurant({ id }: { id: string }) {
         <Failed />
       </div>
     );
-  const share = r.ai_eur_month / PLAN_EUR;
+  const planPrice = sizePrices[r.plan_size];
+  const share = r.ai_eur_month / planPrice;
 
   return (
     <div className="space-y-5">
@@ -62,7 +72,7 @@ export function Restaurant({ id }: { id: string }) {
         <h1 className="mt-1 text-3xl font-semibold">{r.name}</h1>
         <p className="mt-2 flex flex-wrap items-center gap-2">
           <StageBadge stage={r.stage} />
-          <Badge>{r.is_demo ? "Demo" : planLabels[r.plan]}</Badge>
+          <Badge>{r.is_demo ? "Demo" : planText(r)}</Badge>
           {r.trial_ends_at && r.plan === "pilot" && (
             <Badge>Pilot ends {date(r.trial_ends_at)}</Badge>
           )}
@@ -125,9 +135,11 @@ export function Restaurant({ id }: { id: string }) {
         <Tile
           label="AI cost this month"
           value={eur(r.ai_eur_month)}
-          sub={`${(share * 100).toLocaleString("en-GB", { maximumFractionDigits: share < 0.1 ? 1 : 0 })}% of the €30 plan`}
+          sub={`${(share * 100).toLocaleString("en-GB", { maximumFractionDigits: share < 0.1 ? 1 : 0 })}% of the ${sizeLabels[r.plan_size]} plan (${eur(planPrice)})`}
         />
       </div>
+
+      {!r.is_demo && <PlanCard r={r} onSaved={() => void reload()} />}
 
       <div className="grid gap-3 lg:grid-cols-2">
         <Card title="Guest visits per day">
@@ -233,5 +245,139 @@ export function Restaurant({ id }: { id: string }) {
         </Card>
       </div>
     </div>
+  );
+}
+
+/**
+ * The restaurant's plan: what the owner says about seats, what that points to, how the last two
+ * 30-day periods compare with the plan's visit limit, and the founder's control to change it
+ * (hq_set_plan; owners can't change their own plan).
+ */
+function PlanCard({
+  r,
+  onSaved,
+}: {
+  r: RestaurantDetail;
+  onSaved: () => void;
+}) {
+  const [plan, setPlan] = useState<Plan>(r.plan);
+  const [size, setSize] = useState<PlanSize>(r.plan_size);
+  const [state, setState] = useState<"idle" | "saving" | "failed">("idle");
+  const changed = plan !== r.plan || size !== r.plan_size;
+  const suggested = r.seats ? sizeForSeats(r.seats) : null;
+
+  const save = async () => {
+    setState("saving");
+    const { data, error } = await supabase.rpc("hq_set_plan", {
+      p_id: r.id,
+      p_plan: plan,
+      p_size: size,
+    });
+    if (error || data !== true) return setState("failed");
+    setState("idle");
+    onSaved();
+  };
+
+  const period = (label: string, visits: number) => (
+    <li className="flex items-baseline justify-between gap-3">
+      <span className="text-ink-muted">{label}</span>
+      <span
+        className={`font-semibold tabular-nums ${
+          r.visit_limit !== null && visits > r.visit_limit ? "text-danger" : ""
+        }`}
+      >
+        {num(visits)}
+      </span>
+    </li>
+  );
+
+  return (
+    <Card
+      title="Plan"
+      action={
+        r.above_plan ? (
+          <Badge className="bg-paprika-100 text-paprika-800">
+            Above plan 2 months: suggest{" "}
+            {r.plan_size === "small" ? "Medium" : "Large"}
+          </Badge>
+        ) : undefined
+      }
+    >
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div className="space-y-3 text-sm">
+          <p>
+            <span className="text-ink-muted">Seats (from the owner): </span>
+            <span className="font-semibold">{r.seats ?? "not filled in"}</span>
+            {suggested && (
+              <span className="text-ink-muted">
+                {" "}
+                · points to {sizeLabels[suggested]}
+                {suggested !== r.plan_size && (
+                  <span className="text-danger font-semibold"> (differs)</span>
+                )}
+              </span>
+            )}
+          </p>
+          <div>
+            <p className="text-ink-muted">
+              Menu visits
+              {r.visit_limit !== null
+                ? ` (plan expects up to ${num(r.visit_limit)} a month)`
+                : " (no limit on Large)"}
+            </p>
+            <ul className="mt-1 space-y-1">
+              {period("Last 30 days", r.visits_30d)}
+              {period("30 days before", r.visits_prev_30d)}
+            </ul>
+          </div>
+        </div>
+        <div className="space-y-3">
+          <label className="block text-sm">
+            <span className="text-ink-muted">Size</span>
+            <select
+              value={size}
+              onChange={(e) => setSize(e.target.value as PlanSize)}
+              className="input mt-1 py-2.5"
+            >
+              {(Object.keys(sizePrices) as PlanSize[]).map((k) => (
+                <option key={k} value={k}>
+                  {sizeLabels[k]} · €{sizePrices[k]}/month or €
+                  {sizePrices[k] * 10}/year
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-sm">
+            <span className="text-ink-muted">Billing</span>
+            <select
+              value={plan}
+              onChange={(e) => setPlan(e.target.value as Plan)}
+              className="input mt-1 py-2.5"
+            >
+              {(Object.keys(planLabels) as Plan[]).map((k) => (
+                <option key={k} value={k}>
+                  {planLabels[k]}
+                </option>
+              ))}
+            </select>
+          </label>
+          {changed && (
+            <button
+              type="button"
+              onClick={() => void save()}
+              disabled={state === "saving"}
+              className="btn-primary w-full"
+            >
+              Save plan
+            </button>
+          )}
+          {state === "failed" && (
+            <p role="alert" className="text-danger text-sm">
+              Couldn't save the plan. Try again.
+            </p>
+          )}
+        </div>
+      </div>
+    </Card>
   );
 }

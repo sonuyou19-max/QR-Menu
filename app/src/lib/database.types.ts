@@ -294,9 +294,11 @@ export type Database = {
           logo_path: string | null;
           name: string;
           plan: string;
+          plan_size: string;
           published_at: string | null;
           show_allergens: boolean;
           qr_tables: string[];
+          seats: number | null;
           slug: string;
           tagline_hash: string | null;
           source_language: string;
@@ -317,9 +319,11 @@ export type Database = {
           logo_path?: string | null;
           name: string;
           plan?: string;
+          plan_size?: string;
           published_at?: string | null;
           show_allergens?: boolean;
           qr_tables?: string[];
+          seats?: number | null;
           slug: string;
           source_language?: string;
           theme?: Json;
@@ -339,9 +343,11 @@ export type Database = {
           logo_path?: string | null;
           name?: string;
           plan?: string;
+          plan_size?: string;
           published_at?: string | null;
           show_allergens?: boolean;
           qr_tables?: string[];
+          seats?: number | null;
           slug?: string;
           source_language?: string;
           theme?: Json;

@@ -603,6 +603,16 @@
     "assistantError": "Gebruik alleen letters (geen cijfers, links of tekens), maximaal 20.",
     "assistantPreview": "Gasten zien:",
     "assistantButton": "Vraag het aan {name}",
-    "assistantButtonDefault": "Vraag iets over de kaart"
+    "assistantButtonDefault": "Vraag iets over de kaart",
+    "seatsLabel": "Aantal zitplaatsen",
+    "seatsHint": "Hiermee kiezen we je abonnement: tot 40 zitplaatsen Klein, 40 tot 100 Middel, meer dan 100 Groot.",
+    "seatsError": "Vul een getal in van 1 tot 2000.",
+    "yourPlan": "Je abonnement: {plan}.",
+    "pilotNote": "Je zit in de gratis pilot.",
+    "planNames": {
+      "small": "Klein",
+      "medium": "Middel",
+      "large": "Groot"
+    }
   }
 }

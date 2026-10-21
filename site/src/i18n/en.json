@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisolo — Your menu. Smarter.",
-    "description": "Guests scan a QR code on the table and read your menu in their own language, with an explanation of every dish. Upload your menu once, AI translates, you check. €30 a month."
+    "description": "Guests scan a QR code on the table and read your menu in their own language, with an explanation of every dish. Upload your menu once, AI translates, you check. From €29 a month."
   },
   "nav": {
     "skipToContent": "Skip to content",
@@ -200,27 +200,47 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "One plan. Everything included.",
+    "title": "Pay for your size. Everything included.",
     "billingLabel": "Billing",
     "monthly": "Monthly",
     "annual": "Annual",
-    "save": "Save 25%",
-    "planName": "Brisolo",
+    "save": "2 months free",
     "perMonth": "per month",
     "perYear": "per year",
-    "perDay": "That's €1 per day.",
-    "annualEquivalent": "= {price} per month, 25% off",
-    "monthlyAlternative": "Or {price} per year — 25% off.",
+    "perDay": "That's {price} per day.",
+    "annualEquivalent": "= {price} per month, 2 months free",
+    "monthlyAlternative": "Or {price} per year — 2 months free.",
     "vat": "Prices excl. VAT.",
     "includes": [
-      "All features",
+      "All features, in every plan",
       "All guest languages",
+      "Your own AI waiter",
       "Unlimited dishes and QR codes",
       "Changes go live instantly",
       "Monthly plan: cancel any month"
     ],
     "pilot": "Free pilot for the first restaurants in Leuven.",
-    "cta": "Book a demo"
+    "cta": "Book a demo",
+    "intro": "Choose your plan by the number of seats in your restaurant. Every plan has every feature.",
+    "plans": {
+      "small": {
+        "name": "Small",
+        "seats": "Up to 40 seats",
+        "who": "Bistro, café, snack bar"
+      },
+      "medium": {
+        "name": "Medium",
+        "seats": "40 to 100 seats",
+        "who": "A typical restaurant"
+      },
+      "large": {
+        "name": "Large",
+        "seats": "More than 100 seats",
+        "who": "Busy brasserie, hotel restaurant"
+      }
+    },
+    "includesTitle": "Every plan includes",
+    "sizeNote": "You choose your plan by the number of seats. Is your menu opened much more than your plan expects (about {small} menu visits a month for Small, {medium} for Medium) two months in a row? Then we'll suggest the next plan. We never change your plan or your bill without asking."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -241,6 +261,10 @@
       {
         "q": "What about allergens and the law?",
         "a": "EU rules require you to provide information on the 14 allergens. Our AI suggests allergens for each dish, but guests only see them as fact once you've confirmed them. The bottom of the menu always says: “For allergies, please inform staff before ordering.”"
+      },
+      {
+        "q": "Which plan do I need?",
+        "a": "That depends on your number of seats: Small up to 40, Medium 40 to 100, Large more than 100. Every plan has every feature. If your menu is opened much more than your plan expects two months in a row, we'll suggest the next plan; we never change it without asking."
       },
       {
         "q": "Can I cancel anytime?",

@@ -603,6 +603,16 @@
     "assistantError": "Uniquement des lettres (pas de chiffres, liens ni symboles), 20 au maximum.",
     "assistantPreview": "Les clients voient :",
     "assistantButton": "Demandez à {name}",
-    "assistantButtonDefault": "Une question sur la carte ?"
+    "assistantButtonDefault": "Une question sur la carte ?",
+    "seatsLabel": "Nombre de places assises",
+    "seatsHint": "Nous l'utilisons pour choisir votre formule : jusqu'à 40 places Petit, de 40 à 100 Moyen, plus de 100 Grand.",
+    "seatsError": "Indiquez un nombre entier de 1 à 2000.",
+    "yourPlan": "Votre formule : {plan}.",
+    "pilotNote": "Vous participez au pilote gratuit.",
+    "planNames": {
+      "small": "Petit",
+      "medium": "Moyen",
+      "large": "Grand"
+    }
   }
 }

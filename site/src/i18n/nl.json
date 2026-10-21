@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisolo — Je menukaart. Slimmer.",
-    "description": "Gasten scannen een QR-code op tafel en lezen je menu in hun eigen taal, met uitleg bij elk gerecht. Eén keer je menu uploaden, AI vertaalt, jij controleert. €30 per maand."
+    "description": "Gasten scannen een QR-code op tafel en lezen je menu in hun eigen taal, met uitleg bij elk gerecht. Eén keer je menu uploaden, AI vertaalt, jij controleert. Vanaf €29 per maand."
   },
   "nav": {
     "skipToContent": "Naar de inhoud",
@@ -200,27 +200,47 @@
   },
   "pricing": {
     "eyebrow": "Prijs",
-    "title": "Eén formule. Alles inbegrepen.",
+    "title": "Je betaalt naar je grootte. Alles inbegrepen.",
     "billingLabel": "Facturatie",
     "monthly": "Maandelijks",
     "annual": "Jaarlijks",
-    "save": "Bespaar 25%",
-    "planName": "Brisolo",
+    "save": "2 maanden gratis",
     "perMonth": "per maand",
     "perYear": "per jaar",
-    "perDay": "Dat is €1 per dag.",
-    "annualEquivalent": "= {price} per maand, 25% korting",
-    "monthlyAlternative": "Of {price} per jaar — 25% korting.",
+    "perDay": "Dat is {price} per dag.",
+    "annualEquivalent": "= {price} per maand, 2 maanden gratis",
+    "monthlyAlternative": "Of {price} per jaar — 2 maanden gratis.",
     "vat": "Prijzen excl. btw.",
     "includes": [
-      "Alle functies",
+      "Alle functies, in elk abonnement",
       "Alle talen voor je gasten",
+      "Je eigen AI-ober",
       "Onbeperkt gerechten en QR-codes",
-      "Wijzigingen meteen online",
-      "Maandabonnement: maandelijks opzegbaar"
+      "Wijzigingen meteen zichtbaar",
+      "Maandabonnement: elke maand opzegbaar"
     ],
     "pilot": "Gratis pilot voor de eerste restaurants in Leuven.",
-    "cta": "Demo aanvragen"
+    "cta": "Demo aanvragen",
+    "intro": "Je kiest je abonnement op basis van het aantal zitplaatsen. Elk abonnement heeft alle functies.",
+    "plans": {
+      "small": {
+        "name": "Klein",
+        "seats": "Tot 40 zitplaatsen",
+        "who": "Bistro, café, snackbar"
+      },
+      "medium": {
+        "name": "Middel",
+        "seats": "40 tot 100 zitplaatsen",
+        "who": "Een gewoon restaurant"
+      },
+      "large": {
+        "name": "Groot",
+        "seats": "Meer dan 100 zitplaatsen",
+        "who": "Drukke brasserie, hotelrestaurant"
+      }
+    },
+    "includesTitle": "Elk abonnement bevat",
+    "sizeNote": "Je kiest je abonnement op basis van het aantal zitplaatsen. Wordt je menu twee maanden na elkaar veel vaker geopend dan je abonnement verwacht (ongeveer {small} keer per maand voor Klein, {medium} voor Middel)? Dan stellen we het volgende abonnement voor. We veranderen je abonnement of je factuur nooit zonder het te vragen."
   },
   "faq": {
     "eyebrow": "Veelgestelde vragen",
@@ -241,6 +261,10 @@
       {
         "q": "Hoe zit het met allergenen en de wet?",
         "a": "Volgens de EU-regels moet je info geven over de 14 allergenen. Onze AI stelt per gerecht allergenen voor, maar gasten zien ze pas als feit nadat jij ze bevestigd hebt. Onderaan het menu staat altijd: ‘Heb je een allergie? Meld het aan het personeel.’"
+      },
+      {
+        "q": "Welk abonnement heb ik nodig?",
+        "a": "Dat hangt af van je aantal zitplaatsen: Klein tot 40, Middel 40 tot 100, Groot meer dan 100. Elk abonnement heeft alle functies. Wordt je menu twee maanden na elkaar veel vaker geopend dan je abonnement verwacht, dan stellen we het volgende voor; we veranderen het nooit zonder het te vragen."
       },
       {
         "q": "Kan ik op elk moment opzeggen?",
