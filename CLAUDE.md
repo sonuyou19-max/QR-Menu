@@ -430,6 +430,7 @@ create table usage_events (                     -- AI cost tracking per restaura
 - Guests can insert `guest_events` / use chat only through edge functions (rate-limited).
 - `leads` and `demo_runs`: no public read or write; inserts only via the `book-demo` / `demo-translate` edge functions. A scheduled job (pg_cron) deletes `demo_runs` rows and their files older than 24 hours.
 - Use Supabase migrations in `supabase/migrations/`; no ad-hoc schema changes.
+- **Explicit grants on every new table in `public`** (Supabase stopped auto-granting on 30 Oct 2026): the migration that creates a table also grants what its RLS policies need — `authenticated` only the commands it has a policy for, `service_role` select/insert/update/delete (+ `usage, select` on a bigserial's sequence), `anon` nothing (guests go through security-definer functions and edge functions). The existing tables got theirs in `20261022170000_explicit_grants`.
 
 ---
 
