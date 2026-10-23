@@ -7,7 +7,7 @@ import {
 
 const allowedOrigins = (
   Deno.env.get("ALLOWED_ORIGINS") ??
-  "https://app.menubuddy.be,http://localhost:5173"
+  "https://app.brisolo.be,http://localhost:5173"
 ).split(",");
 
 /** Our Cloudflare test deployments: menubuddy-app.<account>.workers.dev and its preview URLs. */

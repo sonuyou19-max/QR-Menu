@@ -12,7 +12,7 @@ const MAX_PER_DAY = 100;
 
 const allowedOrigins = (
   Deno.env.get("ALLOWED_ORIGINS") ??
-  "https://menubuddy.be,https://www.menubuddy.be,http://localhost:4321"
+  "https://brisolo.be,https://www.brisolo.be,http://localhost:4321"
 ).split(",");
 
 const Lead = z.object({

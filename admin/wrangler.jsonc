@@ -1,11 +1,13 @@
 // Cloudflare Worker serving the founder's own dashboard (static files only, no Worker code).
 // Not for restaurant owners: only accounts in private.founders see any data. Deployed by
 // Workers Builds from the repo root: build `npm run build:admin`,
-// deploy `npx wrangler deploy --config admin/wrangler.jsonc`.
+// deploy `npx wrangler deploy --config admin/wrangler.jsonc`. Served on admin.brisolo.be and on the
+// workers.dev test address.
 {
   "$schema": "../node_modules/wrangler/config-schema.json",
   "name": "menubuddy-admin",
   "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "admin.brisolo.be", "custom_domain": true }],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application",

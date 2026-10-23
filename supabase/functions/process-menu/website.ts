@@ -38,7 +38,7 @@ export type WebsiteError =
   "bad_url" | "social_site" | "site_unreachable" | "no_menu_found";
 
 const USER_AGENT =
-  "Mozilla/5.0 (compatible; MenuBuddy/1.0; menu import for the restaurant owner; +https://menubuddy.be)";
+  "Mozilla/5.0 (compatible; Brisolo/1.0; menu import for the restaurant owner; +https://brisolo.be)";
 const MAX_PARTS = 14;
 const MAX_PAGES_FOLLOWED = 4;
 const MAX_PDFS = 3;

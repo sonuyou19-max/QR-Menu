@@ -1,10 +1,12 @@
 // Cloudflare Worker serving the owner/guest app (static files only, no Worker code).
 // Deployed by Workers Builds from the repo root: build `npm run build:app:test`,
-// deploy `npx wrangler deploy --config app/wrangler.jsonc`.
+// deploy `npx wrangler deploy --config app/wrangler.jsonc`. Served on app.brisolo.be (what printed QR
+// codes point to) and on the workers.dev test address.
 {
   "$schema": "../node_modules/wrangler/config-schema.json",
   "name": "menubuddy-app",
   "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "app.brisolo.be", "custom_domain": true }],
   "assets": {
     "directory": "./dist",
     // Client-side routes (/login, /service, /m/:slug …) all load index.html.

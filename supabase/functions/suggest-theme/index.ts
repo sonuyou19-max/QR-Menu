@@ -68,7 +68,7 @@ async function websiteFacts(raw: string): Promise<string | null> {
       const res = await fetch(url, {
         redirect: "manual",
         signal: AbortSignal.timeout(8000),
-        headers: { "User-Agent": "MenuBuddy look suggestion (+https://menubuddy.be)" },
+        headers: { "User-Agent": "Brisolo look suggestion (+https://brisolo.be)" },
       });
       if (res.status >= 300 && res.status < 400) {
         const next = res.headers.get("location");

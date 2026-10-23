@@ -4,8 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { supabase } from "./supabase";
 
 export const locale = "en-GB";
-export const appUrl =
-  import.meta.env.VITE_APP_URL || "https://menubuddy-app.sonuyou19.workers.dev";
+export const appUrl = import.meta.env.VITE_APP_URL || "https://app.brisolo.be";
 /** Monthly list price per plan size (excl. VAT); annual = 10 months. */
 export const sizePrices = { small: 29, medium: 49, large: 79 } as const;
 

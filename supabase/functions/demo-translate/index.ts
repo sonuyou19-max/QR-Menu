@@ -61,7 +61,7 @@ const Status = z.object({
 
 const siteOrigins = (
   Deno.env.get("SITE_ORIGINS") ??
-  "https://menubuddy.be,https://www.menubuddy.be,http://localhost:4321"
+  "https://brisolo.be,https://www.brisolo.be,http://localhost:4321"
 ).split(",");
 
 function corsHeaders(origin: string | null): Record<string, string> {

@@ -16,10 +16,8 @@ export const siteConfig = {
   demoTranslateUrl:
     import.meta.env.PUBLIC_DEMO_TRANSLATE_URL ||
     "https://eoeqtwskfqawxfpuyhac.supabase.co/functions/v1/demo-translate",
-  /** The product (guest menus + dashboard). Test address until app.brisolo.be is live. */
-  appUrl:
-    import.meta.env.PUBLIC_APP_URL ||
-    "https://menubuddy-app.sonuyou19.workers.dev",
+  /** The product (guest menus + dashboard). */
+  appUrl: import.meta.env.PUBLIC_APP_URL || "https://app.brisolo.be",
 };
 
 /** The real demo restaurant's guest menu (table 5), opened in the visitor's language. */

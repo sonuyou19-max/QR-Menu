@@ -7,11 +7,9 @@ export const config = {
   supabaseKey:
     import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
     "sb_publishable_vkrdzgiRxWrNC1Tl-xYMGA_uFxgulgI",
-  /** Final guest-menu address (what printed QR codes will point to, once the domain is live). */
+  /** Final guest-menu address (what printed QR codes point to). */
   menuBase: "app.brisolo.be/m/",
-  siteUrl:
-    import.meta.env.VITE_SITE_URL ||
-    "https://menubuddy-site.sonuyou19.workers.dev",
+  siteUrl: import.meta.env.VITE_SITE_URL || "https://brisolo.be",
 };
 
 /** True on the real domain; on the workers.dev test address menus and QR codes are for testing. */
