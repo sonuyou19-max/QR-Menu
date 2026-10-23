@@ -14,11 +14,12 @@ export const siteConfig = {
     import.meta.env.PUBLIC_BOOK_DEMO_URL ||
     "https://eoeqtwskfqawxfpuyhac.supabase.co/functions/v1/book-demo",
   /**
-   * Cloudflare Turnstile site key. Defaults to Cloudflare's always-pass test key; set the real key
-   * here (PUBLIC_TURNSTILE_SITE_KEY) together with TURNSTILE_SECRET_KEY on the function.
+   * Cloudflare Turnstile site key (widget "Brisolo website", hostnames brisolo.be + www). Its
+   * secret is TURNSTILE_SECRET_KEY on book-demo / demo-translate. Cloudflare's always-pass test
+   * key is 1x00000000000000000000AA (pair it with the test secret).
    */
   turnstileSiteKey:
-    import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA",
+    import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAFjJKoK_GpRrgAU2",
   /** Supabase edge function `demo-translate` ("Try with your own menu"). */
   demoTranslateUrl:
     import.meta.env.PUBLIC_DEMO_TRANSLATE_URL ||
