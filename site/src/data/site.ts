@@ -2,6 +2,13 @@
 export const siteConfig = {
   /** Shown on the legal pages and as the fallback when the form can't be sent. */
   contactEmail: "sonuyou19@gmail.com",
+  /** Supabase project "menubuddy" (Frankfurt): public address + publishable key (RLS protects data). */
+  supabaseUrl:
+    import.meta.env.PUBLIC_SUPABASE_URL ||
+    "https://eoeqtwskfqawxfpuyhac.supabase.co",
+  supabaseKey:
+    import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    "sb_publishable_vkrdzgiRxWrNC1Tl-xYMGA_uFxgulgI",
   /** Supabase edge function `book-demo` (project "menubuddy", Frankfurt). */
   bookDemoUrl:
     import.meta.env.PUBLIC_BOOK_DEMO_URL ||

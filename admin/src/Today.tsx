@@ -15,6 +15,7 @@ import {
   type Overview,
 } from "./lib";
 import { Card, DayBars, Failed, Loading, Tile } from "./ui";
+import { Website } from "./Website";
 
 type Key = keyof Overview["attention"];
 /** Items per group on this page; the rest are one tap away. */
@@ -185,6 +186,8 @@ export function Today() {
           <Funnel funnel={data.funnel} />
         </Card>
       </div>
+
+      <Website />
     </div>
   );
 }

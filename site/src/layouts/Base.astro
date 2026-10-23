@@ -5,6 +5,7 @@ import frauncesLatin from "@fontsource-variable/fraunces/files/fraunces-latin-op
 import dmSansLatin from "@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { siteConfig } from "../data/site";
 import {
   defaultLang,
   languages,
@@ -112,5 +113,34 @@ const ogImage = new URL(`/og/${lang}.png`, site).href;
         <Footer lang={lang} path={path} />
       </>
     )}
+    <script
+      is:inline
+      define:vars={{
+        trackUrl: `${siteConfig.supabaseUrl}/rest/v1/rpc/track_site_event`,
+        trackKey: siteConfig.supabaseKey,
+        trackLang: lang,
+      }}
+    >
+      // Counts clicks on buttons marked data-cta (shown in Brisolo HQ). Cookie-free: only the
+      // button's name and the page language are sent, and only on the real domain.
+      if (/(^|\.)brisolo\.be$/.test(location.hostname)) {
+        document.addEventListener("click", (e) => {
+          const el =
+            e.target instanceof Element && e.target.closest("[data-cta]");
+          if (!el) return;
+          try {
+            fetch(trackUrl, {
+              method: "POST",
+              keepalive: true,
+              headers: { apikey: trackKey, "Content-Type": "application/json" },
+              body: JSON.stringify({
+                p_label: el.dataset.cta,
+                p_lang: trackLang,
+              }),
+            }).catch(() => {});
+          } catch {}
+        });
+      }
+    </script>
   </body>
 </html>

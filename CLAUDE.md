@@ -234,7 +234,7 @@ Footer: contact, privacy, terms, company details (KBO/BCE + VAT number once regi
 
 **Design:** warm and food-focused, not a generic SaaS template — real phone mockups, appetising imagery, confident typography. Use the `frontend-design` approach. Accessible (WCAG AA), no layout shift, images optimised by Astro.
 
-**Analytics:** privacy-friendly and cookie-less (e.g. Plausible or Cloudflare Web Analytics) so no cookie banner is needed. Track: CTA clicks, demo opens, try-your-menu runs, form submissions.
+**Analytics:** privacy-friendly and cookie-less so no cookie banner is needed (owner's choice: Cloudflare + own events). Visits, pages, countries: Cloudflare Web Analytics (switched on in the Cloudflare dashboard for brisolo.be). Clicks: every button with `data-cta` is counted by a tiny inline script in `layouts/Base.astro` (only on brisolo.be) through `track_site_event(label, lang)` into `site_events` (no personal data, max 5,000 a day, kept 400 days; migration `20261023100000_site_events`); demo requests (`leads`) and try-your-menu runs (`usage_events` kind `demo`) are counted on the server. HQ Today shows them in "Website" (`admin/src/Website.tsx`, `hq_site_stats()`); new `data-cta` names get a plain name in `buttonNames` there.
 
 ---
 
