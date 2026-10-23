@@ -6,6 +6,8 @@
   "$schema": "../node_modules/wrangler/config-schema.json",
   "name": "menubuddy-site",
   "compatibility_date": "2026-10-01",
+  // Keep the workers.dev test address too (routes switch it off by default).
+  "workers_dev": true,
   "routes": [
     { "pattern": "brisolo.be", "custom_domain": true },
     { "pattern": "www.brisolo.be", "custom_domain": true },
