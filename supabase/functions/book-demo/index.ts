@@ -108,7 +108,7 @@ async function notify(lead: z.infer<typeof Lead>) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: Deno.env.get("RESEND_FROM") ?? "Brisolo <onboarding@resend.dev>",
+      from: Deno.env.get("RESEND_FROM") ?? "Brisolo <noreply@brisolo.be>",
       to,
       reply_to: lead.email,
       subject: `Demo-aanvraag: ${lead.restaurantName || lead.name}${lead.city ? ` (${lead.city})` : ""}`,
