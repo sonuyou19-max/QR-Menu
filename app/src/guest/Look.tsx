@@ -138,12 +138,10 @@ export function Hero({
 
   if (header === "cover")
     return (
-      <div className="relative">
-        <img
-          src={cover!}
-          alt=""
-          className="h-[42vh] max-h-80 min-h-52 w-full object-cover"
-        />
+      // One fixed shape on every screen (6:5, a phone's), inside the menu column: guests see the
+      // same crop on a laptop as on a phone, and the Look screen previews exactly that.
+      <div className="relative mx-auto max-w-2xl">
+        <img src={cover!} alt="" className="aspect-[6/5] w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-2xl px-4 pb-4 text-white">
           {logoUrl && (

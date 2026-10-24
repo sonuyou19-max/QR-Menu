@@ -594,14 +594,8 @@ function isLight(hex: string) {
   return 0.299 * r! + 0.587 * g! + 0.114 * b! > 160;
 }
 
-/**
- * The cover as guests see it: the guest page shows it full width and at most 320 px high
- * (guest/Look.tsx), cropped from the middle. Phone ≈ 390 × 320, laptop ≈ 1440 × 320.
- */
-const COVER_FRAMES = [
-  { key: "coverPhone", ratio: 390 / 320 },
-  { key: "coverLaptop", ratio: 1440 / 320 },
-] as const;
+/** The cover's shape on the guest page (guest/Look.tsx): 6:5 on every screen, cropped from the middle. */
+const COVER_RATIO = 6 / 5;
 
 function CoverPreview({ url, L }: { url: string; L: LookStrings }) {
   const [ratio, setRatio] = useState<number | null>(null);
@@ -609,23 +603,13 @@ function CoverPreview({ url, L }: { url: string; L: LookStrings }) {
     <div className="mt-5">
       <p className="font-semibold">{L.coverPreview}</p>
       <p className="text-ink-muted text-sm">{L.coverPreviewHint}</p>
-      <div className="mt-3 flex flex-wrap items-end gap-4">
-        {COVER_FRAMES.map((frame) => (
-          <figure
-            key={frame.key}
-            className={frame.key === "coverPhone" ? "w-36" : "min-w-56 flex-1"}
-          >
-            <CoverFrame
-              url={url}
-              frame={frame.ratio}
-              photo={ratio}
-              onRatio={setRatio}
-            />
-            <figcaption className="text-ink-muted mt-1 text-sm">
-              {L[frame.key]}
-            </figcaption>
-          </figure>
-        ))}
+      <div className="mt-3 w-56 max-w-full">
+        <CoverFrame
+          url={url}
+          frame={COVER_RATIO}
+          photo={ratio}
+          onRatio={setRatio}
+        />
       </div>
       {ratio !== null && (ratio > 1.6 || ratio < 0.9) && (
         <p className="bg-mustard-50 text-mustard-900 rounded-control mt-3 px-3 py-2 text-sm">
