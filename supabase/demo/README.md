@@ -1,0 +1,10 @@
+# Demo restaurant assets
+
+Brasserie Lindehof (`/m/demo`) is a made-up restaurant with no members, so its images can't be
+uploaded through the app.
+
+- `lindehof-logo.html`: the logo source (SVG, Playfair Display, the demo's burgundy `#8c1c13`).
+  It was rendered to `app/public/demo/lindehof-logo.png` (512 × 512, transparent) with Playwright.
+- The app serves the files from `app/public/demo/`. The edge function `seed-demo-branding` copies
+  them from `https://app.brisolo.be/demo/` into the `branding` bucket, under the demo's folder.
+  The demo's `logo_path` and `cover_path` are then set by a migration.
