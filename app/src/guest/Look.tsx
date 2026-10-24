@@ -56,13 +56,16 @@ export function useGuestLook(saved: unknown, savedLogo: string | null) {
     const vars = themeVars(t);
     for (const [name, value] of Object.entries(vars))
       root.style.setProperty(name, value);
+    // On the body: it paints its own background colour (bg-canvas), which would hide a texture
+    // set on <html>.
+    const body = document.body;
     const texture = textureStyle(t);
-    root.style.backgroundImage = texture.backgroundImage ?? "";
-    root.style.backgroundSize = texture.backgroundSize ?? "";
-    root.style.backgroundAttachment = "fixed";
+    body.style.backgroundImage = texture.backgroundImage ?? "";
+    body.style.backgroundSize = texture.backgroundSize ?? "";
+    body.style.backgroundAttachment = "fixed";
     return () => {
       for (const name of Object.keys(vars)) root.style.removeProperty(name);
-      root.style.backgroundImage = "";
+      body.style.backgroundImage = "";
     };
   }, [key]);
 
