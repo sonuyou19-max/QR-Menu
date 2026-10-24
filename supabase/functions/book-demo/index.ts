@@ -91,13 +91,13 @@ async function notify(lead: z.infer<typeof Lead>) {
     return;
   }
   const lines = [
-    `Naam: ${lead.name}`,
+    `Name: ${lead.name}`,
     `Restaurant: ${lead.restaurantName ?? "-"}`,
-    `Stad: ${lead.city ?? "-"}`,
-    `E-mail: ${lead.email}`,
-    `Telefoon: ${lead.phone ?? "-"}`,
-    `Taal: ${lead.language}`,
-    `Voorkeur moment: ${lead.preferredTime ?? "-"}`,
+    `City: ${lead.city ?? "-"}`,
+    `Email: ${lead.email}`,
+    `Phone: ${lead.phone ?? "-"}`,
+    `Language: ${lead.language}`,
+    `Preferred time: ${lead.preferredTime ?? "-"}`,
     "",
     lead.message ?? "",
   ];
@@ -111,7 +111,7 @@ async function notify(lead: z.infer<typeof Lead>) {
       from: Deno.env.get("RESEND_FROM") ?? "Brisolo <noreply@brisolo.be>",
       to,
       reply_to: lead.email,
-      subject: `Demo-aanvraag: ${lead.restaurantName || lead.name}${lead.city ? ` (${lead.city})` : ""}`,
+      subject: `Demo request: ${lead.restaurantName || lead.name}${lead.city ? ` (${lead.city})` : ""}`,
       text: lines.join("\n"),
     }),
   });
