@@ -146,8 +146,8 @@
             "text": "Pas de description sur votre carte ? Une courte « préparation typique » l'explique. Pour les plats créatifs, nous ne devinons pas : le client voit « demandez au personnel »."
           },
           {
-            "title": "Des filtres utiles",
-            "text": "Végétarien, végan, sans porc, sans bœuf, sans gluten ou sans fruits à coque. Les allergènes ne comptent qu'une fois confirmés par vous."
+            "title": "Le bon plat, rapidement",
+            "text": "Une rangée « Populaires » en haut, une recherche et des filtres : végétarien, végan, sans porc ni bœuf, sans gluten ou fruits à coque. Les allergènes confirmés s'affichent en petites icônes avec une légende."
           },
           {
             "title": "Une commande à montrer au serveur",
@@ -343,7 +343,7 @@
       },
       {
         "q": "Est-ce que ça marche aussi pour ma carte des boissons ?",
-        "a": "Oui. Les boissons sont simplement des catégories de votre carte, comme sur votre carte papier, avec les mêmes traductions, filtres et interrupteur « épuisé »."
+        "a": "Oui. Les boissons sont simplement des catégories de votre carte, comme sur votre carte papier, avec les mêmes traductions, filtres et interrupteur « épuisé ». Affichez une catégorie en liste compacte, une ligne par boisson."
       },
       {
         "q": "Le tableau de bord est-il dans ma langue ?",

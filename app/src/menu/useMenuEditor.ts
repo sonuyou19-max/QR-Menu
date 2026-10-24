@@ -187,6 +187,38 @@ export function useMenuEditor(
     [run, show],
   );
 
+  /** Compact rows on the guest menu (one line per dish), e.g. for drinks. */
+  const setCategoryCompact = useCallback(
+    async (id: string, compact: boolean) => {
+      const setLocal = (value: boolean) =>
+        setCategories(
+          (list) =>
+            list?.map((c) => (c.id === id ? { ...c, compact: value } : c)) ??
+            null,
+        );
+      const save = (value: boolean) =>
+        supabase
+          .from("menu_categories")
+          .update({ compact: value })
+          .eq("id", id);
+      const saved = await run(
+        () => setLocal(compact),
+        () => setLocal(!compact),
+        () => save(compact),
+      );
+      if (saved)
+        show({ kind: "saved" }, async () => {
+          await run(
+            () => setLocal(!compact),
+            () => setLocal(compact),
+            () => save(!compact),
+          );
+          setToast(null);
+        });
+    },
+    [run, show],
+  );
+
   /** New dish at the end of a category. Returns its id. */
   const addItem = useCallback(
     async (categoryId: string, name: string): Promise<string | null> => {
@@ -430,6 +462,7 @@ export function useMenuEditor(
     showError: () => show({ kind: "error" }),
     updateItem,
     updateCategory,
+    setCategoryCompact,
     addItem,
     deleteItem,
     addCategory,

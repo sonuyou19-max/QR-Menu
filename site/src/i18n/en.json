@@ -146,8 +146,8 @@
             "text": "No description on your menu? A short “typical preparation” explains it. For creative dishes we don't guess: guests see “ask staff”."
           },
           {
-            "title": "Filters that matter",
-            "text": "Vegetarian, vegan, no pork, no beef, without gluten or nuts. Allergens only count once you've confirmed them."
+            "title": "Find the right dish fast",
+            "text": "A “Popular” row at the top, search, and filters: vegetarian, vegan, no pork or beef, without gluten or nuts. Confirmed allergens show as small icons with a key."
           },
           {
             "title": "An order to show the waiter",
@@ -343,7 +343,7 @@
       },
       {
         "q": "Does it also work for my drinks list?",
-        "a": "Yes. Drinks are simply categories on your menu, just like on your printed menu, with the same translations, filters and sold-out switch."
+        "a": "Yes. Drinks are simply categories on your menu, just like on your printed menu, with the same translations, filters and sold-out switch. Show a category as a compact list, one line per drink."
       },
       {
         "q": "Is the dashboard in my language?",

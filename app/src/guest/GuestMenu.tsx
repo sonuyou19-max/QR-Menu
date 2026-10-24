@@ -15,6 +15,7 @@ import {
   LoaderCircle,
   MessageCircle,
   MessageCircleQuestion,
+  Search,
   ShieldAlert,
   X,
 } from "lucide-react";
@@ -39,12 +40,29 @@ import {
   orderLines,
 } from "./Order";
 import { rtlLanguages, stringsFor, type GuestStrings } from "./strings";
+import { AllergenIcons, AllergenLegend } from "./allergens";
+import type { Allergen } from "../lib/extraction";
 
 // The chat (and its code) loads only when a guest opens it.
 const Chat = lazy(() => import("./Chat"));
 
 type Filter = "vegetarian" | "vegan" | "noPork" | "noBeef" | "glutenFree";
 const LANG_KEY = "mb.guestLang";
+/** Menus with at least this many dishes get a search field. */
+const SEARCH_FROM = 12;
+
+/** Lowercase without accents, so "creme brulee" finds "Crème brûlée". */
+const fold = (text: string) =>
+  text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+
+function found(dish: GuestDish, words: string[]): boolean {
+  const text = fold(
+    [dish.name, dish.translated_name, dish.description]
+      .filter(Boolean)
+      .join(" "),
+  );
+  return words.every((w) => text.includes(w));
+}
 
 /**
  * Guest's language wishes, best first: a language in the link (?lang=fr, used by the marketing
@@ -110,6 +128,8 @@ export function GuestMenu({ slug }: { slug: string }) {
     () => wishedLanguages()[0] ?? "en",
   );
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
+  const [query, setQuery] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
   const [openDish, setOpenDish] = useState<GuestDish | null>(null);
   const table = useMemo(() => tableLabel(slug), [slug]);
   const cart = useCart(slug);
@@ -286,6 +306,21 @@ export function GuestMenu({ slug }: { slug: string }) {
   const categories = menu.categories
     .map((c) => ({ ...c, items: c.items.filter((d) => matches(d, filters)) }))
     .filter((c) => c.items.length > 0);
+  const searchable = dishes.size >= SEARCH_FROM;
+  const words = fold(query).split(/\s+/).filter(Boolean);
+  const results = words.length
+    ? categories.flatMap((c) => c.items.filter((d) => found(d, words)))
+    : null;
+  // Pinned and most-ordered dishes; left out while searching or filtering, and when sold out.
+  const popular =
+    results || filters.size
+      ? []
+      : (restaurant.popular ?? [])
+          .map((id) => dishes.get(id))
+          .filter((d): d is GuestDish => !!d && d.in_stock);
+  const usedAllergens = new Set<Allergen>(
+    [...dishes.values()].flatMap((d) => d.allergens ?? []),
+  );
 
   const changeLanguage = (lang: string) => {
     try {
@@ -377,6 +412,19 @@ export function GuestMenu({ slug }: { slug: string }) {
               ))}
             </ul>
           </nav>
+          {searchable && (
+            <button
+              type="button"
+              onClick={() => {
+                searchRef.current?.focus({ preventScroll: true });
+                searchRef.current?.scrollIntoView({ block: "center" });
+              }}
+              aria-label={s.search}
+              className="border-line bg-surface text-ink grid size-9 shrink-0 place-items-center rounded-full border"
+            >
+              <Search className="size-4" aria-hidden="true" />
+            </button>
+          )}
           {languagePicker}
         </div>
       </header>
@@ -384,6 +432,38 @@ export function GuestMenu({ slug }: { slug: string }) {
       <main
         className={`mx-auto max-w-2xl px-4 ${lines.length ? "pb-44" : "pb-28"}`}
       >
+        {searchable && (
+          <div role="search" className="relative pt-4">
+            <Search
+              className="text-ink-muted pointer-events-none absolute start-3.5 top-[calc(1rem+0.8rem)] size-5"
+              aria-hidden="true"
+            />
+            <input
+              ref={searchRef}
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={s.searchPlaceholder}
+              aria-label={s.search}
+              enterKeyHint="search"
+              className="border-line bg-surface text-ink placeholder:text-ink-muted h-12 w-full rounded-full border ps-11 pe-12 text-base [&::-webkit-search-cancel-button]:hidden"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => {
+                  setQuery("");
+                  searchRef.current?.focus();
+                }}
+                aria-label={s.clearSearch}
+                className="text-ink-muted absolute end-1 top-[calc(1rem+0.25rem)] grid size-10 place-items-center rounded-full"
+              >
+                <X className="size-5" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        )}
+
         <div
           role="group"
           aria-label={s.filters}
@@ -409,52 +489,46 @@ export function GuestMenu({ slug }: { slug: string }) {
           ))}
         </div>
 
-        {categories.length === 0 && (
-          <div className="mt-10 text-center">
-            <p className="text-ink-muted">{s.noMatches}</p>
-            <button
-              type="button"
-              onClick={() => setFilters(new Set())}
-              className="btn-secondary mt-4"
+        {popular.length > 0 && (
+          <section aria-labelledby="popular-title" className="pt-6">
+            <h2
+              id="popular-title"
+              className="font-display text-ink text-2xl font-semibold"
             >
-              {s.showAll}
-            </button>
-          </div>
+              {s.popular}
+            </h2>
+            <ul className="-mx-4 mt-3 flex snap-x [scrollbar-width:none] gap-3 overflow-x-auto px-4 pb-2">
+              {popular.map((dish) => (
+                <li key={dish.id} className="w-44 shrink-0 snap-start">
+                  <PopularCard
+                    dish={dish}
+                    money={money}
+                    s={s}
+                    qty={cart.qtyOf(dish.id)}
+                    onAdd={() => trackedCart.add(dish.id)}
+                    onOpen={() => openDishByGuest(dish)}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
 
-        {categories.map((c, index) => {
-          const translated =
-            c.translated_name && plain(c.translated_name) !== plain(c.name)
-              ? c.translated_name
-              : null;
-          return (
-            <section
-              key={c.id}
-              id={`cat-${c.id}`}
-              aria-labelledby={`h-${c.id}`}
-              className="scroll-mt-20 pt-7"
-            >
-              {index > 0 && (
-                <Ornament
-                  theme={theme}
-                  name={restaurant.name}
-                  className="mb-6"
-                />
-              )}
-              <CategoryHeading
-                theme={theme}
-                id={`h-${c.id}`}
-                name={c.name}
-                translated={translated}
-              />
+        {results && (
+          <section aria-live="polite" className="pt-4">
+            {results.length === 0 ? (
+              <p className="text-ink-muted mt-6 text-center" dir="auto">
+                {s.noResults.replace("{q}", query.trim())}
+              </p>
+            ) : (
               <ul
                 className={
                   theme.layout === "list"
-                    ? "divide-line mt-2 divide-y"
-                    : "mt-4 space-y-3"
+                    ? "divide-line divide-y"
+                    : "mt-2 space-y-3"
                 }
               >
-                {c.items.map((dish) => (
+                {results.map((dish) => (
                   <li key={dish.id}>
                     <DishCard
                       dish={dish}
@@ -468,9 +542,90 @@ export function GuestMenu({ slug }: { slug: string }) {
                   </li>
                 ))}
               </ul>
-            </section>
-          );
-        })}
+            )}
+          </section>
+        )}
+
+        {!results && categories.length === 0 && (
+          <div className="mt-10 text-center">
+            <p className="text-ink-muted">{s.noMatches}</p>
+            <button
+              type="button"
+              onClick={() => setFilters(new Set())}
+              className="btn-secondary mt-4"
+            >
+              {s.showAll}
+            </button>
+          </div>
+        )}
+
+        {!results &&
+          categories.map((c, index) => {
+            const translated =
+              c.translated_name && plain(c.translated_name) !== plain(c.name)
+                ? c.translated_name
+                : null;
+            return (
+              <section
+                key={c.id}
+                id={`cat-${c.id}`}
+                aria-labelledby={`h-${c.id}`}
+                className="scroll-mt-20 pt-7"
+              >
+                {index > 0 && (
+                  <Ornament
+                    theme={theme}
+                    name={restaurant.name}
+                    className="mb-6"
+                  />
+                )}
+                <CategoryHeading
+                  theme={theme}
+                  id={`h-${c.id}`}
+                  name={c.name}
+                  translated={translated}
+                />
+                <ul
+                  className={
+                    c.compact
+                      ? "divide-line mt-2 divide-y"
+                      : theme.layout === "list"
+                        ? "divide-line mt-2 divide-y"
+                        : "mt-4 space-y-3"
+                  }
+                >
+                  {c.items.map((dish) => (
+                    <li key={dish.id}>
+                      {c.compact ? (
+                        <CompactRow
+                          dish={dish}
+                          money={money}
+                          s={s}
+                          qty={cart.qtyOf(dish.id)}
+                          onAdd={() => trackedCart.add(dish.id)}
+                          onOpen={() => openDishByGuest(dish)}
+                        />
+                      ) : (
+                        <DishCard
+                          dish={dish}
+                          money={money}
+                          s={s}
+                          layout={theme.layout}
+                          qty={cart.qtyOf(dish.id)}
+                          onAdd={() => trackedCart.add(dish.id)}
+                          onOpen={() => openDishByGuest(dish)}
+                        />
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
+
+        {restaurant.show_allergens && (
+          <AllergenLegend used={usedAllergens} s={s} />
+        )}
 
         <footer className="text-ink-muted mt-12 space-y-2 text-center text-sm">
           <p className="text-ink flex items-center justify-center gap-2 font-semibold">
@@ -617,8 +772,19 @@ function Tags({ dish, s }: { dish: GuestDish; s: GuestStrings }) {
   );
 }
 
-function AllergenLine({ dish, s }: { dish: GuestDish; s: GuestStrings }) {
+function AllergenLine({
+  dish,
+  s,
+  icons,
+}: {
+  dish: GuestDish;
+  s: GuestStrings;
+  /** In the list: confirmed allergens as icons (names in the legend and the dish sheet). */
+  icons?: boolean;
+}) {
   if (dish.allergens_confirmed === null) return null; // restaurant doesn't show allergens
+  if (icons && dish.allergens_confirmed && dish.allergens?.length)
+    return <AllergenIcons allergens={dish.allergens} s={s} />;
   if (!dish.allergens_confirmed)
     return (
       <p className="text-mustard-800 mt-1.5 text-xs font-medium">
@@ -726,7 +892,7 @@ function DishCard({
       )}
       <Description dish={dish} s={s} clamp />
       <Tags dish={dish} s={s} />
-      <AllergenLine dish={dish} s={s} />
+      <AllergenLine dish={dish} s={s} icons />
     </>
   );
   // The whole card opens the dish (stretched button); the + sits above it.
@@ -778,6 +944,132 @@ function DishCard({
       ) : (
         add && <div className="shrink-0 self-start">{add}</div>
       )}
+    </div>
+  );
+}
+
+/** One line per dish (name and price, small photo): for categories the owner made compact. */
+function CompactRow({
+  dish,
+  money,
+  s,
+  qty,
+  onAdd,
+  onOpen,
+}: {
+  dish: GuestDish;
+  money: Intl.NumberFormat;
+  s: GuestStrings;
+  qty: number;
+  onAdd: () => void;
+  onOpen: () => void;
+}) {
+  const thumb = dishImage(dish.thumb_path ?? dish.image_path);
+  const helper = helperName(dish);
+  return (
+    <div
+      className={`relative flex min-h-14 items-center gap-3 py-2.5 ${dish.in_stock ? "" : "opacity-60"}`}
+    >
+      <button
+        type="button"
+        onClick={onOpen}
+        className="min-w-0 flex-1 text-start after:absolute after:inset-0 after:content-['']"
+      >
+        <span
+          className="block leading-snug font-semibold [overflow-wrap:anywhere]"
+          dir="auto"
+        >
+          {dish.name}
+        </span>
+        {helper && (
+          <span className="text-ink-muted block text-sm" dir="auto">
+            {helper}
+          </span>
+        )}
+      </button>
+      {!dish.in_stock ? (
+        <span className="bg-ink-muted text-canvas shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold">
+          {s.soldOut}
+        </span>
+      ) : (
+        dish.price !== null && (
+          <span className="shrink-0 font-semibold tabular-nums">
+            {money.format(dish.price)}
+          </span>
+        )
+      )}
+      {thumb && (
+        <img
+          src={thumb}
+          alt=""
+          loading="lazy"
+          className="rounded-control border-line size-12 shrink-0 border object-cover"
+        />
+      )}
+      {dish.in_stock && (
+        <div className="relative shrink-0">
+          <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** A card in the "Popular" row: photo on top (if any), name as on the menu, translation, price, +. */
+function PopularCard({
+  dish,
+  money,
+  s,
+  qty,
+  onAdd,
+  onOpen,
+}: {
+  dish: GuestDish;
+  money: Intl.NumberFormat;
+  s: GuestStrings;
+  qty: number;
+  onAdd: () => void;
+  onOpen: () => void;
+}) {
+  const thumb = dishImage(dish.image_path ?? dish.thumb_path);
+  const helper = helperName(dish);
+  return (
+    <div className="bg-surface rounded-card relative flex h-full flex-col overflow-hidden shadow-sm">
+      {thumb && (
+        <img
+          src={thumb}
+          alt=""
+          loading="lazy"
+          className="aspect-[16/10] w-full object-cover"
+        />
+      )}
+      <div className="flex flex-1 flex-col p-3">
+        <button
+          type="button"
+          onClick={onOpen}
+          className="text-start after:absolute after:inset-0 after:content-['']"
+        >
+          <span
+            className="line-clamp-2 leading-snug font-semibold [overflow-wrap:anywhere]"
+            dir="auto"
+          >
+            {dish.name}
+          </span>
+          {helper && (
+            <span className="text-ink-muted line-clamp-1 text-sm" dir="auto">
+              {helper}
+            </span>
+          )}
+        </button>
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
+          <span className="font-semibold tabular-nums">
+            {dish.price !== null && money.format(dish.price)}
+          </span>
+          <div className="relative">
+            <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

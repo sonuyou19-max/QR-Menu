@@ -95,6 +95,7 @@ export type Database = {
       };
       menu_categories: {
         Row: {
+          compact: boolean;
           content_hash: string | null;
           id: string;
           name: string;
@@ -102,6 +103,7 @@ export type Database = {
           sort_order: number;
         };
         Insert: {
+          compact?: boolean;
           content_hash?: string | null;
           id?: string;
           name: string;
@@ -109,6 +111,7 @@ export type Database = {
           sort_order?: number;
         };
         Update: {
+          compact?: boolean;
           content_hash?: string | null;
           id?: string;
           name?: string;
@@ -136,6 +139,7 @@ export type Database = {
           id: string;
           image_path: string | null;
           image_thumb_path: string | null;
+          is_featured: boolean;
           in_stock: boolean;
           is_hidden: boolean;
           menu_description: string | null;
@@ -157,6 +161,7 @@ export type Database = {
           id?: string;
           image_path?: string | null;
           image_thumb_path?: string | null;
+          is_featured?: boolean;
           in_stock?: boolean;
           is_hidden?: boolean;
           menu_description?: string | null;
@@ -178,6 +183,7 @@ export type Database = {
           id?: string;
           image_path?: string | null;
           image_thumb_path?: string | null;
+          is_featured?: boolean;
           in_stock?: boolean;
           is_hidden?: boolean;
           menu_description?: string | null;

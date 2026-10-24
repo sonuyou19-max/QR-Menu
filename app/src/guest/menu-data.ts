@@ -47,11 +47,15 @@ export interface GuestMenuData {
     assistant_name?: string | null;
     /** The look's tagline in the guest's language; null: show it as written. */
     tagline_translated?: string | null;
+    /** Up to 6 dish ids for the "Popular" row: pinned by the owner, then most added by guests. */
+    popular?: string[];
   };
   categories: {
     id: string;
     name: string;
     translated_name: string | null;
+    /** Owner's choice: one line per dish (name, price, small photo), e.g. for drinks. */
+    compact?: boolean;
     items: GuestDish[];
   }[];
 }

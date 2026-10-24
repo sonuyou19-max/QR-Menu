@@ -657,6 +657,17 @@ export function DishSheet({
           >
             {t.editor.sheet.stock}
           </Switch>
+          <Switch
+            checked={item.is_featured}
+            onChange={(featured) =>
+              void editor.updateItem(item.id, { is_featured: featured })
+            }
+          >
+            {t.editor.sheet.featured}
+            <span className="text-ink-muted block text-sm font-normal">
+              {t.editor.sheet.featuredHint}
+            </span>
+          </Switch>
         </div>
 
         <button

@@ -293,7 +293,8 @@
       "delete": "Delete category",
       "deleteConfirm": "Delete \"{name}\" and its {count} dishes?",
       "options": "Options for {name}",
-      "dishCount": "{count} dishes"
+      "dishCount": "{count} dishes",
+      "compact": "Compact list: one line per dish (handy for drinks)"
     },
     "dish": {
       "drag": "Move {name}",
@@ -342,6 +343,8 @@
       "delete": "Delete dish",
       "visibility": "Visible to guests",
       "stock": "In stock today",
+      "featured": "Show under “Popular”",
+      "featuredHint": "At the top of the guest menu (up to 6 dishes, then the dishes guests order most)",
       "confirmNext": "Confirm & next dish",
       "translations": "Translations",
       "notTranslated": "Not translated yet",

@@ -293,7 +293,8 @@
       "delete": "Supprimer la catégorie",
       "deleteConfirm": "Supprimer « {name} » et ses {count} plats ?",
       "options": "Options pour {name}",
-      "dishCount": "{count} plats"
+      "dishCount": "{count} plats",
+      "compact": "Liste compacte : une ligne par plat (pratique pour les boissons)"
     },
     "dish": {
       "drag": "Déplacer {name}",
@@ -342,6 +343,8 @@
       "delete": "Supprimer le plat",
       "visibility": "Visible pour les clients",
       "stock": "Disponible aujourd'hui",
+      "featured": "Afficher dans « Populaires »",
+      "featuredHint": "En haut de la carte des clients (jusqu’à 6 plats, puis ceux que les clients choisissent le plus)",
       "confirmNext": "Confirmer et plat suivant",
       "translations": "Traductions",
       "notTranslated": "Pas encore traduit",

@@ -158,6 +158,18 @@ export function CategorySection({
         </button>
       </div>
 
+      <label className="text-ink-muted flex min-h-11 cursor-pointer items-center gap-3 pl-1 text-sm">
+        <input
+          type="checkbox"
+          checked={category.compact}
+          onChange={(e) =>
+            void editor.setCategoryCompact(category.id, e.target.checked)
+          }
+          className="accent-herb-600 size-5 shrink-0"
+        />
+        <span>{t.editor.category.compact}</span>
+      </label>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}

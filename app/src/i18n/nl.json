@@ -293,7 +293,8 @@
       "delete": "Categorie verwijderen",
       "deleteConfirm": "\"{name}\" en de {count} gerechten erin verwijderen?",
       "options": "Opties voor {name}",
-      "dishCount": "{count} gerechten"
+      "dishCount": "{count} gerechten",
+      "compact": "Compacte lijst: één regel per gerecht (handig voor dranken)"
     },
     "dish": {
       "drag": "{name} verplaatsen",
@@ -342,6 +343,8 @@
       "delete": "Gerecht verwijderen",
       "visibility": "Zichtbaar voor gasten",
       "stock": "Vandaag op voorraad",
+      "featured": "Tonen bij “Populair”",
+      "featuredHint": "Bovenaan de menukaart voor gasten (tot 6 gerechten, daarna wat gasten het vaakst kiezen)",
       "confirmNext": "Bevestigen & volgend gerecht",
       "translations": "Vertalingen",
       "notTranslated": "Nog niet vertaald",

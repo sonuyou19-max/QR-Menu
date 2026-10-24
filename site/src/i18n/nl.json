@@ -146,8 +146,8 @@
             "text": "Geen beschrijving op je kaart? Een korte ‘typische bereiding’ legt het uit. Bij creatieve gerechten gokken we niet: de gast ziet ‘vraag het personeel’."
           },
           {
-            "title": "Filters die ertoe doen",
-            "text": "Vegetarisch, veganistisch, zonder varkens- of rundvlees, zonder gluten of noten. Allergenen tellen pas als jij ze bevestigd hebt."
+            "title": "Snel het juiste gerecht",
+            "text": "Bovenaan een rij “Populair”, een zoekveld en filters: vegetarisch, veganistisch, zonder varkens- of rundvlees, zonder gluten of noten. Bevestigde allergenen staan als kleine icoontjes met uitleg."
           },
           {
             "title": "Een bestelling om aan de ober te tonen",
@@ -343,7 +343,7 @@
       },
       {
         "q": "Werkt het ook voor mijn drankkaart?",
-        "a": "Ja. Dranken zijn gewoon categorieën op je menu, net als op je papieren kaart, met dezelfde vertalingen, filters en ‘op’-schakelaar."
+        "a": "Ja. Dranken zijn gewoon categorieën op je menu, net als op je papieren kaart, met dezelfde vertalingen, filters en ‘op’-schakelaar. Toon een categorie als compacte lijst, één regel per drankje."
       },
       {
         "q": "Is het dashboard in mijn taal?",
