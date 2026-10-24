@@ -13,12 +13,13 @@
     "faq": "Vragen",
     "bookDemo": "Demo aanvragen",
     "bookDemoShort": "Demo",
-    "language": "Taal"
+    "language": "Taal",
+    "features": "Functies"
   },
   "hero": {
     "eyebrow": "Voor restaurants in België",
     "title": "Je menukaart, in de taal van elke gast.",
-    "subtitle": "Gasten scannen de QR-code op tafel en lezen je menu meteen in hun eigen taal — met uitleg bij elk gerecht. Geen app nodig. Jij uploadt je menu één keer, wij doen de rest.",
+    "subtitle": "Gasten scannen de QR-code op tafel en lezen je menu in hun eigen taal — 12 talen, uitleg bij elk gerecht en een AI-ober die hun vragen beantwoordt. Geen app nodig. Jij uploadt je menu één keer, wij doen de rest.",
     "ctaPrimary": "Demo aanvragen",
     "ctaSecondary": "Bekijk de demo",
     "note": "Gratis pilot voor de eerste restaurants in Leuven.",
@@ -70,6 +71,7 @@
     "text": "Dit is de echte gastenmenukaart van een voorbeeldrestaurant, precies zoals je gasten hem zien. Kies een taal, filter de gerechten en voeg ze toe aan de bestelling. De naam van elk gerecht blijft zoals op de kaart — de vertaling staat er klein onder.",
     "points": [
       "Wissel tussen 7 talen, van Engels tot Chinees",
+      "Vraag het aan Lotte, de AI-ober: “Wat is vegetarisch?”",
       "Tik op + en open ‘Toon aan personeel’",
       "Filter op vegetarisch of zonder rundvlees"
     ],
@@ -124,57 +126,110 @@
   },
   "features": {
     "eyebrow": "Wat je krijgt",
-    "title": "Gemaakt voor je gasten. En voor jou tijdens de service.",
-    "guests": {
-      "title": "Voor je gasten",
-      "items": [
-        {
-          "title": "Het menu in hun eigen taal",
-          "text": "Automatisch in de taal van hun telefoon. Engels, Frans, Duits, Spaans, Italiaans, Chinees en meer."
-        },
-        {
-          "title": "Uitleg bij elk gerecht",
-          "text": "Wat zit erin, hoe wordt het gemaakt? Ook voor typisch Belgische klassiekers."
-        },
-        {
-          "title": "Foto's van je gerechten",
-          "text": "Laat zien wat er op het bord komt. Foto's zijn optioneel — je menu ziet er ook zonder mooi uit."
-        },
-        {
-          "title": "Een mandje om aan de ober te tonen",
-          "text": "Gasten verzamelen wat ze willen en tonen een duidelijk scherm met de originele namen."
-        },
-        {
-          "title": "Vragen stellen over het menu",
-          "text": "“Wat is vegetarisch?” — antwoorden alleen op basis van jouw menu, nooit verzonnen."
-        }
-      ]
-    },
-    "owners": {
-      "title": "Voor jou",
-      "items": [
-        {
-          "title": "Gerecht op? Eén tik.",
-          "text": "In de servicemodus zet je een gerecht op ‘uitverkocht’. Gasten zien het meteen."
-        },
-        {
-          "title": "Wijzigen zonder gedoe",
-          "text": "Prijs aanpassen, gerecht toevoegen, volgorde slepen. Alles wordt automatisch bewaard en vertaald."
-        },
-        {
-          "title": "Foto's met je gsm",
-          "text": "Neem een foto van het bord en zet hem meteen bij het gerecht."
-        },
-        {
-          "title": "Zie wat je gasten willen",
-          "text": "Welke talen, welke gerechten worden bekeken, welke vragen worden gesteld."
-        },
-        {
-          "title": "In de stijl van je zaak",
-          "text": "Jouw kleuren, lettertype en logo. Je menu voelt als je restaurant, niet als een sjabloon."
-        }
-      ]
-    }
+    "title": "Alles wat je gasten nodig hebben. En alles wat jij nodig hebt.",
+    "intro": "Elk abonnement bevat alle functies hieronder.",
+    "groups": [
+      {
+        "title": "Voor je gasten",
+        "intro": "Elke gast leest je menu alsof het voor hem geschreven is.",
+        "items": [
+          {
+            "title": "Hun taal, automatisch",
+            "text": "12 talen, van Engels en Duits tot Chinees, Japans en Arabisch. Het menu opent in de taal van de telefoon; wisselen is één tik."
+          },
+          {
+            "title": "Jouw gerechtnamen blijven",
+            "text": "“Stoofvlees met frietjes” blijft de hoofdnaam. De vertaling staat klein eronder, zodat gast en ober over hetzelfde gerecht praten."
+          },
+          {
+            "title": "Uitleg bij elk gerecht",
+            "text": "Geen beschrijving op je kaart? Een korte ‘typische bereiding’ legt het uit. Bij creatieve gerechten gokken we niet: de gast ziet ‘vraag het personeel’."
+          },
+          {
+            "title": "Filters die ertoe doen",
+            "text": "Vegetarisch, veganistisch, zonder varkens- of rundvlees, zonder gluten of noten. Allergenen tellen pas als jij ze bevestigd hebt."
+          },
+          {
+            "title": "Een bestelling om aan de ober te tonen",
+            "text": "Gasten tikken op + en tonen een duidelijke lijst op het volle scherm, met de originele namen, hun opmerkingen en het tafelnummer."
+          }
+        ]
+      },
+      {
+        "title": "Je eigen AI-ober",
+        "intro": "Gasten stellen vragen in hun eigen taal. Jij kiest de naam.",
+        "items": [
+          {
+            "title": "Geef hem een naam",
+            "text": "“Vraag het aan Lotte”: je AI-ober stelt zich voor met de naam die jij kiest, en zegt altijd dat hij een AI is, nooit een mens."
+          },
+          {
+            "title": "Antwoorden alleen uit je menu",
+            "text": "Hij kent jouw gerechten en verder niets. Geen verzonnen gerechten, geen antwoorden over andere restaurants of andere onderwerpen."
+          },
+          {
+            "title": "Prijzen kloppen altijd",
+            "text": "Gerechten en prijzen komen rechtstreeks uit je menu, nooit uit de tekst van de AI. Gasten tikken op een gerecht om het toe te voegen."
+          },
+          {
+            "title": "Voorzichtig met allergieën",
+            "text": "Hij noemt een gerecht nooit veilig als jij de allergenen niet bevestigd hebt. Dan vraagt een vaste zin de gast om het personeel te vragen."
+          },
+          {
+            "title": "Weet wat op is",
+            "text": "Hij raadt nooit een gerecht aan dat vandaag op is, en stelt iets anders voor."
+          }
+        ]
+      },
+      {
+        "title": "Tijdens de service",
+        "intro": "Gemaakt voor één hand op een drukke avond.",
+        "items": [
+          {
+            "title": "Gerecht op? Eén tik.",
+            "text": "De servicemodus toont elk gerecht met één grote schakelaar. Gasten zien het meteen op hun telefoon, zonder te herladen."
+          },
+          {
+            "title": "Klaar voor de volgende service",
+            "text": "Eén knop zet alle gerechten weer op ‘beschikbaar’ voor je opnieuw opent."
+          },
+          {
+            "title": "Een QR-code per tafel",
+            "text": "Optioneel: elke tafel krijgt een eigen code, zodat de ober het tafelnummer ziet op de bestelling van de gast."
+          },
+          {
+            "title": "Codes klaar om te printen",
+            "text": "Bewaar een code als afbeelding of print een blad met tafelkaartjes om uit te knippen. De code verandert nooit, ook niet als je menu verandert."
+          }
+        ]
+      },
+      {
+        "title": "Jouw menu, jouw stijl",
+        "intro": "In minder dan een uur online, in enkele seconden aangepast.",
+        "items": [
+          {
+            "title": "Van een foto, pdf of website",
+            "text": "Brisolo, onze AI-assistent, leest je menu van foto's, een pdf of je eigen website, en houdt je categorieën en volgorde aan."
+          },
+          {
+            "title": "Een stijl die bij jou past",
+            "text": "Brisolo stelt kleuren, lettertypes en een stijl voor op basis van je logo, foto's en website. Buren krijgen nooit hetzelfde menu."
+          },
+          {
+            "title": "Aanpassen in enkele seconden",
+            "text": "Prijs wijzigen, gerecht toevoegen, volgorde slepen of veel prijzen tegelijk aanpassen. Alleen wat veranderd is, wordt opnieuw vertaald."
+          },
+          {
+            "title": "Foto's met je gsm",
+            "text": "Neem een foto van het bord en zet hem meteen bij het gerecht. Optioneel: je menu ziet er ook zonder foto's compleet uit."
+          },
+          {
+            "title": "Zie wat je gasten willen",
+            "text": "Bezoeken, talen, de meest bekeken gerechten en elke gestelde vraag. Markeer een antwoord als fout en wij gebruiken het om te verbeteren."
+          }
+        ]
+      }
+    ]
   },
   "trust": {
     "eyebrow": "Waarom restaurants ons vertrouwen",
@@ -195,6 +250,14 @@
       {
         "title": "Geen app voor gasten",
         "text": "Scannen met de camera en lezen in de browser. Werkt op elke smartphone."
+      },
+      {
+        "title": "Altijd eerlijk over AI",
+        "text": "Je AI-ober zegt altijd dat hij een AI is, zoals de Europese regels vragen. Gasten weten met wie ze praten."
+      },
+      {
+        "title": "Jij houdt de controle",
+        "text": "Niets gaat online voordat jij het hebt nagekeken. Brisolo stelt voor; jij beslist wat je gasten zien."
       }
     ]
   },
@@ -252,15 +315,43 @@
       },
       {
         "q": "In welke talen kunnen gasten het menu lezen?",
-        "a": "Standaard in het Engels, Frans, Nederlands en Duits. Je kiest zelf extra talen, zoals Spaans, Italiaans, Chinees of Japans. Kiest een gast een taal die nog niet vertaald is, dan vertalen we die meteen."
+        "a": "Je kiest uit 12: Engels, Frans, Nederlands, Duits, Spaans, Italiaans, Portugees, Pools, Chinees, Japans, Koreaans en Arabisch. Engels, Frans, Nederlands en Duits staan standaard aan; de andere voeg je op elk moment toe in je instellingen."
       },
       {
         "q": "Wat als mijn menu verandert?",
         "a": "Je past een prijs of gerecht aan in je dashboard en het staat meteen online, in alle talen. Je hoeft niets opnieuw te drukken; de QR-code blijft dezelfde."
       },
       {
+        "q": "Kan ik de AI-ober een naam geven?",
+        "a": "Ja. In je instellingen kies je een naam, zoals Lotte of Marco. Gasten zien dan “Vraag het aan Lotte”, en hij stelt zich altijd voor als AI-assistent. Zonder naam staat er gewoon “Vraag iets over het menu”."
+      },
+      {
+        "q": "Wat als de AI-ober zich vergist?",
+        "a": "Hij antwoordt alleen vanuit je eigen menu, en gerechten en prijzen worden door onze software gecontroleerd voor een gast ze ziet. In je dashboard lees je elke vraag en markeer je een antwoord als fout; die gebruiken we om te verbeteren. Bij allergieën verwijst hij altijd naar je personeel, tenzij jij de allergenen bevestigd hebt."
+      },
+      {
         "q": "Hoe zit het met allergenen en de wet?",
-        "a": "Volgens de EU-regels moet je info geven over de 14 allergenen. Onze AI stelt per gerecht allergenen voor, maar gasten zien ze pas als feit nadat jij ze bevestigd hebt. Onderaan het menu staat altijd: ‘Heb je een allergie? Meld het aan het personeel.’"
+        "a": "De Europese regels verplichten je om informatie te geven over de 14 allergenen. Brisolo stelt per gerecht allergenen voor, maar gasten zien ze pas als feit wanneer jij ze bevestigd hebt. Regel je allergenen liever zelf? Zet de allergeneninfo uit en gasten worden naar je personeel verwezen. Onderaan het menu staat altijd: “Heb je een allergie? Meld het aan het personeel voor je bestelt.”"
+      },
+      {
+        "q": "Kan elke tafel een eigen QR-code krijgen?",
+        "a": "Ja, als je dat wilt. Voeg je tafelnamen of -nummers toe en elke tafel krijgt een eigen code. Toont een gast zijn bestelling, dan ziet de ober voor welke tafel ze is. Eén code voor het hele restaurant werkt net zo goed."
+      },
+      {
+        "q": "Ziet mijn menu eruit zoals dat van elk ander restaurant?",
+        "a": "Nee. Brisolo stelt een stijl voor op basis van je eigen logo, foto's en website, en je past lettertypes, kleuren, opmaak en details vrij aan. Je menu voelt als je restaurant, niet als een sjabloon."
+      },
+      {
+        "q": "Werkt het ook voor mijn drankkaart?",
+        "a": "Ja. Dranken zijn gewoon categorieën op je menu, net als op je papieren kaart, met dezelfde vertalingen, filters en ‘op’-schakelaar."
+      },
+      {
+        "q": "Is het dashboard in mijn taal?",
+        "a": "Je dashboard bestaat in het Nederlands, Frans en Engels, los van de talen die je gasten lezen."
+      },
+      {
+        "q": "Waar worden mijn gegevens bewaard?",
+        "a": "In de EU, in Frankfurt. Gasten hebben geen account nodig, we gebruiken geen cookies en vragen aan de AI-ober worden zonder persoonsgegevens bewaard."
       },
       {
         "q": "Welk abonnement heb ik nodig?",

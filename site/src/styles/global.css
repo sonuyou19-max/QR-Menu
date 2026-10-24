@@ -6,8 +6,11 @@
   html {
     @apply bg-canvas text-ink font-sans antialiased;
     scroll-behavior: smooth;
-    /* Keep anchored sections clear of the sticky header. */
-    scroll-padding-top: 5rem;
+    /* Keep anchored sections clear of the sticky header (taller below lg: it has a link row). */
+    scroll-padding-top: 8rem;
+    @media (width >= 64rem) {
+      scroll-padding-top: 5rem;
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     html {

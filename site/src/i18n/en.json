@@ -13,12 +13,13 @@
     "faq": "FAQ",
     "bookDemo": "Book a demo",
     "bookDemoShort": "Demo",
-    "language": "Language"
+    "language": "Language",
+    "features": "Features"
   },
   "hero": {
     "eyebrow": "For restaurants in Belgium",
     "title": "Your menu, in every guest's language.",
-    "subtitle": "Guests scan the QR code on the table and read your menu in their own language — with an explanation of every dish. No app needed. You upload your menu once, we do the rest.",
+    "subtitle": "Guests scan the QR code on the table and read your menu in their own language — 12 languages, every dish explained, and an AI waiter that answers their questions. No app needed. You upload your menu once, we do the rest.",
     "ctaPrimary": "Book a demo",
     "ctaSecondary": "See the demo",
     "note": "Free pilot for the first restaurants in Leuven.",
@@ -70,6 +71,7 @@
     "text": "This is the real guest menu of a sample restaurant, exactly as your guests see it. Pick a language, filter the dishes and add them to the order. Every dish keeps the name on the menu — the translation sits small underneath.",
     "points": [
       "Switch between 7 languages, from English to Chinese",
+      "Ask Lotte, the AI waiter: “What's vegetarian?”",
       "Tap + and open “Show to staff”",
       "Filter for vegetarian or no beef"
     ],
@@ -124,57 +126,110 @@
   },
   "features": {
     "eyebrow": "What you get",
-    "title": "Built for your guests. And for you, mid-service.",
-    "guests": {
-      "title": "For your guests",
-      "items": [
-        {
-          "title": "The menu in their language",
-          "text": "Automatically in their phone's language. English, French, German, Spanish, Italian, Chinese and more."
-        },
-        {
-          "title": "An explanation of every dish",
-          "text": "What's in it, how is it made? Including typical Belgian classics."
-        },
-        {
-          "title": "Photos of your dishes",
-          "text": "Show what arrives on the plate. Photos are optional — your menu looks complete without them."
-        },
-        {
-          "title": "A cart to show the waiter",
-          "text": "Guests collect what they want and show a clear screen with the original dish names."
-        },
-        {
-          "title": "Questions about the menu",
-          "text": "“What's vegetarian?” — answers based only on your menu, never made up."
-        }
-      ]
-    },
-    "owners": {
-      "title": "For you",
-      "items": [
-        {
-          "title": "Sold out? One tap.",
-          "text": "In Service mode you mark a dish as out of stock. Guests see it immediately."
-        },
-        {
-          "title": "Edit without the hassle",
-          "text": "Change a price, add a dish, drag to reorder. Everything is saved and translated automatically."
-        },
-        {
-          "title": "Photos with your phone",
-          "text": "Snap the plate and add it straight to the dish."
-        },
-        {
-          "title": "See what guests want",
-          "text": "Which languages, which dishes get viewed, which questions get asked."
-        },
-        {
-          "title": "In your restaurant's style",
-          "text": "Your colours, fonts and logo. Your menu feels like your restaurant, not a template."
-        }
-      ]
-    }
+    "title": "Everything your guests need. And everything you need.",
+    "intro": "Every plan includes every feature below.",
+    "groups": [
+      {
+        "title": "For your guests",
+        "intro": "Every guest reads your menu as if it were written for them.",
+        "items": [
+          {
+            "title": "Their language, automatically",
+            "text": "12 languages, from English and German to Chinese, Japanese and Arabic. The menu opens in the phone's language; switching takes one tap."
+          },
+          {
+            "title": "Your dish names stay",
+            "text": "“Stoofvlees met frietjes” stays the main name. The translation sits small underneath, so guest and waiter talk about the same dish."
+          },
+          {
+            "title": "Every dish explained",
+            "text": "No description on your menu? A short “typical preparation” explains it. For creative dishes we don't guess: guests see “ask staff”."
+          },
+          {
+            "title": "Filters that matter",
+            "text": "Vegetarian, vegan, no pork, no beef, without gluten or nuts. Allergens only count once you've confirmed them."
+          },
+          {
+            "title": "An order to show the waiter",
+            "text": "Guests tap + and show a clear full-screen list with the original dish names, their notes and the table number."
+          }
+        ]
+      },
+      {
+        "title": "Your own AI waiter",
+        "intro": "Guests ask questions in their own language. You choose its name.",
+        "items": [
+          {
+            "title": "Give it a name",
+            "text": "“Ask Lotte”: your AI waiter introduces itself with the name you choose, and always says it's an AI, never a person."
+          },
+          {
+            "title": "Answers only from your menu",
+            "text": "It knows your dishes and nothing else. No made-up dishes, no answers about other restaurants or unrelated topics."
+          },
+          {
+            "title": "Prices are always right",
+            "text": "Dishes and prices come straight from your menu, never from the AI's own text. Guests tap a dish card to add it to their order."
+          },
+          {
+            "title": "Careful with allergies",
+            "text": "It never calls a dish safe unless you confirmed its allergens. If you haven't, a fixed line asks the guest to check with staff."
+          },
+          {
+            "title": "Knows what's sold out",
+            "text": "It never recommends a dish you've run out of today, and suggests something else instead."
+          }
+        ]
+      },
+      {
+        "title": "During service",
+        "intro": "Made for one hand on a busy evening.",
+        "items": [
+          {
+            "title": "Sold out? One tap.",
+            "text": "Service mode lists every dish with one big switch. Guests see it on their phone straight away, without reloading."
+          },
+          {
+            "title": "Ready for the next service",
+            "text": "One button puts every dish back in stock before you open again."
+          },
+          {
+            "title": "A QR code per table",
+            "text": "Optional: each table gets its own code, so the waiter sees the table number on the guest's order."
+          },
+          {
+            "title": "Print-ready codes",
+            "text": "Save a code as an image or print a sheet of cut-out table cards. The code never changes, even when your menu does."
+          }
+        ]
+      },
+      {
+        "title": "Your menu, your brand",
+        "intro": "Set up in under an hour, changed in seconds.",
+        "items": [
+          {
+            "title": "From a photo, PDF or website",
+            "text": "Brisolo, our AI assistant, reads your menu from photos, a PDF or your own website, and keeps your categories and order."
+          },
+          {
+            "title": "A look that's yours",
+            "text": "Brisolo suggests colours, fonts and a style from your logo, photos and website. Neighbouring restaurants never end up with the same menu."
+          },
+          {
+            "title": "Edit in seconds",
+            "text": "Change a price, add a dish, drag to reorder, or update many prices at once. Only what changed is translated again."
+          },
+          {
+            "title": "Photos with your phone",
+            "text": "Snap the plate and add it straight to the dish. Optional: your menu looks complete without them."
+          },
+          {
+            "title": "See what guests want",
+            "text": "Visits, languages, the most-viewed dishes and every question asked. Mark an answer as wrong and we use it to improve."
+          }
+        ]
+      }
+    ]
   },
   "trust": {
     "eyebrow": "Why restaurants trust us",
@@ -195,6 +250,14 @@
       {
         "title": "No app for guests",
         "text": "Scan with the camera, read in the browser. Works on any smartphone."
+      },
+      {
+        "title": "Always honest about AI",
+        "text": "Your AI waiter always says it's an AI, as EU rules require. Guests know who they're talking to."
+      },
+      {
+        "title": "You stay in control",
+        "text": "Nothing goes live until you've checked it. Brisolo suggests; you decide what your guests see."
       }
     ]
   },
@@ -252,15 +315,43 @@
       },
       {
         "q": "Which languages can guests read the menu in?",
-        "a": "English, French, Dutch and German by default. You can add more, such as Spanish, Italian, Chinese or Japanese. If a guest picks a language that isn't translated yet, we translate it on the spot."
+        "a": "You choose from 12: English, French, Dutch, German, Spanish, Italian, Portuguese, Polish, Chinese, Japanese, Korean and Arabic. English, French, Dutch and German are on by default, and you can add the others anytime in your settings."
       },
       {
         "q": "What if my menu changes?",
         "a": "Change a price or dish in your dashboard and it's live immediately, in every language. Nothing to reprint — the QR code stays the same."
       },
       {
+        "q": "Can I give the AI waiter a name?",
+        "a": "Yes. In your settings you choose a name, like Lotte or Marco. Guests then see “Ask Lotte”, and it always introduces itself as an AI assistant. Without a name, the button simply says “Ask about the menu”."
+      },
+      {
+        "q": "What if the AI waiter gets something wrong?",
+        "a": "It only answers from your own menu, and dishes and prices are checked by our software before a guest sees them. You can read every question in your dashboard and mark an answer as wrong; we use those to improve. For allergies it always refers guests to your staff unless you've confirmed the allergens."
+      },
+      {
         "q": "What about allergens and the law?",
-        "a": "EU rules require you to provide information on the 14 allergens. Our AI suggests allergens for each dish, but guests only see them as fact once you've confirmed them. The bottom of the menu always says: “For allergies, please inform staff before ordering.”"
+        "a": "EU rules require you to provide information on the 14 allergens. Brisolo suggests allergens for each dish, but guests only see them as fact once you've confirmed them. Prefer to handle allergens yourself? Switch allergen info off and guests are referred to your staff. The bottom of the menu always says: “For allergies, please inform staff before ordering.”"
+      },
+      {
+        "q": "Can every table have its own QR code?",
+        "a": "Yes, if you like. Add your table names or numbers and each table gets its own code. When a guest shows their order, the waiter sees which table it's for. One code for the whole restaurant works just as well."
+      },
+      {
+        "q": "Will my menu look like every other restaurant's?",
+        "a": "No. Brisolo suggests a look from your own logo, photos and website, and you can change fonts, colours, layout and details freely. Your menu feels like your restaurant, not a template."
+      },
+      {
+        "q": "Does it also work for my drinks list?",
+        "a": "Yes. Drinks are simply categories on your menu, just like on your printed menu, with the same translations, filters and sold-out switch."
+      },
+      {
+        "q": "Is the dashboard in my language?",
+        "a": "Your dashboard is available in Dutch, French and English, whatever languages your guests read."
+      },
+      {
+        "q": "Where is my data stored?",
+        "a": "In the EU, in Frankfurt. Guests don't need an account, we use no cookies, and questions to the AI waiter are stored without personal data."
       },
       {
         "q": "Which plan do I need?",

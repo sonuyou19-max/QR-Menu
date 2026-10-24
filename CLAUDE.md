@@ -202,10 +202,10 @@ Goal: a non-technical restaurant owner understands it without training and can m
 2. **The problem:** tourists who can't read the menu, staff explaining every dish, allergy risk, reprinting menus in 3–4 languages.
 3. **How it works:** 3 steps — upload your menu → AI translates, you check → print the QR code.
 4. **Live demo** (see below).
-5. **Features:** two columns — for guests (own language, dish explanations, photos, cart to show staff, AI questions) and for owners (Service mode stock toggles, easy editing, dish photos, analytics, your restaurant's look).
-6. **Trust:** dish names kept as on your menu, allergens only shown when you confirm them, EU hosting/GDPR, no app for guests.
+5. **Features:** four groups (owner's choice, Oct 2026 review): **for your guests** (12 languages, dish names kept, typical preparation, filters, order to show the waiter with table number), **your own AI waiter** (own name, answers only from the menu, prices from the database, allergen caution, never recommends sold-out dishes), **during service** (one-tap sold out, reset for next service, QR per table, print-ready codes), **your menu, your brand** (photo/PDF/website import, look suggested by Brisolo, editing + bulk prices, photos, insights with "wrong answer" flag). Every new product feature gets a line here and, if owners will ask about it, an FAQ item. The header shows the section links (How it works · Demo · Features · Pricing · FAQ) on desktop and as a row under the logo on phones.
+6. **Trust:** dish names kept as on your menu, allergens only shown when you confirm them, EU hosting/GDPR, no app for guests, always honest about AI, you stay in control.
 7. **Pricing** (see below).
-8. **FAQ:** setup time, which languages, what if my menu changes, allergens/legal, cancel anytime, do guests need an app.
+8. **FAQ (14):** setup time, which 12 languages, menu changes, naming the AI waiter, wrong answers, allergens/law + allergen switch, QR per table, own design, drinks list, dashboard languages, data/EU hosting, which plan, cancel anytime, no app for guests. Never promise features that aren't built (e.g. on-demand translation of a language the owner didn't choose).
 9. **Final CTA:** Book a demo.
 Footer: contact, privacy, terms, company details (KBO/BCE + VAT number once registered).
 

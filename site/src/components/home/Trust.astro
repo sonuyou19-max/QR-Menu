@@ -3,6 +3,8 @@ import Type from "@lucide/astro/icons/type";
 import ShieldCheck from "@lucide/astro/icons/shield-check";
 import Lock from "@lucide/astro/icons/lock";
 import Smartphone from "@lucide/astro/icons/smartphone";
+import Bot from "@lucide/astro/icons/bot";
+import BadgeCheck from "@lucide/astro/icons/badge-check";
 import Section from "../Section.astro";
 import { getDictionary, type Lang } from "../../i18n";
 
@@ -10,11 +12,11 @@ interface Props {
   lang: Lang;
 }
 const t = getDictionary(Astro.props.lang);
-const icons = [Type, ShieldCheck, Lock, Smartphone];
+const icons = [Type, ShieldCheck, Lock, Smartphone, Bot, BadgeCheck];
 ---
 
 <Section id="trust" eyebrow={t.trust.eyebrow} title={t.trust.title}>
-  <ul class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+  <ul class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
     {t.trust.items.map((item, i) => {
       const Icon = icons[i]!;
       return (

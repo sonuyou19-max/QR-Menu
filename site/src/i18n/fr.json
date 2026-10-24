@@ -13,12 +13,13 @@
     "faq": "Questions",
     "bookDemo": "Demander une démo",
     "bookDemoShort": "Démo",
-    "language": "Langue"
+    "language": "Langue",
+    "features": "Fonctions"
   },
   "hero": {
     "eyebrow": "Pour les restaurants en Belgique",
     "title": "Votre carte, dans la langue de chaque client.",
-    "subtitle": "Vos clients scannent le QR code sur la table et lisent votre carte dans leur langue — avec une explication pour chaque plat. Sans application. Vous envoyez votre carte une seule fois, nous faisons le reste.",
+    "subtitle": "Vos clients scannent le QR code sur la table et lisent votre carte dans leur langue — 12 langues, une explication pour chaque plat et un serveur IA qui répond à leurs questions. Sans application. Vous envoyez votre carte une seule fois, nous faisons le reste.",
     "ctaPrimary": "Demander une démo",
     "ctaSecondary": "Voir la démo",
     "note": "Pilote gratuit pour les premiers restaurants à Louvain.",
@@ -70,6 +71,7 @@
     "text": "Voici la vraie carte client d'un restaurant d'exemple, exactement comme vos clients la voient. Choisissez une langue, filtrez les plats et ajoutez-les à la commande. Le nom de chaque plat reste celui de la carte — la traduction apparaît en petit en dessous.",
     "points": [
       "Changez de langue : 7 langues, de l’anglais au chinois",
+      "Demandez à Lotte, le serveur IA : « Qu’est-ce qui est végétarien ? »",
       "Touchez + puis « Montrer au personnel »",
       "Filtrez : végétarien ou sans bœuf"
     ],
@@ -124,57 +126,110 @@
   },
   "features": {
     "eyebrow": "Ce que vous obtenez",
-    "title": "Pensé pour vos clients. Et pour vous, en plein service.",
-    "guests": {
-      "title": "Pour vos clients",
-      "items": [
-        {
-          "title": "La carte dans leur langue",
-          "text": "Automatiquement dans la langue de leur téléphone. Anglais, néerlandais, allemand, espagnol, italien, chinois et bien d'autres."
-        },
-        {
-          "title": "Une explication pour chaque plat",
-          "text": "Qu'y a-t-il dedans, comment est-ce préparé ? Même pour les grands classiques belges."
-        },
-        {
-          "title": "Des photos de vos plats",
-          "text": "Montrez ce qui arrive dans l'assiette. Les photos sont facultatives — votre carte reste belle sans."
-        },
-        {
-          "title": "Un panier à montrer au serveur",
-          "text": "Les clients rassemblent leur choix et montrent un écran clair avec les noms d'origine."
-        },
-        {
-          "title": "Des questions sur la carte",
-          "text": "« Qu'est-ce qui est végétarien ? » — des réponses basées uniquement sur votre carte, jamais inventées."
-        }
-      ]
-    },
-    "owners": {
-      "title": "Pour vous",
-      "items": [
-        {
-          "title": "Plat épuisé ? Un geste.",
-          "text": "En mode service, vous marquez un plat comme épuisé. Vos clients le voient immédiatement."
-        },
-        {
-          "title": "Modifier sans prise de tête",
-          "text": "Changer un prix, ajouter un plat, réorganiser par glisser-déposer. Tout est enregistré et traduit automatiquement."
-        },
-        {
-          "title": "Des photos avec votre smartphone",
-          "text": "Photographiez l'assiette et ajoutez-la directement au plat."
-        },
-        {
-          "title": "Voyez ce que veulent vos clients",
-          "text": "Quelles langues, quels plats sont consultés, quelles questions sont posées."
-        },
-        {
-          "title": "Au style de votre maison",
-          "text": "Vos couleurs, votre typographie, votre logo. Votre carte ressemble à votre restaurant, pas à un modèle."
-        }
-      ]
-    }
+    "title": "Tout ce dont vos clients ont besoin. Et tout ce dont vous avez besoin.",
+    "intro": "Chaque formule comprend toutes les fonctions ci-dessous.",
+    "groups": [
+      {
+        "title": "Pour vos clients",
+        "intro": "Chaque client lit votre carte comme si elle avait été écrite pour lui.",
+        "items": [
+          {
+            "title": "Leur langue, automatiquement",
+            "text": "12 langues, de l'anglais et l'allemand au chinois, au japonais et à l'arabe. La carte s'ouvre dans la langue du téléphone ; changer prend un geste."
+          },
+          {
+            "title": "Vos noms de plats restent",
+            "text": "« Stoofvlees met frietjes » reste le nom principal. La traduction figure en petit en dessous : client et serveur parlent du même plat."
+          },
+          {
+            "title": "Chaque plat expliqué",
+            "text": "Pas de description sur votre carte ? Une courte « préparation typique » l'explique. Pour les plats créatifs, nous ne devinons pas : le client voit « demandez au personnel »."
+          },
+          {
+            "title": "Des filtres utiles",
+            "text": "Végétarien, végan, sans porc, sans bœuf, sans gluten ou sans fruits à coque. Les allergènes ne comptent qu'une fois confirmés par vous."
+          },
+          {
+            "title": "Une commande à montrer au serveur",
+            "text": "Les clients touchent + et montrent une liste claire en plein écran, avec les noms d'origine, leurs remarques et le numéro de table."
+          }
+        ]
+      },
+      {
+        "title": "Votre propre serveur IA",
+        "intro": "Vos clients posent leurs questions dans leur langue. Vous choisissez son nom.",
+        "items": [
+          {
+            "title": "Donnez-lui un nom",
+            "text": "« Demandez à Lotte » : votre serveur IA se présente avec le nom que vous choisissez, et dit toujours qu'il est une IA, jamais une personne."
+          },
+          {
+            "title": "Des réponses uniquement tirées de votre carte",
+            "text": "Il connaît vos plats, et rien d'autre. Pas de plats inventés, pas de réponses sur d'autres restaurants ou d'autres sujets."
+          },
+          {
+            "title": "Des prix toujours exacts",
+            "text": "Les plats et les prix viennent directement de votre carte, jamais du texte de l'IA. Le client touche un plat pour l'ajouter à sa commande."
+          },
+          {
+            "title": "Prudent avec les allergies",
+            "text": "Il ne dit jamais qu'un plat est sans risque si vous n'avez pas confirmé ses allergènes. Sinon, une phrase fixe invite le client à demander au personnel."
+          },
+          {
+            "title": "Il sait ce qui est épuisé",
+            "text": "Il ne recommande jamais un plat épuisé aujourd'hui, et propose autre chose à la place."
+          }
+        ]
+      },
+      {
+        "title": "Pendant le service",
+        "intro": "Conçu pour une seule main, un soir de rush.",
+        "items": [
+          {
+            "title": "Plat épuisé ? Un geste.",
+            "text": "Le mode service affiche chaque plat avec un grand interrupteur. Vos clients le voient aussitôt sur leur téléphone, sans recharger."
+          },
+          {
+            "title": "Prêt pour le service suivant",
+            "text": "Un bouton remet tous les plats en stock avant de rouvrir."
+          },
+          {
+            "title": "Un QR code par table",
+            "text": "En option : chaque table a son propre code, et le serveur voit le numéro de table sur la commande du client."
+          },
+          {
+            "title": "Des codes prêts à imprimer",
+            "text": "Enregistrez un code en image ou imprimez une feuille de cartes de table à découper. Le code ne change jamais, même quand votre carte change."
+          }
+        ]
+      },
+      {
+        "title": "Votre carte, votre style",
+        "intro": "En ligne en moins d'une heure, modifiée en quelques secondes.",
+        "items": [
+          {
+            "title": "Depuis une photo, un PDF ou un site web",
+            "text": "Brisolo, notre assistant IA, lit votre carte depuis des photos, un PDF ou votre propre site, en gardant vos catégories et leur ordre."
+          },
+          {
+            "title": "Un style bien à vous",
+            "text": "Brisolo propose des couleurs, des polices et un style à partir de votre logo, de vos photos et de votre site. Deux restaurants voisins n'ont jamais la même carte."
+          },
+          {
+            "title": "Modifier en quelques secondes",
+            "text": "Changer un prix, ajouter un plat, réorganiser par glisser-déposer ou modifier plusieurs prix à la fois. Seul ce qui a changé est retraduit."
+          },
+          {
+            "title": "Des photos avec votre smartphone",
+            "text": "Photographiez l'assiette et ajoutez-la directement au plat. Facultatif : votre carte reste complète sans photos."
+          },
+          {
+            "title": "Voyez ce que veulent vos clients",
+            "text": "Visites, langues, plats les plus consultés et chaque question posée. Signalez une réponse erronée et nous l'utilisons pour progresser."
+          }
+        ]
+      }
+    ]
   },
   "trust": {
     "eyebrow": "Pourquoi les restaurants nous font confiance",
@@ -195,6 +250,14 @@
       {
         "title": "Aucune application pour les clients",
         "text": "Un scan avec l'appareil photo, la carte s'ouvre dans le navigateur. Fonctionne sur tous les smartphones."
+      },
+      {
+        "title": "Toujours transparent sur l'IA",
+        "text": "Votre serveur IA dit toujours qu'il est une IA, comme l'exigent les règles européennes. Vos clients savent à qui ils parlent."
+      },
+      {
+        "title": "Vous gardez le contrôle",
+        "text": "Rien n'est mis en ligne avant que vous l'ayez vérifié. Brisolo propose ; vous décidez de ce que voient vos clients."
       }
     ]
   },
@@ -252,15 +315,43 @@
       },
       {
         "q": "Dans quelles langues les clients peuvent-ils lire la carte ?",
-        "a": "Par défaut en anglais, français, néerlandais et allemand. Vous pouvez ajouter d'autres langues, comme l'espagnol, l'italien, le chinois ou le japonais. Si un client choisit une langue pas encore traduite, nous la traduisons immédiatement."
+        "a": "Vous choisissez parmi 12 : anglais, français, néerlandais, allemand, espagnol, italien, portugais, polonais, chinois, japonais, coréen et arabe. L'anglais, le français, le néerlandais et l'allemand sont activés par défaut ; vous ajoutez les autres à tout moment dans vos réglages."
       },
       {
         "q": "Et si ma carte change ?",
         "a": "Vous modifiez un prix ou un plat dans votre tableau de bord, et c'est en ligne immédiatement, dans toutes les langues. Rien à réimprimer : le QR code reste le même."
       },
       {
-        "q": "Et les allergènes, côté légal ?",
-        "a": "La réglementation européenne vous oblige à informer sur les 14 allergènes. Notre IA propose les allergènes de chaque plat, mais vos clients ne les voient comme une information fiable qu'après votre confirmation. En bas de la carte, il est toujours indiqué : « En cas d'allergie, prévenez le personnel avant de commander. »"
+        "q": "Puis-je donner un nom au serveur IA ?",
+        "a": "Oui. Dans vos réglages, vous choisissez un nom, comme Lotte ou Marco. Vos clients voient alors « Demandez à Lotte », et il se présente toujours comme un assistant IA. Sans nom, le bouton indique simplement « Une question sur la carte »."
+      },
+      {
+        "q": "Et si le serveur IA se trompe ?",
+        "a": "Il répond uniquement à partir de votre carte, et les plats et les prix sont vérifiés par notre logiciel avant qu'un client ne les voie. Dans votre tableau de bord, vous lisez chaque question et signalez une réponse erronée ; nous les utilisons pour progresser. Pour les allergies, il renvoie toujours vers votre personnel, sauf si vous avez confirmé les allergènes."
+      },
+      {
+        "q": "Et les allergènes, que dit la loi ?",
+        "a": "Les règles européennes vous obligent à informer sur les 14 allergènes. Brisolo propose des allergènes pour chaque plat, mais vos clients ne les voient comme un fait qu'une fois que vous les avez confirmés. Vous préférez gérer les allergènes vous-même ? Désactivez l'info allergènes et vos clients sont renvoyés vers votre personnel. En bas de la carte figure toujours : « En cas d'allergie, prévenez le personnel avant de commander. »"
+      },
+      {
+        "q": "Chaque table peut-elle avoir son propre QR code ?",
+        "a": "Oui, si vous le souhaitez. Ajoutez les noms ou numéros de vos tables et chacune reçoit son propre code. Quand un client montre sa commande, le serveur voit pour quelle table elle est. Un seul code pour tout le restaurant fonctionne tout aussi bien."
+      },
+      {
+        "q": "Ma carte ressemblera-t-elle à celle de tous les autres restaurants ?",
+        "a": "Non. Brisolo propose un style à partir de votre logo, de vos photos et de votre site, et vous modifiez librement polices, couleurs, mise en page et détails. Votre carte ressemble à votre restaurant, pas à un modèle."
+      },
+      {
+        "q": "Est-ce que ça marche aussi pour ma carte des boissons ?",
+        "a": "Oui. Les boissons sont simplement des catégories de votre carte, comme sur votre carte papier, avec les mêmes traductions, filtres et interrupteur « épuisé »."
+      },
+      {
+        "q": "Le tableau de bord est-il dans ma langue ?",
+        "a": "Votre tableau de bord existe en néerlandais, en français et en anglais, indépendamment des langues de vos clients."
+      },
+      {
+        "q": "Où sont conservées mes données ?",
+        "a": "Dans l'UE, à Francfort. Vos clients n'ont pas besoin de compte, nous n'utilisons pas de cookies et les questions posées au serveur IA sont conservées sans données personnelles."
       },
       {
         "q": "De quelle formule ai-je besoin ?",
