@@ -18,6 +18,7 @@ import {
   Search,
   ShieldAlert,
   X,
+  ChefHat,
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import {
@@ -747,6 +748,24 @@ function Message({
   );
 }
 
+/** The owner's "chef's recommendation", in the restaurant's own main colour. */
+function ChefBadge({
+  s,
+  className = "",
+}: {
+  s: GuestStrings;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`bg-brand text-on-brand inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${className}`}
+    >
+      <ChefHat className="size-3.5" aria-hidden="true" />
+      {s.chefPick}
+    </span>
+  );
+}
+
 function Tags({ dish, s }: { dish: GuestDish; s: GuestStrings }) {
   const tags = [
     dish.dietary.vegan
@@ -884,6 +903,7 @@ function DishCard({
   // Like delivery apps: name, price on its own line, then the description; photo and + on the right.
   const text = (
     <>
+      {dish.chef_pick && <ChefBadge s={s} className="mb-1" />}
       <span
         className="block text-lg leading-snug font-semibold [overflow-wrap:anywhere]"
         dir="auto"
@@ -999,6 +1019,13 @@ function CompactRow({
           dir="auto"
         >
           {dish.name}
+          {dish.chef_pick && (
+            <ChefHat
+              className="text-brand ms-1.5 inline size-4 align-[-2px]"
+              aria-label={s.chefPick}
+              role="img"
+            />
+          )}
         </span>
         {helper && (
           <span className="text-ink-muted block text-sm" dir="auto">
@@ -1068,6 +1095,7 @@ function PopularCard({
           onClick={onOpen}
           className="text-start after:absolute after:inset-0 after:content-['']"
         >
+          {dish.chef_pick && <ChefBadge s={s} className="mb-1" />}
           <span
             className="line-clamp-2 leading-snug font-semibold [overflow-wrap:anywhere]"
             dir="auto"
@@ -1139,6 +1167,7 @@ function DishDetail({
       <div
         className={`px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] ${photo ? "pt-4" : "pt-14"}`}
       >
+        {dish.chef_pick && <ChefBadge s={s} className="mb-2" />}
         <div className="flex items-start gap-3">
           <h2
             id="dish-title"

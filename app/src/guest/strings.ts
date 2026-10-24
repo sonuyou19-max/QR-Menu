@@ -29,6 +29,8 @@ export interface GuestStrings {
   notFoundTitle: string;
   notFoundText: string;
   popular: string;
+  /** Badge on dishes the owner marked as the chef's recommendation. */
+  chefPick: string;
   search: string;
   searchPlaceholder: string;
   clearSearch: string;
@@ -108,6 +110,7 @@ const en: GuestStrings = {
   privacy: "This menu uses no cookies and no tracking.",
   poweredBy: "Menu by Brisolo",
   popular: "Popular",
+  chefPick: "Chef's recommendation",
   search: "Search",
   searchPlaceholder: "Search the menu",
   clearSearch: "Clear search",
@@ -214,6 +217,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Deze menukaart gebruikt geen cookies en volgt je niet.",
     poweredBy: "Menukaart door Brisolo",
     popular: "Populair",
+    chefPick: "Aanrader van de chef",
     search: "Zoeken",
     searchPlaceholder: "Zoek in het menu",
     clearSearch: "Zoekopdracht wissen",
@@ -319,6 +323,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Cette carte n'utilise ni cookies ni suivi.",
     poweredBy: "Carte par Brisolo",
     popular: "Populaires",
+    chefPick: "Suggestion du chef",
     search: "Rechercher",
     searchPlaceholder: "Rechercher dans la carte",
     clearSearch: "Effacer la recherche",
@@ -425,6 +430,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Diese Speisekarte verwendet keine Cookies und kein Tracking.",
     poweredBy: "Speisekarte von Brisolo",
     popular: "Beliebt",
+    chefPick: "Empfehlung des Küchenchefs",
     search: "Suchen",
     searchPlaceholder: "Speisekarte durchsuchen",
     clearSearch: "Suche löschen",
@@ -531,6 +537,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Esta carta no usa cookies ni seguimiento.",
     poweredBy: "Carta de Brisolo",
     popular: "Populares",
+    chefPick: "Recomendación del chef",
     search: "Buscar",
     searchPlaceholder: "Buscar en la carta",
     clearSearch: "Borrar búsqueda",
@@ -633,6 +640,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Questo menu non usa cookie né tracciamento.",
     poweredBy: "Menu di Brisolo",
     popular: "Più richiesti",
+    chefPick: "Consigliato dallo chef",
     search: "Cerca",
     searchPlaceholder: "Cerca nel menu",
     clearSearch: "Cancella ricerca",
@@ -735,6 +743,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "Este menu não usa cookies nem rastreamento.",
     poweredBy: "Menu por Brisolo",
     popular: "Populares",
+    chefPick: "Sugestão do chef",
     search: "Pesquisar",
     searchPlaceholder: "Pesquisar no menu",
     clearSearch: "Limpar pesquisa",
@@ -837,6 +846,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "To menu nie używa plików cookie ani śledzenia.",
     poweredBy: "Menu od Brisolo",
     popular: "Popularne",
+    chefPick: "Polecane przez szefa kuchni",
     search: "Szukaj",
     searchPlaceholder: "Szukaj w menu",
     clearSearch: "Wyczyść wyszukiwanie",
@@ -938,6 +948,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "本菜单不使用 Cookie，也不跟踪您。",
     poweredBy: "菜单由 Brisolo 提供",
     popular: "热门",
+    chefPick: "主厨推荐",
     search: "搜索",
     searchPlaceholder: "搜索菜单",
     clearSearch: "清除搜索",
@@ -1036,6 +1047,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "このメニューはCookieもトラッキングも使用しません。",
     poweredBy: "メニュー提供：Brisolo",
     popular: "人気",
+    chefPick: "シェフのおすすめ",
     search: "検索",
     searchPlaceholder: "メニューを検索",
     clearSearch: "検索をクリア",
@@ -1140,6 +1152,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "이 메뉴는 쿠키나 추적을 사용하지 않습니다.",
     poweredBy: "Brisolo 메뉴",
     popular: "인기",
+    chefPick: "셰프 추천",
     search: "검색",
     searchPlaceholder: "메뉴 검색",
     clearSearch: "검색 지우기",
@@ -1242,6 +1255,7 @@ export const guestStrings: Record<string, GuestStrings> = {
     privacy: "لا تستخدم هذه القائمة ملفات تعريف الارتباط ولا التتبع.",
     poweredBy: "قائمة من Brisolo",
     popular: "الأكثر طلبًا",
+    chefPick: "توصية الشيف",
     search: "بحث",
     searchPlaceholder: "ابحث في القائمة",
     clearSearch: "مسح البحث",

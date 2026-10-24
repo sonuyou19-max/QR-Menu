@@ -668,6 +668,17 @@ export function DishSheet({
               {t.editor.sheet.featuredHint}
             </span>
           </Switch>
+          <Switch
+            checked={item.is_chef_pick}
+            onChange={(pick) =>
+              void editor.updateItem(item.id, { is_chef_pick: pick })
+            }
+          >
+            {t.editor.sheet.chefPick}
+            <span className="text-ink-muted block text-sm font-normal">
+              {t.editor.sheet.chefPickHint}
+            </span>
+          </Switch>
         </div>
 
         <button

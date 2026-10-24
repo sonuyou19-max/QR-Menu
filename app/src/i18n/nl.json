@@ -345,6 +345,8 @@
       "stock": "Vandaag op voorraad",
       "featured": "Tonen bij “Populair”",
       "featuredHint": "Bovenaan de menukaart voor gasten (tot 6 gerechten, daarna wat gasten het vaakst kiezen)",
+      "chefPick": "Aanrader van de chef",
+      "chefPickHint": "Gasten zien bij dit gerecht het label “Aanrader van de chef”",
       "confirmNext": "Bevestigen & volgend gerecht",
       "translations": "Vertalingen",
       "notTranslated": "Nog niet vertaald",

@@ -139,6 +139,7 @@ export type Database = {
           id: string;
           image_path: string | null;
           image_thumb_path: string | null;
+          is_chef_pick: boolean;
           is_featured: boolean;
           in_stock: boolean;
           is_hidden: boolean;
@@ -161,6 +162,7 @@ export type Database = {
           id?: string;
           image_path?: string | null;
           image_thumb_path?: string | null;
+          is_chef_pick?: boolean;
           is_featured?: boolean;
           in_stock?: boolean;
           is_hidden?: boolean;
@@ -183,6 +185,7 @@ export type Database = {
           id?: string;
           image_path?: string | null;
           image_thumb_path?: string | null;
+          is_chef_pick?: boolean;
           is_featured?: boolean;
           in_stock?: boolean;
           is_hidden?: boolean;

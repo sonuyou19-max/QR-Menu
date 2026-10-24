@@ -28,6 +28,8 @@ export interface GuestDish {
   image_path: string | null;
   thumb_path: string | null;
   in_stock: boolean;
+  /** Marked by the owner as the chef's recommendation. */
+  chef_pick?: boolean;
 }
 
 export interface GuestMenuData {

@@ -345,6 +345,8 @@
       "stock": "In stock today",
       "featured": "Show under “Popular”",
       "featuredHint": "At the top of the guest menu (up to 6 dishes, then the dishes guests order most)",
+      "chefPick": "Chef's recommendation",
+      "chefPickHint": "Guests see a “Chef's recommendation” badge on this dish",
       "confirmNext": "Confirm & next dish",
       "translations": "Translations",
       "notTranslated": "Not translated yet",

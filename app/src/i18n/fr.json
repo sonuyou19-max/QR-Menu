@@ -345,6 +345,8 @@
       "stock": "Disponible aujourd'hui",
       "featured": "Afficher dans « Populaires »",
       "featuredHint": "En haut de la carte des clients (jusqu’à 6 plats, puis ceux que les clients choisissent le plus)",
+      "chefPick": "Suggestion du chef",
+      "chefPickHint": "Les clients voient le badge « Suggestion du chef » sur ce plat",
       "confirmNext": "Confirmer et plat suivant",
       "translations": "Traductions",
       "notTranslated": "Pas encore traduit",
