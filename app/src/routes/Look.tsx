@@ -262,6 +262,9 @@ export function Look() {
             {L.uploadError}
           </p>
         )}
+        {theme.cover_path && (
+          <CoverPreview url={brandingImage(theme.cover_path)!} L={L} />
+        )}
       </Section>
 
       <Section title={L.tagline} hint={L.taglineHint}>
@@ -589,6 +592,98 @@ function ColourRow({
 function isLight(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
   return 0.299 * r! + 0.587 * g! + 0.114 * b! > 160;
+}
+
+/**
+ * The cover as guests see it: the guest page shows it full width and at most 320 px high
+ * (guest/Look.tsx), cropped from the middle. Phone ≈ 390 × 320, laptop ≈ 1440 × 320.
+ */
+const COVER_FRAMES = [
+  { key: "coverPhone", ratio: 390 / 320 },
+  { key: "coverLaptop", ratio: 1440 / 320 },
+] as const;
+
+function CoverPreview({ url, L }: { url: string; L: LookStrings }) {
+  const [ratio, setRatio] = useState<number | null>(null);
+  return (
+    <div className="mt-5">
+      <p className="font-semibold">{L.coverPreview}</p>
+      <p className="text-ink-muted text-sm">{L.coverPreviewHint}</p>
+      <div className="mt-3 flex flex-wrap items-end gap-4">
+        {COVER_FRAMES.map((frame) => (
+          <figure
+            key={frame.key}
+            className={frame.key === "coverPhone" ? "w-36" : "min-w-56 flex-1"}
+          >
+            <CoverFrame
+              url={url}
+              frame={frame.ratio}
+              photo={ratio}
+              onRatio={setRatio}
+            />
+            <figcaption className="text-ink-muted mt-1 text-sm">
+              {L[frame.key]}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      {ratio !== null && (ratio > 1.6 || ratio < 0.9) && (
+        <p className="bg-mustard-50 text-mustard-900 rounded-control mt-3 px-3 py-2 text-sm">
+          {ratio > 1.6 ? L.coverTooWide : L.coverTooTall}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** The whole photo, dimmed, with the part guests see in a frame of the screen's shape. */
+function CoverFrame({
+  url,
+  frame,
+  photo,
+  onRatio,
+}: {
+  url: string;
+  frame: number;
+  photo: number | null;
+  onRatio: (ratio: number) => void;
+}) {
+  // Same as object-cover: the frame covers the photo's full height (photo wider) or width.
+  const box =
+    photo === null
+      ? null
+      : frame < photo
+        ? { width: (frame / photo) * 100, height: 100 }
+        : { width: 100, height: (photo / frame) * 100 };
+  return (
+    <div
+      className="rounded-control border-line relative overflow-hidden border bg-black"
+      style={{ aspectRatio: photo ?? frame }}
+    >
+      <img
+        src={url}
+        alt=""
+        onLoad={(e) =>
+          onRatio(e.currentTarget.naturalWidth / e.currentTarget.naturalHeight)
+        }
+        className="h-full w-full object-cover opacity-35 grayscale"
+      />
+      {box && (
+        <div
+          className="absolute overflow-hidden ring-2 ring-white"
+          style={{
+            width: `${box.width}%`,
+            height: `${box.height}%`,
+            left: `${(100 - box.width) / 2}%`,
+            top: `${(100 - box.height) / 2}%`,
+          }}
+        >
+          <img src={url} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+        </div>
+      )}
+    </div>
+  );
 }
 
 function ImageSlot({
