@@ -40,7 +40,7 @@ import {
   orderLines,
 } from "./Order";
 import { rtlLanguages, stringsFor, type GuestStrings } from "./strings";
-import { AllergenIcons, AllergenLegend } from "./allergens";
+import { AllergenIcon, AllergenIcons, AllergenLegend } from "./allergens";
 import type { Allergen } from "../lib/extraction";
 
 // The chat (and its code) loads only when a guest opens it.
@@ -776,11 +776,14 @@ function AllergenLine({
   dish,
   s,
   icons,
+  named,
 }: {
   dish: GuestDish;
   s: GuestStrings;
   /** In the list: confirmed allergens as icons (names in the legend and the dish sheet). */
   icons?: boolean;
+  /** In the dish sheet: each confirmed allergen as its icon with its name. */
+  named?: boolean;
 }) {
   if (dish.allergens_confirmed === null) return null; // restaurant doesn't show allergens
   if (icons && dish.allergens_confirmed && dish.allergens?.length)
@@ -790,6 +793,22 @@ function AllergenLine({
       <p className="text-mustard-800 mt-1.5 text-xs font-medium">
         {s.allergensUnconfirmed}
       </p>
+    );
+  if (named && dish.allergens?.length)
+    return (
+      <div className="text-ink-muted mt-3 text-sm">
+        <p className="font-semibold">{s.allergens}:</p>
+        <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+          {dish.allergens.map((a) => (
+            <li key={a} className="flex items-center gap-1.5">
+              <span aria-hidden="true" className="flex">
+                <AllergenIcon allergen={a} s={s} />
+              </span>
+              {s.allergenNames[a] ?? a}
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   return (
     <p className="text-ink-muted mt-1.5 text-xs">
@@ -1152,7 +1171,7 @@ function DishDetail({
         )}
         <Description dish={dish} s={s} />
         <Tags dish={dish} s={s} />
-        <AllergenLine dish={dish} s={s} />
+        <AllergenLine dish={dish} s={s} named />
         <DetailOrderControl dish={dish} cart={cart} money={money} s={s} />
       </div>
     </dialog>
