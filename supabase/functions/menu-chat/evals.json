@@ -220,6 +220,36 @@
           "personnel"
         ]
       }
+    },
+    {
+      "id": "chef-recommendation",
+      "language": "en",
+      "question": "What do you recommend?",
+      "expect": {
+        "answer_types": [
+          "menu_fact"
+        ],
+        "must_reference": [
+          "stoofvlees"
+        ],
+        "must_not_reference": [
+          "mosselen"
+        ]
+      }
+    },
+    {
+      "id": "chef-recommendation-nl",
+      "language": "nl",
+      "question": "Wat raadt de chef aan?",
+      "expect": {
+        "answer_types": [
+          "menu_fact"
+        ],
+        "must_reference": [
+          "stoofvlees"
+        ],
+        "max_references": 2
+      }
     }
   ]
 }

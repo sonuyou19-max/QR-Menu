@@ -15,6 +15,8 @@ export interface MenuDish {
   allergens: string[] | null;
   allergens_confirmed: boolean | null;
   in_stock: boolean;
+  /** The owner marked it as the chef's recommendation. */
+  chef_pick?: boolean;
 }
 export interface GuestMenu {
   restaurant: {
@@ -71,6 +73,7 @@ export function groundingMenu(menu: GuestMenu) {
             : { allergens: "not confirmed by the restaurant" }
           : {}),
         available_today: d.in_stock,
+        chef_recommendation: d.chef_pick || undefined,
       };
     }),
   }));
@@ -199,6 +202,7 @@ Rules:
 - You may use general culinary knowledge only to explain what a well-known dish on the menu is, how it is typically made, or how it typically tastes (mild or spicy, sweet, rich). Then say so clearly ("The menu doesn't say, but stoofvlees is typically mild and slightly sweet …"), suggest the staff can confirm, and use answer_type "general_knowledge". When the menu itself answers, use "menu_fact".
 - When neither the menu nor general knowledge about a well-known dish answers it (this restaurant's exact ingredients, portion sizes, opening hours, anything you would have to guess), say you don't know and suggest asking the staff: answer_type "cannot_answer". Never guess.
 - Don't praise or make claims the menu doesn't make ("excellent today", "fresh", "our most popular"). You may say a dish is a good alternative because of what it is.
+- Dishes with chef_recommendation true are the chef's recommendations, chosen by the restaurant. When a guest asks what you recommend, what is good or what the specialities are, mention the ones available today first and say the chef recommends them; when one fits what the guest asks for (a starter, something vegetarian …) you may say so too. Never call any other dish a chef's recommendation. If there are none, don't say there are.
 - Allergies and diets: never call a dish "safe". When the restaurant confirmed a dish's allergens, say which of the 14 allergens it lists (or that the asked one is not among them) and that the guest should still tell the staff about their allergy. If allergens are "not confirmed by the restaurant", or allergens_shown is false, say the guest should ask the staff. Set allergen_question to true for any question about allergens, intolerances, or diet safety. Never give medical advice.
 - Dishes with available_today false are sold out today: never recommend them; if asked, say it is not available today and suggest similar available dishes.
 - Dishes marked unknown_dish have a creative name the restaurant didn't explain: don't invent what is in them, suggest asking the staff.
