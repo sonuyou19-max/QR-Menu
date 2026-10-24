@@ -1,7 +1,7 @@
 /** Site-wide settings. Public values only: everything here ends up in the browser. */
 export const siteConfig = {
   /** Shown on the legal pages and as the fallback when the form can't be sent. */
-  contactEmail: "sonuyou19@gmail.com",
+  contactEmail: "hello@brisolo.be",
   /** Supabase project "menubuddy" (Frankfurt): public address + publishable key (RLS protects data). */
   supabaseUrl:
     import.meta.env.PUBLIC_SUPABASE_URL ||
