@@ -7,6 +7,7 @@ const DEMO_ID = "f65c5a01-3d95-a951-e6fd-c0b3b07a9362";
 const SOURCE = "https://app.brisolo.be/demo/";
 const FILES: Record<string, string> = {
   "lindehof-logo.png": "image/png",
+  "lindehof-cover.jpg": "image/jpeg",
 };
 
 Deno.serve(async () => {
