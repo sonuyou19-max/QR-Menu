@@ -17,6 +17,7 @@
       "email": "Vul een geldig e-mailadres in.",
       "rateLimit": "Je hebt net een link gevraagd. Wacht even en probeer opnieuw.",
       "linkExpired": "Deze inloglink is verlopen of al gebruikt. Vraag hieronder een nieuwe aan.",
+      "sendFailed": "We konden de login-e-mail nu niet versturen. Probeer het over een paar minuten opnieuw.",
       "generic": "Dat lukte niet. Controleer je internetverbinding en probeer opnieuw.",
       "emailLimit": "Er zijn het afgelopen uur te veel inlogmails verstuurd. Probeer het over een uur opnieuw. Ben je al ingelogd op een ander toestel, dan kun je daar verder werken."
     }

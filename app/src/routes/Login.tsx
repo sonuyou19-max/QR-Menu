@@ -16,7 +16,12 @@ import { loginLinkFailed } from "../lib/link-error";
 import { supabase } from "../lib/supabase";
 
 type ErrorKey =
-  "email" | "rateLimit" | "emailLimit" | "linkExpired" | "generic";
+  | "email"
+  | "rateLimit"
+  | "emailLimit"
+  | "linkExpired"
+  | "sendFailed"
+  | "generic";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_AFTER_SECONDS = 60;
 
@@ -65,7 +70,10 @@ export function Login() {
           ? "emailLimit"
           : authError.status === 429
             ? "rateLimit"
-            : "generic",
+            : // 5xx: the server answered but couldn't send the email (mail service refused it).
+              authError.status !== undefined && authError.status >= 500
+              ? "sendFailed"
+              : "generic",
       );
       requestAnimationFrame(() => errorRef.current?.focus());
       return;
