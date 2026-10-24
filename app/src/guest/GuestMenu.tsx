@@ -1095,7 +1095,6 @@ function PopularCard({
           onClick={onOpen}
           className="text-start after:absolute after:inset-0 after:content-['']"
         >
-          {dish.chef_pick && <ChefBadge s={s} className="mb-1" />}
           <span
             className="line-clamp-2 leading-snug font-semibold [overflow-wrap:anywhere]"
             dir="auto"
@@ -1109,8 +1108,21 @@ function PopularCard({
           )}
         </button>
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
-          <span className="font-semibold tabular-nums">
-            {dish.price !== null && money.format(dish.price)}
+          <span className="flex items-center gap-2">
+            <span className="font-semibold tabular-nums">
+              {dish.price !== null && money.format(dish.price)}
+            </span>
+            {/* A small mark here, not the full badge: the dish names in the row stay aligned. */}
+            {dish.chef_pick && (
+              <span
+                role="img"
+                aria-label={s.chefPick}
+                title={s.chefPick}
+                className="bg-brand text-on-brand grid size-7 place-items-center rounded-full"
+              >
+                <ChefHat className="size-4" aria-hidden="true" />
+              </span>
+            )}
           </span>
           <div className="relative">
             <AddButton dish={dish} qty={qty} s={s} onAdd={onAdd} />
